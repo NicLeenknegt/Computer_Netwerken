@@ -1,0 +1,1908 @@
+
+    <!doctype html>
+    <html >
+        <head>
+            <title data-react-helmet="true">Reek C - IPv6 Tunneling - UGent Computernetwerken 2</title>
+            <meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/><meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="google" value="notranslate"/><meta data-react-helmet="true" property="og:image" content="https://app.gitbook.com/share/space/thumbnail/-Lc5VIoyjbmo2ReQJFfs.png"/><meta data-react-helmet="true" property="twitter:card" content="summary"/><meta data-react-helmet="true" property="twitter:site" content="UGent Computernetwerken 2"/><meta data-react-helmet="true" name="description" content=""/><meta data-react-helmet="true" property="og:title" content="Reek C - IPv6 Tunneling"/><meta data-react-helmet="true" property="og:description" content=""/>
+            <link data-react-helmet="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500"/><link data-react-helmet="true" rel="stylesheet" href="https://unpkg.com/emojione-assets@4.0.0/sprites/emojione-sprite-40.min.css"/><link data-react-helmet="true" rel="preconnect" href="https://www.googleapis.com"/><link data-react-helmet="true" rel="preconnect" href="https://api.amplitude.com"/><link data-react-helmet="true" rel="preconnect" href="https://blobs.gitbook.com/"/><link data-react-helmet="true" rel="canonical" href="https://xavier-geerinck.gitbook.io/ugent-computernetwerken-2/reek_c_-_ipv6_tunneling"/>
+            <style data-react-helmet="true" type="text/css">
+        @font-face {
+            font-family: "Roboto";
+            src: local("Roboto"), local("Roboto-Regular"), url(https://static.gitbook.com/fonts/fc3d4b35e4d07d4e0485cc2db0e57c77.woff) format('woff');
+            font-weight: 400;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Roboto";
+            src: local("Roboto Medium"), local("Roboto-Medium"), url(https://static.gitbook.com/fonts/f4fa50c4003f87e7dc10459e500933c3.woff) format('woff');
+            font-weight: 500;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Roboto";
+            src: local("Roboto Bold"), local("Roboto-Bold"), url(https://static.gitbook.com/fonts/72e37e5bf95a8dba938c78b1d7d91253.woff) format('woff');
+            font-weight: 700;
+            font-display: fallback;
+        }
+    </style><style data-react-helmet="true" type="text/css">
+        @font-face {
+            font-family: "Content-font";
+            src: local("Roboto"), local("Roboto-Regular"), url(https://static.gitbook.com/fonts/fc3d4b35e4d07d4e0485cc2db0e57c77.woff) format('woff');
+            font-weight: 400;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Content-font";
+            src: local("Roboto Medium"), local("Roboto-Medium"), url(https://static.gitbook.com/fonts/f4fa50c4003f87e7dc10459e500933c3.woff) format('woff');
+            font-weight: 500;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Content-font";
+            src: local("Roboto Bold"), local("Roboto-Bold"), url(https://static.gitbook.com/fonts/72e37e5bf95a8dba938c78b1d7d91253.woff) format('woff');
+            font-weight: 700;
+            font-display: fallback;
+        }
+    </style>
+            <script data-react-helmet="true" type="text/javascript" defer="true" src="https://polyfill.io/v3/polyfill.min.js?flags=gated&amp;features=Intl"></script>
+            <style>#__GITBOOK__ROOT__SERVER__ { width: 100%; height: 100%; display: flex;}</style>
+            <style>#__GITBOOK__ROOT__CLIENT__ { width: 100%; min-height: 100%; height: initial; display: flex;}</style>
+            <style id="__GITBOOK__STYLE__">html, body {
+  color: #242A31;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  background: #F5F7F9;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  line-height: 1em;
+  font-smoothing: antialiased;
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+@media screen and (min-width: 768px) {
+  html, body {
+    text-rendering: optimizeLegibility;
+  }
+}
+@media print {
+  html, body {
+    background: transparent;
+  }
+}
+*, *:before, *:after {
+  outline: none;
+  box-sizing: inherit;
+}
+@font-face {
+  font-family: "Flow-Rounded";
+  src: url("https://static.gitbook.com/fonts/bfc0a96537ceb0cad9e956b9f980fe88.woff") format('woff');
+  font-display: block;
+}
+input, select, textarea {
+  font-size: 16px;
+}
+input, select, textarea, button {
+  font: inherit;
+}
+input[type="search"] {
+  -webkit-appearance: none;
+}
+.draggingElement, .draggingElement *:hover {
+  cursor: grabbing !important;
+  pointer-events: auto !important;
+}
+.draggingElement .draggingHidden {
+  display: none;
+}
+
+.reset-3c756112--body-68cac36c {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  background: #F5F7F9;
+  min-height: 100vh;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--header-07037613--header-11420428 {
+  display: -webkit-box;
+  height: 80px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  z-index: 20;
+  position: relative;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  border-bottom: 1px solid #d4dadf;
+  background-color: #FFFFFF;
+}
+@media print {
+  .reset-3c756112--header-07037613--header-11420428 {
+    display: none;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--header-07037613--header-11420428 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    top: 0;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--header-07037613--header-11420428 {
+    height: 60px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+.reset-3c756112--headerContainer-bb8cc0bc {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  padding: 0;
+  max-width: 1448px;
+}
+.reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-box-align: center;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26 {
+    max-width: 298px;
+    justify-content: center;
+    -webkit-box-pack: center;
+  }
+  .reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26:after {
+    top: 50%;
+    right: 0;
+    height: 40px;
+    content: " ";
+    position: absolute;
+    transform: translateY(-50%);
+    border-left: 1px solid #E6ECF1;
+  }
+}
+.reset-3c756112--mobileButton-7a76d05f {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 0 0 auto;
+  width: 30px;
+  cursor: pointer;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  outline: none;
+  padding: 0;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--mobileButton-7a76d05f {
+    display: none;
+  }
+}
+.icon-7f6730be--text-3f89f380--icon-1f8349b3 {
+  color: #242A31;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+.reset-3c756112--headerLogo-5c0b38e2 {
+  margin: 0;
+  display: block;
+  padding: 0px 24px;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--headerLogo-5c0b38e2 {
+    width: 250px;
+    padding: 0;
+  }
+}
+.reset-3c756112--mobileLogo-dacfd15c {
+  margin: 0;
+  display: none;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--mobileLogo-dacfd15c {
+    display: block;
+  }
+}
+.link-a079aa82--primary-53a25e66--logoLink-10d08504 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #3884FF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  -webkit-box-align: center;
+}
+.reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90 {
+  flex: 1;
+  color: #242A31;
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-left: 8px;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90 {
+    overflow: hidden;
+    max-width: 50vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+.reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90:hover {
+  color: #3884FF;
+}
+.text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1--spaceNameText-677c2969 {
+  font-size: 16px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+.reset-3c756112--desktopLogo-a594db90 {
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--desktopLogo-a594db90 {
+    display: none;
+  }
+}
+.reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea {
+  flex: 1 1 auto;
+  margin: 0px 88px;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  max-width: 750px;
+}
+.reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea:after {
+  background: -webkit-linear-gradient(to right, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+  background: -moz-linear-gradient(to right, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+  pointer-events: none;
+}
+@media screen and (max-width: 1439px) {
+  .reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea {
+    margin: 0px 24px 0px 88px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea {
+    display: none;
+  }
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48 {
+  display: -webkit-box;
+  overflow-x: auto;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  opacity: 1;
+  padding: 0;
+  overflow-x: overlay;
+  overflow-y: hidden;
+  transition: flex 250ms ease,width 250ms ease,opacity 250ms ease;
+  -moz-transition: flex 250ms ease,width 250ms ease,opacity 250ms ease;
+  -webkit-transition: flex 250ms ease,width 250ms ease,opacity 250ms ease;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  height: 80px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  max-width: 224px;
+  align-items: center;
+  -webkit-box-align: center;
+}
+.reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130:before {
+  top: 50%;
+  left: 0;
+  height: 40px;
+  content: " ";
+  position: absolute;
+  transform: translateY(-50%);
+  border-left: 1px solid #E6ECF1;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130 {
+    display: none;
+  }
+}
+.reset-3c756112--inputContainer-b2cb171c {
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-left: 14px;
+  padding-right: 16px;
+}
+.inputInner-5c86b87d--medium-0bbed4bd--inputInner-4216b016--searchInputPlaceholder-936306be {
+  font: inherit;
+  color: #242A31;
+  width: 100%;
+  border: none;
+  cursor: inherit;
+  height: 38px;
+  margin: 0;
+  resize: none;
+  outline: none;
+  padding: 0px 8px;
+  background: transparent;
+  box-sizing: border-box;
+  text-align: left;
+  line-height: inherit;
+  border-radius: 3px;
+}
+.inputInner-5c86b87d--medium-0bbed4bd--inputInner-4216b016--searchInputPlaceholder-936306be::placeholder {
+  color: #9DAAB6;
+  font-size: 16px;
+  font-weight: 500;
+}
+.reset-3c756112--inputWrapper-63396dac--TextH400-3033861f--medium-4505230f--light-502263b4--input-6d442051--searchInput-3fa812d5 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  border: none;
+  margin: 0;
+  display: flex;
+  outline: none;
+  padding: 0;
+  font-size: 16px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  font-weight: 400;
+  line-height: 1.625;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+}
+.reset-3c756112--inputInnerSizer-756c9114 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.reset-3c756112--inputAddOn-45de9ec1--inputAddOnPrefix-202fa60d--icon-1f8349b3 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 0 0 auto;
+  color: #242A31;
+  order: -1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  line-height: 1.2;
+  white-space: nowrap;
+  padding-left: 8px;
+  -webkit-box-align: center;
+}
+.icon-7f6730be--text-3f89f380 {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+.reset-3c756112--bodyContent-2f98451b {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1;
+  color: #3B454E;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  padding: 0;
+}
+.reset-3c756112--wholeContent-9fc567d4 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  min-height: 100%;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--wholeContentBody-554be184 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  transition: margin-bottom 250ms ease;
+  align-items: stretch;
+  -moz-transition: margin-bottom 250ms ease;
+  -webkit-box-align: stretch;
+  -webkit-transition: margin-bottom 250ms ease;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--wholeContentBody-554be184 {
+    padding-top: 80px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--wholeContentBody-554be184 {
+    padding-top: 60px;
+  }
+}
+@keyframes keyframes-animation-2f81d449-0-1-13 {
+  0% {
+    background-color: rgba(24, 48, 85, 0);
+  }
+  100% {
+    background-color: rgba(24, 48, 85, 0.30000000000000004);
+  }
+}
+.reset-3c756112--backdrop-1322b68a--hidden-247382c3--overlay-29559ab8 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  z-index: 29;
+  position: absolute;
+  transition: background-color 250ms ease-out;
+  align-items: center;
+  animation-name: none;
+  pointer-events: none;
+  -moz-transition: background-color 250ms ease-out;
+  justify-content: center;
+  -webkit-box-pack: center;
+  background-color: rgba(24, 48, 85, 0);
+  -webkit-box-align: center;
+  -webkit-transition: background-color 250ms ease-out;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--backdrop-1322b68a--hidden-247382c3--overlay-29559ab8 {
+    z-index: 14;
+  }
+}
+.reset-3c756112--contentNavigation-dd3370a4 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  z-index: 30;
+}
+@media print {
+  .reset-3c756112--contentNavigation-dd3370a4 {
+    display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--contentNavigation-dd3370a4 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex: 0 0 auto;
+    width: calc((100% - 1448px) / 2 + 298px);
+    display: flex;
+    z-index: 15;
+    min-width: 298px;
+    background: #F5F7F9;
+    align-items: stretch;
+    border-right: 1px solid #E6ECF1;
+    padding-left: calc((100% - 1448px) / 2);
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+  }
+}
+.reset-3c756112--contentNavigationInner-205d49ea--contentNavigationInnerCollapsed-7b4aca00 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--contentNavigationInner-205d49ea--contentNavigationInnerCollapsed-7b4aca00 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 30;
+    position: fixed;
+    max-width: 298px;
+    transform: translateX(-100%) !important;
+    box-shadow: none;
+    overflow-y: auto;
+    transition: transform 250ms ease;
+    border-right: 1px solid #E6ECF1;
+    -moz-transition: transform 250ms ease;
+    background-color: #fff;
+    -webkit-transition: transform 250ms ease;
+  }
+}
+.reset-3c756112--sidebarWrapper-84a13d8e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: stretch;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112 {
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.reset-3c756112--sidebar-84a13d8e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: stretch;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--sidebarMain-32610e62 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  background-color: #F5F7F9;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe {
+  overflow-y: auto;
+  flex: 1 1 auto;
+  width: 100%;
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--mobileHeader-4e2d4892 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #74818D;
+  height: 59px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  box-shadow: 0 1px 1px 0 rgba(116, 129, 141, 0.1);
+  align-items: stretch;
+  border-bottom: 1px solid #d4dadf;
+  background-color: #FFFFFF;
+  -webkit-box-align: stretch;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--mobileHeader-4e2d4892 {
+    display: none;
+  }
+}
+.reset-3c756112--mobileHeaderClose-47b8fa64 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  padding: 8px 16px;
+  font-size: 24px;
+  align-items: center;
+  -webkit-box-align: center;
+}
+.reset-3c756112--pagesTree-4b07cd56 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  font-size: 15px;
+  margin-top: 32px;
+  padding-left: 16px;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--pagesTree-4b07cd56 {
+    padding-left: 24px;
+  }
+}
+.reset-3c756112--pageItem-01e3f344 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+  border-left: 1px solid transparent;
+}
+.reset-3c756112--pageComponent-7cc5301a {
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-left: -1px;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  padding: 7px 24px 7px 16px;
+  position: relative;
+  align-items: center;
+  border-right: 0;
+  text-decoration: none;
+  -webkit-box-align: center;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca:hover {
+  background-color: #E6ECF1;
+}
+.text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f {
+  flex: 1;
+  font-size: 14px;
+  word-break: break-word;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.reset-3c756112--pageItemWithChildren-56f27afc {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca--navButtonOpened-6a88552e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  padding: 7px 24px 7px 16px;
+  position: relative;
+  align-items: center;
+  border-color: #E6ECF1 !important;
+  border-right: 0;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-box-align: center;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca--navButtonOpened-6a88552e:hover {
+  border-color: #E6ECF1;
+  background-color: #FFFFFF;
+}
+.reset-3c756112--pageItemWithChildren-56f27afc--S300Bottom-9b4658d2 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+  margin-bottom: 24px;
+}
+.reset-3c756112--footer-68e6f18c {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--footer-68e6f18c:before {
+  background: -webkit-linear-gradient(to bottom, rgba(255,255,255,0) 0%, #F5F7F9 100%);
+  background: -moz-linear-gradient(to bottom, rgba(255,255,255,0) 0%, #F5F7F9 100%);
+  top: -24px;
+  width: 100%;
+  height: 24px;
+  content: "";
+  display: block;
+  position: absolute;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #F5F7F9 100%);
+}
+.reset-3c756112--trademark-a8da4b94 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #9DAAB6;
+  margin: 16px;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  margin-left: 32px;
+  padding-top: 8px;
+  padding-left: 16px;
+  border-radius: 3px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  text-decoration: none;
+  background-color: #E6ECF1;
+  -webkit-box-align: center;
+}
+.reset-3c756112--trademark-a8da4b94:hover {
+  color: #3884FF;
+}
+.reset-3c756112--trademarkLogo-0d2d53bc {
+  margin: 0;
+  display: block;
+  padding: 0;
+  font-size: 40px;
+}
+.reset-3c756112--trademarkContent-04a01aea {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-left: 16px;
+}
+.text-4505230f--TextH200-a3425406--textUIFamily-5ebd8e40 {
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.625;
+}
+.reset-3c756112--wholeContentPage-6c3f1fc5 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1 1 auto;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  max-width: 100%;
+  min-width: 0;
+  background: #fff;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--wholePageSticky-f53dafd2 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1 1 auto;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  min-width: 0;
+}
+.reset-3c756112--pageContainer-3ec6d8d0 {
+  flex: 1 1 auto;
+  margin: 0px 16px;
+  display: block;
+  padding: 0;
+  max-width: 750px;
+  min-width: 0;
+  padding-bottom: 64px;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--pageContainer-3ec6d8d0 {
+    margin: 0px auto;
+    padding: 0px 24px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--pageContainer-3ec6d8d0 {
+    margin: 0px 88px;
+  }
+}
+.reset-3c756112--pageHeader-15724735 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  border-bottom: 2px solid #E6ECF1;
+  margin-bottom: 32px;
+}
+.reset-3c756112--pageHeaderInner-7c0f0284 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  margin: 0;
+  display: flex;
+  padding: 40px 0px;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--pageHeaderInner-7c0f0284 {
+    flex-wrap: wrap;
+    align-items: baseline;
+    flex-direction: row;
+    -webkit-box-align: baseline;
+    -webkit-box-lines: multiple;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+  }
+}
+.reset-3c756112--pageHeaderWrapperContent-6897c946 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--horizontalFlex-5a0077e0 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: stretch;
+  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-box-align: stretch;
+}
+.reset-3c756112--pageHeaderIntro-0c1463da {
+  flex: 1 1 auto;
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-right: 16px;
+}
+.reset-3c756112--pageTitle-33dc39a3 {
+  color: #242A31;
+  width: 100%;
+  border: none;
+  margin: 0;
+  display: block;
+  outline: none;
+  padding: 0;
+  background: none;
+  border-radius: 3px;
+}
+.text-4505230f--DisplayH900-bfb998fa--textContentFamily-49a318e1 {
+  font-size: 32px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.reset-3c756112--toolbar-a6a9f7d2--medium-8e46b02c--pageHeaderToolbar-6457a802--withControlsClosed-3e96e46c {
+  display: -ms-inline-grid;
+  margin: 0;
+  display: none;
+  padding: 0;
+  margin-top: 9px;
+  -ms-grid-rows: none;
+  grid-column-gap: 16px;
+  grid-template-rows: none;
+}
+@media screen and (max-width: 1279px) {
+  .reset-3c756112--toolbar-a6a9f7d2--medium-8e46b02c--pageHeaderToolbar-6457a802--withControlsClosed-3e96e46c {
+    display: block;
+  }
+}
+.button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94 {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  color: #9DAAB6;
+  width: 30px;
+  border: 1px solid;
+  cursor: pointer;
+  height: 30px;
+  display: inline-flex;
+  outline: none;
+  padding: 0;
+  transition: all 250ms ease-out;
+  align-items: center;
+  line-height: 1em;
+  white-space: nowrap;
+  border-color: transparent;
+  border-radius: 3px;
+  -moz-transition: all 250ms ease-out;
+  justify-content: center;
+  text-decoration: none;
+  -webkit-box-pack: center;
+  background-color: transparent;
+  -webkit-box-align: center;
+  -webkit-transition: all 250ms ease-out;
+}
+.button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94:hover {
+  color: #3884FF;
+}
+.small-3bde6db7--iconOnly-bddce91a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+.text-4505230f--UIH300-2063425d--textUIFamily-5ebd8e40--text-8ee2c8b2 {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  line-height: 1em;
+}
+.reset-3c756112--pageHeaderDescription-22970244 {
+  flex: auto;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.reset-3c756112--toaster-c029690e {
+  top: 16px;
+  left: 50%;
+  margin: 0;
+  display: block;
+  padding: 0;
+  z-index: 160;
+  position: fixed;
+  transform: translateX(-50%);
+}
+.reset-3c756112--pageBody-a91db4ac {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  font-size: 16px;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--container-960c7c26 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+  margin-bottom: -24px;
+}
+.blockHeading-442b4f12 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  margin: 0;
+  display: flex;
+  position: relative;
+  margin-bottom: 24px;
+}
+.blockHeadingContent-756c9114 {
+  flex: 1;
+}
+.text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1 {
+  font-size: 24px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda {
+  color: #242A31;
+  width: 20px;
+  opacity: 0;
+  transition: opacity 150ms ease;
+  line-height: 1em;
+  padding-left: 4px;
+  -moz-transition: opacity 150ms ease;
+  -webkit-transition: opacity 150ms ease;
+}
+.blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda:hover {
+  color: #3884FF;
+}
+@media print {
+  .blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda {
+    display: none;
+  }
+}
+.blockHeadingAnchorIcon-1c2bf3cb {
+  font-size: 16px;
+  vertical-align: middle;
+}
+.reset-3c756112--blockHeadingUp-c32402b2 {
+  width: 1em;
+  cursor: pointer;
+  height: 1em;
+  margin: 0;
+  display: block;
+  outline: none;
+  padding: 0;
+  line-height: 1em;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--blockHeadingUp-c32402b2 {
+    display: none;
+  }
+}
+@media print {
+  .reset-3c756112--blockHeadingUp-c32402b2 {
+    display: none;
+  }
+}
+.list-20526648 {
+  color: #3B454E;
+  margin: 0;
+  padding: 0;
+  padding-left: 2em;
+  margin-bottom: 24px;
+}
+.reset-3c756112--listItemContent-756c9114 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.blockParagraph-544a408c--noMargin-acdf7afa {
+  color: inherit;
+  margin: 0;
+  position: relative;
+  margin-bottom: 0;
+}
+.text-4505230f--TextH400-3033861f--textContentFamily-49a318e1 {
+  font-size: 16px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.625;
+}
+.blockHeading-442b4f12--blockHeading1WithMargin-b69d755e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  margin: 0;
+  display: flex;
+  position: relative;
+  margin-top: 73px;
+  margin-bottom: 24px;
+}
+.blockHeading-442b4f12--blockHeading1WithMargin-b69d755e:before {
+  top: -32px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  content: " ";
+  position: absolute;
+  background-color: #E6ECF1;
+}
+.blockHeading-442b4f12--blockHeading2WithMargin-532d771d {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  margin: 0;
+  display: flex;
+  position: relative;
+  margin-top: 32px;
+  margin-bottom: 24px;
+}
+.text-4505230f--HeadingH600-23f228db--textContentFamily-49a318e1 {
+  font-size: 20px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.list-20526648--inList-acdf7afa {
+  color: #3B454E;
+  margin: 0;
+  padding: 0;
+  padding-left: 2em;
+  margin-bottom: 0;
+}
+.code-81e98f88 {
+  margin: 0 1px;
+  display: inline-block;
+  padding: 3px 6px;
+  font-size: 85%;
+  font-family: "Source Code Pro", Menlo, monospace;
+  border-radius: 3px;
+  background-color: #F5F7F9;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.code-81e98f88:after {
+  content: "\00a0";
+  letter-spacing: -1em;
+}
+.bold-3c254bd9 {
+  font-weight: 700;
+}
+.blockParagraph-544a408c {
+  color: inherit;
+  margin: 0;
+  position: relative;
+  margin-bottom: 24px;
+}
+.reset-3c756112--pageFooter-f1d5e2b0 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-top: 64px;
+}
+@media print {
+  .reset-3c756112--pageFooter-f1d5e2b0 {
+    display: none;
+  }
+}
+.reset-3c756112--navPagesLinks-67bea901 {
+  display: -ms-grid;
+  width: auto;
+  margin: 0;
+  display: grid;
+  padding: 0;
+  -ms-grid-rows: auto;
+  grid-column-gap: 24px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "previous next";
+  grid-template-columns: 1fr 1fr;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--navPagesLinks-67bea901 {
+    grid-row-gap: 24px;
+    -ms-grid-columns: 1fr;
+    grid-template-areas: "next" "previous";
+    grid-template-columns: 1fr;
+  }
+}
+.reset-3c756112--card-6570f064--whiteCard-fff091a4--cardPrevious-56a5e674 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  border: 1px solid #E6ECF1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  grid-area: previous;
+  align-self: stretch;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  transition: border 250ms ease;
+  align-items: center;
+  justify-self: stretch;
+  border-radius: 3px;
+  flex-direction: row;
+  -moz-transition: border 250ms ease;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-box-align: center;
+  page-break-inside: avoid;
+  -ms-grid-row-align: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-transition: border 250ms ease;
+  -ms-grid-column-align: stretch;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--cardIcon-5b647d22 {
+  flex: 0 0 auto;
+  color: #9DAAB6;
+  margin: 0;
+  display: block;
+  padding: 16px;
+  font-size: 24px;
+  transition: color 250ms ease;
+  -moz-transition: color 250ms ease;
+  -webkit-transition: color 250ms ease;
+}
+.reset-3c756112--cardIcon-5b647d22:first-child {
+  padding-right: 0;
+}
+.reset-3c756112--cardIcon-5b647d22:last-child {
+  padding-left: 0;
+}
+.reset-3c756112--cardBody-25dca3b1--cardPreviousBody-79f02c06 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 16px;
+  text-align: right;
+}
+.reset-3c756112--cardHint-2c5d8183 {
+  color: #9DAAB6;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.text-4505230f--TextH200-a3425406--textContentFamily-49a318e1 {
+  font-size: 12px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.625;
+}
+.reset-3c756112--cardTitle-32aa092e {
+  margin: 0;
+  display: block;
+  padding: 0;
+  transition: color 250ms ease;
+  -moz-transition: color 250ms ease;
+  -webkit-transition: color 250ms ease;
+}
+.text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1 {
+  font-size: 16px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.reset-3c756112--card-6570f064--whiteCard-fff091a4--cardNext-19241c42 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  border: 1px solid #E6ECF1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  grid-area: next;
+  align-self: stretch;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  transition: border 250ms ease;
+  align-items: center;
+  justify-self: stretch;
+  border-radius: 3px;
+  flex-direction: row;
+  -moz-transition: border 250ms ease;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-box-align: center;
+  page-break-inside: avoid;
+  -ms-grid-row-align: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-transition: border 250ms ease;
+  -ms-grid-column-align: stretch;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--cardBody-25dca3b1 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 16px;
+}
+.reset-3c756112--pageFooterColumns-ef8f347e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  border-top: 2px solid #E6ECF1;
+  margin-top: 24px;
+  align-items: center;
+  padding-top: 24px;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--pageFooterColumns-ef8f347e {
+    align-items: stretch;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+  }
+}
+.reset-3c756112--pageFooterSummary-12074aff {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--pageFooterSummary-12074aff {
+    margin-bottom: 16px;
+  }
+}
+.reset-3c756112--pageChangesSummary-08821678 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  -webkit-box-align: center;
+}
+.reset-3c756112--pageContributors-5c59582e {
+  flex: 0 0 auto;
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-right: 8px;
+}
+.reset-3c756112--ownerAvatarList-696792ce {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+}
+@keyframes keyframes-animation-bd7e9c6a-0-1-14 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  z-index: 0;
+  position: relative;
+  box-shadow: 0 0 0 2px white;
+  border-radius: 128px;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:after {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  top: calc(100% + 16px);
+  left: 50%;
+  color: #FFFFFF;
+  width: max-content;
+  bottom: auto;
+  content: attr(aria-label);
+  display: none;
+  opacity: 0;
+  padding: 5px 8px;
+  z-index: 155;
+  position: absolute;
+  font-size: 12px;
+  max-width: 300px;
+  transform: translateX(-50%);
+  background: #242A31;
+  font-weight: 400;
+  line-height: 1.625;
+  white-space: normal;
+  border-radius: 3px;
+  animation-name: keyframes-animation-bd7e9c6a-0-1-14;
+  pointer-events: none;
+  text-transform: none;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:before {
+  top: calc(100% + 8px);
+  left: 50%;
+  width: 0;
+  bottom: auto;
+  height: 0;
+  content: "";
+  display: none;
+  opacity: 0;
+  z-index: 156;
+  position: absolute;
+  transform: translateX(-50%);
+  border-color: #242A31 transparent;
+  border-style: solid;
+  animation-name: keyframes-animation-bd7e9c6a-0-1-14;
+  border-top-width: 0;
+  border-left-width: 8px;
+  animation-duration: 0.2s;
+  border-right-width: 8px;
+  animation-fill-mode: forwards;
+  border-bottom-width: 8px;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:nth-last-child(n+2) {
+  margin-left: -8px;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:hover:before {
+  display: block;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:hover:after {
+  display: block;
+}
+.reset-3c756112--avatarFrame-2f40cdc9--small-2ec8ae1a--circle-6c5acd10 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  -webkit-mask-image: -moz-radial-gradient(white, black);
+  mask-image: -webkit-radial-gradient(white, black);
+  mask-image: -moz-radial-gradient(white, black);
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  mask-image: radial-gradient(white, black);
+  align-items: center;
+  border-radius: 128px;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  -webkit-mask-image: radial-gradient(white, black);
+}
+.image-67b14f24--avatar-1c1d03ec {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  background-size: cover;
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+}
+.reset-3c756112--innerShadow-7a3a8651 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: absolute;
+  box-shadow: inset 0 0 1px 1px rgba(24, 48, 85, 0.1);
+  border-radius: 128px;
+  pointer-events: none;
+}
+.reset-3c756112--pageEditedDate-b805c39a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  color: #9DAAB6;
+  margin: 0;
+  display: flex;
+  padding: 0;
+}
+.reset-3c756112--pageSide-ad9fed26 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 0 0 auto;
+  width: 224px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  margin-right: auto;
+}
+@media print {
+  .reset-3c756112--pageSide-ad9fed26 {
+    display: none;
+  }
+}
+@media screen and (max-width: 1279px) {
+  .reset-3c756112--pageSide-ad9fed26 {
+    display: none;
+  }
+}
+.reset-3c756112--stickyContainer-2bed3a82 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  max-width: 100%;
+}
+.reset-3c756112--tocWrapper-506ea24c {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  padding-top: 40px;
+  flex-direction: column;
+  padding-bottom: 40px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114 {
+  overflow-y: auto;
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--pageSideSection-542f1fd5 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--pageSideSection-542f1fd5:before {
+  top: 0;
+  left: 0;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  border-left: 1px solid #E6ECF1;
+}
+.reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5 {
+  display: -webkit-box;
+  flex: 1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  min-width: 224px;
+  counter-reset: toc;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+@media print {
+  .reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5 {
+    display: none;
+  }
+}
+.reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5:before {
+  top: 0;
+  left: 0;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  border-left: 1px solid #E6ECF1;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496 {
+  overflow-y: auto;
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--menuHeader-d7753f3a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #9DAAB6;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  padding-left: 24px;
+  margin-bottom: 8px;
+}
+.reset-3c756112--menuHeaderIcon-0c3ed569 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-right: 8px;
+}
+.text-4505230f--InfoH100-1e92e1d1--textContentFamily-49a318e1 {
+  font-size: 10px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024 {
+  display: -webkit-box;
+  color: #74818D;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  padding: 4px 16px;
+  align-items: center;
+  padding-left: 24px;
+  vertical-align: middle;
+  text-decoration: none;
+  -webkit-box-align: center;
+}
+.reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024:hover {
+  background: none;
+  text-decoration: inherit;
+}
+.link-a079aa82--primary-53a25e66 {
+  color: #3884FF;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.reset-3c756112--menuItemContent-c44ec79e {
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.text-4505230f--UIH300-2063425d--textContentFamily-49a318e1 {
+  font-size: 14px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1 {
+  font-size: 12px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1--pageTocLinkH2-2294976c {
+  font-size: 12px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  padding-left: 16px;
+}</style>
+        </head>
+        <body>
+            <div id="__GITBOOK__ROOT__SERVER__"><div class="reset-3c756112--body-68cac36c" data-reactroot=""><div class="reset-3c756112--header-07037613--header-11420428"><div class="reset-3c756112--headerContainer-bb8cc0bc"><div class="reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26"><div role="button" tabindex="-1" class="reset-3c756112--mobileButton-7a76d05f"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380--icon-1f8349b3"><g><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></g></svg></div><div class="reset-3c756112--headerLogo-5c0b38e2"><div class="reset-3c756112--mobileLogo-dacfd15c"><a class="link-a079aa82--primary-53a25e66--logoLink-10d08504" style="color:#3884FF" href="/ugent-computernetwerken-2/"><div class="reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1--spaceNameText-677c2969">UGent Computernetwerken 2</span></div></a></div><div class="reset-3c756112--desktopLogo-a594db90"><a class="link-a079aa82--primary-53a25e66--logoLink-10d08504" style="color:#3884FF" href="/ugent-computernetwerken-2/"><div class="reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1--spaceNameText-677c2969">UGent Computernetwerken 2</span></div></a></div></div><div role="button" tabindex="-1" class="reset-3c756112--mobileButton-7a76d05f"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380--icon-1f8349b3"><g><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></g></svg></div></div><div class="reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48"></div></div><div class="reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130"><div class="reset-3c756112--inputContainer-b2cb171c"><div aria-label="" class="reset-3c756112--inputWrapper-63396dac--TextH400-3033861f--medium-4505230f--light-502263b4--input-6d442051--searchInput-3fa812d5"><div class="reset-3c756112--inputInnerSizer-756c9114"><input type="text" placeholder="Search..." class="inputInner-5c86b87d--medium-0bbed4bd--inputInner-4216b016--searchInputPlaceholder-936306be"/></div><div class="reset-3c756112--inputAddOn-45de9ec1--inputAddOnPrefix-202fa60d--icon-1f8349b3"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></g></svg></div></div></div></div></div></div><div class="reset-3c756112--bodyContent-2f98451b"><div class="reset-3c756112--wholeContent-9fc567d4"><div class="reset-3c756112--wholeContentBody-554be184"><div role="presentation" class="reset-3c756112--backdrop-1322b68a--hidden-247382c3--overlay-29559ab8"></div><div class="reset-3c756112--contentNavigation-dd3370a4"><div class="reset-3c756112--contentNavigationInner-205d49ea--contentNavigationInnerCollapsed-7b4aca00"><div class="reset-3c756112--sidebarWrapper-84a13d8e"><div style="padding-bottom:0" class="reset-3c756112"></div><div class="reset-3c756112--sidebar-84a13d8e"><div class="reset-3c756112--sidebarMain-32610e62"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe"><div class="reset-3c756112--mobileHeader-4e2d4892"><div role="button" tabindex="-1" class="reset-3c756112--mobileHeaderClose-47b8fa64"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></g></svg></div></div><div class="reset-3c756112--pagesTree-4b07cd56"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">introduction</span></a></div></div><div class="reset-3c756112"><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_configuratie_van_de_netwerkinterface_-_bridging_-_multicasting_op_subnetwerkniveau"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - Configuratie van de netwerkinterface - Bridging - Multicasting op subnetwerkniveau</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_routing"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - Routing</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_rip"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - RIP</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_ospf"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - OSPF</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_draadloze_netwerken"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - Draadloze Netwerken</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_multicastrouting"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Multicastrouting</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van DNS servers onder Linux</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van DNS servers onder Linux Deel 2</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_3"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van DNS servers onder Linux Deel 3</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_reverse_dns_onder_linux"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van reverse DNS onder Linux</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_dhcp_leaseprocessen_en_relay-agents"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - DHCP leaseprocessen en relay-agents</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_ipv6_adressering"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - IPv6 Adressering</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_ipv6_berichtstructuur"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - IPv6 berichtstructuur</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_overgang_naar_ipv6_en_autoconfiguratie"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - Overgang naar IPv6 en autoconfiguratie</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca--navButtonOpened-6a88552e" style="color:#3884FF" href="/ugent-computernetwerken-2/reek_c_-_ipv6_tunneling"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - IPv6 Tunneling</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc--S300Bottom-9b4658d2"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/snmp_labo"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">SNMP Labo</span></a></div></div></div></div></div></div></div><div class="reset-3c756112--footer-68e6f18c"><a href="https://www.gitbook.com/?utm_source=content&amp;utm_medium=trademark&amp;utm_campaign=xavier-geerinck" target="_blank" class="reset-3c756112--trademark-a8da4b94" role="presentation"><div class="reset-3c756112--trademarkLogo-0d2d53bc"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="currentColor" viewBox="0 0 1067 769" xmlns="http://www.w3.org/2000/svg" stroke="none" class="icon-7f6730be--text-3f89f380"><g><path d="M480.026 640.677c17.205 0 31.2 13.997 31.2 31.194s-13.995 31.193-31.2 31.193c-17.197 0-31.193-13.996-31.193-31.193 0-17.197 13.996-31.194 31.193-31.194m489.93-193.226c-17.203 0-31.2-13.998-31.2-31.195 0-17.204 13.997-31.2 31.2-31.2 17.198 0 31.194 13.996 31.194 31.2 0 17.197-13.996 31.195-31.193 31.195m0-127.804c-53.269 0-96.609 43.34-96.609 96.609 0 10.373 1.723 20.702 5.123 30.741L559.328 616.879c-18.132-26.128-47.521-41.617-79.302-41.617-36.821 0-70.391 21.065-86.63 54.003L106.68 478.109c-30.288-15.927-52.965-65.817-50.56-111.223 1.248-23.687 9.438-42.071 21.897-49.17 7.916-4.493 17.436-4.099 27.526 1.188l1.916 1.01c75.96 40.022 324.6 170.981 335.063 175.844 16.157 7.47 25.14 10.5 52.659-2.547l513.958-267.3c7.53-2.844 16.315-10.062 16.315-21.023 0-15.205-15.72-21.199-15.765-21.199-29.218-14.018-74.163-35.054-117.987-55.57C798.033 84.26 691.861 34.547 645.23 10.132c-40.253-21.072-72.655-3.311-78.432.282l-11.227 5.555C345.727 119.743 64.898 258.826 48.911 268.553 20.278 285.973 2.547 320.679.252 363.768c-3.586 68.304 31.261 139.506 81.069 165.634l303.172 156.354c6.83 47.306 47.55 82.725 95.532 82.725 52.78 0 95.808-42.546 96.603-95.14L910.541 492.38c16.93 13.233 37.92 20.486 59.416 20.486 53.268 0 96.61-43.341 96.61-96.61s-43.342-96.61-96.61-96.61" fill-rule="evenodd"></path></g></svg></div><div class="reset-3c756112--trademarkContent-04a01aea"><div class="reset-3c756112"><span class="text-4505230f--TextH200-a3425406--textUIFamily-5ebd8e40">Powered by <b>GitBook</b></span></div></div></a></div></div></div></div></div></div><div class="reset-3c756112--wholeContentPage-6c3f1fc5"><div class="reset-3c756112--wholePageSticky-f53dafd2"><div class="reset-3c756112--pageContainer-3ec6d8d0"><div class="reset-3c756112"><div class="reset-3c756112--pageHeader-15724735"><div class="reset-3c756112--pageHeaderInner-7c0f0284"><div class="reset-3c756112--pageHeaderWrapperContent-6897c946"><div class="reset-3c756112--horizontalFlex-5a0077e0"><div class="reset-3c756112--pageHeaderIntro-0c1463da"><h1 class="reset-3c756112--pageTitle-33dc39a3"><span class="text-4505230f--DisplayH900-bfb998fa--textContentFamily-49a318e1">Reek C - IPv6 Tunneling</span></h1></div><div style="grid-template-columns:repeat(1, auto)" class="reset-3c756112--toolbar-a6a9f7d2--medium-8e46b02c--pageHeaderToolbar-6457a802--withControlsClosed-3e96e46c"><button class="button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94"><span class="small-3bde6db7--iconOnly-bddce91a"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="7" y2="18"></line></g></svg></span><span class="text-4505230f--UIH300-2063425d--textUIFamily-5ebd8e40--text-8ee2c8b2"></span></button></div></div><div class="reset-3c756112--pageHeaderDescription-22970244"></div></div></div></div><div class="reset-3c756112--toaster-c029690e"></div><div class="reset-3c756112--pageBody-a91db4ac"><div data-editioncontainer="true" class="reset-3c756112--container-960c7c26"><div data-slate-editor="true" data-key="39658320e8ab4fdd9d269c6c41bd9bd1" autoCorrect="on" spellcheck="true" data-gramm="false" style="outline:none;white-space:pre-wrap;word-wrap:break-word"><h1 id="wat-is-ipv6-over-ipv4-tunneling-en-waarvoor-zal-men-deze-techniek-aanwenden" class="blockHeading-442b4f12" data-key="f2977a4baab748c6abcd503a002e8f6b"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1"><span data-key="886a3d833c9a4137957090d381a42336"><span data-offset-key="886a3d833c9a4137957090d381a42336:0">Wat is IPv6 over IPv4 tunneling, en waarvoor zal men deze techniek aanwenden ?</span></span></span><a href="#wat-is-ipv6-over-ipv4-tunneling-en-waarvoor-zal-men-deze-techniek-aanwenden" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div><div role="button" tabindex="0" style="color:#3884FF" contenteditable="false" class="reset-3c756112--blockHeadingUp-c32402b2"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></g></svg></div></h1><ul class="list-20526648" data-key="ddf0562e07324b8dab6125eedcd9169c"><li class=""><div data-key="0e854834ed904ab8b6847b5a8cbf7850" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="035d9d3414274ba38cf329f9e6ac9224"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ffe82f53e9684228a2b122cdb88d41be"><span data-offset-key="ffe82f53e9684228a2b122cdb88d41be:0">Bij IPv6 over IPv4 tunneling worden IPv6 datagrammen in een IPv4 datagram geplaatst, dit m.b.h. het IPv4 Protocol veld optie 41</span></span></span></p></div></li><li class=""><div data-key="7b02b06f61fa4514980af57b7bf7379c" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="699ab9d19d854a98bc090ea4a0b3b459"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="74d0833b174c4a9cae2ccf7a9d54e3a7"><span data-offset-key="74d0833b174c4a9cae2ccf7a9d54e3a7:0">Datagrammen worden ingekapseld en uitgepakt door de dual-stack eindpunten van de tunnel.</span></span></span></p></div></li><li class=""><div data-key="e9281cf1e18448cd9f7581ed7ade784f" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="13d40434d8e945bea35d08ad12ea8144"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="8cd4204572514f8b88fdcd02e903d795"><span data-offset-key="8cd4204572514f8b88fdcd02e903d795:0">Deze techniek is essentieel bij de eerste fasen van de overschakeling, daar het een end-to-end IPv6 connectiviteit verzekert zonder dat daar de nodige IPv6 infrastructuur aanwezig voor moet zijn.</span></span></span></p></div></li><li class=""><div data-key="e3235b89b214432abf24bab88e3a68ac" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="be68135128ac40a188dff7539ba89a1c"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="56bf0ab3039c4a00a611d39b5a2094de"><span data-offset-key="56bf0ab3039c4a00a611d39b5a2094de:0">In latere fasen garandeert het connectiviteit langs een IPv4-only backbone.</span></span></span></p></div></li></ul><h1 id="bespreek-in-detail-de-diverse-ook-de-meeste-recente-tunnel-mechanismen-waarop-men-een-beroep-kan-doen-bespreek-telkens-onder-andere-hun-toepassingsgebied-vereisten-beperkingen-de-relatieve-voor-en-nadelen-en-de-gebruikte-addresseringsschemas" class="blockHeading-442b4f12--blockHeading1WithMargin-b69d755e" data-key="5f9275c763594255af5b7c4df7a99100"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1"><span data-key="6bba689a53ce45088103c94ed2350f79"><span data-offset-key="6bba689a53ce45088103c94ed2350f79:0">Bespreek in detail de diverse, ook de meeste recente, tunnel mechanismen waarop men een beroep kan doen. Bespreek telkens onder andere hun toepassingsgebied, vereisten, beperkingen, de relatieve voor- en nadelen, en de gebruikte addresseringsschema&#x27;s.</span></span></span><a href="#bespreek-in-detail-de-diverse-ook-de-meeste-recente-tunnel-mechanismen-waarop-men-een-beroep-kan-doen-bespreek-telkens-onder-andere-hun-toepassingsgebied-vereisten-beperkingen-de-relatieve-voor-en-nadelen-en-de-gebruikte-addresseringsschemas" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div><div role="button" tabindex="0" style="color:#3884FF" contenteditable="false" class="reset-3c756112--blockHeadingUp-c32402b2"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></g></svg></div></h1><h2 id="automatische-ipv6-over-ipv4-tunneling" class="blockHeading-442b4f12--blockHeading2WithMargin-532d771d" data-key="73d1fee2c5384b1f9d7970c5fb4bdb4e"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH600-23f228db--textContentFamily-49a318e1"><span data-key="d3e600a0251444f9983a838a2256f0ff"><span data-offset-key="d3e600a0251444f9983a838a2256f0ff:0">Automatische IPv6 over IPv4 tunneling</span></span></span><a href="#automatische-ipv6-over-ipv4-tunneling" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div></h2><ul class="list-20526648" data-key="982690055fac4981bf5b7253cb653d97"><li class=""><div data-key="276d688114ae4b609fe1c21cedea9427" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="6da8680aec2f46ec98b2d9a93f97063e"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="0bf24b1b03504567b397bb912e2ba52f"><span data-offset-key="0bf24b1b03504567b397bb912e2ba52f:0">Hierbij zal men indien nodig tunnels creeren doorheen de bestaande IPv4 infrastructuur.</span></span></span></p></div></li><li class=""><div data-key="2a126b6321b043cf917f44e6399b6c7e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="be9e75e2d828406593595fcfc33655d4"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="dafab48e4eef40a3b47fc431eef4b993"><span data-offset-key="dafab48e4eef40a3b47fc431eef4b993:0">Tunnels niet nodig indien:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="531066262c504e958d730a6db9942b5c"><li class=""><div data-key="1dcd87eb18eb4063a1c3706e50b33df0" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="dea269c78b1c475182b10c195aae1a1e"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c32ea9189ba940aa9c2da837b90f0ef4"><span data-offset-key="c32ea9189ba940aa9c2da837b90f0ef4:0">Doeladres is IPv4 adres (IPv4 wordt gebruikt)</span></span></span></p></div></li><li class=""><div data-key="16a6261b4053406abb8a240ec3415167" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="9c865f12f0f54856b394cc040fafc44d"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c436386125b444b2b4a522221df10386"><span data-offset-key="c436386125b444b2b4a522221df10386:0">Eindbestemming bevindt zich op hetzelfde netwerk (IPv6 wordt gebruikt)</span></span></span></p></div></li><li class=""><div data-key="10dc988d9e4140d9ab7f8406019afed1" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="3f6430fca3d04912baca931b465b2aec"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="66a10212689147029dbc1e6673f0b8f4"><span data-offset-key="66a10212689147029dbc1e6673f0b8f4:0">Eerste hop van een route naar de eindbestemming is een IPv6 router (IPv6 wordt gebruikt).</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="76cae60581394febba172b985d93c67c" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="491f878c8f2a495db3b7426f7ba1461f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b1e5fd31003948689ce156ee28370a4e"><span data-offset-key="b1e5fd31003948689ce156ee28370a4e:0">Indien criteria niet voldaan en het eindadres is IPv4 compatibel (32-bits voorafgegaan door 96 0-bits), dan automatisch tunnelen:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="2f6cf227292e46a98242c625e74e695e"><li class=""><div data-key="c0ae1d7a3cdc42fca47b726b12a4ef9b" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="3388d403d312452a83805dd7c4a25e2d"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="d1379a06c419465e87ee601edf3c510e"><span data-offset-key="d1379a06c419465e87ee601edf3c510e:0">Router-to-host tunneling</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="56f4399870ae40dfa874851ebdf75703"><li class=""><div data-key="1e663b2a2d534c07868e417ed86f909d" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="44d68247e23d40e4b806a7825f8fb6b6"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="d25e9530c2504c4b822910ef7bed483c"><span data-offset-key="d25e9530c2504c4b822910ef7bed483c:0">Indien een router op het pad merkt dat de volgende hop geen IPv6 aankan, zal de router automatische tunneling toepassen tot de eindbestemming.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="922c1a6fe0b54bd29267ba1c53394eb3" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="f3e188cc819040378b63d089fefd36ca"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="4b50d7da54aa4984bb4a419996f48d95"><span data-offset-key="4b50d7da54aa4984bb4a419996f48d95:0">Host-to-host tunneling</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="837000d3c4af48ee87658615c908742b"><li class=""><div data-key="8a4c7fd84140430891745106185a2c95" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="397f5dc2b6044a8989e4e9cda59c8c92"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b4592e99b2834b31bd4833c71e709f3e"><span data-offset-key="b4592e99b2834b31bd4833c71e709f3e:0">Indien de eerst mogelijke hop na het afzenden geen UPv6 ondersteund, zal de tunnel van afzender tot bestemming lopen.</span></span></span></p></div></li></ul></div></li></ul></div></li><li class=""><div data-key="abd86363980b40f7839eff2dd03ad6c6" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="e500fb0e195e48e589955c91fc5330ca"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="0b2a75e443f1450f8b733bd4985079d2"><span data-offset-key="0b2a75e443f1450f8b733bd4985079d2:0">Aangezien het aanmaken van een tunnel zo lang mogelijk wordt uigesteld, zal de tunnel:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="ac79248879044341bbe8018284815603"><li class=""><div data-key="8b63f1c955f84591883b6effcac06522" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="4d1f3c12afc644aab7f86a3c9f3745b2"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="39d622eb5ad54854bc777b7725e6378e"><span data-offset-key="39d622eb5ad54854bc777b7725e6378e:0">Steeds zo kort mogelijk zijn (aan de kant van de afzender)</span></span></span></p></div></li><li class=""><div data-key="8b1bca47dff546c6a52a09c0da22eeea" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="515c724b3da34a8c8ea3164e866efe4d"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="3f6992b02ae14c0ba9ca785fe8498acc"><span data-offset-key="3f6992b02ae14c0ba9ca785fe8498acc:0">Langs de kant van de ontvanger is de tunnel steeds suboptimaal (tunnel aangelegd tot eindbestemming).</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="6ec3be9d9bb34060bf08918ae740aad2" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="4df69258261648acb5d1196a65d9b2ee"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c1ee211c1c884f1e9e6eb4c1280c8b02"><span data-offset-key="c1ee211c1c884f1e9e6eb4c1280c8b02:0">het eindpunt moet steeds IPv4 compatibel zijn, waardoor er geen gebruik kan gemaakt worden van de volle 128-bits adresruimte. (Dus enkel toepasbaar op kleine netwerkomgevingen)</span></span></span></p></div></li></ul><h2 id="geconfigureerde-ipv6-over-ipv4-tunneling" class="blockHeading-442b4f12--blockHeading2WithMargin-532d771d" data-key="4bd66693fc6948c3b3e973d7febad710"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH600-23f228db--textContentFamily-49a318e1"><span data-key="405fb73a189748ddaa480930205f77b4"><span data-offset-key="405fb73a189748ddaa480930205f77b4:0">Geconfigureerde IPv6 over IPv4 tunneling</span></span></span><a href="#geconfigureerde-ipv6-over-ipv4-tunneling" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div></h2><ul class="list-20526648" data-key="178549aa034a49cc8868f6c4a85a0db6"><li class=""><div data-key="61d12585082c47bf89c1eb78d0e4ab4e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="d12bda79849f40acbb60c7036e8c8ef8"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="a7c97c76b07f49c394dddcee54e2711a"><span data-offset-key="a7c97c76b07f49c394dddcee54e2711a:0">Hierbij worden routers zo geconfigureerd om IPv6 pakketten die over een IPv4 netwerk moeten, via een expliciet geconfigureerde tunnel te sturen.</span></span></span></p></div></li><li class=""><div data-key="c0ab9c0af72c4eb3bd8f9e695806c196" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="80d42d37626a4daa8fe5d7f750dad07c"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="e01a2f30e83547b2ac541dd78ad74574"><span data-offset-key="e01a2f30e83547b2ac541dd78ad74574:0">Deze tunnel manifesteert zich dikwijls als een aparte interface, waarbij het eindpunt steeds vastligt.</span></span></span></p></div></li><li class=""><div data-key="09887699a8b041408bd01505047590b5" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="bb851332dd334b538e03e95a68263323"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="3a801e460087483a86c3720ca24307e9"><span data-offset-key="3a801e460087483a86c3720ca24307e9:0">Het grote voordeel is dat de eindpunten niet IPv4 compatibel dienen te zijn en dus de hele IPv6 adresruimte beschikbaar is.</span></span></span></p></div></li><li class=""><div data-key="b8f5f0d4696e4301acd1d47e468aa672" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="b2ea9b7823514bb5924b19ba0b7b2334"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="0b8c65e9872848418f3637bde74d4a85"><span data-offset-key="0b8c65e9872848418f3637bde74d4a85:0">Tunneling:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="3b3fb5c086134d18ac40e68b69c3d015"><li class=""><div data-key="e8e8e97572454e1ca05b744ff1246094" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="4180a8f3ac8a4c478874cf3aca65a5e9"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="d7c4ffaf8e2b495f869c5460b539443c"><span data-offset-key="d7c4ffaf8e2b495f869c5460b539443c:0">Vooral router-to-router tunneling</span></span></span></p></div></li><li class=""><div data-key="9c4cb8dc6d494f56bfb443eb279f9cc2" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="7f707e3630c045a1b05c04aa25e757f2"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="509fbccbc9664f5b94f49a54b759f33a"><span data-offset-key="509fbccbc9664f5b94f49a54b759f33a:0">Indien beginknooppunt een standalon IPv6 knooppunt is, kan ook host-to-router tunneling bekomen worden.</span></span></span></p></div></li></ul></div></li></ul><h2 id="6to4-tunneling" class="blockHeading-442b4f12--blockHeading2WithMargin-532d771d" data-key="c58663f4ed8f413ca61e8c397cbcb9ff"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH600-23f228db--textContentFamily-49a318e1"><span data-key="c8219694f88642378566d172390fc869"><span data-offset-key="c8219694f88642378566d172390fc869:0">6to4 tunneling</span></span></span><a href="#6to4-tunneling" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div></h2><ul class="list-20526648" data-key="820bb42c5efb459c913cf3852fbac7fc"><li class=""><div data-key="800aa1b1539541d280ad8b0e3c9a1b27" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="b47e7e9275624917b26478bc2c289878"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="93cde079e89e4184ad9b8819210c90ef"><span data-offset-key="93cde079e89e4184ad9b8819210c90ef:0">Dit is een special vorm van geconfigureerde tunneling, waarbij het IPv4 eindpunt eenduidig kan afgeleid worden uit het IPv6 adres (Subnet van IPv6 gereserveer op: </span><span data-offset-key="93cde079e89e4184ad9b8819210c90ef:1"><code spellcheck="false" class="code-81e98f88" data-slate-leaf="true">2002:w.x.y.z::/48</code></span><span data-offset-key="93cde079e89e4184ad9b8819210c90ef:2">)</span></span></span></p></div></li><li class=""><div data-key="d7fb1d124ad542ebbae6e0838def8c4c" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="eb89d495b0a241dc9ed5944b0c7b3aab"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="f00ea0cec1894b4895cf29eebdc95843"><span data-offset-key="f00ea0cec1894b4895cf29eebdc95843:0">Een 6to4-router is een dual-stack border router, met een publiek IPv4 adres voor de tunnelinterface die de toegewezen 6tp4 adresruimte in het internet injecteert.</span></span></span></p></div></li><li class=""><div data-key="35bec122d78c4a539ff7ad03534edd1f" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="a3a871972f044ea587a7d3fae3402c82"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="e2e3c6ca952c41d5951348db6030d92b"><span data-offset-key="e2e3c6ca952c41d5951348db6030d92b:0">Dezelfde router adverteert de globale 6to4 adresruimte </span><span data-offset-key="e2e3c6ca952c41d5951348db6030d92b:1"><code spellcheck="false" class="code-81e98f88" data-slate-leaf="true">2002::/16</code></span><span data-offset-key="e2e3c6ca952c41d5951348db6030d92b:2"> naar het intranet van de organisatie toe.</span></span></span></p></div></li><li class=""><div data-key="48512292714741a8ae2c222dd6589de7" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="5a00190c8e1b4e7abc58769d8fa4a6b0"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="bd001ad0f8d24b60817b7543d2e33265"><span data-offset-key="bd001ad0f8d24b60817b7543d2e33265:0">Het geheel van 6to4 routers verbonden met het internet verzekert communicatiemogelijkheden tussen alle 6to4 knooppunten onderling:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="14a36ab49f72463c97c9c91726fc94e1"><li class=""><div data-key="30b70af2d76d46e1a56e28189ee8823b" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="14982b4fe58544f3a148868be1b22e53"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="627e6f81022d4ceb8e3f9bedace9db6e"><span data-offset-key="627e6f81022d4ceb8e3f9bedace9db6e:0"><strong class="bold-3c254bd9" data-slate-leaf="true">6to4 knooppunten om eenzelfde site:</strong></span><span data-offset-key="627e6f81022d4ceb8e3f9bedace9db6e:1"> Deze kunnen rechtstreeks met elkaar communiceren via de private IPv6 infrastructuur. </span></span></span></p></div></li><li class=""><div data-key="aad15df261e942f8920afe9f9f4731f6" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="cb66980faee84c92a83c961c59834952"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="f4ccb53861db4948a2e0f12b2d379650"><span data-offset-key="f4ccb53861db4948a2e0f12b2d379650:0"><strong class="bold-3c254bd9" data-slate-leaf="true">6to4 knooppunten op verschillende sites:</strong></span><span data-offset-key="f4ccb53861db4948a2e0f12b2d379650:1"> Bij afgifte van het IPv6 pakket aan de 6to4 router, detecteert die aan de TLA van 2002 dat een 6to4 tunnel moet opgezet worden.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="3b8d3d29cd4141d493193156a49a8da6" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="356176a0a532487ebb953fd06c6419c5"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="638178efedaf4d83bed1b54924af95b5"><span data-offset-key="638178efedaf4d83bed1b54924af95b5:0">Dit is eveneens toe te passen voor inditividuele hosts:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="44b93c9c2cda48829c69b3a2406c24fd"><li class=""><div data-key="e30d0ac21af94269bf8fa34695f0934a" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="fb550dfe9e12433b97f607e691ad265c"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="753e52292f3049f38cfa428c0a9dd7ef"><span data-offset-key="753e52292f3049f38cfa428c0a9dd7ef:0">Om connectiviteit te bekomen tussen 6to4 knooppunten en reguliere IPv6 knooppunten, moeten 6to4 relay routers geconfigureerd worden.</span></span></span></p></div></li><li class=""><div data-key="07850904675a474facba299d2e80622e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="97929d82b7654b479de7553e4b66c69b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="0a5f97a5afda4d23b4665382160ed8fc"><span data-offset-key="0a5f97a5afda4d23b4665382160ed8fc:0">Dergelijke dual-stack routers bevatten zowel een regulier IPv6 als een 6to4 adres, waardoor 6to4 routers as default route een 6to4 tunne naar een dergelijke relay router kunnen opzetten.</span></span></span></p></div></li><li class=""><div data-key="09b3c8316c83428c8d79e5ef5940ce12" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="97a164345d864d13bffc5ec54424ab9a"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="4bc421c72285430d994c6b51a53af8ba"><span data-offset-key="4bc421c72285430d994c6b51a53af8ba:0">De relay router zal vervolgens de 6to4 IPv4 header strippen, om tenslitte het IPv6 datagram correct door te sturen.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="2426953d0dd643f2b82ee01cb77672d9" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="e41d248e6f9c4c07877a4ed5bd52734f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="eb49e658e1b44332b92ab4902a643763"><span data-offset-key="eb49e658e1b44332b92ab4902a643763:0">Het gorte nadeel aan deze tunnelingtechniek is dat de routingtabellen hun huidige grootte behouden, en een global hernummering zal nodig zijn om een reguliere IPv6 adresseringsschema te bekomen.</span></span></span></p></div></li></ul><h2 id="intra-site-automatic-tunnel-addressing-protocol-isatap-tunneling" class="blockHeading-442b4f12--blockHeading2WithMargin-532d771d" data-key="14dcbf4c371e408fa764fa89b90c779f"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH600-23f228db--textContentFamily-49a318e1"><span data-key="61ee7c21acea4f36b13d8a4418e9a273"><span data-offset-key="61ee7c21acea4f36b13d8a4418e9a273:0">Intra-Site Automatic Tunnel Addressing Protocol (ISATAP) tunneling</span></span></span><a href="#intra-site-automatic-tunnel-addressing-protocol-isatap-tunneling" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div></h2><ul class="list-20526648" data-key="9debbb817e424bd0bf525fee90b3dd6f"><li class=""><div data-key="cb8786d4e3334aadb86c900b2b4942f2" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="5397959790bb436180a1d3e4b2413c7e"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="00a46ffd2b2e494e9fe86c5d39589263"><span data-offset-key="00a46ffd2b2e494e9fe86c5d39589263:0">ISATAP gaat IPv6 pakketten versturen tussen dual-stack knooppunten bovenop een IPv4 netwerk</span></span></span></p></div></li><li class=""><div data-key="7a93b6680bd540fa890e1faa1e32f436" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="66fea6e3599d4ff2a1d7d71bb2a5b6aa"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="21074801bcfe4c339f74e9ee12d48be2"><span data-offset-key="21074801bcfe4c339f74e9ee12d48be2:0">Is een methode voor het aanmaken van linklokale IPv6 adressen van een IPv4 adres.</span></span></span></p></div></li><li class=""><div data-key="5816e08f0f1a48aabac13b87b7ebefa5" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="886879629d534bcb95cff51bd6f1971b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="fdfd3791a6d743bb9c736fe7f5c6a10a"><span data-offset-key="fdfd3791a6d743bb9c736fe7f5c6a10a:0">Is een mechanisme om  Buren te ontdekken bovenop IPv4</span></span></span></p></div></li></ul><p class="blockParagraph-544a408c" data-key="acf74d2dd1e34eaf9871044ed5929947"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="9bd4f2fbc9cb406c9190689fef1823c2"><span data-offset-key="9bd4f2fbc9cb406c9190689fef1823c2:0">Linklokale adressen aanmaken:</span></span></span></p><ul class="list-20526648" data-key="82d07ffc0733489194cd674bb8add10f"><li class=""><div data-key="6276db2b7c334653b89dbe79dd115036" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="eaad4802029948589655b203b2b9b3e8"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="0fc3df1110614a5885ddbd975056d2f2"><span data-offset-key="0fc3df1110614a5885ddbd975056d2f2:0">Maak linklokaal adres met:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="c307ad5af5164d3ca9dee960ed618ac8"><li class=""><div data-key="3cab2fa80d924220a761a046fe1bc348" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="d615a9504ed1459798c58c2ef391378a"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="4301394fd46b4bdba1155cdece5ea8b2"><span data-offset-key="4301394fd46b4bdba1155cdece5ea8b2:0"><code spellcheck="false" class="code-81e98f88" data-slate-leaf="true">fe80::0200:5efe:...</code></span><span data-offset-key="4301394fd46b4bdba1155cdece5ea8b2:1"> voor globale adressen</span></span></span></p></div></li><li class=""><div data-key="5e6cb3fb1252411594b094b8f46c0cc3" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="be84ac04ccb54a66ad40d79f0956ad48"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="078b3c0c8c1c414584c5e3c0c86ece75"><span data-offset-key="078b3c0c8c1c414584c5e3c0c86ece75:0"><code spellcheck="false" class="code-81e98f88" data-slate-leaf="true">fe80::0000:5efe:...</code></span><span data-offset-key="078b3c0c8c1c414584c5e3c0c86ece75:1"> voor private adressen</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="a20d4be7125a4cc8beb8f83455b3b346" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="b7a18a6b23fc4aa48f378aa179771a4e"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="25c23636dfe646cfbc2881a801651ba4"><span data-offset-key="25c23636dfe646cfbc2881a801651ba4:0">Dit mechanisme is gelijkaardig aan 6to4, maar biedt een oplossning voor tunneling tussen 2 subnetten van eenzelfde private netwerkinfrastructuur (verschillende IPv6 eilanden binnen eenzelfde site)</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="ec4ce5a940694d73a948329561d24afa"><li class=""><div data-key="cee733212b54455193284c1ba54a4b82" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="e67834d243584db19fc0aaf775f1da18"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="cc6297e078f546e388a347042c840bd2"><span data-offset-key="cc6297e078f546e388a347042c840bd2:0">6to4 faalt hierbij, aangezien beide subnetten dezelfde 6to4 prefix kennen en dus rechtstreeks met elkaar zouden moeten kunnen communiceren, zonder gebruik van een tunnel.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="d11edb767486431d9bc9f1b32699faea" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="ca87094080dd417c8ae7204f6d80c7c7"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c78e7c744c344612ae3a26e81d2d6a4b"><span data-offset-key="c78e7c744c344612ae3a26e81d2d6a4b:0">Om dit te verhelpen wordt het IPv4 eindpunt van de tunnel niet afgeleid van de prefix, maar van de laagste 32 bits van een ISATAP adres</span></span></span></p></div></li><li class=""><div data-key="739df5011624419b82326ffdfd7d9277" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="8e2bc05204f44963968e6a96e1ae2f48"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="547addb6e7914a31a541537e4ea2b6ed"><span data-offset-key="547addb6e7914a31a541537e4ea2b6ed:0">ISATAP adressen zijn samengesteld uit een willekeurige globale unicast prefix (64 bit) en een interface-id van de vorm 0:5EFE:w.x.y.z (met w.x.y.z zijnde een willekeurig IPv4 adres dat aan de interface is toegekend)</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="573cb12e1d1b41f3a71f788f8d4f47fc"><li class=""><div data-key="919b6fefdce740088e0b9d1d9ddc9c5d" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="886cc24afcfe4a32a894ca3520aa515f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="5406a14e03284f35ab98d040f03c765f"><span data-offset-key="5406a14e03284f35ab98d040f03c765f:0">Het voordeel hiervan is dat ISATAP eenvoudig kan gecombineerd worden met 6to4:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="674f58bcf142433fa68492b6eb0142e6"><li class=""><div data-key="eeba18a0b09548b7aed6832d7e7dbb8c" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="efc76201f64a4071adf8e38db1598d54"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="d6e3f63e5bee401aabd7103b3a3c63cb"><span data-offset-key="d6e3f63e5bee401aabd7103b3a3c63cb:0">De eerste 64 bits van het adres worden bepaald via 6to4</span></span></span></p></div></li><li class=""><div data-key="359ea74d06fc4998a65f6d81b521fbae" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="3c938b8fd9e6400ca9c38f3eb53571a7"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="fa05afdee59f49a0af9c2fc18a9ea07e"><span data-offset-key="fa05afdee59f49a0af9c2fc18a9ea07e:0">Het interface id wordt gegenereerd met behulp van ISATAP</span></span></span></p></div></li></ul></div></li></ul></div></li><li class=""><div data-key="a7ee8c4440814941bca14e400bfa4757" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="03740bc3e76f45ce8972dca043ab09c6"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="110eac4b29f348699da414fc26ea1936"><span data-offset-key="110eac4b29f348699da414fc26ea1936:0">ISATAP knooppunten zijn steeds dual-stack</span></span></span></p></div></li><li class=""><div data-key="e0d86c4f8edf49ae86de89a986af2a6f" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="97e6aa685c0a4a3fa2df6a4983106140"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="34e973ea4f1246f183444845a63fd14d"><span data-offset-key="34e973ea4f1246f183444845a63fd14d:0">Communicatie tussen knooppunten verloopt als volgt:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="91521afdd902483ba0a4e2d3a4681735"><li class=""><div data-key="6ec1a54ae1934711ac7a228ec39fc887" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="444cd0c744c347058e8b0e85f16b0075"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="10c162fe8494450b938cb3677efb7ad1"><span data-offset-key="10c162fe8494450b938cb3677efb7ad1:0">Tussen 2 knooppunten van dezelfde site (die niet op hetzelfde IPv6 subnet zitten): </span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="7ebca52e8cb24a9eb6de902375d61b97"><li class=""><div data-key="f321c27c40ca4229b25a6f4ebede1d10" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="a3509f1f1a744d4cb5dc1f0bb67b023f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="a73df04248994d9b8ca0b17217d8e2f2"><span data-offset-key="a73df04248994d9b8ca0b17217d8e2f2:0">hier wordt host-to-host tunneling toegepast, indien ze gebruik maken van ISATAP adressen op basis van de linklokale prefix </span><span data-offset-key="a73df04248994d9b8ca0b17217d8e2f2:1"><code spellcheck="false" class="code-81e98f88" data-slate-leaf="true">FE80::/64</code></span><span data-offset-key="a73df04248994d9b8ca0b17217d8e2f2:2"> </span></span></span></p></div></li></ul></div></li><li class=""><div data-key="1fde6bb4dcfa4d3d8acb9910a592eac5" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="809364e691a84cd89ea809ff840dabae"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="dd44a7dd31874ef080690b42d70b3af9"><span data-offset-key="dd44a7dd31874ef080690b42d70b3af9:0">tussen 2 knooppunten van verschillende sites (extra configuratie nodig):</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="43b0577271da41e0b9caaaa8127cbf53"><li class=""><div data-key="378919d9be5b450791fb738130c658cd" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="b53d2209d7df434ab2af71b85370fa93"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="17b0adbd701a4024851444861c964c6e"><span data-offset-key="17b0adbd701a4024851444861c964c6e:0">Knooppunt moet een globale unicast prefix ontvangen</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="9fa5c00f577c4fc091dc50c923f415ea"><li class=""><div data-key="286e40c6e7174b85b19936db06c59bd4" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="91260269bf764378a394e3370d2a014e"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="fafb952034354159ba27a0ba0615b9d2"><span data-offset-key="fafb952034354159ba27a0ba0615b9d2:0">Dit kan via uitwisseling van Router sollicication en Router Advertisement, berichten met de borderrouter, eventueel getunneld indien die zich op gescheiden IPv6 eilanden bevinden.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="7620f5663cf847b48bf7669c5f089aaa" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="1e82d960838448e3b4c1270e83d3d463"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="97990188ec1f4b0e92165947c2cfce71"><span data-offset-key="97990188ec1f4b0e92165947c2cfce71:0">Default route binnen de routetabel van het knooppunt:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="ff1308ea7f064f63a050c48f262e7870"><li class=""><div data-key="3c5d17de73734544b73d8fa489481dcf" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="35f144cd000547eb8f69856cd7ca94e3"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="835c561cb0aa43e7908136dec6e6c583"><span data-offset-key="835c561cb0aa43e7908136dec6e6c583:0">Deze route moet zorgen dat berichten bestemd voor buiten de site afgeleverd worden aan de border router (hetzij via IPv6 routing, hetzij via ISATAP tunneling). </span></span></span></p></div></li></ul></div></li></ul></div></li></ul></div></li></ul></div></div></div></div><div class="reset-3c756112--pageFooter-f1d5e2b0"><div class="reset-3c756112"><div class="reset-3c756112--navPagesLinks-67bea901"><a class="reset-3c756112--card-6570f064--whiteCard-fff091a4--cardPrevious-56a5e674" href="/ugent-computernetwerken-2/reek_c_-_overgang_naar_ipv6_en_autoconfiguratie"><div class="reset-3c756112--cardIcon-5b647d22"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></g></svg></div><div class="reset-3c756112--cardBody-25dca3b1--cardPreviousBody-79f02c06"><div class="reset-3c756112--cardHint-2c5d8183"><span class="text-4505230f--TextH200-a3425406--textContentFamily-49a318e1">Previous</span></div><div class="reset-3c756112--cardTitle-32aa092e"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1">Reek C - Overgang naar IPv6 en autoconfiguratie</span></div></div></a><a class="reset-3c756112--card-6570f064--whiteCard-fff091a4--cardNext-19241c42" href="/ugent-computernetwerken-2/snmp_labo"><div class="reset-3c756112--cardBody-25dca3b1"><div class="reset-3c756112--cardHint-2c5d8183"><span class="text-4505230f--TextH200-a3425406--textContentFamily-49a318e1">Next</span></div><div class="reset-3c756112--cardTitle-32aa092e"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1">SNMP Labo</span></div></div><div class="reset-3c756112--cardIcon-5b647d22"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg></div></a></div></div><div class="reset-3c756112--pageFooterColumns-ef8f347e"><div class="reset-3c756112--pageFooterSummary-12074aff"><div class="reset-3c756112--pageChangesSummary-08821678"><div class="reset-3c756112--pageContributors-5c59582e"><div class="reset-3c756112--ownerAvatarList-696792ce"><div aria-label="Xavier Geerinck" class="reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802"><div class="reset-3c756112--avatarFrame-2f40cdc9--small-2ec8ae1a--circle-6c5acd10" role="presentation"><img class="image-67b14f24--avatar-1c1d03ec" src="https://avatars.io/twitter/thebillkidy?size=large"/><div class="reset-3c756112--innerShadow-7a3a8651"></div></div></div></div></div><div class="reset-3c756112--pageEditedDate-b805c39a"><span class="text-4505230f--TextH200-a3425406--textContentFamily-49a318e1">Last updated <span>10 months ago</span></span></div></div></div></div></div></div><div class="reset-3c756112--pageSide-ad9fed26"><div class="reset-3c756112--stickyContainer-2bed3a82"><div style="padding-bottom:0" class="reset-3c756112"></div><div class="reset-3c756112--tocWrapper-506ea24c"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114"><div class="reset-3c756112--pageSideSection-542f1fd5"><div class="reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496"><div class="reset-3c756112--menuHeader-d7753f3a"><div class="reset-3c756112--menuHeaderIcon-0c3ed569"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="7" y2="18"></line></g></svg></div><div class="reset-3c756112"><span class="text-4505230f--InfoH100-1e92e1d1--textContentFamily-49a318e1">Contents</span></div></div><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#wat-is-ipv6-over-ipv4-tunneling-en-waarvoor-zal-men-deze-techniek-aanwenden"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1">Wat is IPv6 over IPv4 tunneling, en waarvoor zal men deze techniek aanwenden ?</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#bespreek-in-detail-de-diverse-ook-de-meeste-recente-tunnel-mechanismen-waarop-men-een-beroep-kan-doen-bespreek-telkens-onder-andere-hun-toepassingsgebied-vereisten-beperkingen-de-relatieve-voor-en-nadelen-en-de-gebruikte-addresseringsschemas"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1">Bespreek in detail de diverse, ook de meeste recente, tunnel mechanismen waarop men een beroep kan doen. Bespreek telkens onder andere hun toepassingsgebied, vereisten, beperkingen, de relatieve voor- en nadelen, en de gebruikte addresseringsschema&#x27;s.</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#automatische-ipv6-over-ipv4-tunneling"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1--pageTocLinkH2-2294976c">Automatische IPv6 over IPv4 tunneling</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#geconfigureerde-ipv6-over-ipv4-tunneling"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1--pageTocLinkH2-2294976c">Geconfigureerde IPv6 over IPv4 tunneling</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#6to4-tunneling"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1--pageTocLinkH2-2294976c">6to4 tunneling</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#intra-site-automatic-tunnel-addressing-protocol-isatap-tunneling"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1--pageTocLinkH2-2294976c">Intra-Site Automatic Tunnel Addressing Protocol (ISATAP) tunneling</span></span></div></a></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
+            <div id="__GITBOOK__ROOT__CLIENT__" style="display: none;"></div>
+            <script>
+            window.GITBOOK_STATE = {"state":{"database":{"orgs/538c32a77bcb1b0200ff5dcd/infos":{"kind":"user","data":{"kind":"user","uid":"538c32a77bcb1b0200ff5dcd","baseDomain":"xavier-geerinck","defaultSpace":null,"displayName":"Xavier Geerinck","photoURL":"https://avatars.io/twitter/thebillkidy?size=large","deletedAt":null,"usageStatuses":{"members":"below","privateSpaces":"below","publicSpaces":"below"}}},"spaces/-Lc5VIoyjbmo2ReQJFfs/infos":{"kind":"space","data":{"uid":"-Lc5VIoyjbmo2ReQJFfs","name":"UGent Computernetwerken 2","createdAt":1554887294260,"ownerID":"538c32a77bcb1b0200ff5dcd","isPrivate":false,"isUnlisted":false,"secretToken":null,"baseName":"ugent-computernetwerken-2","createdBy":"538c32a77bcb1b0200ff5dcd","logoURL":null,"fullLogoURL":null,"emoji":null,"colorPrimary":"#3884FF","headerTheme":"light","font":null,"locale":null,"primaryRevision":"-Lc5VZPLk3W-9sPG5Thw","edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887294260,"updatedAt":1554887372833,"count":3}},"algoliaAPIKey":"ZmUxZmNmMzY1NGIzYjg1YWU5N2U5MmVhN2UyODBkOWIyNTczNjQyMWY1OTY4N2NlMGNlNTgwYTcxM2Q4ZjA4OGZpbHRlcnM9LUxjNVZJb3lqYm1vMlJlUUpGZnM=","customDomain":null,"links":[],"hasGitHubSync":true,"editOnGitHub":null,"googleAnalyticsID":null,"intercomID":null,"hasPageRating":true,"hasPDFExport":false,"indexedRevision":null}},"spaces/-Lc5VIoyjbmo2ReQJFfs/revisions/-Lc5VZPLk3W-9sPG5Thw":{"kind":"revision","data":{"uid":"-Lc5VZPLk3W-9sPG5Thw","message":"Update reek_c_-_ipv6_tunneling.md","createdAt":1554887372679,"createdBy":"538c32a77bcb1b0200ff5dcd","parents":["-Lc5VJkqSrfLN3LDoehs"],"content":{"primaryVersion":"master","versions":{"master":{"index":0,"ref":"master","title":"1.0.0","github":{"repoID":"thebillkidy/ugent-computernetwerken-2","sha":"73d0862069e75c52073148b9d59e181082823075","ref":"refs/heads/master","message":"Update reek_c_-_ipv6_tunneling.md","isGitBookBot":false},"locale":null,"entryPage":"-Lc5VIowhm0XJ5PTfAeU","pages":{"-Lc5VIowhm0XJ5PTfAeU":{"uid":"-Lc5VIowhm0XJ5PTfAeU","kind":"document","title":"introduction","path":"master","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VIowhm0XJ5PTfAeU%2Fdocument.json?generation=1554887312603215\u0026alt=media","createdAt":1554887294259,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887312744,"updatedAt":1554887312744,"count":1}},"github":{"sha":"c67038f36e3757a48ec6a380b87a49d25e926e8d","filePath":"README.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":["-Lc5VL3g62Mn-_fBPc0S","-Lc5VL3hXV0GDw3P69gW","-Lc5VL3iHBkI5GHg-5Rv","-Lc5VL3j1MMVUy60RsAE","-Lc5VL3kmCjsQ7kGFaW-","-Lc5VL3luEhJ6etanCB7","-Lc5VL3m9qijLU1rBgRO","-Lc5VL3nvGgE1GlKHYtg","-Lc5VL3oQhscGe0vZC9Z","-Lc5VL3pEY9qQ_IhOW0V","-Lc5VL3qeGq74G_PbwFk","-Lc5VL3r-h2ZAGXgWoB3","-Lc5VL3stwiOjinPjIhF","-Lc5VL3tx67ine59TV2h","-Lc5VL3uvDVtrrtlElJC","-Lc5VL3vwLMsWfSw72i_"]},"-Lc5VL3g62Mn-_fBPc0S":{"uid":"-Lc5VL3g62Mn-_fBPc0S","kind":"document","title":"Reeks A - Configuratie van de netwerkinterface - Bridging - Multicasting op subnetwerkniveau","path":"reeks_a_-_configuratie_van_de_netwerkinterface_-_bridging_-_multicasting_op_subnetwerkniveau","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3g62Mn-_fBPc0S%2Fdocument.json?generation=1554887313912271\u0026alt=media","createdAt":1554887303467,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887314042,"updatedAt":1554887314042,"count":1}},"github":{"sha":"7f9d6ad6e3a6804ffc0b20e7fb7ab9a41eb51f64","filePath":"reeks_a_-_configuratie_van_de_netwerkinterface_-_bridging_-_multicasting_op_subnetwerkniveau.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3hXV0GDw3P69gW":{"uid":"-Lc5VL3hXV0GDw3P69gW","kind":"document","title":"Reeks A - Routing","path":"reeks_a_-_routing","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3hXV0GDw3P69gW%2Fdocument.json?generation=1554887316257033\u0026alt=media","createdAt":1554887303468,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316414,"updatedAt":1554887316414,"count":1}},"github":{"sha":"1dd869a40b4132e4bb5cf240e54297ac4f6053f9","filePath":"reeks_a_-_routing.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3iHBkI5GHg-5Rv":{"uid":"-Lc5VL3iHBkI5GHg-5Rv","kind":"document","title":"Reeks A - RIP","path":"reeks_a_-_rip","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3iHBkI5GHg-5Rv%2Fdocument.json?generation=1554887316591697\u0026alt=media","createdAt":1554887303468,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316792,"updatedAt":1554887316792,"count":1}},"github":{"sha":"224acf41272f2bf46df81ec05bcb8427f0eaa6e9","filePath":"reeks_a_-_rip.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3j1MMVUy60RsAE":{"uid":"-Lc5VL3j1MMVUy60RsAE","kind":"document","title":"Reeks A - OSPF","path":"reeks_a_-_ospf","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3j1MMVUy60RsAE%2Fdocument.json?generation=1554887317531578\u0026alt=media","createdAt":1554887303469,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887317670,"updatedAt":1554887317670,"count":1}},"github":{"sha":"2b251bcdc29591f7b097ce589ba824e88ee10a38","filePath":"reeks_a_-_ospf.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3kmCjsQ7kGFaW-":{"uid":"-Lc5VL3kmCjsQ7kGFaW-","kind":"document","title":"Reeks A - Draadloze Netwerken","path":"reeks_a_-_draadloze_netwerken","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3kmCjsQ7kGFaW-%2Fdocument.json?generation=1554887315962360\u0026alt=media","createdAt":1554887303469,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316202,"updatedAt":1554887316202,"count":1}},"github":{"sha":"5054aaf8ed575d137fc190b62f5d746e1655dd3c","filePath":"reeks_a_-_draadloze_netwerken.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3luEhJ6etanCB7":{"uid":"-Lc5VL3luEhJ6etanCB7","kind":"document","title":"Reeks B - Multicastrouting","path":"reeks_b_-_multicastrouting","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3luEhJ6etanCB7%2Fdocument.json?generation=1554887318021767\u0026alt=media","createdAt":1554887303470,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318172,"updatedAt":1554887318172,"count":1}},"github":{"sha":"e2f970c88b275d5be8fa3194ae11fe9306840ce7","filePath":"reeks_b_-_multicastrouting.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3m9qijLU1rBgRO":{"uid":"-Lc5VL3m9qijLU1rBgRO","kind":"document","title":"Reeks B - Configuratie van DNS servers onder Linux","path":"reeks_b_-_configuratie_van_dns_servers_onder_linux","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3m9qijLU1rBgRO%2Fdocument.json?generation=1554887314389570\u0026alt=media","createdAt":1554887303470,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887314652,"updatedAt":1554887314652,"count":1}},"github":{"sha":"15fe88b907f256806b9e527d6ae0e70560e96fe0","filePath":"reeks_b_-_configuratie_van_dns_servers_onder_linux.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3nvGgE1GlKHYtg":{"uid":"-Lc5VL3nvGgE1GlKHYtg","kind":"document","title":"Reeks B - Configuratie van DNS servers onder Linux Deel 2","path":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3nvGgE1GlKHYtg%2Fdocument.json?generation=1554887318680732\u0026alt=media","createdAt":1554887303472,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318813,"updatedAt":1554887318813,"count":1}},"github":{"sha":"8a382d21d89b57a847012092391e17d28d1f06e7","filePath":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3oQhscGe0vZC9Z":{"uid":"-Lc5VL3oQhscGe0vZC9Z","kind":"document","title":"Reeks B - Configuratie van DNS servers onder Linux Deel 3","path":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_3","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3oQhscGe0vZC9Z%2Fdocument.json?generation=1554887315352389\u0026alt=media","createdAt":1554887303472,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887315492,"updatedAt":1554887315492,"count":1}},"github":{"sha":"74fef1d7dcaac5ce90eb0cf2c69b119013811e96","filePath":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_3.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3pEY9qQ_IhOW0V":{"uid":"-Lc5VL3pEY9qQ_IhOW0V","kind":"document","title":"Reeks B - Configuratie van reverse DNS onder Linux","path":"reeks_b_-_configuratie_van_reverse_dns_onder_linux","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3pEY9qQ_IhOW0V%2Fdocument.json?generation=1554887315967642\u0026alt=media","createdAt":1554887303473,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316094,"updatedAt":1554887316094,"count":1}},"github":{"sha":"376fc5c67ca7b334b5b09062cae5a16c0ae8b054","filePath":"reeks_b_-_configuratie_van_reverse_dns_onder_linux.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3qeGq74G_PbwFk":{"uid":"-Lc5VL3qeGq74G_PbwFk","kind":"document","title":"Reek C - DHCP leaseprocessen en relay-agents","path":"reek_c_-_dhcp_leaseprocessen_en_relay-agents","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3qeGq74G_PbwFk%2Fdocument.json?generation=1554887318695655\u0026alt=media","createdAt":1554887303474,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318964,"updatedAt":1554887318964,"count":1}},"github":{"sha":"54d8916e927292e3ea627e449db9583d30f742c8","filePath":"reek_c_-_dhcp_leaseprocessen_en_relay-agents.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3r-h2ZAGXgWoB3":{"uid":"-Lc5VL3r-h2ZAGXgWoB3","kind":"document","title":"Reek C - IPv6 Adressering","path":"reek_c_-_ipv6_adressering","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3r-h2ZAGXgWoB3%2Fdocument.json?generation=1554887318437304\u0026alt=media","createdAt":1554887303474,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318567,"updatedAt":1554887318567,"count":1}},"github":{"sha":"e7c65d2a8034693e918d811b35cd16cf254cddd3","filePath":"reek_c_-_ipv6_adressering.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3stwiOjinPjIhF":{"uid":"-Lc5VL3stwiOjinPjIhF","kind":"document","title":"Reek C - IPv6 berichtstructuur","path":"reek_c_-_ipv6_berichtstructuur","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3stwiOjinPjIhF%2Fdocument.json?generation=1554887316650523\u0026alt=media","createdAt":1554887303475,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316787,"updatedAt":1554887316787,"count":1}},"github":{"sha":"bc51b24fed0465a5f192b8b0740ae7b142166b51","filePath":"reek_c_-_ipv6_berichtstructuur.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3tx67ine59TV2h":{"uid":"-Lc5VL3tx67ine59TV2h","kind":"document","title":"Reek C - Overgang naar IPv6 en autoconfiguratie","path":"reek_c_-_overgang_naar_ipv6_en_autoconfiguratie","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3tx67ine59TV2h%2Fdocument.json?generation=1554887318269353\u0026alt=media","createdAt":1554887303475,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318427,"updatedAt":1554887318427,"count":1}},"github":{"sha":"5539bb143891b958294f917dfdda81b3323a02cc","filePath":"reek_c_-_overgang_naar_ipv6_en_autoconfiguratie.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3uvDVtrrtlElJC":{"uid":"-Lc5VL3uvDVtrrtlElJC","kind":"document","title":"Reek C - IPv6 Tunneling","path":"reek_c_-_ipv6_tunneling","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3uvDVtrrtlElJC%2Fdocument.json?generation=1554887319067475\u0026alt=media","createdAt":1554887303476,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887319245,"updatedAt":1554887319245,"count":1}},"github":{"sha":"3277841cca9e0ad8b873203099b0a5009bdf1240","filePath":"reek_c_-_ipv6_tunneling.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3vwLMsWfSw72i_":{"uid":"-Lc5VL3vwLMsWfSw72i_","kind":"document","title":"SNMP Labo","path":"snmp_labo","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3vwLMsWfSw72i_%2Fdocument.json?generation=1554887317810954\u0026alt=media","createdAt":1554887303476,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887317998,"updatedAt":1554887317998,"count":1}},"github":{"sha":"3bdd3f04bb9aeb4b672a93438b93b21d4f8252c7","filePath":"snmp_labo.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null}}}},"assets":{"-Lc5VOQ8fn5NDIQHigqK":{"uid":"-Lc5VOQ8fn5NDIQHigqK","name":"IC212787.gif","downloadURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2F-Lc5VOQ8fn5NDIQHigqK%2FIC212787.gif?generation=1554887326422136\u0026alt=media","size":6488,"contentType":"image/gif","createdAt":1554887326421,"github":{"sha":"c8dda9d5675ae6e2bd59d791a0f69c53b17e6dcb","filePath":"IC212787.gif"},"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887326297,"updatedAt":1554887326297,"count":1}}},"-Lc5VOQAYfKyPmOPbfmL":{"uid":"-Lc5VOQAYfKyPmOPbfmL","name":"IC195509.gif","downloadURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2F-Lc5VOQAYfKyPmOPbfmL%2FIC195509.gif?generation=1554887325962228\u0026alt=media","size":11513,"contentType":"image/gif","createdAt":1554887325961,"github":{"sha":"b15b676613752043c3b7a7921239d660f19742e7","filePath":"IC195509.gif"},"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887325842,"updatedAt":1554887325842,"count":1}}}}},"github":[{"repoID":"thebillkidy/ugent-computernetwerken-2","sha":"73d0862069e75c52073148b9d59e181082823075","ref":"refs/heads/master","message":"Update reek_c_-_ipv6_tunneling.md","isGitBookBot":false}],"rollbackOf":null}}},"documents":{"documents":{"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3uvDVtrrtlElJC%2Fdocument.json?generation=1554887319067475\u0026alt=media":{"format_version":1,"document":{"kind":"document","key":"39658320e8ab4fdd9d269c6c41bd9bd1","data":{"schema_version":6},"nodes":[{"kind":"block","type":"heading-1","key":"f2977a4baab748c6abcd503a002e8f6b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"886a3d833c9a4137957090d381a42336","ranges":[{"kind":"range","marks":[],"text":"Wat is IPv6 over IPv4 tunneling, en waarvoor zal men deze techniek aanwenden ?"}]}]},{"kind":"block","type":"list-unordered","key":"ddf0562e07324b8dab6125eedcd9169c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"0e854834ed904ab8b6847b5a8cbf7850","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"035d9d3414274ba38cf329f9e6ac9224","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ffe82f53e9684228a2b122cdb88d41be","ranges":[{"kind":"range","marks":[],"text":"Bij IPv6 over IPv4 tunneling worden IPv6 datagrammen in een IPv4 datagram geplaatst, dit m.b.h. het IPv4 Protocol veld optie 41"}]}]}]},{"kind":"block","type":"list-item","key":"7b02b06f61fa4514980af57b7bf7379c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"699ab9d19d854a98bc090ea4a0b3b459","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"74d0833b174c4a9cae2ccf7a9d54e3a7","ranges":[{"kind":"range","marks":[],"text":"Datagrammen worden ingekapseld en uitgepakt door de dual-stack eindpunten van de tunnel."}]}]}]},{"kind":"block","type":"list-item","key":"e9281cf1e18448cd9f7581ed7ade784f","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"13d40434d8e945bea35d08ad12ea8144","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"8cd4204572514f8b88fdcd02e903d795","ranges":[{"kind":"range","marks":[],"text":"Deze techniek is essentieel bij de eerste fasen van de overschakeling, daar het een end-to-end IPv6 connectiviteit verzekert zonder dat daar de nodige IPv6 infrastructuur aanwezig voor moet zijn."}]}]}]},{"kind":"block","type":"list-item","key":"e3235b89b214432abf24bab88e3a68ac","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"be68135128ac40a188dff7539ba89a1c","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"56bf0ab3039c4a00a611d39b5a2094de","ranges":[{"kind":"range","marks":[],"text":"In latere fasen garandeert het connectiviteit langs een IPv4-only backbone."}]}]}]}]},{"kind":"block","type":"heading-1","key":"5f9275c763594255af5b7c4df7a99100","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"6bba689a53ce45088103c94ed2350f79","ranges":[{"kind":"range","marks":[],"text":"Bespreek in detail de diverse, ook de meeste recente, tunnel mechanismen waarop men een beroep kan doen. Bespreek telkens onder andere hun toepassingsgebied, vereisten, beperkingen, de relatieve voor- en nadelen, en de gebruikte addresseringsschema's."}]}]},{"kind":"block","type":"heading-2","key":"73d1fee2c5384b1f9d7970c5fb4bdb4e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d3e600a0251444f9983a838a2256f0ff","ranges":[{"kind":"range","marks":[],"text":"Automatische IPv6 over IPv4 tunneling"}]}]},{"kind":"block","type":"list-unordered","key":"982690055fac4981bf5b7253cb653d97","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"276d688114ae4b609fe1c21cedea9427","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"6da8680aec2f46ec98b2d9a93f97063e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"0bf24b1b03504567b397bb912e2ba52f","ranges":[{"kind":"range","marks":[],"text":"Hierbij zal men indien nodig tunnels creeren doorheen de bestaande IPv4 infrastructuur."}]}]}]},{"kind":"block","type":"list-item","key":"2a126b6321b043cf917f44e6399b6c7e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"be9e75e2d828406593595fcfc33655d4","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"dafab48e4eef40a3b47fc431eef4b993","ranges":[{"kind":"range","marks":[],"text":"Tunnels niet nodig indien:"}]}]},{"kind":"block","type":"list-unordered","key":"531066262c504e958d730a6db9942b5c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"1dcd87eb18eb4063a1c3706e50b33df0","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"dea269c78b1c475182b10c195aae1a1e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c32ea9189ba940aa9c2da837b90f0ef4","ranges":[{"kind":"range","marks":[],"text":"Doeladres is IPv4 adres (IPv4 wordt gebruikt)"}]}]}]},{"kind":"block","type":"list-item","key":"16a6261b4053406abb8a240ec3415167","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"9c865f12f0f54856b394cc040fafc44d","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c436386125b444b2b4a522221df10386","ranges":[{"kind":"range","marks":[],"text":"Eindbestemming bevindt zich op hetzelfde netwerk (IPv6 wordt gebruikt)"}]}]}]},{"kind":"block","type":"list-item","key":"10dc988d9e4140d9ab7f8406019afed1","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"3f6430fca3d04912baca931b465b2aec","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"66a10212689147029dbc1e6673f0b8f4","ranges":[{"kind":"range","marks":[],"text":"Eerste hop van een route naar de eindbestemming is een IPv6 router (IPv6 wordt gebruikt)."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"76cae60581394febba172b985d93c67c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"491f878c8f2a495db3b7426f7ba1461f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b1e5fd31003948689ce156ee28370a4e","ranges":[{"kind":"range","marks":[],"text":"Indien criteria niet voldaan en het eindadres is IPv4 compatibel (32-bits voorafgegaan door 96 0-bits), dan automatisch tunnelen:"}]}]},{"kind":"block","type":"list-unordered","key":"2f6cf227292e46a98242c625e74e695e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"c0ae1d7a3cdc42fca47b726b12a4ef9b","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"3388d403d312452a83805dd7c4a25e2d","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d1379a06c419465e87ee601edf3c510e","ranges":[{"kind":"range","marks":[],"text":"Router-to-host tunneling"}]}]},{"kind":"block","type":"list-unordered","key":"56f4399870ae40dfa874851ebdf75703","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"1e663b2a2d534c07868e417ed86f909d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"44d68247e23d40e4b806a7825f8fb6b6","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d25e9530c2504c4b822910ef7bed483c","ranges":[{"kind":"range","marks":[],"text":"Indien een router op het pad merkt dat de volgende hop geen IPv6 aankan, zal de router automatische tunneling toepassen tot de eindbestemming."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"922c1a6fe0b54bd29267ba1c53394eb3","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"f3e188cc819040378b63d089fefd36ca","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4b50d7da54aa4984bb4a419996f48d95","ranges":[{"kind":"range","marks":[],"text":"Host-to-host tunneling"}]}]},{"kind":"block","type":"list-unordered","key":"837000d3c4af48ee87658615c908742b","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"8a4c7fd84140430891745106185a2c95","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"397f5dc2b6044a8989e4e9cda59c8c92","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b4592e99b2834b31bd4833c71e709f3e","ranges":[{"kind":"range","marks":[],"text":"Indien de eerst mogelijke hop na het afzenden geen UPv6 ondersteund, zal de tunnel van afzender tot bestemming lopen."}]}]}]}]}]}]}]},{"kind":"block","type":"list-item","key":"abd86363980b40f7839eff2dd03ad6c6","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"e500fb0e195e48e589955c91fc5330ca","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"0b2a75e443f1450f8b733bd4985079d2","ranges":[{"kind":"range","marks":[],"text":"Aangezien het aanmaken van een tunnel zo lang mogelijk wordt uigesteld, zal de tunnel:"}]}]},{"kind":"block","type":"list-unordered","key":"ac79248879044341bbe8018284815603","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"8b63f1c955f84591883b6effcac06522","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"4d1f3c12afc644aab7f86a3c9f3745b2","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"39d622eb5ad54854bc777b7725e6378e","ranges":[{"kind":"range","marks":[],"text":"Steeds zo kort mogelijk zijn (aan de kant van de afzender)"}]}]}]},{"kind":"block","type":"list-item","key":"8b1bca47dff546c6a52a09c0da22eeea","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"515c724b3da34a8c8ea3164e866efe4d","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"3f6992b02ae14c0ba9ca785fe8498acc","ranges":[{"kind":"range","marks":[],"text":"Langs de kant van de ontvanger is de tunnel steeds suboptimaal (tunnel aangelegd tot eindbestemming)."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"6ec3be9d9bb34060bf08918ae740aad2","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"4df69258261648acb5d1196a65d9b2ee","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c1ee211c1c884f1e9e6eb4c1280c8b02","ranges":[{"kind":"range","marks":[],"text":"het eindpunt moet steeds IPv4 compatibel zijn, waardoor er geen gebruik kan gemaakt worden van de volle 128-bits adresruimte. (Dus enkel toepasbaar op kleine netwerkomgevingen)"}]}]}]}]},{"kind":"block","type":"heading-2","key":"4bd66693fc6948c3b3e973d7febad710","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"405fb73a189748ddaa480930205f77b4","ranges":[{"kind":"range","marks":[],"text":"Geconfigureerde IPv6 over IPv4 tunneling"}]}]},{"kind":"block","type":"list-unordered","key":"178549aa034a49cc8868f6c4a85a0db6","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"61d12585082c47bf89c1eb78d0e4ab4e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"d12bda79849f40acbb60c7036e8c8ef8","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a7c97c76b07f49c394dddcee54e2711a","ranges":[{"kind":"range","marks":[],"text":"Hierbij worden routers zo geconfigureerd om IPv6 pakketten die over een IPv4 netwerk moeten, via een expliciet geconfigureerde tunnel te sturen."}]}]}]},{"kind":"block","type":"list-item","key":"c0ab9c0af72c4eb3bd8f9e695806c196","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"80d42d37626a4daa8fe5d7f750dad07c","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"e01a2f30e83547b2ac541dd78ad74574","ranges":[{"kind":"range","marks":[],"text":"Deze tunnel manifesteert zich dikwijls als een aparte interface, waarbij het eindpunt steeds vastligt."}]}]}]},{"kind":"block","type":"list-item","key":"09887699a8b041408bd01505047590b5","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"bb851332dd334b538e03e95a68263323","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"3a801e460087483a86c3720ca24307e9","ranges":[{"kind":"range","marks":[],"text":"Het grote voordeel is dat de eindpunten niet IPv4 compatibel dienen te zijn en dus de hele IPv6 adresruimte beschikbaar is."}]}]}]},{"kind":"block","type":"list-item","key":"b8f5f0d4696e4301acd1d47e468aa672","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"b2ea9b7823514bb5924b19ba0b7b2334","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"0b8c65e9872848418f3637bde74d4a85","ranges":[{"kind":"range","marks":[],"text":"Tunneling:"}]}]},{"kind":"block","type":"list-unordered","key":"3b3fb5c086134d18ac40e68b69c3d015","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"e8e8e97572454e1ca05b744ff1246094","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"4180a8f3ac8a4c478874cf3aca65a5e9","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d7c4ffaf8e2b495f869c5460b539443c","ranges":[{"kind":"range","marks":[],"text":"Vooral router-to-router tunneling"}]}]}]},{"kind":"block","type":"list-item","key":"9c4cb8dc6d494f56bfb443eb279f9cc2","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"7f707e3630c045a1b05c04aa25e757f2","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"509fbccbc9664f5b94f49a54b759f33a","ranges":[{"kind":"range","marks":[],"text":"Indien beginknooppunt een standalon IPv6 knooppunt is, kan ook host-to-router tunneling bekomen worden."}]}]}]}]}]}]},{"kind":"block","type":"heading-2","key":"c58663f4ed8f413ca61e8c397cbcb9ff","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c8219694f88642378566d172390fc869","ranges":[{"kind":"range","marks":[],"text":"6to4 tunneling"}]}]},{"kind":"block","type":"list-unordered","key":"820bb42c5efb459c913cf3852fbac7fc","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"800aa1b1539541d280ad8b0e3c9a1b27","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"b47e7e9275624917b26478bc2c289878","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"93cde079e89e4184ad9b8819210c90ef","ranges":[{"kind":"range","marks":[],"text":"Dit is een special vorm van geconfigureerde tunneling, waarbij het IPv4 eindpunt eenduidig kan afgeleid worden uit het IPv6 adres (Subnet van IPv6 gereserveer op: "},{"kind":"range","marks":[{"kind":"mark","data":{},"type":"code"}],"text":"2002:w.x.y.z::/48"},{"kind":"range","marks":[],"text":")"}]}]}]},{"kind":"block","type":"list-item","key":"d7fb1d124ad542ebbae6e0838def8c4c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"eb89d495b0a241dc9ed5944b0c7b3aab","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"f00ea0cec1894b4895cf29eebdc95843","ranges":[{"kind":"range","marks":[],"text":"Een 6to4-router is een dual-stack border router, met een publiek IPv4 adres voor de tunnelinterface die de toegewezen 6tp4 adresruimte in het internet injecteert."}]}]}]},{"kind":"block","type":"list-item","key":"35bec122d78c4a539ff7ad03534edd1f","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"a3a871972f044ea587a7d3fae3402c82","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"e2e3c6ca952c41d5951348db6030d92b","ranges":[{"kind":"range","marks":[],"text":"Dezelfde router adverteert de globale 6to4 adresruimte "},{"kind":"range","marks":[{"kind":"mark","data":{},"type":"code"}],"text":"2002::/16"},{"kind":"range","marks":[],"text":" naar het intranet van de organisatie toe."}]}]}]},{"kind":"block","type":"list-item","key":"48512292714741a8ae2c222dd6589de7","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"5a00190c8e1b4e7abc58769d8fa4a6b0","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"bd001ad0f8d24b60817b7543d2e33265","ranges":[{"kind":"range","marks":[],"text":"Het geheel van 6to4 routers verbonden met het internet verzekert communicatiemogelijkheden tussen alle 6to4 knooppunten onderling:"}]}]},{"kind":"block","type":"list-unordered","key":"14a36ab49f72463c97c9c91726fc94e1","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"30b70af2d76d46e1a56e28189ee8823b","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"14982b4fe58544f3a148868be1b22e53","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"627e6f81022d4ceb8e3f9bedace9db6e","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"6to4 knooppunten om eenzelfde site:"},{"kind":"range","marks":[],"text":" Deze kunnen rechtstreeks met elkaar communiceren via de private IPv6 infrastructuur. "}]}]}]},{"kind":"block","type":"list-item","key":"aad15df261e942f8920afe9f9f4731f6","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"cb66980faee84c92a83c961c59834952","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"f4ccb53861db4948a2e0f12b2d379650","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"6to4 knooppunten op verschillende sites:"},{"kind":"range","marks":[],"text":" Bij afgifte van het IPv6 pakket aan de 6to4 router, detecteert die aan de TLA van 2002 dat een 6to4 tunnel moet opgezet worden."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"3b8d3d29cd4141d493193156a49a8da6","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"356176a0a532487ebb953fd06c6419c5","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"638178efedaf4d83bed1b54924af95b5","ranges":[{"kind":"range","marks":[],"text":"Dit is eveneens toe te passen voor inditividuele hosts:"}]}]},{"kind":"block","type":"list-unordered","key":"44b93c9c2cda48829c69b3a2406c24fd","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"e30d0ac21af94269bf8fa34695f0934a","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"fb550dfe9e12433b97f607e691ad265c","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"753e52292f3049f38cfa428c0a9dd7ef","ranges":[{"kind":"range","marks":[],"text":"Om connectiviteit te bekomen tussen 6to4 knooppunten en reguliere IPv6 knooppunten, moeten 6to4 relay routers geconfigureerd worden."}]}]}]},{"kind":"block","type":"list-item","key":"07850904675a474facba299d2e80622e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"97929d82b7654b479de7553e4b66c69b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"0a5f97a5afda4d23b4665382160ed8fc","ranges":[{"kind":"range","marks":[],"text":"Dergelijke dual-stack routers bevatten zowel een regulier IPv6 als een 6to4 adres, waardoor 6to4 routers as default route een 6to4 tunne naar een dergelijke relay router kunnen opzetten."}]}]}]},{"kind":"block","type":"list-item","key":"09b3c8316c83428c8d79e5ef5940ce12","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"97a164345d864d13bffc5ec54424ab9a","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4bc421c72285430d994c6b51a53af8ba","ranges":[{"kind":"range","marks":[],"text":"De relay router zal vervolgens de 6to4 IPv4 header strippen, om tenslitte het IPv6 datagram correct door te sturen."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"2426953d0dd643f2b82ee01cb77672d9","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"e41d248e6f9c4c07877a4ed5bd52734f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"eb49e658e1b44332b92ab4902a643763","ranges":[{"kind":"range","marks":[],"text":"Het gorte nadeel aan deze tunnelingtechniek is dat de routingtabellen hun huidige grootte behouden, en een global hernummering zal nodig zijn om een reguliere IPv6 adresseringsschema te bekomen."}]}]}]}]},{"kind":"block","type":"heading-2","key":"14dcbf4c371e408fa764fa89b90c779f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"61ee7c21acea4f36b13d8a4418e9a273","ranges":[{"kind":"range","marks":[],"text":"Intra-Site Automatic Tunnel Addressing Protocol (ISATAP) tunneling"}]}]},{"kind":"block","type":"list-unordered","key":"9debbb817e424bd0bf525fee90b3dd6f","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"cb8786d4e3334aadb86c900b2b4942f2","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"5397959790bb436180a1d3e4b2413c7e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"00a46ffd2b2e494e9fe86c5d39589263","ranges":[{"kind":"range","marks":[],"text":"ISATAP gaat IPv6 pakketten versturen tussen dual-stack knooppunten bovenop een IPv4 netwerk"}]}]}]},{"kind":"block","type":"list-item","key":"7a93b6680bd540fa890e1faa1e32f436","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"66fea6e3599d4ff2a1d7d71bb2a5b6aa","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"21074801bcfe4c339f74e9ee12d48be2","ranges":[{"kind":"range","marks":[],"text":"Is een methode voor het aanmaken van linklokale IPv6 adressen van een IPv4 adres."}]}]}]},{"kind":"block","type":"list-item","key":"5816e08f0f1a48aabac13b87b7ebefa5","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"886879629d534bcb95cff51bd6f1971b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"fdfd3791a6d743bb9c736fe7f5c6a10a","ranges":[{"kind":"range","marks":[],"text":"Is een mechanisme om  Buren te ontdekken bovenop IPv4"}]}]}]}]},{"kind":"block","type":"paragraph","key":"acf74d2dd1e34eaf9871044ed5929947","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"9bd4f2fbc9cb406c9190689fef1823c2","ranges":[{"kind":"range","marks":[],"text":"Linklokale adressen aanmaken:"}]}]},{"kind":"block","type":"list-unordered","key":"82d07ffc0733489194cd674bb8add10f","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"6276db2b7c334653b89dbe79dd115036","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"eaad4802029948589655b203b2b9b3e8","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"0fc3df1110614a5885ddbd975056d2f2","ranges":[{"kind":"range","marks":[],"text":"Maak linklokaal adres met:"}]}]},{"kind":"block","type":"list-unordered","key":"c307ad5af5164d3ca9dee960ed618ac8","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"3cab2fa80d924220a761a046fe1bc348","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"d615a9504ed1459798c58c2ef391378a","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4301394fd46b4bdba1155cdece5ea8b2","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"code"}],"text":"fe80::0200:5efe:..."},{"kind":"range","marks":[],"text":" voor globale adressen"}]}]}]},{"kind":"block","type":"list-item","key":"5e6cb3fb1252411594b094b8f46c0cc3","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"be84ac04ccb54a66ad40d79f0956ad48","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"078b3c0c8c1c414584c5e3c0c86ece75","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"code"}],"text":"fe80::0000:5efe:..."},{"kind":"range","marks":[],"text":" voor private adressen"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"a20d4be7125a4cc8beb8f83455b3b346","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"b7a18a6b23fc4aa48f378aa179771a4e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"25c23636dfe646cfbc2881a801651ba4","ranges":[{"kind":"range","marks":[],"text":"Dit mechanisme is gelijkaardig aan 6to4, maar biedt een oplossning voor tunneling tussen 2 subnetten van eenzelfde private netwerkinfrastructuur (verschillende IPv6 eilanden binnen eenzelfde site)"}]}]},{"kind":"block","type":"list-unordered","key":"ec4ce5a940694d73a948329561d24afa","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"cee733212b54455193284c1ba54a4b82","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"e67834d243584db19fc0aaf775f1da18","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"cc6297e078f546e388a347042c840bd2","ranges":[{"kind":"range","marks":[],"text":"6to4 faalt hierbij, aangezien beide subnetten dezelfde 6to4 prefix kennen en dus rechtstreeks met elkaar zouden moeten kunnen communiceren, zonder gebruik van een tunnel."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"d11edb767486431d9bc9f1b32699faea","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"ca87094080dd417c8ae7204f6d80c7c7","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c78e7c744c344612ae3a26e81d2d6a4b","ranges":[{"kind":"range","marks":[],"text":"Om dit te verhelpen wordt het IPv4 eindpunt van de tunnel niet afgeleid van de prefix, maar van de laagste 32 bits van een ISATAP adres"}]}]}]},{"kind":"block","type":"list-item","key":"739df5011624419b82326ffdfd7d9277","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"8e2bc05204f44963968e6a96e1ae2f48","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"547addb6e7914a31a541537e4ea2b6ed","ranges":[{"kind":"range","marks":[],"text":"ISATAP adressen zijn samengesteld uit een willekeurige globale unicast prefix (64 bit) en een interface-id van de vorm 0:5EFE:w.x.y.z (met w.x.y.z zijnde een willekeurig IPv4 adres dat aan de interface is toegekend)"}]}]},{"kind":"block","type":"list-unordered","key":"573cb12e1d1b41f3a71f788f8d4f47fc","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"919b6fefdce740088e0b9d1d9ddc9c5d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"886cc24afcfe4a32a894ca3520aa515f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"5406a14e03284f35ab98d040f03c765f","ranges":[{"kind":"range","marks":[],"text":"Het voordeel hiervan is dat ISATAP eenvoudig kan gecombineerd worden met 6to4:"}]}]},{"kind":"block","type":"list-unordered","key":"674f58bcf142433fa68492b6eb0142e6","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"eeba18a0b09548b7aed6832d7e7dbb8c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"efc76201f64a4071adf8e38db1598d54","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d6e3f63e5bee401aabd7103b3a3c63cb","ranges":[{"kind":"range","marks":[],"text":"De eerste 64 bits van het adres worden bepaald via 6to4"}]}]}]},{"kind":"block","type":"list-item","key":"359ea74d06fc4998a65f6d81b521fbae","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"3c938b8fd9e6400ca9c38f3eb53571a7","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"fa05afdee59f49a0af9c2fc18a9ea07e","ranges":[{"kind":"range","marks":[],"text":"Het interface id wordt gegenereerd met behulp van ISATAP"}]}]}]}]}]}]}]},{"kind":"block","type":"list-item","key":"a7ee8c4440814941bca14e400bfa4757","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"03740bc3e76f45ce8972dca043ab09c6","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"110eac4b29f348699da414fc26ea1936","ranges":[{"kind":"range","marks":[],"text":"ISATAP knooppunten zijn steeds dual-stack"}]}]}]},{"kind":"block","type":"list-item","key":"e0d86c4f8edf49ae86de89a986af2a6f","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"97e6aa685c0a4a3fa2df6a4983106140","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"34e973ea4f1246f183444845a63fd14d","ranges":[{"kind":"range","marks":[],"text":"Communicatie tussen knooppunten verloopt als volgt:"}]}]},{"kind":"block","type":"list-unordered","key":"91521afdd902483ba0a4e2d3a4681735","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"6ec1a54ae1934711ac7a228ec39fc887","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"444cd0c744c347058e8b0e85f16b0075","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"10c162fe8494450b938cb3677efb7ad1","ranges":[{"kind":"range","marks":[],"text":"Tussen 2 knooppunten van dezelfde site (die niet op hetzelfde IPv6 subnet zitten): "}]}]},{"kind":"block","type":"list-unordered","key":"7ebca52e8cb24a9eb6de902375d61b97","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"f321c27c40ca4229b25a6f4ebede1d10","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"a3509f1f1a744d4cb5dc1f0bb67b023f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a73df04248994d9b8ca0b17217d8e2f2","ranges":[{"kind":"range","marks":[],"text":"hier wordt host-to-host tunneling toegepast, indien ze gebruik maken van ISATAP adressen op basis van de linklokale prefix "},{"kind":"range","marks":[{"kind":"mark","data":{},"type":"code"}],"text":"FE80::/64"},{"kind":"range","marks":[],"text":" "}]}]}]}]}]},{"kind":"block","type":"list-item","key":"1fde6bb4dcfa4d3d8acb9910a592eac5","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"809364e691a84cd89ea809ff840dabae","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"dd44a7dd31874ef080690b42d70b3af9","ranges":[{"kind":"range","marks":[],"text":"tussen 2 knooppunten van verschillende sites (extra configuratie nodig):"}]}]},{"kind":"block","type":"list-unordered","key":"43b0577271da41e0b9caaaa8127cbf53","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"378919d9be5b450791fb738130c658cd","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"b53d2209d7df434ab2af71b85370fa93","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"17b0adbd701a4024851444861c964c6e","ranges":[{"kind":"range","marks":[],"text":"Knooppunt moet een globale unicast prefix ontvangen"}]}]},{"kind":"block","type":"list-unordered","key":"9fa5c00f577c4fc091dc50c923f415ea","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"286e40c6e7174b85b19936db06c59bd4","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"91260269bf764378a394e3370d2a014e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"fafb952034354159ba27a0ba0615b9d2","ranges":[{"kind":"range","marks":[],"text":"Dit kan via uitwisseling van Router sollicication en Router Advertisement, berichten met de borderrouter, eventueel getunneld indien die zich op gescheiden IPv6 eilanden bevinden."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"7620f5663cf847b48bf7669c5f089aaa","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"1e82d960838448e3b4c1270e83d3d463","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"97990188ec1f4b0e92165947c2cfce71","ranges":[{"kind":"range","marks":[],"text":"Default route binnen de routetabel van het knooppunt:"}]}]},{"kind":"block","type":"list-unordered","key":"ff1308ea7f064f63a050c48f262e7870","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"3c5d17de73734544b73d8fa489481dcf","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"35f144cd000547eb8f69856cd7ca94e3","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"835c561cb0aa43e7908136dec6e6c583","ranges":[{"kind":"range","marks":[],"text":"Deze route moet zorgen dat berichten bestemd voor buiten de site afgeleverd worden aan de border router (hetzij via IPv6 routing, hetzij via ISATAP tunneling). "}]}]}]}]}]}]}]}]}]}]}]}}}},"user":{"kind":"user","uid":"-M157rEp8blj-6LUgz2_","baseDomain":"","defaultSpace":null,"displayName":"","photoURL":null,"deletedAt":null,"usageStatuses":null,"email":"","emailVerified":false,"disabled":false,"phoneNumber":null,"providers":{},"isVisitor":true,"customClaims":{},"lastLoggedInAt":1582798419008,"createdAt":1582798419008}},"config":{"environment":"production","firebase":{"databaseURL":"https://gitbook-28427.firebaseio.com","apiKey":"AIzaSyBL3yy07hdwBstwhhFTkRtzJA865UQzQVg","authDomain":"app.gitbook.com","projectId":"gitbook-28427","storageBucket":"gitbook-28427.appspot.com","messagingSenderId":"208404988308"},"amplitude":{"key":"fef1e872c952688acd962d30aa545b9e","endpoint":"www.gitbook.com/__amp/"},"zendesk":{"widget_key":"c2b4abc5-eb81-454f-8d35-ba1650332541","subdomain":"gitbook"},"ga":{"spaces":{"id":"UA-57505611-10","view_id":"152688311"},"website":{"id":"UA-57505611-9"}},"slack":{"client_id":"3085992729.251477828931","redirect_uri":"https://hooks.gitbook.com/hooks/slack/oauth"},"sentry":{"url":"https://df403e1abd7046148b272790ec350ce0@sentry.io/193897"},"stripe":{"public_key":"pk_live_iPkbPsG28bjTrkbfHXUq0cA0","plans":{"business_monthly":"plan_ERCJFVRMVGgjVZ","team_yearly":"plan_GAeDEVtig2ujYe","startup_yearly":"plan_FpdZWR4TLYnKYH","business_yearly":"plan_ERCJgSzm3Ui1ox","startup_monthly":"plan_FpdWuSK3BgOldB","team_monthly":"plan_GAeDpGXRUSctoE"},"products":{"legacy":"prod_FROhqd8l1W4Fwg","team":"prod_GAeD47cc905FaD","business":"prod_DpiRtaS8dvrtrK","startup":"prod_Cd5mCUdVDfZSHY","enterprise":"prod_DpMsO7RlzNd0Ty"}},"algolia":{"appid":"Q9UGR6532T"},"clearbit":{"public_key":"pk_e1e4d94ae5385255f0fc7d76d4897ade"},"urls":{"api":"https://api-beta.gitbook.com","spaces":"https://gitbook-28427.firebaseapp.com","website":"https://app.gitbook.com","saml":"https://www.gitbook.com"},"domains":{"spaces":"gitbook.io","cookie":".gitbook.com"},"cdn":{"blobsurl":"https://blobs.gitbook.com/","hosting_cname":"hosting.gitbook.com"},"statuspage":{"domain":"http://status.gitbook.com"},"logrocket":{"key":"fvjtqz/gitbook"},"version":"6.13.0","buildVersion":"6.13.0-9796653.27978"},"props":{"ownerID":"538c32a77bcb1b0200ff5dcd","spaceID":"-Lc5VIoyjbmo2ReQJFfs","spaceName":"ugent-computernetwerken-2","basename":"/ugent-computernetwerken-2","location":"/ugent-computernetwerken-2/reek_c_-_ipv6_tunneling"}};
+            </script>
+            <script id="__LOADABLE_REQUIRED_CHUNKS__" type="application/json" crossorigin="anonymous" charset="utf-8">[]</script>
+<script async data-chunk="space" src="https://static.gitbook.com/js/111.cb821c98.js" crossorigin="anonymous" charset="utf-8"></script>
+        </body>
+    </html>
+    

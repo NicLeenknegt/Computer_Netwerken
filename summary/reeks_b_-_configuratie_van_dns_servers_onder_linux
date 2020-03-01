@@ -1,0 +1,2008 @@
+
+    <!doctype html>
+    <html >
+        <head>
+            <title data-react-helmet="true">Reeks B - Configuratie van DNS servers onder Linux - UGent Computernetwerken 2</title>
+            <meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/><meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="google" value="notranslate"/><meta data-react-helmet="true" property="og:image" content="https://app.gitbook.com/share/space/thumbnail/-Lc5VIoyjbmo2ReQJFfs.png"/><meta data-react-helmet="true" property="twitter:card" content="summary"/><meta data-react-helmet="true" property="twitter:site" content="UGent Computernetwerken 2"/><meta data-react-helmet="true" name="description" content=""/><meta data-react-helmet="true" property="og:title" content="Reeks B - Configuratie van DNS servers onder Linux"/><meta data-react-helmet="true" property="og:description" content=""/>
+            <link data-react-helmet="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500"/><link data-react-helmet="true" rel="stylesheet" href="https://unpkg.com/emojione-assets@4.0.0/sprites/emojione-sprite-40.min.css"/><link data-react-helmet="true" rel="preconnect" href="https://www.googleapis.com"/><link data-react-helmet="true" rel="preconnect" href="https://api.amplitude.com"/><link data-react-helmet="true" rel="preconnect" href="https://blobs.gitbook.com/"/><link data-react-helmet="true" rel="canonical" href="https://xavier-geerinck.gitbook.io/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux"/><link data-react-helmet="true" rel="stylesheet" href="https://static.gitbook.com/css/6c3c9dec9383137845be0f0ea2cf1bf4.css"/>
+            <style data-react-helmet="true" type="text/css">
+        @font-face {
+            font-family: "Roboto";
+            src: local("Roboto"), local("Roboto-Regular"), url(https://static.gitbook.com/fonts/fc3d4b35e4d07d4e0485cc2db0e57c77.woff) format('woff');
+            font-weight: 400;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Roboto";
+            src: local("Roboto Medium"), local("Roboto-Medium"), url(https://static.gitbook.com/fonts/f4fa50c4003f87e7dc10459e500933c3.woff) format('woff');
+            font-weight: 500;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Roboto";
+            src: local("Roboto Bold"), local("Roboto-Bold"), url(https://static.gitbook.com/fonts/72e37e5bf95a8dba938c78b1d7d91253.woff) format('woff');
+            font-weight: 700;
+            font-display: fallback;
+        }
+    </style><style data-react-helmet="true" type="text/css">
+        @font-face {
+            font-family: "Content-font";
+            src: local("Roboto"), local("Roboto-Regular"), url(https://static.gitbook.com/fonts/fc3d4b35e4d07d4e0485cc2db0e57c77.woff) format('woff');
+            font-weight: 400;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Content-font";
+            src: local("Roboto Medium"), local("Roboto-Medium"), url(https://static.gitbook.com/fonts/f4fa50c4003f87e7dc10459e500933c3.woff) format('woff');
+            font-weight: 500;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Content-font";
+            src: local("Roboto Bold"), local("Roboto-Bold"), url(https://static.gitbook.com/fonts/72e37e5bf95a8dba938c78b1d7d91253.woff) format('woff');
+            font-weight: 700;
+            font-display: fallback;
+        }
+    </style>
+            <script data-react-helmet="true" type="text/javascript" defer="true" src="https://polyfill.io/v3/polyfill.min.js?flags=gated&amp;features=Intl"></script>
+            <style>#__GITBOOK__ROOT__SERVER__ { width: 100%; height: 100%; display: flex;}</style>
+            <style>#__GITBOOK__ROOT__CLIENT__ { width: 100%; min-height: 100%; height: initial; display: flex;}</style>
+            <style id="__GITBOOK__STYLE__">html, body {
+  color: #242A31;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  background: #F5F7F9;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  line-height: 1em;
+  font-smoothing: antialiased;
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+@media screen and (min-width: 768px) {
+  html, body {
+    text-rendering: optimizeLegibility;
+  }
+}
+@media print {
+  html, body {
+    background: transparent;
+  }
+}
+*, *:before, *:after {
+  outline: none;
+  box-sizing: inherit;
+}
+@font-face {
+  font-family: "Flow-Rounded";
+  src: url("https://static.gitbook.com/fonts/bfc0a96537ceb0cad9e956b9f980fe88.woff") format('woff');
+  font-display: block;
+}
+input, select, textarea {
+  font-size: 16px;
+}
+input, select, textarea, button {
+  font: inherit;
+}
+input[type="search"] {
+  -webkit-appearance: none;
+}
+.draggingElement, .draggingElement *:hover {
+  cursor: grabbing !important;
+  pointer-events: auto !important;
+}
+.draggingElement .draggingHidden {
+  display: none;
+}
+
+.reset-3c756112--body-68cac36c {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  background: #F5F7F9;
+  min-height: 100vh;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--header-07037613--header-11420428 {
+  display: -webkit-box;
+  height: 80px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  z-index: 20;
+  position: relative;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  border-bottom: 1px solid #d4dadf;
+  background-color: #FFFFFF;
+}
+@media print {
+  .reset-3c756112--header-07037613--header-11420428 {
+    display: none;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--header-07037613--header-11420428 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    top: 0;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--header-07037613--header-11420428 {
+    height: 60px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+.reset-3c756112--headerContainer-bb8cc0bc {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  padding: 0;
+  max-width: 1448px;
+}
+.reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-box-align: center;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26 {
+    max-width: 298px;
+    justify-content: center;
+    -webkit-box-pack: center;
+  }
+  .reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26:after {
+    top: 50%;
+    right: 0;
+    height: 40px;
+    content: " ";
+    position: absolute;
+    transform: translateY(-50%);
+    border-left: 1px solid #E6ECF1;
+  }
+}
+.reset-3c756112--mobileButton-7a76d05f {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 0 0 auto;
+  width: 30px;
+  cursor: pointer;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  outline: none;
+  padding: 0;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--mobileButton-7a76d05f {
+    display: none;
+  }
+}
+.icon-7f6730be--text-3f89f380--icon-1f8349b3 {
+  color: #242A31;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+.reset-3c756112--headerLogo-5c0b38e2 {
+  margin: 0;
+  display: block;
+  padding: 0px 24px;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--headerLogo-5c0b38e2 {
+    width: 250px;
+    padding: 0;
+  }
+}
+.reset-3c756112--mobileLogo-dacfd15c {
+  margin: 0;
+  display: none;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--mobileLogo-dacfd15c {
+    display: block;
+  }
+}
+.link-a079aa82--primary-53a25e66--logoLink-10d08504 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #3884FF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  -webkit-box-align: center;
+}
+.reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90 {
+  flex: 1;
+  color: #242A31;
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-left: 8px;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90 {
+    overflow: hidden;
+    max-width: 50vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+.reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90:hover {
+  color: #3884FF;
+}
+.text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1--spaceNameText-677c2969 {
+  font-size: 16px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+.reset-3c756112--desktopLogo-a594db90 {
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--desktopLogo-a594db90 {
+    display: none;
+  }
+}
+.reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea {
+  flex: 1 1 auto;
+  margin: 0px 88px;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  max-width: 750px;
+}
+.reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea:after {
+  background: -webkit-linear-gradient(to right, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+  background: -moz-linear-gradient(to right, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+  pointer-events: none;
+}
+@media screen and (max-width: 1439px) {
+  .reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea {
+    margin: 0px 24px 0px 88px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea {
+    display: none;
+  }
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48 {
+  display: -webkit-box;
+  overflow-x: auto;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  opacity: 1;
+  padding: 0;
+  overflow-x: overlay;
+  overflow-y: hidden;
+  transition: flex 250ms ease,width 250ms ease,opacity 250ms ease;
+  -moz-transition: flex 250ms ease,width 250ms ease,opacity 250ms ease;
+  -webkit-transition: flex 250ms ease,width 250ms ease,opacity 250ms ease;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  height: 80px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  max-width: 224px;
+  align-items: center;
+  -webkit-box-align: center;
+}
+.reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130:before {
+  top: 50%;
+  left: 0;
+  height: 40px;
+  content: " ";
+  position: absolute;
+  transform: translateY(-50%);
+  border-left: 1px solid #E6ECF1;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130 {
+    display: none;
+  }
+}
+.reset-3c756112--inputContainer-b2cb171c {
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-left: 14px;
+  padding-right: 16px;
+}
+.inputInner-5c86b87d--medium-0bbed4bd--inputInner-4216b016--searchInputPlaceholder-936306be {
+  font: inherit;
+  color: #242A31;
+  width: 100%;
+  border: none;
+  cursor: inherit;
+  height: 38px;
+  margin: 0;
+  resize: none;
+  outline: none;
+  padding: 0px 8px;
+  background: transparent;
+  box-sizing: border-box;
+  text-align: left;
+  line-height: inherit;
+  border-radius: 3px;
+}
+.inputInner-5c86b87d--medium-0bbed4bd--inputInner-4216b016--searchInputPlaceholder-936306be::placeholder {
+  color: #9DAAB6;
+  font-size: 16px;
+  font-weight: 500;
+}
+.reset-3c756112--inputWrapper-63396dac--TextH400-3033861f--medium-4505230f--light-502263b4--input-6d442051--searchInput-3fa812d5 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  border: none;
+  margin: 0;
+  display: flex;
+  outline: none;
+  padding: 0;
+  font-size: 16px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  font-weight: 400;
+  line-height: 1.625;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+}
+.reset-3c756112--inputInnerSizer-756c9114 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.reset-3c756112--inputAddOn-45de9ec1--inputAddOnPrefix-202fa60d--icon-1f8349b3 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 0 0 auto;
+  color: #242A31;
+  order: -1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  line-height: 1.2;
+  white-space: nowrap;
+  padding-left: 8px;
+  -webkit-box-align: center;
+}
+.icon-7f6730be--text-3f89f380 {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+.reset-3c756112--bodyContent-2f98451b {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1;
+  color: #3B454E;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  padding: 0;
+}
+.reset-3c756112--wholeContent-9fc567d4 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  min-height: 100%;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--wholeContentBody-554be184 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  transition: margin-bottom 250ms ease;
+  align-items: stretch;
+  -moz-transition: margin-bottom 250ms ease;
+  -webkit-box-align: stretch;
+  -webkit-transition: margin-bottom 250ms ease;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--wholeContentBody-554be184 {
+    padding-top: 80px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--wholeContentBody-554be184 {
+    padding-top: 60px;
+  }
+}
+@keyframes keyframes-animation-2f81d449-0-1-4 {
+  0% {
+    background-color: rgba(24, 48, 85, 0);
+  }
+  100% {
+    background-color: rgba(24, 48, 85, 0.30000000000000004);
+  }
+}
+.reset-3c756112--backdrop-1322b68a--hidden-247382c3--overlay-29559ab8 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  z-index: 29;
+  position: absolute;
+  transition: background-color 250ms ease-out;
+  align-items: center;
+  animation-name: none;
+  pointer-events: none;
+  -moz-transition: background-color 250ms ease-out;
+  justify-content: center;
+  -webkit-box-pack: center;
+  background-color: rgba(24, 48, 85, 0);
+  -webkit-box-align: center;
+  -webkit-transition: background-color 250ms ease-out;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--backdrop-1322b68a--hidden-247382c3--overlay-29559ab8 {
+    z-index: 14;
+  }
+}
+.reset-3c756112--contentNavigation-dd3370a4 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  z-index: 30;
+}
+@media print {
+  .reset-3c756112--contentNavigation-dd3370a4 {
+    display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--contentNavigation-dd3370a4 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex: 0 0 auto;
+    width: calc((100% - 1448px) / 2 + 298px);
+    display: flex;
+    z-index: 15;
+    min-width: 298px;
+    background: #F5F7F9;
+    align-items: stretch;
+    border-right: 1px solid #E6ECF1;
+    padding-left: calc((100% - 1448px) / 2);
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+  }
+}
+.reset-3c756112--contentNavigationInner-205d49ea--contentNavigationInnerCollapsed-7b4aca00 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--contentNavigationInner-205d49ea--contentNavigationInnerCollapsed-7b4aca00 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 30;
+    position: fixed;
+    max-width: 298px;
+    transform: translateX(-100%) !important;
+    box-shadow: none;
+    overflow-y: auto;
+    transition: transform 250ms ease;
+    border-right: 1px solid #E6ECF1;
+    -moz-transition: transform 250ms ease;
+    background-color: #fff;
+    -webkit-transition: transform 250ms ease;
+  }
+}
+.reset-3c756112--sidebarWrapper-84a13d8e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: stretch;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112 {
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.reset-3c756112--sidebar-84a13d8e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: stretch;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--sidebarMain-32610e62 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  background-color: #F5F7F9;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe {
+  overflow-y: auto;
+  flex: 1 1 auto;
+  width: 100%;
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--mobileHeader-4e2d4892 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #74818D;
+  height: 59px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  box-shadow: 0 1px 1px 0 rgba(116, 129, 141, 0.1);
+  align-items: stretch;
+  border-bottom: 1px solid #d4dadf;
+  background-color: #FFFFFF;
+  -webkit-box-align: stretch;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--mobileHeader-4e2d4892 {
+    display: none;
+  }
+}
+.reset-3c756112--mobileHeaderClose-47b8fa64 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  padding: 8px 16px;
+  font-size: 24px;
+  align-items: center;
+  -webkit-box-align: center;
+}
+.reset-3c756112--pagesTree-4b07cd56 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  font-size: 15px;
+  margin-top: 32px;
+  padding-left: 16px;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--pagesTree-4b07cd56 {
+    padding-left: 24px;
+  }
+}
+.reset-3c756112--pageItem-01e3f344 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+  border-left: 1px solid transparent;
+}
+.reset-3c756112--pageComponent-7cc5301a {
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-left: -1px;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  padding: 7px 24px 7px 16px;
+  position: relative;
+  align-items: center;
+  border-right: 0;
+  text-decoration: none;
+  -webkit-box-align: center;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca:hover {
+  background-color: #E6ECF1;
+}
+.text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f {
+  flex: 1;
+  font-size: 14px;
+  word-break: break-word;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.reset-3c756112--pageItemWithChildren-56f27afc {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca--navButtonOpened-6a88552e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  padding: 7px 24px 7px 16px;
+  position: relative;
+  align-items: center;
+  border-color: #E6ECF1 !important;
+  border-right: 0;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-box-align: center;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca--navButtonOpened-6a88552e:hover {
+  border-color: #E6ECF1;
+  background-color: #FFFFFF;
+}
+.reset-3c756112--pageItemWithChildren-56f27afc--S300Bottom-9b4658d2 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+  margin-bottom: 24px;
+}
+.reset-3c756112--footer-68e6f18c {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--footer-68e6f18c:before {
+  background: -webkit-linear-gradient(to bottom, rgba(255,255,255,0) 0%, #F5F7F9 100%);
+  background: -moz-linear-gradient(to bottom, rgba(255,255,255,0) 0%, #F5F7F9 100%);
+  top: -24px;
+  width: 100%;
+  height: 24px;
+  content: "";
+  display: block;
+  position: absolute;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #F5F7F9 100%);
+}
+.reset-3c756112--trademark-a8da4b94 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #9DAAB6;
+  margin: 16px;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  margin-left: 32px;
+  padding-top: 8px;
+  padding-left: 16px;
+  border-radius: 3px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  text-decoration: none;
+  background-color: #E6ECF1;
+  -webkit-box-align: center;
+}
+.reset-3c756112--trademark-a8da4b94:hover {
+  color: #3884FF;
+}
+.reset-3c756112--trademarkLogo-0d2d53bc {
+  margin: 0;
+  display: block;
+  padding: 0;
+  font-size: 40px;
+}
+.reset-3c756112--trademarkContent-04a01aea {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-left: 16px;
+}
+.text-4505230f--TextH200-a3425406--textUIFamily-5ebd8e40 {
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.625;
+}
+.reset-3c756112--wholeContentPage-6c3f1fc5 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1 1 auto;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  max-width: 100%;
+  min-width: 0;
+  background: #fff;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--wholePageSticky-f53dafd2 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1 1 auto;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  min-width: 0;
+}
+.reset-3c756112--pageContainer-3ec6d8d0 {
+  flex: 1 1 auto;
+  margin: 0px 16px;
+  display: block;
+  padding: 0;
+  max-width: 750px;
+  min-width: 0;
+  padding-bottom: 64px;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--pageContainer-3ec6d8d0 {
+    margin: 0px auto;
+    padding: 0px 24px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--pageContainer-3ec6d8d0 {
+    margin: 0px 88px;
+  }
+}
+.reset-3c756112--pageHeader-15724735 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  border-bottom: 2px solid #E6ECF1;
+  margin-bottom: 32px;
+}
+.reset-3c756112--pageHeaderInner-7c0f0284 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  margin: 0;
+  display: flex;
+  padding: 40px 0px;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--pageHeaderInner-7c0f0284 {
+    flex-wrap: wrap;
+    align-items: baseline;
+    flex-direction: row;
+    -webkit-box-align: baseline;
+    -webkit-box-lines: multiple;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+  }
+}
+.reset-3c756112--pageHeaderWrapperContent-6897c946 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--horizontalFlex-5a0077e0 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: stretch;
+  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-box-align: stretch;
+}
+.reset-3c756112--pageHeaderIntro-0c1463da {
+  flex: 1 1 auto;
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-right: 16px;
+}
+.reset-3c756112--pageTitle-33dc39a3 {
+  color: #242A31;
+  width: 100%;
+  border: none;
+  margin: 0;
+  display: block;
+  outline: none;
+  padding: 0;
+  background: none;
+  border-radius: 3px;
+}
+.text-4505230f--DisplayH900-bfb998fa--textContentFamily-49a318e1 {
+  font-size: 32px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.reset-3c756112--toolbar-a6a9f7d2--medium-8e46b02c--pageHeaderToolbar-6457a802--withControlsClosed-3e96e46c {
+  display: -ms-inline-grid;
+  margin: 0;
+  display: none;
+  padding: 0;
+  margin-top: 9px;
+  -ms-grid-rows: none;
+  grid-column-gap: 16px;
+  grid-template-rows: none;
+}
+@media screen and (max-width: 1279px) {
+  .reset-3c756112--toolbar-a6a9f7d2--medium-8e46b02c--pageHeaderToolbar-6457a802--withControlsClosed-3e96e46c {
+    display: block;
+  }
+}
+.button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94 {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  color: #9DAAB6;
+  width: 30px;
+  border: 1px solid;
+  cursor: pointer;
+  height: 30px;
+  display: inline-flex;
+  outline: none;
+  padding: 0;
+  transition: all 250ms ease-out;
+  align-items: center;
+  line-height: 1em;
+  white-space: nowrap;
+  border-color: transparent;
+  border-radius: 3px;
+  -moz-transition: all 250ms ease-out;
+  justify-content: center;
+  text-decoration: none;
+  -webkit-box-pack: center;
+  background-color: transparent;
+  -webkit-box-align: center;
+  -webkit-transition: all 250ms ease-out;
+}
+.button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94:hover {
+  color: #3884FF;
+}
+.small-3bde6db7--iconOnly-bddce91a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+.text-4505230f--UIH300-2063425d--textUIFamily-5ebd8e40--text-8ee2c8b2 {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  line-height: 1em;
+}
+.reset-3c756112--pageHeaderDescription-22970244 {
+  flex: auto;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.reset-3c756112--toaster-c029690e {
+  top: 16px;
+  left: 50%;
+  margin: 0;
+  display: block;
+  padding: 0;
+  z-index: 160;
+  position: fixed;
+  transform: translateX(-50%);
+}
+.reset-3c756112--pageBody-a91db4ac {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  font-size: 16px;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--container-960c7c26 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+  margin-bottom: -24px;
+}
+.blockParagraph-544a408c {
+  color: inherit;
+  margin: 0;
+  position: relative;
+  margin-bottom: 24px;
+}
+.text-4505230f--TextH400-3033861f--textContentFamily-49a318e1 {
+  font-size: 16px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.625;
+}
+.blockHeading-442b4f12--blockHeading1WithMargin-b69d755e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  margin: 0;
+  display: flex;
+  position: relative;
+  margin-top: 73px;
+  margin-bottom: 24px;
+}
+.blockHeading-442b4f12--blockHeading1WithMargin-b69d755e:before {
+  top: -32px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  content: " ";
+  position: absolute;
+  background-color: #E6ECF1;
+}
+.blockHeadingContent-756c9114 {
+  flex: 1;
+}
+.text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1 {
+  font-size: 24px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda {
+  color: #242A31;
+  width: 20px;
+  opacity: 0;
+  transition: opacity 150ms ease;
+  line-height: 1em;
+  padding-left: 4px;
+  -moz-transition: opacity 150ms ease;
+  -webkit-transition: opacity 150ms ease;
+}
+.blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda:hover {
+  color: #3884FF;
+}
+@media print {
+  .blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda {
+    display: none;
+  }
+}
+.blockHeadingAnchorIcon-1c2bf3cb {
+  font-size: 16px;
+  vertical-align: middle;
+}
+.reset-3c756112--blockHeadingUp-c32402b2 {
+  width: 1em;
+  cursor: pointer;
+  height: 1em;
+  margin: 0;
+  display: block;
+  outline: none;
+  padding: 0;
+  line-height: 1em;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--blockHeadingUp-c32402b2 {
+    display: none;
+  }
+}
+@media print {
+  .reset-3c756112--blockHeadingUp-c32402b2 {
+    display: none;
+  }
+}
+.bold-3c254bd9 {
+  font-weight: 700;
+}
+.reset-3c756112--codeBlockWrapper-56f27afc {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--copyButtonWrapper-ca591f6e {
+  top: 16px;
+  right: 16px;
+  margin: 0;
+  display: block;
+  padding: 0;
+  z-index: 1;
+  position: absolute;
+}
+@keyframes keyframes-animation-bd7e9c6a-0-1-5 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.reset-3c756112--touchableView-a079aa82--copyButton-4f9a9412--tooltipped-57ae51fe {
+  color: #9DAAB6;
+  cursor: pointer;
+  margin: 0;
+  display: block;
+  opacity: 0.5;
+  outline: none;
+  padding: 8px;
+  position: relative;
+  font-size: 16px;
+  line-height: 1em;
+}
+.reset-3c756112--touchableView-a079aa82--copyButton-4f9a9412--tooltipped-57ae51fe:hover {
+  opacity: 1;
+}
+@media print {
+  .reset-3c756112--touchableView-a079aa82--copyButton-4f9a9412--tooltipped-57ae51fe {
+    display: none;
+  }
+}
+.reset-3c756112--touchableView-a079aa82--copyButton-4f9a9412--tooltipped-57ae51fe:after {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  top: calc(100% + 16px);
+  left: 50%;
+  color: #FFFFFF;
+  width: max-content;
+  bottom: auto;
+  content: attr(aria-label);
+  display: none;
+  opacity: 0;
+  padding: 5px 8px;
+  z-index: 155;
+  position: absolute;
+  font-size: 12px;
+  max-width: 300px;
+  transform: translateX(-50%);
+  background: #242A31;
+  font-weight: 400;
+  line-height: 1.625;
+  white-space: normal;
+  border-radius: 3px;
+  animation-name: keyframes-animation-bd7e9c6a-0-1-5;
+  pointer-events: none;
+  text-transform: none;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+.reset-3c756112--touchableView-a079aa82--copyButton-4f9a9412--tooltipped-57ae51fe:before {
+  top: calc(100% + 8px);
+  left: 50%;
+  width: 0;
+  bottom: auto;
+  height: 0;
+  content: "";
+  display: none;
+  opacity: 0;
+  z-index: 156;
+  position: absolute;
+  transform: translateX(-50%);
+  border-color: #242A31 transparent;
+  border-style: solid;
+  animation-name: keyframes-animation-bd7e9c6a-0-1-5;
+  border-top-width: 0;
+  border-left-width: 8px;
+  animation-duration: 0.2s;
+  border-right-width: 8px;
+  animation-fill-mode: forwards;
+  border-bottom-width: 8px;
+}
+.reset-3c756112--touchableView-a079aa82--copyButton-4f9a9412--tooltipped-57ae51fe:hover:before {
+  display: block;
+}
+.reset-3c756112--touchableView-a079aa82--copyButton-4f9a9412--tooltipped-57ae51fe:hover:after {
+  display: block;
+}
+.reset-3c756112--codeBlock-75b39b81 {
+  color: #E6ECF1;
+  margin: 32px 0px;
+  display: block;
+  hyphens: none;
+  padding: 24px 24px 24px 8px;
+  overflow: auto;
+  tab-size: 2;
+  direction: ltr;
+  font-size: 14px;
+  background: #183055;
+  text-align: left;
+  word-break: normal;
+  -ms-hyphens: none;
+  font-family: "Source Code Pro", Consolas, Menlo, Monaco, Courier, monospace;
+  line-height: 1.4;
+  white-space: pre;
+  word-spacing: normal;
+  -moz-tab-size: 2;
+  border-radius: 3px;
+  -webkit-hyphens: none;
+}
+.reset-3c756112--codeBlock-75b39b81::selection {
+  background: #D3DCE4;
+  text-shadow: none;
+}
+.codeLine-a3169fbc {
+  font: inherit;
+  padding: 0px 0px;
+  position: relative;
+  word-wrap: normal;
+  white-space: pre;
+  padding-left: 44px;
+  padding-right: 14px;
+  counter-increment: line;
+}
+.codeLine-a3169fbc:not(:only-child):before {
+  top: 2px;
+  left: 4px;
+  color: #5C6975;
+  width: 24px;
+  bottom: 0;
+  content: counter(line);
+  display: inline-block;
+  overflow: hidden;
+  position: absolute;
+  font-size: 12px;
+  text-align: right;
+  user-select: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  background-color: transparent;
+  -webkit-user-select: none;
+}
+.codeLine-a3169fbc:only-child {
+  padding-left: 30px;
+}
+.list-20526648 {
+  color: #3B454E;
+  margin: 0;
+  padding: 0;
+  padding-left: 2em;
+  margin-bottom: 24px;
+}
+.reset-3c756112--listItemContent-756c9114 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.blockParagraph-544a408c--noMargin-acdf7afa {
+  color: inherit;
+  margin: 0;
+  position: relative;
+  margin-bottom: 0;
+}
+.reset-3c756112--pageFooter-f1d5e2b0 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-top: 64px;
+}
+@media print {
+  .reset-3c756112--pageFooter-f1d5e2b0 {
+    display: none;
+  }
+}
+.reset-3c756112--navPagesLinks-67bea901 {
+  display: -ms-grid;
+  width: auto;
+  margin: 0;
+  display: grid;
+  padding: 0;
+  -ms-grid-rows: auto;
+  grid-column-gap: 24px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "previous next";
+  grid-template-columns: 1fr 1fr;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--navPagesLinks-67bea901 {
+    grid-row-gap: 24px;
+    -ms-grid-columns: 1fr;
+    grid-template-areas: "next" "previous";
+    grid-template-columns: 1fr;
+  }
+}
+.reset-3c756112--card-6570f064--whiteCard-fff091a4--cardPrevious-56a5e674 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  border: 1px solid #E6ECF1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  grid-area: previous;
+  align-self: stretch;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  transition: border 250ms ease;
+  align-items: center;
+  justify-self: stretch;
+  border-radius: 3px;
+  flex-direction: row;
+  -moz-transition: border 250ms ease;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-box-align: center;
+  page-break-inside: avoid;
+  -ms-grid-row-align: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-transition: border 250ms ease;
+  -ms-grid-column-align: stretch;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--cardIcon-5b647d22 {
+  flex: 0 0 auto;
+  color: #9DAAB6;
+  margin: 0;
+  display: block;
+  padding: 16px;
+  font-size: 24px;
+  transition: color 250ms ease;
+  -moz-transition: color 250ms ease;
+  -webkit-transition: color 250ms ease;
+}
+.reset-3c756112--cardIcon-5b647d22:first-child {
+  padding-right: 0;
+}
+.reset-3c756112--cardIcon-5b647d22:last-child {
+  padding-left: 0;
+}
+.reset-3c756112--cardBody-25dca3b1--cardPreviousBody-79f02c06 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 16px;
+  text-align: right;
+}
+.reset-3c756112--cardHint-2c5d8183 {
+  color: #9DAAB6;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.text-4505230f--TextH200-a3425406--textContentFamily-49a318e1 {
+  font-size: 12px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.625;
+}
+.reset-3c756112--cardTitle-32aa092e {
+  margin: 0;
+  display: block;
+  padding: 0;
+  transition: color 250ms ease;
+  -moz-transition: color 250ms ease;
+  -webkit-transition: color 250ms ease;
+}
+.text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1 {
+  font-size: 16px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.reset-3c756112--card-6570f064--whiteCard-fff091a4--cardNext-19241c42 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  border: 1px solid #E6ECF1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  grid-area: next;
+  align-self: stretch;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  transition: border 250ms ease;
+  align-items: center;
+  justify-self: stretch;
+  border-radius: 3px;
+  flex-direction: row;
+  -moz-transition: border 250ms ease;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-box-align: center;
+  page-break-inside: avoid;
+  -ms-grid-row-align: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-transition: border 250ms ease;
+  -ms-grid-column-align: stretch;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--cardBody-25dca3b1 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 16px;
+}
+.reset-3c756112--pageFooterColumns-ef8f347e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  border-top: 2px solid #E6ECF1;
+  margin-top: 24px;
+  align-items: center;
+  padding-top: 24px;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--pageFooterColumns-ef8f347e {
+    align-items: stretch;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+  }
+}
+.reset-3c756112--pageFooterSummary-12074aff {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--pageFooterSummary-12074aff {
+    margin-bottom: 16px;
+  }
+}
+.reset-3c756112--pageChangesSummary-08821678 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  -webkit-box-align: center;
+}
+.reset-3c756112--pageContributors-5c59582e {
+  flex: 0 0 auto;
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-right: 8px;
+}
+.reset-3c756112--ownerAvatarList-696792ce {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+}
+@keyframes keyframes-animation-bd7e9c6a-0-1-6 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  z-index: 0;
+  position: relative;
+  box-shadow: 0 0 0 2px white;
+  border-radius: 128px;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:after {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  top: calc(100% + 16px);
+  left: 50%;
+  color: #FFFFFF;
+  width: max-content;
+  bottom: auto;
+  content: attr(aria-label);
+  display: none;
+  opacity: 0;
+  padding: 5px 8px;
+  z-index: 155;
+  position: absolute;
+  font-size: 12px;
+  max-width: 300px;
+  transform: translateX(-50%);
+  background: #242A31;
+  font-weight: 400;
+  line-height: 1.625;
+  white-space: normal;
+  border-radius: 3px;
+  animation-name: keyframes-animation-bd7e9c6a-0-1-6;
+  pointer-events: none;
+  text-transform: none;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:before {
+  top: calc(100% + 8px);
+  left: 50%;
+  width: 0;
+  bottom: auto;
+  height: 0;
+  content: "";
+  display: none;
+  opacity: 0;
+  z-index: 156;
+  position: absolute;
+  transform: translateX(-50%);
+  border-color: #242A31 transparent;
+  border-style: solid;
+  animation-name: keyframes-animation-bd7e9c6a-0-1-6;
+  border-top-width: 0;
+  border-left-width: 8px;
+  animation-duration: 0.2s;
+  border-right-width: 8px;
+  animation-fill-mode: forwards;
+  border-bottom-width: 8px;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:nth-last-child(n+2) {
+  margin-left: -8px;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:hover:before {
+  display: block;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:hover:after {
+  display: block;
+}
+.reset-3c756112--avatarFrame-2f40cdc9--small-2ec8ae1a--circle-6c5acd10 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  -webkit-mask-image: -moz-radial-gradient(white, black);
+  mask-image: -webkit-radial-gradient(white, black);
+  mask-image: -moz-radial-gradient(white, black);
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  mask-image: radial-gradient(white, black);
+  align-items: center;
+  border-radius: 128px;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  -webkit-mask-image: radial-gradient(white, black);
+}
+.image-67b14f24--avatar-1c1d03ec {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  background-size: cover;
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+}
+.reset-3c756112--innerShadow-7a3a8651 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: absolute;
+  box-shadow: inset 0 0 1px 1px rgba(24, 48, 85, 0.1);
+  border-radius: 128px;
+  pointer-events: none;
+}
+.reset-3c756112--pageEditedDate-b805c39a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  color: #9DAAB6;
+  margin: 0;
+  display: flex;
+  padding: 0;
+}
+.reset-3c756112--pageSide-ad9fed26 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 0 0 auto;
+  width: 224px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  margin-right: auto;
+}
+@media print {
+  .reset-3c756112--pageSide-ad9fed26 {
+    display: none;
+  }
+}
+@media screen and (max-width: 1279px) {
+  .reset-3c756112--pageSide-ad9fed26 {
+    display: none;
+  }
+}
+.reset-3c756112--stickyContainer-2bed3a82 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  max-width: 100%;
+}
+.reset-3c756112--tocWrapper-506ea24c {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  padding-top: 40px;
+  flex-direction: column;
+  padding-bottom: 40px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114 {
+  overflow-y: auto;
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--pageSideSection-542f1fd5 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--pageSideSection-542f1fd5:before {
+  top: 0;
+  left: 0;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  border-left: 1px solid #E6ECF1;
+}
+.reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5 {
+  display: -webkit-box;
+  flex: 1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  min-width: 224px;
+  counter-reset: toc;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+@media print {
+  .reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5 {
+    display: none;
+  }
+}
+.reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5:before {
+  top: 0;
+  left: 0;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  border-left: 1px solid #E6ECF1;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496 {
+  overflow-y: auto;
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--menuHeader-d7753f3a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #9DAAB6;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  padding-left: 24px;
+  margin-bottom: 8px;
+}
+.reset-3c756112--menuHeaderIcon-0c3ed569 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-right: 8px;
+}
+.text-4505230f--InfoH100-1e92e1d1--textContentFamily-49a318e1 {
+  font-size: 10px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024 {
+  display: -webkit-box;
+  color: #74818D;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  padding: 4px 16px;
+  align-items: center;
+  padding-left: 24px;
+  vertical-align: middle;
+  text-decoration: none;
+  -webkit-box-align: center;
+}
+.reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024:hover {
+  background: none;
+  text-decoration: inherit;
+}
+.link-a079aa82--primary-53a25e66 {
+  color: #3884FF;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.reset-3c756112--menuItemContent-c44ec79e {
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.text-4505230f--UIH300-2063425d--textContentFamily-49a318e1 {
+  font-size: 14px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1 {
+  font-size: 12px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}</style>
+        </head>
+        <body>
+            <div id="__GITBOOK__ROOT__SERVER__"><div class="reset-3c756112--body-68cac36c" data-reactroot=""><div class="reset-3c756112--header-07037613--header-11420428"><div class="reset-3c756112--headerContainer-bb8cc0bc"><div class="reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26"><div role="button" tabindex="-1" class="reset-3c756112--mobileButton-7a76d05f"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380--icon-1f8349b3"><g><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></g></svg></div><div class="reset-3c756112--headerLogo-5c0b38e2"><div class="reset-3c756112--mobileLogo-dacfd15c"><a class="link-a079aa82--primary-53a25e66--logoLink-10d08504" style="color:#3884FF" href="/ugent-computernetwerken-2/"><div class="reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1--spaceNameText-677c2969">UGent Computernetwerken 2</span></div></a></div><div class="reset-3c756112--desktopLogo-a594db90"><a class="link-a079aa82--primary-53a25e66--logoLink-10d08504" style="color:#3884FF" href="/ugent-computernetwerken-2/"><div class="reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1--spaceNameText-677c2969">UGent Computernetwerken 2</span></div></a></div></div><div role="button" tabindex="-1" class="reset-3c756112--mobileButton-7a76d05f"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380--icon-1f8349b3"><g><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></g></svg></div></div><div class="reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48"></div></div><div class="reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130"><div class="reset-3c756112--inputContainer-b2cb171c"><div aria-label="" class="reset-3c756112--inputWrapper-63396dac--TextH400-3033861f--medium-4505230f--light-502263b4--input-6d442051--searchInput-3fa812d5"><div class="reset-3c756112--inputInnerSizer-756c9114"><input type="text" placeholder="Search..." class="inputInner-5c86b87d--medium-0bbed4bd--inputInner-4216b016--searchInputPlaceholder-936306be"/></div><div class="reset-3c756112--inputAddOn-45de9ec1--inputAddOnPrefix-202fa60d--icon-1f8349b3"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></g></svg></div></div></div></div></div></div><div class="reset-3c756112--bodyContent-2f98451b"><div class="reset-3c756112--wholeContent-9fc567d4"><div class="reset-3c756112--wholeContentBody-554be184"><div role="presentation" class="reset-3c756112--backdrop-1322b68a--hidden-247382c3--overlay-29559ab8"></div><div class="reset-3c756112--contentNavigation-dd3370a4"><div class="reset-3c756112--contentNavigationInner-205d49ea--contentNavigationInnerCollapsed-7b4aca00"><div class="reset-3c756112--sidebarWrapper-84a13d8e"><div style="padding-bottom:0" class="reset-3c756112"></div><div class="reset-3c756112--sidebar-84a13d8e"><div class="reset-3c756112--sidebarMain-32610e62"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe"><div class="reset-3c756112--mobileHeader-4e2d4892"><div role="button" tabindex="-1" class="reset-3c756112--mobileHeaderClose-47b8fa64"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></g></svg></div></div><div class="reset-3c756112--pagesTree-4b07cd56"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">introduction</span></a></div></div><div class="reset-3c756112"><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_configuratie_van_de_netwerkinterface_-_bridging_-_multicasting_op_subnetwerkniveau"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - Configuratie van de netwerkinterface - Bridging - Multicasting op subnetwerkniveau</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_routing"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - Routing</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_rip"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - RIP</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_ospf"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - OSPF</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_draadloze_netwerken"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - Draadloze Netwerken</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_multicastrouting"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Multicastrouting</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca--navButtonOpened-6a88552e" style="color:#3884FF" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van DNS servers onder Linux</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van DNS servers onder Linux Deel 2</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_3"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van DNS servers onder Linux Deel 3</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_reverse_dns_onder_linux"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van reverse DNS onder Linux</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_dhcp_leaseprocessen_en_relay-agents"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - DHCP leaseprocessen en relay-agents</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_ipv6_adressering"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - IPv6 Adressering</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_ipv6_berichtstructuur"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - IPv6 berichtstructuur</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_overgang_naar_ipv6_en_autoconfiguratie"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - Overgang naar IPv6 en autoconfiguratie</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_ipv6_tunneling"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - IPv6 Tunneling</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc--S300Bottom-9b4658d2"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/snmp_labo"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">SNMP Labo</span></a></div></div></div></div></div></div></div><div class="reset-3c756112--footer-68e6f18c"><a href="https://www.gitbook.com/?utm_source=content&amp;utm_medium=trademark&amp;utm_campaign=xavier-geerinck" target="_blank" class="reset-3c756112--trademark-a8da4b94" role="presentation"><div class="reset-3c756112--trademarkLogo-0d2d53bc"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="currentColor" viewBox="0 0 1067 769" xmlns="http://www.w3.org/2000/svg" stroke="none" class="icon-7f6730be--text-3f89f380"><g><path d="M480.026 640.677c17.205 0 31.2 13.997 31.2 31.194s-13.995 31.193-31.2 31.193c-17.197 0-31.193-13.996-31.193-31.193 0-17.197 13.996-31.194 31.193-31.194m489.93-193.226c-17.203 0-31.2-13.998-31.2-31.195 0-17.204 13.997-31.2 31.2-31.2 17.198 0 31.194 13.996 31.194 31.2 0 17.197-13.996 31.195-31.193 31.195m0-127.804c-53.269 0-96.609 43.34-96.609 96.609 0 10.373 1.723 20.702 5.123 30.741L559.328 616.879c-18.132-26.128-47.521-41.617-79.302-41.617-36.821 0-70.391 21.065-86.63 54.003L106.68 478.109c-30.288-15.927-52.965-65.817-50.56-111.223 1.248-23.687 9.438-42.071 21.897-49.17 7.916-4.493 17.436-4.099 27.526 1.188l1.916 1.01c75.96 40.022 324.6 170.981 335.063 175.844 16.157 7.47 25.14 10.5 52.659-2.547l513.958-267.3c7.53-2.844 16.315-10.062 16.315-21.023 0-15.205-15.72-21.199-15.765-21.199-29.218-14.018-74.163-35.054-117.987-55.57C798.033 84.26 691.861 34.547 645.23 10.132c-40.253-21.072-72.655-3.311-78.432.282l-11.227 5.555C345.727 119.743 64.898 258.826 48.911 268.553 20.278 285.973 2.547 320.679.252 363.768c-3.586 68.304 31.261 139.506 81.069 165.634l303.172 156.354c6.83 47.306 47.55 82.725 95.532 82.725 52.78 0 95.808-42.546 96.603-95.14L910.541 492.38c16.93 13.233 37.92 20.486 59.416 20.486 53.268 0 96.61-43.341 96.61-96.61s-43.342-96.61-96.61-96.61" fill-rule="evenodd"></path></g></svg></div><div class="reset-3c756112--trademarkContent-04a01aea"><div class="reset-3c756112"><span class="text-4505230f--TextH200-a3425406--textUIFamily-5ebd8e40">Powered by <b>GitBook</b></span></div></div></a></div></div></div></div></div></div><div class="reset-3c756112--wholeContentPage-6c3f1fc5"><div class="reset-3c756112--wholePageSticky-f53dafd2"><div class="reset-3c756112--pageContainer-3ec6d8d0"><div class="reset-3c756112"><div class="reset-3c756112--pageHeader-15724735"><div class="reset-3c756112--pageHeaderInner-7c0f0284"><div class="reset-3c756112--pageHeaderWrapperContent-6897c946"><div class="reset-3c756112--horizontalFlex-5a0077e0"><div class="reset-3c756112--pageHeaderIntro-0c1463da"><h1 class="reset-3c756112--pageTitle-33dc39a3"><span class="text-4505230f--DisplayH900-bfb998fa--textContentFamily-49a318e1">Reeks B - Configuratie van DNS servers onder Linux</span></h1></div><div style="grid-template-columns:repeat(1, auto)" class="reset-3c756112--toolbar-a6a9f7d2--medium-8e46b02c--pageHeaderToolbar-6457a802--withControlsClosed-3e96e46c"><button class="button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94"><span class="small-3bde6db7--iconOnly-bddce91a"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="7" y2="18"></line></g></svg></span><span class="text-4505230f--UIH300-2063425d--textUIFamily-5ebd8e40--text-8ee2c8b2"></span></button></div></div><div class="reset-3c756112--pageHeaderDescription-22970244"></div></div></div></div><div class="reset-3c756112--toaster-c029690e"></div><div class="reset-3c756112--pageBody-a91db4ac"><div data-editioncontainer="true" class="reset-3c756112--container-960c7c26"><div data-slate-editor="true" data-key="4cb9ffdd72834e4ab791ef0a45926b20" autoCorrect="on" spellcheck="true" data-gramm="false" style="outline:none;white-space:pre-wrap;word-wrap:break-word"><p class="blockParagraph-544a408c" data-key="e15f9cb97e564d3ba2f860902f530d2a"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="dbbcac8b47ab499fa5d85a381d76bf2f"><span data-offset-key="dbbcac8b47ab499fa5d85a381d76bf2f:0">De figuur in bijlage stelt een intranet bestaand uit een aantal Linux computers voor, met corresponderend IP-adres, van de vorm 192.168.16.z . Het getal z lees je af links van de naam van de computer. De getallen rechts van de naam van de computer moet je negeren. De computers staan gegroepeerd in een tabel met als header de naam van het domein waarin ze zich bevinden. De rechthoeken die domeinen groeperen stellen dan weer een zone voor. Stippellijnen duiden op een domein/sub­domein relatie. De pijlen laten toe om de primaire name­server van elke zone te achterhalen. Je hoeft geen reverse DNS te configureren.</span></span></span></p><h1 id="stel-het-configuratiebestand-en-alle-zonebestanden-op-van-volgende-dns-servers-waarbij-je-er-rekening-moet-mee-houden-dat-elk-van-deze-servers-ook-secundaire-nameserver-is-voor-alle-zones-van-de-andere-server-gebruik-relatieve-dns-namen-waar-mogelijk-gebruik-noch-forwarders-noch-de-usdorigin-opdracht" class="blockHeading-442b4f12--blockHeading1WithMargin-b69d755e" data-key="a5e8ebca2c33497bbe9c407f96a60a4a"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1"><span data-key="cdc9da8aafdc4630888411da73167f83"><span data-offset-key="cdc9da8aafdc4630888411da73167f83:0">Stel het configuratiebestand en alle zonebestanden op van volgende DNS servers, waarbij je er rekening moet mee houden dat elk van deze servers ook secundaire nameserver is voor alle zones van de andere server: ... . Gebruik relatieve DNS namen waar mogelijk. Gebruik noch forwarders, noch de $ORIGIN opdracht !</span></span></span><a href="#stel-het-configuratiebestand-en-alle-zonebestanden-op-van-volgende-dns-servers-waarbij-je-er-rekening-moet-mee-houden-dat-elk-van-deze-servers-ook-secundaire-nameserver-is-voor-alle-zones-van-de-andere-server-gebruik-relatieve-dns-namen-waar-mogelijk-gebruik-noch-forwarders-noch-de-usdorigin-opdracht" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div><div role="button" tabindex="0" style="color:#3884FF" contenteditable="false" class="reset-3c756112--blockHeadingUp-c32402b2"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></g></svg></div></h1><p class="blockParagraph-544a408c" data-key="f0f4c45264a54a78a6588af13b2bb8a0"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="cbbab868946c4c6cbcfc27548536975d"><span data-offset-key="cbbab868946c4c6cbcfc27548536975d:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Voorbeeld:</strong></span><span data-offset-key="cbbab868946c4c6cbcfc27548536975d:1"> Maak zonebestanden aan per DNS server:</span></span></span></p><p class="blockParagraph-544a408c" data-key="f32fbbdd948b479dbcbc252c98d07d8b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="e6e0d461d2a14818a5a6361395ac9e5e"><span data-offset-key="e6e0d461d2a14818a5a6361395ac9e5e:0"><strong class="bold-3c254bd9" data-slate-leaf="true">named.conf</strong></span></span></span></p><div class="reset-3c756112--codeBlockWrapper-56f27afc"><div contenteditable="false" class="reset-3c756112--copyButtonWrapper-ca591f6e"><div aria-label="Copy" role="button" tabindex="0" class="reset-3c756112--touchableView-a079aa82--copyButton-4f9a9412--tooltipped-57ae51fe"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg></div></div><pre data-key="f92410762a964383ab973eb2891b0a81" spellcheck="false" class="reset-3c756112--codeBlock-75b39b81"><div class="codeLine-a3169fbc" data-key="7ede272ede5c4bdfae5c4d2b0fab0488"><span data-key="46e0674dd15b456b97273d3fd4ff665d"><span data-offset-key="46e0674dd15b456b97273d3fd4ff665d:0">options {</span></span></div><div class="codeLine-a3169fbc" data-key="ff1d5f7e54c5442a9071a63424cb9fef"><span data-key="20dad641d3994e01b8a8e5b0952ec637"><span data-offset-key="20dad641d3994e01b8a8e5b0952ec637:0">    directory &quot;/var/named&quot;;</span></span></div><div class="codeLine-a3169fbc" data-key="3c3413bfa2074a4385c9eb61da6740a0"><span data-key="e51fd4112ccd4cfc83360ac9f82d4e6f"><span data-offset-key="e51fd4112ccd4cfc83360ac9f82d4e6f:0">    dump-file &quot;/var/named/data/cache_dump.db&quot;;</span></span></div><div class="codeLine-a3169fbc" data-key="8d91b2de4f434024a925f4438fb59ad2"><span data-key="b569cad07bcc4a32826fda2ec0504909"><span data-offset-key="b569cad07bcc4a32826fda2ec0504909:0">        statistics-file &quot;/var/named/data/named_stats.txt&quot;;</span></span></div><div class="codeLine-a3169fbc" data-key="f6c24340c7ab423398f0e12a6efc65de"><span data-key="6cefbbc0b65648678e5d85bcca0cef84"><span data-offset-key="6cefbbc0b65648678e5d85bcca0cef84:0">        memstatistics-file &quot;data/named_mem_stats.txt&quot;;</span></span></div><div class="codeLine-a3169fbc" data-key="f88d44accd9d4950ad84a8ca63feab39"><span data-key="7ba0099b813246f7b59e1b0ac2a27a57"><span data-offset-key="7ba0099b813246f7b59e1b0ac2a27a57:0">};</span></span></div><div class="codeLine-a3169fbc" data-key="ecc433aa1930460e882bb6df57ca5508"><span data-key="2907f754b41c4b459fcbf379f604e7a9"><span data-offset-key="2907f754b41c4b459fcbf379f604e7a9:0"><span data-slate-zero-width="n">​</span></span></span></div><div class="codeLine-a3169fbc" data-key="5df65ab4976249e18b82275a9820cb9f"><span data-key="e194174bddae45c19d4519f87d7fa317"><span data-offset-key="e194174bddae45c19d4519f87d7fa317:0">logging</span></span></div><div class="codeLine-a3169fbc" data-key="62c8b5c303be42fa947df5c39533ba5b"><span data-key="69df3ea2e29147eba1c32c4d6c534faa"><span data-offset-key="69df3ea2e29147eba1c32c4d6c534faa:0">{</span></span></div><div class="codeLine-a3169fbc" data-key="b7cc57872e59452e9070aa766acc1697"><span data-key="8433549af0884774b793013ebcfb0291"><span data-offset-key="8433549af0884774b793013ebcfb0291:0">        channel default_debug {</span></span></div><div class="codeLine-a3169fbc" data-key="786276f6f4e84d14919719288b0d0619"><span data-key="d028713e027145fabd21c8dbe0659fc1"><span data-offset-key="d028713e027145fabd21c8dbe0659fc1:0">                syslog daemon;</span></span></div><div class="codeLine-a3169fbc" data-key="0b6d9ef44a9e42f88189a51dcf49609e"><span data-key="514d939154cb45f989dcec8d50136651"><span data-offset-key="514d939154cb45f989dcec8d50136651:0">                severity dynamic;</span></span></div><div class="codeLine-a3169fbc" data-key="cf0af26c67da4ce0a236fda0de19f6b6"><span data-key="4d654610d88b4fbcb79933d99d84f465"><span data-offset-key="4d654610d88b4fbcb79933d99d84f465:0">        };</span></span></div><div class="codeLine-a3169fbc" data-key="cd390a5a844b462e95e09adebb425a0d"><span data-key="836d0727b9a344c3b936c10be5df93c4"><span data-offset-key="836d0727b9a344c3b936c10be5df93c4:0">};</span></span></div><div class="codeLine-a3169fbc" data-key="4ab44d129d9d499a9f37a85a8a30af16"><span data-key="7f6e05f5256c4da984004adf887a3ba2"><span data-offset-key="7f6e05f5256c4da984004adf887a3ba2:0"><span data-slate-zero-width="n">​</span></span></span></div><div class="codeLine-a3169fbc" data-key="f979796d290c46cc9b52f123723e56f2"><span data-key="abf2d5768897460d8102659e626df952"><span data-offset-key="abf2d5768897460d8102659e626df952:0">zone &quot;oratoria.XVII.it&quot; IN {</span></span></div><div class="codeLine-a3169fbc" data-key="fa6fb674a7e949cba4b55f4fa932ccbb"><span data-key="2b50ac88832c431889657b46d624ff67"><span data-offset-key="2b50ac88832c431889657b46d624ff67:0">    type master;</span></span></div><div class="codeLine-a3169fbc" data-key="3d7aa195921640c9a39f08b28e1421a9"><span data-key="a015565db78c44648d3160841dd1dd8c"><span data-offset-key="a015565db78c44648d3160841dd1dd8c:0">    file &quot;oratoria.XVII.it.zone&quot;;</span></span></div><div class="codeLine-a3169fbc" data-key="f800d59dad5a44efb2a132a22febde3a"><span data-key="245ff296aa4d455087fe3182e69be1d3"><span data-offset-key="245ff296aa4d455087fe3182e69be1d3:0">    allow-update { none; };</span></span></div><div class="codeLine-a3169fbc" data-key="0f0eab4cd56a4522bf58d5a27372b49c"><span data-key="4d12ced87c86496bbde36d39bbcf1ad1"><span data-offset-key="4d12ced87c86496bbde36d39bbcf1ad1:0">};</span></span></div><div class="codeLine-a3169fbc" data-key="9ec2c2891247466e83a85cd2e5b947a0"><span data-key="8e61b4a4ed05400fb545fdad05ba4ba0"><span data-offset-key="8e61b4a4ed05400fb545fdad05ba4ba0:0"><span data-slate-zero-width="n">​</span></span></span></div><div class="codeLine-a3169fbc" data-key="bef0c675e105491eaec59caff8f1ed82"><span data-key="d0c8c03a418245169de32ac3dc2ccd2f"><span data-offset-key="d0c8c03a418245169de32ac3dc2ccd2f:0">zone &quot;XIX.it&quot; IN {</span></span></div><div class="codeLine-a3169fbc" data-key="e952faf66e334c26808ea48e16063d19"><span data-key="4f95c1dffcc740e392581c8c86c21758"><span data-offset-key="4f95c1dffcc740e392581c8c86c21758:0">    type master;</span></span></div><div class="codeLine-a3169fbc" data-key="32477c4bdf8048b0b0fb97faacfc545f"><span data-key="b67a0f9da2be47c69942be3679c880ca"><span data-offset-key="b67a0f9da2be47c69942be3679c880ca:0">    file &quot;XIX.it.zone&quot;;</span></span></div><div class="codeLine-a3169fbc" data-key="4c63a1eafe7146908eb3aecc53dcd4fe"><span data-key="a3a40445ba304a72bb29f63caf8fdffc"><span data-offset-key="a3a40445ba304a72bb29f63caf8fdffc:0">    allow-update { none; };</span></span></div><div class="codeLine-a3169fbc" data-key="d8e6f3bc82ca4b1f9073b7f401a132f2"><span data-key="2f86a23da71443b49cf6ac450f36a4c1"><span data-offset-key="2f86a23da71443b49cf6ac450f36a4c1:0">};</span></span></div><div class="codeLine-a3169fbc" data-key="db51eec51c37411da28a1b995987edbf"><span data-key="413694e2c2bd435aaf6826c5ce437995"><span data-offset-key="413694e2c2bd435aaf6826c5ce437995:0"><span data-slate-zero-width="n">​</span></span></span></div><div class="codeLine-a3169fbc" data-key="da93839eb4424f3585c65a7e59673aba"><span data-key="4b76da3fff1d4095976a565d531eee3d"><span data-offset-key="4b76da3fff1d4095976a565d531eee3d:0">zone &quot;XX.us&quot; IN {</span></span></div><div class="codeLine-a3169fbc" data-key="72301aa486b24f71a3208fe3bfd3c3aa"><span data-key="041ad7fbd7e94cb8bbd008e6ee2144e0"><span data-offset-key="041ad7fbd7e94cb8bbd008e6ee2144e0:0">    type master;</span></span></div><div class="codeLine-a3169fbc" data-key="157201a46c33473c8c331e45b285852c"><span data-key="b58ae14965e04abda42b7383118ab436"><span data-offset-key="b58ae14965e04abda42b7383118ab436:0">    file &quot;XX.us.zone&quot;;</span></span></div><div class="codeLine-a3169fbc" data-key="9dea0aadb1ad4493bc0eba86cf04e2db"><span data-key="c6ee117945904c86ae46f858f71d077d"><span data-offset-key="c6ee117945904c86ae46f858f71d077d:0">    allow-update { none; };</span></span></div><div class="codeLine-a3169fbc" data-key="3400d072c84543bd872c9bc08e93c544"><span data-key="ba4a5efe8d614efdb218b2bb754805a6"><span data-offset-key="ba4a5efe8d614efdb218b2bb754805a6:0">};</span></span></div><div class="codeLine-a3169fbc" data-key="c184ef89b9e346c0a28c59014e508180"><span data-key="735d6194da75460c920509bc14e2956d"><span data-offset-key="735d6194da75460c920509bc14e2956d:0"><span data-slate-zero-width="n">​</span></span></span></div><div class="codeLine-a3169fbc" data-key="7bc17389e9b14564a511c0b9107aa4f8"><span data-key="c0cc4d0587a04e30ba5e2a5530169b69"><span data-offset-key="c0cc4d0587a04e30ba5e2a5530169b69:0">controls {</span></span></div><div class="codeLine-a3169fbc" data-key="a901dd1149b04dc3a61c58524fb17878"><span data-key="3e8e8fd4436e4311945359aa9e710adf"><span data-offset-key="3e8e8fd4436e4311945359aa9e710adf:0">    inet * allow { localhost; 192.168.16/24; } keys { rndckey; };</span></span></div><div class="codeLine-a3169fbc" data-key="bd657782cfa74702b6f53e553bccf110"><span data-key="4eaa4d284e044335b12296e30707d9f4"><span data-offset-key="4eaa4d284e044335b12296e30707d9f4:0">};</span></span></div><div class="codeLine-a3169fbc" data-key="1082f32490544344a693e53b04365839"><span data-key="a90275a28d6040b79e624a670d76b42d"><span data-offset-key="a90275a28d6040b79e624a670d76b42d:0"><span data-slate-zero-width="n">​</span></span></span></div><div class="codeLine-a3169fbc" data-key="a683f811d11041c2aeca336fc6aaf614"><span data-key="4828044cd8634b34ab0420855fa43e9c"><span data-offset-key="4828044cd8634b34ab0420855fa43e9c:0">include &quot;/etc/rndc.key&quot;;</span></span></div><div class="codeLine-a3169fbc" data-key="e4edac23d27d47f6a0bb55a67a6c9386"><span data-key="6ebca4f6586046518b8356a73f8e45d5"><span data-offset-key="6ebca4f6586046518b8356a73f8e45d5:0">include &quot;/etc/named.rfc1912.zones&quot;;</span></span></div></pre></div><p class="blockParagraph-544a408c" data-key="e1b170c50852426ebb31089d79629d5b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="1c9c58156f054c4f8c6ca5f018579c1f"><span data-offset-key="1c9c58156f054c4f8c6ca5f018579c1f:0"> </span><span data-offset-key="1c9c58156f054c4f8c6ca5f018579c1f:1"><strong class="bold-3c254bd9" data-slate-leaf="true">XX.us.zone</strong></span></span></span></p><div class="reset-3c756112--codeBlockWrapper-56f27afc"><div contenteditable="false" class="reset-3c756112--copyButtonWrapper-ca591f6e"><div aria-label="Copy" role="button" tabindex="0" class="reset-3c756112--touchableView-a079aa82--copyButton-4f9a9412--tooltipped-57ae51fe"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg></div></div><pre data-key="1f3a30e3d64a4fad8ba6d41c785c9991" spellcheck="false" class="reset-3c756112--codeBlock-75b39b81"><div class="codeLine-a3169fbc" data-key="ab6b8ad9d9664ab79efff755bd2d85db"><span data-key="2e2f1203a54e476ba43a68941a18f263"><span data-offset-key="2e2f1203a54e476ba43a68941a18f263:0">;</span></span></div><div class="codeLine-a3169fbc" data-key="40c0bae0dac84cecb090081f14e1475f"><span data-key="6b67ef8fd6f74409bbc141d14f656c35"><span data-offset-key="6b67ef8fd6f74409bbc141d14f656c35:0">;        Zone File for &quot;XX.us&quot; - Internal Use ONLY</span></span></div><div class="codeLine-a3169fbc" data-key="5d5b52c353704a0082e378388cc5f68e"><span data-key="1a1789455e6a49bda129ba46626a4717"><span data-offset-key="1a1789455e6a49bda129ba46626a4717:0">;                                      </span></span></div><div class="codeLine-a3169fbc" data-key="c30adec657cf49ebb865a3444b4c6a1a"><span data-key="abe94d616af44fb3a1dd1c56d4676fe0"><span data-offset-key="abe94d616af44fb3a1dd1c56d4676fe0:0">; Append XX.us after every relative domain</span></span></div><div class="codeLine-a3169fbc" data-key="dbee747162934450b95bfdcaa886ceff"><span data-key="ed6166d2363a4577a54b99a6abcc14f0"><span data-offset-key="ed6166d2363a4577a54b99a6abcc14f0:0">$TTL 60</span></span></div><div class="codeLine-a3169fbc" data-key="eddb885f577c448eac3dabce9d695463"><span data-key="1b3ca2067d054761855b5c50424bc22f"><span data-offset-key="1b3ca2067d054761855b5c50424bc22f:0">@    IN    SOA    corelli.sonatas.XVII.it. xavier.geerinck.ugent.be (</span></span></div><div class="codeLine-a3169fbc" data-key="2da6c0f7428148fc98b554d22163a922"><span data-key="7a052c120ca44563884a3ecbe2f66e9a"><span data-offset-key="7a052c120ca44563884a3ecbe2f66e9a:0">                  1            ; serial</span></span></div><div class="codeLine-a3169fbc" data-key="ed3b105611154f10b7d3de040b6174c4"><span data-key="cdd00200146d4a559e5dde6591268b2c"><span data-offset-key="cdd00200146d4a559e5dde6591268b2c:0">                  1            ; refresh</span></span></div><div class="codeLine-a3169fbc" data-key="b4170cad10c2455e88e9c2067119d119"><span data-key="a77edf22b47f420981c54fab9764b145"><span data-offset-key="a77edf22b47f420981c54fab9764b145:0">                  1            ; retry</span></span></div><div class="codeLine-a3169fbc" data-key="602d26af78254a9a933728cdb8ac36c0"><span data-key="1e929b3369d54674a8704de5b3e1b89d"><span data-offset-key="1e929b3369d54674a8704de5b3e1b89d:0">                  1            ; expire</span></span></div><div class="codeLine-a3169fbc" data-key="1fe48a4c29d04c8b902f0ae0171fbed5"><span data-key="917bc006ff41436791d4c6f8a6216846"><span data-offset-key="917bc006ff41436791d4c6f8a6216846:0">                  1 )          ; minimum</span></span></div><div class="codeLine-a3169fbc" data-key="5c9e0c0bcf014d5abba2458e7ff64861"><span data-key="b2010d3ff3c647dea47d8adbe18b3a9c"><span data-offset-key="b2010d3ff3c647dea47d8adbe18b3a9c:0">;</span></span></div><div class="codeLine-a3169fbc" data-key="6b727c69aac7403dbae10e24cd0b8647"><span data-key="aa45aadabee14036b44229420f3ef532"><span data-offset-key="aa45aadabee14036b44229420f3ef532:0">     IN    NS    corelli.sonatas.XVII.it.                       ; Authoritative Name Server</span></span></div><div class="codeLine-a3169fbc" data-key="a1c3fce55b7949a6a248f76554d008b6"><span data-key="4dbe5e1b636d4897b23b122b643ca80c"><span data-offset-key="4dbe5e1b636d4897b23b122b643ca80c:0">; Delegations</span></span></div><div class="codeLine-a3169fbc" data-key="6c7582a3aed943c9be5c22916f436eb8"><span data-key="dd97d09980c249c9bfd29cc539ff36b3"><span data-offset-key="dd97d09980c249c9bfd29cc539ff36b3:0">vocal                          IN  NS    gershwin.vocal         ; vocal.xx.us. is controlled by gershwin.vocal.xx.us.</span></span></div><div class="codeLine-a3169fbc" data-key="040d86843ddc4e6a8fa2ca6cb339d570"><span data-key="9a9df3d25c2b40a2a5cfaabd6a467a6c"><span data-offset-key="9a9df3d25c2b40a2a5cfaabd6a467a6c:0">;</span></span></div><div class="codeLine-a3169fbc" data-key="8c350d2a543d4d5089cf472d5037433e"><span data-key="11e8233bd87840c684080fc0dc57a574"><span data-offset-key="11e8233bd87840c684080fc0dc57a574:0">corelli.sonatas.XVII.it        IN  A     192.168.16.126         ; IP of name server</span></span></div><div class="codeLine-a3169fbc" data-key="56356f821d4d4622a6d401191b8146db"><span data-key="731ae288d6154069bd5512d738bc0531"><span data-offset-key="731ae288d6154069bd5512d738bc0531:0">gershwin.vocal                 IN  A     192.168.16.132         ; A-record for gershwin.vocal.xx.us (IP name server vocal.xx.us subdomain)</span></span></div><div class="codeLine-a3169fbc" data-key="ef9e36457c994199b0cb3a2be5315b76"><span data-key="d24c391aab3e49c086715264149fc33c"><span data-offset-key="d24c391aab3e49c086715264149fc33c:0">barber                         IN  A     192.168.16.4           ; A-record barber.xx.us</span></span></div><div class="codeLine-a3169fbc" data-key="328310a303374782977f1f0693891e0f"><span data-key="f0b2cd495b6f46c98956189c5dc700f6"><span data-offset-key="f0b2cd495b6f46c98956189c5dc700f6:0">bernstein                      IN  A     192.168.16.17          ; A-record bernstein.xx.us</span></span></div><div class="codeLine-a3169fbc" data-key="4f21202456484d0d903d4cdf82f1ed3f"><span data-key="24b3a32c14c6499e817fac2b0d21a4d6"><span data-offset-key="24b3a32c14c6499e817fac2b0d21a4d6:0">cage                           IN  A     192.168.16.58          ; A-record cage.xx.us</span></span></div><div class="codeLine-a3169fbc" data-key="7ac70e11dbef4cce833f81c7fef6424e"><span data-key="fee895da8fc944c6bb79d960299cf56e"><span data-offset-key="fee895da8fc944c6bb79d960299cf56e:0">copland                        IN  A     192.168.16.73          ; A-record copland.xx.us</span></span></div><div class="codeLine-a3169fbc" data-key="9dab9bffc8e946618611df224b866e14"><span data-key="abf546f6cbb3484bbfb5a3d1759b2a04"><span data-offset-key="abf546f6cbb3484bbfb5a3d1759b2a04:0">glass                          IN  A     192.168.16.99          ; A-record glass.xx.us</span></span></div><div class="codeLine-a3169fbc" data-key="b3ad59a862b3416094aeb365ca1db90c"><span data-key="e12766ba660d45c58804f578d790d561"><span data-offset-key="e12766ba660d45c58804f578d790d561:0">carter.orchestral              IN  A     192.168.16.64          ; A-record carter.orchestral.xx.us</span></span></div></pre></div><p class="blockParagraph-544a408c" data-key="de4566235e25401d954a66c6cd4c982f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c3151b905d8a42c0a8225abcf0bcdc89"><span data-offset-key="c3151b905d8a42c0a8225abcf0bcdc89:0"><strong class="bold-3c254bd9" data-slate-leaf="true">XIX.it.zone</strong></span></span></span></p><div class="reset-3c756112--codeBlockWrapper-56f27afc"><div contenteditable="false" class="reset-3c756112--copyButtonWrapper-ca591f6e"><div aria-label="Copy" role="button" tabindex="0" class="reset-3c756112--touchableView-a079aa82--copyButton-4f9a9412--tooltipped-57ae51fe"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg></div></div><pre data-key="f770908b35134f07a50ac3d722dbcf15" spellcheck="false" class="reset-3c756112--codeBlock-75b39b81"><div class="codeLine-a3169fbc" data-key="9896c01ddbe64a63802ec74c99964310"><span data-key="2161bd6554ab4b048eca8607828df49e"><span data-offset-key="2161bd6554ab4b048eca8607828df49e:0">;</span></span></div><div class="codeLine-a3169fbc" data-key="a21d6d7384494040b5c8266b2d7a8a73"><span data-key="f282aeee11be45d3801befe0b9f24c02"><span data-offset-key="f282aeee11be45d3801befe0b9f24c02:0">;       Zone File for &quot;XIX.it&quot; - Internal Use ONLY</span></span></div><div class="codeLine-a3169fbc" data-key="54c7e8b132d549c1ae44347783b85f66"><span data-key="09eff06053d04c56b1be9764222d8922"><span data-offset-key="09eff06053d04c56b1be9764222d8922:0">;                                    </span></span></div><div class="codeLine-a3169fbc" data-key="f23cf9bcc7d9467ea38f44e85bee789e"><span data-key="1ea315b8f6d44e3e964bc93ed9d1157d"><span data-offset-key="1ea315b8f6d44e3e964bc93ed9d1157d:0">; Append XIX.it after every relative domain</span></span></div><div class="codeLine-a3169fbc" data-key="e81f1c810b214bce8355a0eb0c8e8df3"><span data-key="62ce02afc99244d68fbcd14681e33b8b"><span data-offset-key="62ce02afc99244d68fbcd14681e33b8b:0">$TTL 60</span></span></div><div class="codeLine-a3169fbc" data-key="a7d7f95e074f47ff9adfbf0921bc73ad"><span data-key="418c1c559aac48d9b0e11230eba686eb"><span data-offset-key="418c1c559aac48d9b0e11230eba686eb:0">@    IN    SOA    corelli.sonatas.XVII.it. xavier.geerinck.ugent.be (</span></span></div><div class="codeLine-a3169fbc" data-key="db76b6fc95bd4f838ef3b907f965cd69"><span data-key="499c068da28d4b25ba238179dea6e8d8"><span data-offset-key="499c068da28d4b25ba238179dea6e8d8:0">                  1            ; serial</span></span></div><div class="codeLine-a3169fbc" data-key="d520b8e6f10f4c02913579829c165833"><span data-key="dd0eafa7145645d0a2ccf8413f05f486"><span data-offset-key="dd0eafa7145645d0a2ccf8413f05f486:0">                  1            ; refresh</span></span></div><div class="codeLine-a3169fbc" data-key="0ec6ad13c85848ccb37ac2f2d0173029"><span data-key="ff63ba1229574e648d70e86f0b8f61d1"><span data-offset-key="ff63ba1229574e648d70e86f0b8f61d1:0">                  1            ; retry</span></span></div><div class="codeLine-a3169fbc" data-key="80665bb170364c3db934639864a9bb25"><span data-key="8195a16c7a324e1f80f13564a1ee1381"><span data-offset-key="8195a16c7a324e1f80f13564a1ee1381:0">                  1            ; expire</span></span></div><div class="codeLine-a3169fbc" data-key="07b97b7144be48a19f51cb3f1fcfae68"><span data-key="70e59de167544a0ab48d77868403c51b"><span data-offset-key="70e59de167544a0ab48d77868403c51b:0">                  1 )          ; minimum</span></span></div><div class="codeLine-a3169fbc" data-key="b7fd8b2aabd148a79b6e70eb48ec6cfc"><span data-key="45f3f22df6cd490b9a793b6ad12a04fe"><span data-offset-key="45f3f22df6cd490b9a793b6ad12a04fe:0">;</span></span></div><div class="codeLine-a3169fbc" data-key="0765cdd7f6e743469f0e9e32c74ffba5"><span data-key="0f4198620bfe4718bd890dd819b1a59a"><span data-offset-key="0f4198620bfe4718bd890dd819b1a59a:0">     IN    NS    corelli.sonatas.XVII.it.                  ; Authoritative Name Server</span></span></div><div class="codeLine-a3169fbc" data-key="06fb546b84ee4e2fad09f1e84637f171"><span data-key="eb9c7e48e26f45f5839bea5a506cbe3f"><span data-offset-key="eb9c7e48e26f45f5839bea5a506cbe3f:0">; delegations</span></span></div><div class="codeLine-a3169fbc" data-key="2435d84c815143009c946922eca82aa5"><span data-key="7afe1fb6376d4bb9a468329696345f9c"><span data-offset-key="7afe1fb6376d4bb9a468329696345f9c:0">opera                          IN  NS   frescobaldi.XVII.it.   ; opera.XIX.it is controlled by frescobaldi.XVII.it.</span></span></div><div class="codeLine-a3169fbc" data-key="558a075b6b3f4e71bafd337e78208e1f"><span data-key="ee3763933f5642b88af045c01d92d640"><span data-offset-key="ee3763933f5642b88af045c01d92d640:0">;</span></span></div><div class="codeLine-a3169fbc" data-key="46e0e763f1414aa495423d509f126ef7"><span data-key="28fbe725cdd04ebd9ad6eca1edba2a05"><span data-offset-key="28fbe725cdd04ebd9ad6eca1edba2a05:0">corelli.sonatas.XVII.it        IN  A    192.168.16.126         ; IP of name server</span></span></div><div class="codeLine-a3169fbc" data-key="2817a8a829444b1b91f949ec9bdf62e9"><span data-key="4fd51b1f87ed4d5ba27c988bd9128b25"><span data-offset-key="4fd51b1f87ed4d5ba27c988bd9128b25:0">frescobaldi.XVII.it.           IN  A    192.168.16.131         ; IP of name server that controls opera.XIX.it.</span></span></div><div class="codeLine-a3169fbc" data-key="75e2f8ebe12247edb500dd447934e13f"><span data-key="be5c51a203cb49ff8adfc9490b910717"><span data-offset-key="be5c51a203cb49ff8adfc9490b910717:0">ponchielli                     IN  A    192.168.16.197         ; A-record ponchielli.XIX.it</span></span></div></pre></div><p class="blockParagraph-544a408c" data-key="4fa7a498f4a6424ab62a185642aabbce"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="80d90be7d6554edba3e4a6624cb0663f"><span data-offset-key="80d90be7d6554edba3e4a6624cb0663f:0"><strong class="bold-3c254bd9" data-slate-leaf="true">oratoria.XVII.it.zone</strong></span></span></span></p><div class="reset-3c756112--codeBlockWrapper-56f27afc"><div contenteditable="false" class="reset-3c756112--copyButtonWrapper-ca591f6e"><div aria-label="Copy" role="button" tabindex="0" class="reset-3c756112--touchableView-a079aa82--copyButton-4f9a9412--tooltipped-57ae51fe"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg></div></div><pre data-key="9d32525bb9c94856bf2d4386abe67c00" spellcheck="false" class="reset-3c756112--codeBlock-75b39b81"><div class="codeLine-a3169fbc" data-key="05b7575b1e4b474dac481fa7f52039d3"><span data-key="69c646ec635f4c218049a68225968202"><span data-offset-key="69c646ec635f4c218049a68225968202:0">;</span></span></div><div class="codeLine-a3169fbc" data-key="213407e87d004005aa22491f222008ce"><span data-key="d2d02ce4eb58400d8a56a6e8f0ad2e2b"><span data-offset-key="d2d02ce4eb58400d8a56a6e8f0ad2e2b:0">;       Zone File for &quot;oratoria.XVII.it&quot; - Internal Use ONLY</span></span></div><div class="codeLine-a3169fbc" data-key="bf23c77d29204220a65fa9111299bef3"><span data-key="23f84d2c6d4040e78a7a5730764f2550"><span data-offset-key="23f84d2c6d4040e78a7a5730764f2550:0">;                   </span></span></div><div class="codeLine-a3169fbc" data-key="33e5f365cc6f4945a1c763b03b7a8e81"><span data-key="cf0595d724e84c1383ad04da52e60176"><span data-offset-key="cf0595d724e84c1383ad04da52e60176:0">; Append oratoria.XVII.it after every relative domain</span></span></div><div class="codeLine-a3169fbc" data-key="a4ee5da740ab4d729e4c43b22a0992e9"><span data-key="94ec0ff099964de48bb66892e48be20a"><span data-offset-key="94ec0ff099964de48bb66892e48be20a:0">$TTL 60</span></span></div><div class="codeLine-a3169fbc" data-key="899b9aba7ae249bc9c52dd3824ed343f"><span data-key="f401eeb7c7124e998c812c7de426189c"><span data-offset-key="f401eeb7c7124e998c812c7de426189c:0">@    IN    SOA    corelli.sonatas.XVII.it. xavier.geerinck.ugent.be (</span></span></div><div class="codeLine-a3169fbc" data-key="453b3ee2571c4f969d7977c53b31d91b"><span data-key="c1f3ae4367e7426493d1df5e0ba30f44"><span data-offset-key="c1f3ae4367e7426493d1df5e0ba30f44:0">                  1            ; serial</span></span></div><div class="codeLine-a3169fbc" data-key="1e878630f0364dd183172b11c8a22b1e"><span data-key="51c0ad9fa3924770a5ead4f61c988f96"><span data-offset-key="51c0ad9fa3924770a5ead4f61c988f96:0">                  1            ; refresh</span></span></div><div class="codeLine-a3169fbc" data-key="e78b39c9e5554d5182bb892403032fe5"><span data-key="5abe9fd13ab743e084308be0ec89a459"><span data-offset-key="5abe9fd13ab743e084308be0ec89a459:0">                  1            ; retry</span></span></div><div class="codeLine-a3169fbc" data-key="c62da203debd44bebddd847de0d2f4d1"><span data-key="3f970b17679244cdacd1194f5f38cae4"><span data-offset-key="3f970b17679244cdacd1194f5f38cae4:0">                  1            ; expire</span></span></div><div class="codeLine-a3169fbc" data-key="9c664c6812e145a19ffd79cc1d892468"><span data-key="de36d909d04b43188a6f40e4f7ed177a"><span data-offset-key="de36d909d04b43188a6f40e4f7ed177a:0">                  1 )          ; minimum</span></span></div><div class="codeLine-a3169fbc" data-key="b54c836c703046399e9fbac70fe631de"><span data-key="9bb32583aa804f9d9d2e481d8de2ab24"><span data-offset-key="9bb32583aa804f9d9d2e481d8de2ab24:0">;</span></span></div><div class="codeLine-a3169fbc" data-key="48be06233a0641bc916ca6db619d53ae"><span data-key="ad779b2305b94d30abb7985e5643c762"><span data-offset-key="ad779b2305b94d30abb7985e5643c762:0">     IN    NS    corelli.sonatas.XVII.it.           ; Authoritative Name Server</span></span></div><div class="codeLine-a3169fbc" data-key="59f9dfbcaa134549b0d9ec27d49e5e51"><span data-key="a680a0c217fb41838331415b11aae0b4"><span data-offset-key="a680a0c217fb41838331415b11aae0b4:0">;</span></span></div><div class="codeLine-a3169fbc" data-key="362afe9a61b6415a8171cb5bc7163f29"><span data-key="a54c8d2e2a514361b0a9a086b9232bac"><span data-offset-key="a54c8d2e2a514361b0a9a086b9232bac:0">corelli.sonatas.XVII.it     IN  A   192.168.16.126  ; IP Of name server</span></span></div><div class="codeLine-a3169fbc" data-key="d37d0aa93b5c4bfcb8173b4d40a6c6c2"><span data-key="3fc4f71bb69245fbbf0e77fd0abefa29"><span data-offset-key="3fc4f71bb69245fbbf0e77fd0abefa29:0">carissimi                   IN  A   192.168.16.60   ; A-record carissimi.oratoria.XVII.it</span></span></div></pre></div><h1 id="bespreek-in-detail-het-begrip-secundaire-nameserver-inclusief-voordelen-beperkingen-en-problemen-3-1-and-3-3-3" class="blockHeading-442b4f12--blockHeading1WithMargin-b69d755e" data-key="8fbb4c81a34143279fc019e685b5b9bf"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1"><span data-key="1283b20e13cc4d14a374d3281c352cc8"><span data-offset-key="1283b20e13cc4d14a374d3281c352cc8:0">Bespreek in detail het begrip secundaire nameserver, inclusief voordelen, beperkingen en problemen. (§3.1 &amp; §3.3.3)</span></span></span><a href="#bespreek-in-detail-het-begrip-secundaire-nameserver-inclusief-voordelen-beperkingen-en-problemen-3-1-and-3-3-3" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div><div role="button" tabindex="0" style="color:#3884FF" contenteditable="false" class="reset-3c756112--blockHeadingUp-c32402b2"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></g></svg></div></h1><p class="blockParagraph-544a408c" data-key="a652423f2b6147ffb9700e20458adabd"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="db826aa353e8487e9b3895146b192b99"><span data-offset-key="db826aa353e8487e9b3895146b192b99:0">Secundaire nameservers houden dezelfde informatie bij als primaire</span></span></span></p><ul class="list-20526648" data-key="0e810add88f54f9c927060f4adc3eba4"><li class=""><div data-key="cb48b1327b5142a4b7f202312f4efca3" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="d42d08b3aa76408b96a2113c23dd026a"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ce71c268609543a3af72913e5e398e53"><span data-offset-key="ce71c268609543a3af72913e5e398e53:0">Moet als type slave gebruikt worden.</span></span></span></p></div></li><li class=""><div data-key="badce6dbfd584987b1bf65ef19fe6ea3" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="1067b0dfa2654f5d97267fbbadfeb861"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="749ecedfaf604c75b6d7db442cd5adba"><span data-offset-key="749ecedfaf604c75b6d7db442cd5adba:0">allow-transfer { ip-adressen }; moet gebruikt worden bij options.</span></span></span></p></div></li></ul><p class="blockParagraph-544a408c" data-key="8ff31bf4caa14df1bcbefa5c2acadf00"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="cb10d1d140fa46218c73915c7f12c6ce"><span data-offset-key="cb10d1d140fa46218c73915c7f12c6ce:0">Voordelen:</span></span></span></p><ul class="list-20526648" data-key="28216054d3324222856116dcc165ffe7"><li class=""><div data-key="ace609c665024acbb34d96fb1c26c49d" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="65e711b20be14fd68b02fffd5dbf6192"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="a8813815c26f421b9471f3c07f318c8f"><span data-offset-key="a8813815c26f421b9471f3c07f318c8f:0">Worden gebruikt om taak primaire nameserver te verlichten</span></span></span></p></div></li><li class=""><div data-key="e9fdbb516f6e4e4d814b984fd4bfde16" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="ba78511dd48c430daab2c91c127d2e22"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="5b3f4487d192457e86a5eace9b62df42"><span data-offset-key="5b3f4487d192457e86a5eace9b62df42:0">Ook om te zorgen voor fouttolerantie in geval dat primaire nameserver uitvalt.</span></span></span></p></div></li></ul><p class="blockParagraph-544a408c" data-key="e1b2041538944f5082a238cdc455081c"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="81b2263c652043e189d533874f6690a3"><span data-offset-key="81b2263c652043e189d533874f6690a3:0">Beperkingen:</span></span></span></p><ul class="list-20526648" data-key="36e29826ecd84fa0b855d20e8612d9da"><li class=""><div data-key="661c1199c4a64ee79586abfe619c120c" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="17998fec81cf459bbd1e632118fa27b1"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="8ccc4983ce6545608092a74f52f6e02a"><span data-offset-key="8ccc4983ce6545608092a74f52f6e02a:0">Niet flexibel in gebruik: Wijzigingen enkel op primaire nameserver, secundaire moet dus checken of primaire gewijzigd.</span></span></span></p></div></li></ul></div></div></div></div><div class="reset-3c756112--pageFooter-f1d5e2b0"><div class="reset-3c756112"><div class="reset-3c756112--navPagesLinks-67bea901"><a class="reset-3c756112--card-6570f064--whiteCard-fff091a4--cardPrevious-56a5e674" href="/ugent-computernetwerken-2/reeks_b_-_multicastrouting"><div class="reset-3c756112--cardIcon-5b647d22"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></g></svg></div><div class="reset-3c756112--cardBody-25dca3b1--cardPreviousBody-79f02c06"><div class="reset-3c756112--cardHint-2c5d8183"><span class="text-4505230f--TextH200-a3425406--textContentFamily-49a318e1">Previous</span></div><div class="reset-3c756112--cardTitle-32aa092e"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1">Reeks B - Multicastrouting</span></div></div></a><a class="reset-3c756112--card-6570f064--whiteCard-fff091a4--cardNext-19241c42" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2"><div class="reset-3c756112--cardBody-25dca3b1"><div class="reset-3c756112--cardHint-2c5d8183"><span class="text-4505230f--TextH200-a3425406--textContentFamily-49a318e1">Next</span></div><div class="reset-3c756112--cardTitle-32aa092e"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1">Reeks B - Configuratie van DNS servers onder Linux Deel 2</span></div></div><div class="reset-3c756112--cardIcon-5b647d22"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg></div></a></div></div><div class="reset-3c756112--pageFooterColumns-ef8f347e"><div class="reset-3c756112--pageFooterSummary-12074aff"><div class="reset-3c756112--pageChangesSummary-08821678"><div class="reset-3c756112--pageContributors-5c59582e"><div class="reset-3c756112--ownerAvatarList-696792ce"><div aria-label="Xavier Geerinck" class="reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802"><div class="reset-3c756112--avatarFrame-2f40cdc9--small-2ec8ae1a--circle-6c5acd10" role="presentation"><img class="image-67b14f24--avatar-1c1d03ec" src="https://avatars.io/twitter/thebillkidy?size=large"/><div class="reset-3c756112--innerShadow-7a3a8651"></div></div></div></div></div><div class="reset-3c756112--pageEditedDate-b805c39a"><span class="text-4505230f--TextH200-a3425406--textContentFamily-49a318e1">Last updated <span>10 months ago</span></span></div></div></div></div></div></div><div class="reset-3c756112--pageSide-ad9fed26"><div class="reset-3c756112--stickyContainer-2bed3a82"><div style="padding-bottom:0" class="reset-3c756112"></div><div class="reset-3c756112--tocWrapper-506ea24c"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114"><div class="reset-3c756112--pageSideSection-542f1fd5"><div class="reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496"><div class="reset-3c756112--menuHeader-d7753f3a"><div class="reset-3c756112--menuHeaderIcon-0c3ed569"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="7" y2="18"></line></g></svg></div><div class="reset-3c756112"><span class="text-4505230f--InfoH100-1e92e1d1--textContentFamily-49a318e1">Contents</span></div></div><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#stel-het-configuratiebestand-en-alle-zonebestanden-op-van-volgende-dns-servers-waarbij-je-er-rekening-moet-mee-houden-dat-elk-van-deze-servers-ook-secundaire-nameserver-is-voor-alle-zones-van-de-andere-server-gebruik-relatieve-dns-namen-waar-mogelijk-gebruik-noch-forwarders-noch-de-usdorigin-opdracht"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1">Stel het configuratiebestand en alle zonebestanden op van volgende DNS servers, waarbij je er rekening moet mee houden dat elk van deze servers ook secundaire nameserver is voor alle zones van de andere server: ... . Gebruik relatieve DNS namen waar mogelijk. Gebruik noch forwarders, noch de $ORIGIN opdracht !</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#bespreek-in-detail-het-begrip-secundaire-nameserver-inclusief-voordelen-beperkingen-en-problemen-3-1-and-3-3-3"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1">Bespreek in detail het begrip secundaire nameserver, inclusief voordelen, beperkingen en problemen. (§3.1 &amp; §3.3.3)</span></span></div></a></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
+            <div id="__GITBOOK__ROOT__CLIENT__" style="display: none;"></div>
+            <script>
+            window.GITBOOK_STATE = {"state":{"database":{"orgs/538c32a77bcb1b0200ff5dcd/infos":{"kind":"user","data":{"kind":"user","uid":"538c32a77bcb1b0200ff5dcd","baseDomain":"xavier-geerinck","defaultSpace":null,"displayName":"Xavier Geerinck","photoURL":"https://avatars.io/twitter/thebillkidy?size=large","deletedAt":null,"usageStatuses":{"members":"below","privateSpaces":"below","publicSpaces":"below"}}},"spaces/-Lc5VIoyjbmo2ReQJFfs/infos":{"kind":"space","data":{"uid":"-Lc5VIoyjbmo2ReQJFfs","name":"UGent Computernetwerken 2","createdAt":1554887294260,"ownerID":"538c32a77bcb1b0200ff5dcd","isPrivate":false,"isUnlisted":false,"secretToken":null,"baseName":"ugent-computernetwerken-2","createdBy":"538c32a77bcb1b0200ff5dcd","logoURL":null,"fullLogoURL":null,"emoji":null,"colorPrimary":"#3884FF","headerTheme":"light","font":null,"locale":null,"primaryRevision":"-Lc5VZPLk3W-9sPG5Thw","edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887294260,"updatedAt":1554887372833,"count":3}},"algoliaAPIKey":"ZmUxZmNmMzY1NGIzYjg1YWU5N2U5MmVhN2UyODBkOWIyNTczNjQyMWY1OTY4N2NlMGNlNTgwYTcxM2Q4ZjA4OGZpbHRlcnM9LUxjNVZJb3lqYm1vMlJlUUpGZnM=","customDomain":null,"links":[],"hasGitHubSync":true,"editOnGitHub":null,"googleAnalyticsID":null,"intercomID":null,"hasPageRating":true,"hasPDFExport":false,"indexedRevision":null}},"spaces/-Lc5VIoyjbmo2ReQJFfs/revisions/-Lc5VZPLk3W-9sPG5Thw":{"kind":"revision","data":{"uid":"-Lc5VZPLk3W-9sPG5Thw","message":"Update reek_c_-_ipv6_tunneling.md","createdAt":1554887372679,"createdBy":"538c32a77bcb1b0200ff5dcd","parents":["-Lc5VJkqSrfLN3LDoehs"],"content":{"primaryVersion":"master","versions":{"master":{"index":0,"ref":"master","title":"1.0.0","github":{"repoID":"thebillkidy/ugent-computernetwerken-2","sha":"73d0862069e75c52073148b9d59e181082823075","ref":"refs/heads/master","message":"Update reek_c_-_ipv6_tunneling.md","isGitBookBot":false},"locale":null,"entryPage":"-Lc5VIowhm0XJ5PTfAeU","pages":{"-Lc5VIowhm0XJ5PTfAeU":{"uid":"-Lc5VIowhm0XJ5PTfAeU","kind":"document","title":"introduction","path":"master","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VIowhm0XJ5PTfAeU%2Fdocument.json?generation=1554887312603215\u0026alt=media","createdAt":1554887294259,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887312744,"updatedAt":1554887312744,"count":1}},"github":{"sha":"c67038f36e3757a48ec6a380b87a49d25e926e8d","filePath":"README.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":["-Lc5VL3g62Mn-_fBPc0S","-Lc5VL3hXV0GDw3P69gW","-Lc5VL3iHBkI5GHg-5Rv","-Lc5VL3j1MMVUy60RsAE","-Lc5VL3kmCjsQ7kGFaW-","-Lc5VL3luEhJ6etanCB7","-Lc5VL3m9qijLU1rBgRO","-Lc5VL3nvGgE1GlKHYtg","-Lc5VL3oQhscGe0vZC9Z","-Lc5VL3pEY9qQ_IhOW0V","-Lc5VL3qeGq74G_PbwFk","-Lc5VL3r-h2ZAGXgWoB3","-Lc5VL3stwiOjinPjIhF","-Lc5VL3tx67ine59TV2h","-Lc5VL3uvDVtrrtlElJC","-Lc5VL3vwLMsWfSw72i_"]},"-Lc5VL3g62Mn-_fBPc0S":{"uid":"-Lc5VL3g62Mn-_fBPc0S","kind":"document","title":"Reeks A - Configuratie van de netwerkinterface - Bridging - Multicasting op subnetwerkniveau","path":"reeks_a_-_configuratie_van_de_netwerkinterface_-_bridging_-_multicasting_op_subnetwerkniveau","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3g62Mn-_fBPc0S%2Fdocument.json?generation=1554887313912271\u0026alt=media","createdAt":1554887303467,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887314042,"updatedAt":1554887314042,"count":1}},"github":{"sha":"7f9d6ad6e3a6804ffc0b20e7fb7ab9a41eb51f64","filePath":"reeks_a_-_configuratie_van_de_netwerkinterface_-_bridging_-_multicasting_op_subnetwerkniveau.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3hXV0GDw3P69gW":{"uid":"-Lc5VL3hXV0GDw3P69gW","kind":"document","title":"Reeks A - Routing","path":"reeks_a_-_routing","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3hXV0GDw3P69gW%2Fdocument.json?generation=1554887316257033\u0026alt=media","createdAt":1554887303468,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316414,"updatedAt":1554887316414,"count":1}},"github":{"sha":"1dd869a40b4132e4bb5cf240e54297ac4f6053f9","filePath":"reeks_a_-_routing.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3iHBkI5GHg-5Rv":{"uid":"-Lc5VL3iHBkI5GHg-5Rv","kind":"document","title":"Reeks A - RIP","path":"reeks_a_-_rip","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3iHBkI5GHg-5Rv%2Fdocument.json?generation=1554887316591697\u0026alt=media","createdAt":1554887303468,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316792,"updatedAt":1554887316792,"count":1}},"github":{"sha":"224acf41272f2bf46df81ec05bcb8427f0eaa6e9","filePath":"reeks_a_-_rip.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3j1MMVUy60RsAE":{"uid":"-Lc5VL3j1MMVUy60RsAE","kind":"document","title":"Reeks A - OSPF","path":"reeks_a_-_ospf","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3j1MMVUy60RsAE%2Fdocument.json?generation=1554887317531578\u0026alt=media","createdAt":1554887303469,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887317670,"updatedAt":1554887317670,"count":1}},"github":{"sha":"2b251bcdc29591f7b097ce589ba824e88ee10a38","filePath":"reeks_a_-_ospf.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3kmCjsQ7kGFaW-":{"uid":"-Lc5VL3kmCjsQ7kGFaW-","kind":"document","title":"Reeks A - Draadloze Netwerken","path":"reeks_a_-_draadloze_netwerken","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3kmCjsQ7kGFaW-%2Fdocument.json?generation=1554887315962360\u0026alt=media","createdAt":1554887303469,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316202,"updatedAt":1554887316202,"count":1}},"github":{"sha":"5054aaf8ed575d137fc190b62f5d746e1655dd3c","filePath":"reeks_a_-_draadloze_netwerken.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3luEhJ6etanCB7":{"uid":"-Lc5VL3luEhJ6etanCB7","kind":"document","title":"Reeks B - Multicastrouting","path":"reeks_b_-_multicastrouting","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3luEhJ6etanCB7%2Fdocument.json?generation=1554887318021767\u0026alt=media","createdAt":1554887303470,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318172,"updatedAt":1554887318172,"count":1}},"github":{"sha":"e2f970c88b275d5be8fa3194ae11fe9306840ce7","filePath":"reeks_b_-_multicastrouting.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3m9qijLU1rBgRO":{"uid":"-Lc5VL3m9qijLU1rBgRO","kind":"document","title":"Reeks B - Configuratie van DNS servers onder Linux","path":"reeks_b_-_configuratie_van_dns_servers_onder_linux","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3m9qijLU1rBgRO%2Fdocument.json?generation=1554887314389570\u0026alt=media","createdAt":1554887303470,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887314652,"updatedAt":1554887314652,"count":1}},"github":{"sha":"15fe88b907f256806b9e527d6ae0e70560e96fe0","filePath":"reeks_b_-_configuratie_van_dns_servers_onder_linux.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3nvGgE1GlKHYtg":{"uid":"-Lc5VL3nvGgE1GlKHYtg","kind":"document","title":"Reeks B - Configuratie van DNS servers onder Linux Deel 2","path":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3nvGgE1GlKHYtg%2Fdocument.json?generation=1554887318680732\u0026alt=media","createdAt":1554887303472,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318813,"updatedAt":1554887318813,"count":1}},"github":{"sha":"8a382d21d89b57a847012092391e17d28d1f06e7","filePath":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3oQhscGe0vZC9Z":{"uid":"-Lc5VL3oQhscGe0vZC9Z","kind":"document","title":"Reeks B - Configuratie van DNS servers onder Linux Deel 3","path":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_3","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3oQhscGe0vZC9Z%2Fdocument.json?generation=1554887315352389\u0026alt=media","createdAt":1554887303472,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887315492,"updatedAt":1554887315492,"count":1}},"github":{"sha":"74fef1d7dcaac5ce90eb0cf2c69b119013811e96","filePath":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_3.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3pEY9qQ_IhOW0V":{"uid":"-Lc5VL3pEY9qQ_IhOW0V","kind":"document","title":"Reeks B - Configuratie van reverse DNS onder Linux","path":"reeks_b_-_configuratie_van_reverse_dns_onder_linux","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3pEY9qQ_IhOW0V%2Fdocument.json?generation=1554887315967642\u0026alt=media","createdAt":1554887303473,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316094,"updatedAt":1554887316094,"count":1}},"github":{"sha":"376fc5c67ca7b334b5b09062cae5a16c0ae8b054","filePath":"reeks_b_-_configuratie_van_reverse_dns_onder_linux.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3qeGq74G_PbwFk":{"uid":"-Lc5VL3qeGq74G_PbwFk","kind":"document","title":"Reek C - DHCP leaseprocessen en relay-agents","path":"reek_c_-_dhcp_leaseprocessen_en_relay-agents","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3qeGq74G_PbwFk%2Fdocument.json?generation=1554887318695655\u0026alt=media","createdAt":1554887303474,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318964,"updatedAt":1554887318964,"count":1}},"github":{"sha":"54d8916e927292e3ea627e449db9583d30f742c8","filePath":"reek_c_-_dhcp_leaseprocessen_en_relay-agents.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3r-h2ZAGXgWoB3":{"uid":"-Lc5VL3r-h2ZAGXgWoB3","kind":"document","title":"Reek C - IPv6 Adressering","path":"reek_c_-_ipv6_adressering","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3r-h2ZAGXgWoB3%2Fdocument.json?generation=1554887318437304\u0026alt=media","createdAt":1554887303474,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318567,"updatedAt":1554887318567,"count":1}},"github":{"sha":"e7c65d2a8034693e918d811b35cd16cf254cddd3","filePath":"reek_c_-_ipv6_adressering.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3stwiOjinPjIhF":{"uid":"-Lc5VL3stwiOjinPjIhF","kind":"document","title":"Reek C - IPv6 berichtstructuur","path":"reek_c_-_ipv6_berichtstructuur","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3stwiOjinPjIhF%2Fdocument.json?generation=1554887316650523\u0026alt=media","createdAt":1554887303475,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316787,"updatedAt":1554887316787,"count":1}},"github":{"sha":"bc51b24fed0465a5f192b8b0740ae7b142166b51","filePath":"reek_c_-_ipv6_berichtstructuur.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3tx67ine59TV2h":{"uid":"-Lc5VL3tx67ine59TV2h","kind":"document","title":"Reek C - Overgang naar IPv6 en autoconfiguratie","path":"reek_c_-_overgang_naar_ipv6_en_autoconfiguratie","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3tx67ine59TV2h%2Fdocument.json?generation=1554887318269353\u0026alt=media","createdAt":1554887303475,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318427,"updatedAt":1554887318427,"count":1}},"github":{"sha":"5539bb143891b958294f917dfdda81b3323a02cc","filePath":"reek_c_-_overgang_naar_ipv6_en_autoconfiguratie.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3uvDVtrrtlElJC":{"uid":"-Lc5VL3uvDVtrrtlElJC","kind":"document","title":"Reek C - IPv6 Tunneling","path":"reek_c_-_ipv6_tunneling","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3uvDVtrrtlElJC%2Fdocument.json?generation=1554887319067475\u0026alt=media","createdAt":1554887303476,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887319245,"updatedAt":1554887319245,"count":1}},"github":{"sha":"3277841cca9e0ad8b873203099b0a5009bdf1240","filePath":"reek_c_-_ipv6_tunneling.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3vwLMsWfSw72i_":{"uid":"-Lc5VL3vwLMsWfSw72i_","kind":"document","title":"SNMP Labo","path":"snmp_labo","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3vwLMsWfSw72i_%2Fdocument.json?generation=1554887317810954\u0026alt=media","createdAt":1554887303476,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887317998,"updatedAt":1554887317998,"count":1}},"github":{"sha":"3bdd3f04bb9aeb4b672a93438b93b21d4f8252c7","filePath":"snmp_labo.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null}}}},"assets":{"-Lc5VOQ8fn5NDIQHigqK":{"uid":"-Lc5VOQ8fn5NDIQHigqK","name":"IC212787.gif","downloadURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2F-Lc5VOQ8fn5NDIQHigqK%2FIC212787.gif?generation=1554887326422136\u0026alt=media","size":6488,"contentType":"image/gif","createdAt":1554887326421,"github":{"sha":"c8dda9d5675ae6e2bd59d791a0f69c53b17e6dcb","filePath":"IC212787.gif"},"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887326297,"updatedAt":1554887326297,"count":1}}},"-Lc5VOQAYfKyPmOPbfmL":{"uid":"-Lc5VOQAYfKyPmOPbfmL","name":"IC195509.gif","downloadURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2F-Lc5VOQAYfKyPmOPbfmL%2FIC195509.gif?generation=1554887325962228\u0026alt=media","size":11513,"contentType":"image/gif","createdAt":1554887325961,"github":{"sha":"b15b676613752043c3b7a7921239d660f19742e7","filePath":"IC195509.gif"},"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887325842,"updatedAt":1554887325842,"count":1}}}}},"github":[{"repoID":"thebillkidy/ugent-computernetwerken-2","sha":"73d0862069e75c52073148b9d59e181082823075","ref":"refs/heads/master","message":"Update reek_c_-_ipv6_tunneling.md","isGitBookBot":false}],"rollbackOf":null}}},"documents":{"documents":{"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3m9qijLU1rBgRO%2Fdocument.json?generation=1554887314389570\u0026alt=media":{"format_version":1,"document":{"kind":"document","key":"4cb9ffdd72834e4ab791ef0a45926b20","data":{"schema_version":6},"nodes":[{"kind":"block","type":"paragraph","key":"e15f9cb97e564d3ba2f860902f530d2a","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"dbbcac8b47ab499fa5d85a381d76bf2f","ranges":[{"kind":"range","marks":[],"text":"De figuur in bijlage stelt een intranet bestaand uit een aantal Linux computers voor, met corresponderend IP-adres, van de vorm 192.168.16.z . Het getal z lees je af links van de naam van de computer. De getallen rechts van de naam van de computer moet je negeren. De computers staan gegroepeerd in een tabel met als header de naam van het domein waarin ze zich bevinden. De rechthoeken die domeinen groeperen stellen dan weer een zone voor. Stippellijnen duiden op een domein/sub­domein relatie. De pijlen laten toe om de primaire name­server van elke zone te achterhalen. Je hoeft geen reverse DNS te configureren."}]}]},{"kind":"block","type":"heading-1","key":"a5e8ebca2c33497bbe9c407f96a60a4a","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"cdc9da8aafdc4630888411da73167f83","ranges":[{"kind":"range","marks":[],"text":"Stel het configuratiebestand en alle zonebestanden op van volgende DNS servers, waarbij je er rekening moet mee houden dat elk van deze servers ook secundaire nameserver is voor alle zones van de andere server: ... . Gebruik relatieve DNS namen waar mogelijk. Gebruik noch forwarders, noch de $ORIGIN opdracht !"}]}]},{"kind":"block","type":"paragraph","key":"f0f4c45264a54a78a6588af13b2bb8a0","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"cbbab868946c4c6cbcfc27548536975d","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Voorbeeld:"},{"kind":"range","marks":[],"text":" Maak zonebestanden aan per DNS server:"}]}]},{"kind":"block","type":"paragraph","key":"f32fbbdd948b479dbcbc252c98d07d8b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"e6e0d461d2a14818a5a6361395ac9e5e","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"named.conf"}]}]},{"kind":"block","type":"code","key":"f92410762a964383ab973eb2891b0a81","isVoid":false,"data":{"syntax":"text"},"nodes":[{"kind":"block","type":"code-line","key":"7ede272ede5c4bdfae5c4d2b0fab0488","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"46e0674dd15b456b97273d3fd4ff665d","ranges":[{"kind":"range","marks":[],"text":"options {"}]}]},{"kind":"block","type":"code-line","key":"ff1d5f7e54c5442a9071a63424cb9fef","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"20dad641d3994e01b8a8e5b0952ec637","ranges":[{"kind":"range","marks":[],"text":"    directory \"/var/named\";"}]}]},{"kind":"block","type":"code-line","key":"3c3413bfa2074a4385c9eb61da6740a0","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"e51fd4112ccd4cfc83360ac9f82d4e6f","ranges":[{"kind":"range","marks":[],"text":"    dump-file \"/var/named/data/cache_dump.db\";"}]}]},{"kind":"block","type":"code-line","key":"8d91b2de4f434024a925f4438fb59ad2","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b569cad07bcc4a32826fda2ec0504909","ranges":[{"kind":"range","marks":[],"text":"        statistics-file \"/var/named/data/named_stats.txt\";"}]}]},{"kind":"block","type":"code-line","key":"f6c24340c7ab423398f0e12a6efc65de","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"6cefbbc0b65648678e5d85bcca0cef84","ranges":[{"kind":"range","marks":[],"text":"        memstatistics-file \"data/named_mem_stats.txt\";"}]}]},{"kind":"block","type":"code-line","key":"f88d44accd9d4950ad84a8ca63feab39","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"7ba0099b813246f7b59e1b0ac2a27a57","ranges":[{"kind":"range","marks":[],"text":"};"}]}]},{"kind":"block","type":"code-line","key":"ecc433aa1930460e882bb6df57ca5508","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"2907f754b41c4b459fcbf379f604e7a9","ranges":[{"kind":"range","marks":[],"text":""}]}]},{"kind":"block","type":"code-line","key":"5df65ab4976249e18b82275a9820cb9f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"e194174bddae45c19d4519f87d7fa317","ranges":[{"kind":"range","marks":[],"text":"logging"}]}]},{"kind":"block","type":"code-line","key":"62c8b5c303be42fa947df5c39533ba5b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"69df3ea2e29147eba1c32c4d6c534faa","ranges":[{"kind":"range","marks":[],"text":"{"}]}]},{"kind":"block","type":"code-line","key":"b7cc57872e59452e9070aa766acc1697","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"8433549af0884774b793013ebcfb0291","ranges":[{"kind":"range","marks":[],"text":"        channel default_debug {"}]}]},{"kind":"block","type":"code-line","key":"786276f6f4e84d14919719288b0d0619","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d028713e027145fabd21c8dbe0659fc1","ranges":[{"kind":"range","marks":[],"text":"                syslog daemon;"}]}]},{"kind":"block","type":"code-line","key":"0b6d9ef44a9e42f88189a51dcf49609e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"514d939154cb45f989dcec8d50136651","ranges":[{"kind":"range","marks":[],"text":"                severity dynamic;"}]}]},{"kind":"block","type":"code-line","key":"cf0af26c67da4ce0a236fda0de19f6b6","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4d654610d88b4fbcb79933d99d84f465","ranges":[{"kind":"range","marks":[],"text":"        };"}]}]},{"kind":"block","type":"code-line","key":"cd390a5a844b462e95e09adebb425a0d","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"836d0727b9a344c3b936c10be5df93c4","ranges":[{"kind":"range","marks":[],"text":"};"}]}]},{"kind":"block","type":"code-line","key":"4ab44d129d9d499a9f37a85a8a30af16","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"7f6e05f5256c4da984004adf887a3ba2","ranges":[{"kind":"range","marks":[],"text":""}]}]},{"kind":"block","type":"code-line","key":"f979796d290c46cc9b52f123723e56f2","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"abf2d5768897460d8102659e626df952","ranges":[{"kind":"range","marks":[],"text":"zone \"oratoria.XVII.it\" IN {"}]}]},{"kind":"block","type":"code-line","key":"fa6fb674a7e949cba4b55f4fa932ccbb","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"2b50ac88832c431889657b46d624ff67","ranges":[{"kind":"range","marks":[],"text":"    type master;"}]}]},{"kind":"block","type":"code-line","key":"3d7aa195921640c9a39f08b28e1421a9","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a015565db78c44648d3160841dd1dd8c","ranges":[{"kind":"range","marks":[],"text":"    file \"oratoria.XVII.it.zone\";"}]}]},{"kind":"block","type":"code-line","key":"f800d59dad5a44efb2a132a22febde3a","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"245ff296aa4d455087fe3182e69be1d3","ranges":[{"kind":"range","marks":[],"text":"    allow-update { none; };"}]}]},{"kind":"block","type":"code-line","key":"0f0eab4cd56a4522bf58d5a27372b49c","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4d12ced87c86496bbde36d39bbcf1ad1","ranges":[{"kind":"range","marks":[],"text":"};"}]}]},{"kind":"block","type":"code-line","key":"9ec2c2891247466e83a85cd2e5b947a0","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"8e61b4a4ed05400fb545fdad05ba4ba0","ranges":[{"kind":"range","marks":[],"text":""}]}]},{"kind":"block","type":"code-line","key":"bef0c675e105491eaec59caff8f1ed82","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d0c8c03a418245169de32ac3dc2ccd2f","ranges":[{"kind":"range","marks":[],"text":"zone \"XIX.it\" IN {"}]}]},{"kind":"block","type":"code-line","key":"e952faf66e334c26808ea48e16063d19","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4f95c1dffcc740e392581c8c86c21758","ranges":[{"kind":"range","marks":[],"text":"    type master;"}]}]},{"kind":"block","type":"code-line","key":"32477c4bdf8048b0b0fb97faacfc545f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b67a0f9da2be47c69942be3679c880ca","ranges":[{"kind":"range","marks":[],"text":"    file \"XIX.it.zone\";"}]}]},{"kind":"block","type":"code-line","key":"4c63a1eafe7146908eb3aecc53dcd4fe","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a3a40445ba304a72bb29f63caf8fdffc","ranges":[{"kind":"range","marks":[],"text":"    allow-update { none; };"}]}]},{"kind":"block","type":"code-line","key":"d8e6f3bc82ca4b1f9073b7f401a132f2","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"2f86a23da71443b49cf6ac450f36a4c1","ranges":[{"kind":"range","marks":[],"text":"};"}]}]},{"kind":"block","type":"code-line","key":"db51eec51c37411da28a1b995987edbf","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"413694e2c2bd435aaf6826c5ce437995","ranges":[{"kind":"range","marks":[],"text":""}]}]},{"kind":"block","type":"code-line","key":"da93839eb4424f3585c65a7e59673aba","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4b76da3fff1d4095976a565d531eee3d","ranges":[{"kind":"range","marks":[],"text":"zone \"XX.us\" IN {"}]}]},{"kind":"block","type":"code-line","key":"72301aa486b24f71a3208fe3bfd3c3aa","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"041ad7fbd7e94cb8bbd008e6ee2144e0","ranges":[{"kind":"range","marks":[],"text":"    type master;"}]}]},{"kind":"block","type":"code-line","key":"157201a46c33473c8c331e45b285852c","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b58ae14965e04abda42b7383118ab436","ranges":[{"kind":"range","marks":[],"text":"    file \"XX.us.zone\";"}]}]},{"kind":"block","type":"code-line","key":"9dea0aadb1ad4493bc0eba86cf04e2db","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c6ee117945904c86ae46f858f71d077d","ranges":[{"kind":"range","marks":[],"text":"    allow-update { none; };"}]}]},{"kind":"block","type":"code-line","key":"3400d072c84543bd872c9bc08e93c544","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ba4a5efe8d614efdb218b2bb754805a6","ranges":[{"kind":"range","marks":[],"text":"};"}]}]},{"kind":"block","type":"code-line","key":"c184ef89b9e346c0a28c59014e508180","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"735d6194da75460c920509bc14e2956d","ranges":[{"kind":"range","marks":[],"text":""}]}]},{"kind":"block","type":"code-line","key":"7bc17389e9b14564a511c0b9107aa4f8","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c0cc4d0587a04e30ba5e2a5530169b69","ranges":[{"kind":"range","marks":[],"text":"controls {"}]}]},{"kind":"block","type":"code-line","key":"a901dd1149b04dc3a61c58524fb17878","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"3e8e8fd4436e4311945359aa9e710adf","ranges":[{"kind":"range","marks":[],"text":"    inet * allow { localhost; 192.168.16/24; } keys { rndckey; };"}]}]},{"kind":"block","type":"code-line","key":"bd657782cfa74702b6f53e553bccf110","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4eaa4d284e044335b12296e30707d9f4","ranges":[{"kind":"range","marks":[],"text":"};"}]}]},{"kind":"block","type":"code-line","key":"1082f32490544344a693e53b04365839","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a90275a28d6040b79e624a670d76b42d","ranges":[{"kind":"range","marks":[],"text":""}]}]},{"kind":"block","type":"code-line","key":"a683f811d11041c2aeca336fc6aaf614","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4828044cd8634b34ab0420855fa43e9c","ranges":[{"kind":"range","marks":[],"text":"include \"/etc/rndc.key\";"}]}]},{"kind":"block","type":"code-line","key":"e4edac23d27d47f6a0bb55a67a6c9386","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"6ebca4f6586046518b8356a73f8e45d5","ranges":[{"kind":"range","marks":[],"text":"include \"/etc/named.rfc1912.zones\";"}]}]}]},{"kind":"block","type":"paragraph","key":"e1b170c50852426ebb31089d79629d5b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"1c9c58156f054c4f8c6ca5f018579c1f","ranges":[{"kind":"range","marks":[],"text":" "},{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"XX.us.zone"}]}]},{"kind":"block","type":"code","key":"1f3a30e3d64a4fad8ba6d41c785c9991","isVoid":false,"data":{"syntax":"text"},"nodes":[{"kind":"block","type":"code-line","key":"ab6b8ad9d9664ab79efff755bd2d85db","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"2e2f1203a54e476ba43a68941a18f263","ranges":[{"kind":"range","marks":[],"text":";"}]}]},{"kind":"block","type":"code-line","key":"40c0bae0dac84cecb090081f14e1475f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"6b67ef8fd6f74409bbc141d14f656c35","ranges":[{"kind":"range","marks":[],"text":";        Zone File for \"XX.us\" - Internal Use ONLY"}]}]},{"kind":"block","type":"code-line","key":"5d5b52c353704a0082e378388cc5f68e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"1a1789455e6a49bda129ba46626a4717","ranges":[{"kind":"range","marks":[],"text":";                                      "}]}]},{"kind":"block","type":"code-line","key":"c30adec657cf49ebb865a3444b4c6a1a","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"abe94d616af44fb3a1dd1c56d4676fe0","ranges":[{"kind":"range","marks":[],"text":"; Append XX.us after every relative domain"}]}]},{"kind":"block","type":"code-line","key":"dbee747162934450b95bfdcaa886ceff","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ed6166d2363a4577a54b99a6abcc14f0","ranges":[{"kind":"range","marks":[],"text":"$TTL 60"}]}]},{"kind":"block","type":"code-line","key":"eddb885f577c448eac3dabce9d695463","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"1b3ca2067d054761855b5c50424bc22f","ranges":[{"kind":"range","marks":[],"text":"@    IN    SOA    corelli.sonatas.XVII.it. xavier.geerinck.ugent.be ("}]}]},{"kind":"block","type":"code-line","key":"2da6c0f7428148fc98b554d22163a922","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"7a052c120ca44563884a3ecbe2f66e9a","ranges":[{"kind":"range","marks":[],"text":"                  1            ; serial"}]}]},{"kind":"block","type":"code-line","key":"ed3b105611154f10b7d3de040b6174c4","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"cdd00200146d4a559e5dde6591268b2c","ranges":[{"kind":"range","marks":[],"text":"                  1            ; refresh"}]}]},{"kind":"block","type":"code-line","key":"b4170cad10c2455e88e9c2067119d119","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a77edf22b47f420981c54fab9764b145","ranges":[{"kind":"range","marks":[],"text":"                  1            ; retry"}]}]},{"kind":"block","type":"code-line","key":"602d26af78254a9a933728cdb8ac36c0","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"1e929b3369d54674a8704de5b3e1b89d","ranges":[{"kind":"range","marks":[],"text":"                  1            ; expire"}]}]},{"kind":"block","type":"code-line","key":"1fe48a4c29d04c8b902f0ae0171fbed5","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"917bc006ff41436791d4c6f8a6216846","ranges":[{"kind":"range","marks":[],"text":"                  1 )          ; minimum"}]}]},{"kind":"block","type":"code-line","key":"5c9e0c0bcf014d5abba2458e7ff64861","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b2010d3ff3c647dea47d8adbe18b3a9c","ranges":[{"kind":"range","marks":[],"text":";"}]}]},{"kind":"block","type":"code-line","key":"6b727c69aac7403dbae10e24cd0b8647","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"aa45aadabee14036b44229420f3ef532","ranges":[{"kind":"range","marks":[],"text":"     IN    NS    corelli.sonatas.XVII.it.                       ; Authoritative Name Server"}]}]},{"kind":"block","type":"code-line","key":"a1c3fce55b7949a6a248f76554d008b6","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4dbe5e1b636d4897b23b122b643ca80c","ranges":[{"kind":"range","marks":[],"text":"; Delegations"}]}]},{"kind":"block","type":"code-line","key":"6c7582a3aed943c9be5c22916f436eb8","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"dd97d09980c249c9bfd29cc539ff36b3","ranges":[{"kind":"range","marks":[],"text":"vocal                          IN  NS    gershwin.vocal         ; vocal.xx.us. is controlled by gershwin.vocal.xx.us."}]}]},{"kind":"block","type":"code-line","key":"040d86843ddc4e6a8fa2ca6cb339d570","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"9a9df3d25c2b40a2a5cfaabd6a467a6c","ranges":[{"kind":"range","marks":[],"text":";"}]}]},{"kind":"block","type":"code-line","key":"8c350d2a543d4d5089cf472d5037433e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"11e8233bd87840c684080fc0dc57a574","ranges":[{"kind":"range","marks":[],"text":"corelli.sonatas.XVII.it        IN  A     192.168.16.126         ; IP of name server"}]}]},{"kind":"block","type":"code-line","key":"56356f821d4d4622a6d401191b8146db","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"731ae288d6154069bd5512d738bc0531","ranges":[{"kind":"range","marks":[],"text":"gershwin.vocal                 IN  A     192.168.16.132         ; A-record for gershwin.vocal.xx.us (IP name server vocal.xx.us subdomain)"}]}]},{"kind":"block","type":"code-line","key":"ef9e36457c994199b0cb3a2be5315b76","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d24c391aab3e49c086715264149fc33c","ranges":[{"kind":"range","marks":[],"text":"barber                         IN  A     192.168.16.4           ; A-record barber.xx.us"}]}]},{"kind":"block","type":"code-line","key":"328310a303374782977f1f0693891e0f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"f0b2cd495b6f46c98956189c5dc700f6","ranges":[{"kind":"range","marks":[],"text":"bernstein                      IN  A     192.168.16.17          ; A-record bernstein.xx.us"}]}]},{"kind":"block","type":"code-line","key":"4f21202456484d0d903d4cdf82f1ed3f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"24b3a32c14c6499e817fac2b0d21a4d6","ranges":[{"kind":"range","marks":[],"text":"cage                           IN  A     192.168.16.58          ; A-record cage.xx.us"}]}]},{"kind":"block","type":"code-line","key":"7ac70e11dbef4cce833f81c7fef6424e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"fee895da8fc944c6bb79d960299cf56e","ranges":[{"kind":"range","marks":[],"text":"copland                        IN  A     192.168.16.73          ; A-record copland.xx.us"}]}]},{"kind":"block","type":"code-line","key":"9dab9bffc8e946618611df224b866e14","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"abf546f6cbb3484bbfb5a3d1759b2a04","ranges":[{"kind":"range","marks":[],"text":"glass                          IN  A     192.168.16.99          ; A-record glass.xx.us"}]}]},{"kind":"block","type":"code-line","key":"b3ad59a862b3416094aeb365ca1db90c","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"e12766ba660d45c58804f578d790d561","ranges":[{"kind":"range","marks":[],"text":"carter.orchestral              IN  A     192.168.16.64          ; A-record carter.orchestral.xx.us"}]}]}]},{"kind":"block","type":"paragraph","key":"de4566235e25401d954a66c6cd4c982f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c3151b905d8a42c0a8225abcf0bcdc89","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"XIX.it.zone"}]}]},{"kind":"block","type":"code","key":"f770908b35134f07a50ac3d722dbcf15","isVoid":false,"data":{"syntax":"text"},"nodes":[{"kind":"block","type":"code-line","key":"9896c01ddbe64a63802ec74c99964310","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"2161bd6554ab4b048eca8607828df49e","ranges":[{"kind":"range","marks":[],"text":";"}]}]},{"kind":"block","type":"code-line","key":"a21d6d7384494040b5c8266b2d7a8a73","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"f282aeee11be45d3801befe0b9f24c02","ranges":[{"kind":"range","marks":[],"text":";       Zone File for \"XIX.it\" - Internal Use ONLY"}]}]},{"kind":"block","type":"code-line","key":"54c7e8b132d549c1ae44347783b85f66","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"09eff06053d04c56b1be9764222d8922","ranges":[{"kind":"range","marks":[],"text":";                                    "}]}]},{"kind":"block","type":"code-line","key":"f23cf9bcc7d9467ea38f44e85bee789e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"1ea315b8f6d44e3e964bc93ed9d1157d","ranges":[{"kind":"range","marks":[],"text":"; Append XIX.it after every relative domain"}]}]},{"kind":"block","type":"code-line","key":"e81f1c810b214bce8355a0eb0c8e8df3","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"62ce02afc99244d68fbcd14681e33b8b","ranges":[{"kind":"range","marks":[],"text":"$TTL 60"}]}]},{"kind":"block","type":"code-line","key":"a7d7f95e074f47ff9adfbf0921bc73ad","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"418c1c559aac48d9b0e11230eba686eb","ranges":[{"kind":"range","marks":[],"text":"@    IN    SOA    corelli.sonatas.XVII.it. xavier.geerinck.ugent.be ("}]}]},{"kind":"block","type":"code-line","key":"db76b6fc95bd4f838ef3b907f965cd69","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"499c068da28d4b25ba238179dea6e8d8","ranges":[{"kind":"range","marks":[],"text":"                  1            ; serial"}]}]},{"kind":"block","type":"code-line","key":"d520b8e6f10f4c02913579829c165833","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"dd0eafa7145645d0a2ccf8413f05f486","ranges":[{"kind":"range","marks":[],"text":"                  1            ; refresh"}]}]},{"kind":"block","type":"code-line","key":"0ec6ad13c85848ccb37ac2f2d0173029","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ff63ba1229574e648d70e86f0b8f61d1","ranges":[{"kind":"range","marks":[],"text":"                  1            ; retry"}]}]},{"kind":"block","type":"code-line","key":"80665bb170364c3db934639864a9bb25","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"8195a16c7a324e1f80f13564a1ee1381","ranges":[{"kind":"range","marks":[],"text":"                  1            ; expire"}]}]},{"kind":"block","type":"code-line","key":"07b97b7144be48a19f51cb3f1fcfae68","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"70e59de167544a0ab48d77868403c51b","ranges":[{"kind":"range","marks":[],"text":"                  1 )          ; minimum"}]}]},{"kind":"block","type":"code-line","key":"b7fd8b2aabd148a79b6e70eb48ec6cfc","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"45f3f22df6cd490b9a793b6ad12a04fe","ranges":[{"kind":"range","marks":[],"text":";"}]}]},{"kind":"block","type":"code-line","key":"0765cdd7f6e743469f0e9e32c74ffba5","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"0f4198620bfe4718bd890dd819b1a59a","ranges":[{"kind":"range","marks":[],"text":"     IN    NS    corelli.sonatas.XVII.it.                  ; Authoritative Name Server"}]}]},{"kind":"block","type":"code-line","key":"06fb546b84ee4e2fad09f1e84637f171","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"eb9c7e48e26f45f5839bea5a506cbe3f","ranges":[{"kind":"range","marks":[],"text":"; delegations"}]}]},{"kind":"block","type":"code-line","key":"2435d84c815143009c946922eca82aa5","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"7afe1fb6376d4bb9a468329696345f9c","ranges":[{"kind":"range","marks":[],"text":"opera                          IN  NS   frescobaldi.XVII.it.   ; opera.XIX.it is controlled by frescobaldi.XVII.it."}]}]},{"kind":"block","type":"code-line","key":"558a075b6b3f4e71bafd337e78208e1f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ee3763933f5642b88af045c01d92d640","ranges":[{"kind":"range","marks":[],"text":";"}]}]},{"kind":"block","type":"code-line","key":"46e0e763f1414aa495423d509f126ef7","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"28fbe725cdd04ebd9ad6eca1edba2a05","ranges":[{"kind":"range","marks":[],"text":"corelli.sonatas.XVII.it        IN  A    192.168.16.126         ; IP of name server"}]}]},{"kind":"block","type":"code-line","key":"2817a8a829444b1b91f949ec9bdf62e9","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4fd51b1f87ed4d5ba27c988bd9128b25","ranges":[{"kind":"range","marks":[],"text":"frescobaldi.XVII.it.           IN  A    192.168.16.131         ; IP of name server that controls opera.XIX.it."}]}]},{"kind":"block","type":"code-line","key":"75e2f8ebe12247edb500dd447934e13f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"be5c51a203cb49ff8adfc9490b910717","ranges":[{"kind":"range","marks":[],"text":"ponchielli                     IN  A    192.168.16.197         ; A-record ponchielli.XIX.it"}]}]}]},{"kind":"block","type":"paragraph","key":"4fa7a498f4a6424ab62a185642aabbce","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"80d90be7d6554edba3e4a6624cb0663f","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"oratoria.XVII.it.zone"}]}]},{"kind":"block","type":"code","key":"9d32525bb9c94856bf2d4386abe67c00","isVoid":false,"data":{"syntax":"text"},"nodes":[{"kind":"block","type":"code-line","key":"05b7575b1e4b474dac481fa7f52039d3","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"69c646ec635f4c218049a68225968202","ranges":[{"kind":"range","marks":[],"text":";"}]}]},{"kind":"block","type":"code-line","key":"213407e87d004005aa22491f222008ce","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d2d02ce4eb58400d8a56a6e8f0ad2e2b","ranges":[{"kind":"range","marks":[],"text":";       Zone File for \"oratoria.XVII.it\" - Internal Use ONLY"}]}]},{"kind":"block","type":"code-line","key":"bf23c77d29204220a65fa9111299bef3","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"23f84d2c6d4040e78a7a5730764f2550","ranges":[{"kind":"range","marks":[],"text":";                   "}]}]},{"kind":"block","type":"code-line","key":"33e5f365cc6f4945a1c763b03b7a8e81","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"cf0595d724e84c1383ad04da52e60176","ranges":[{"kind":"range","marks":[],"text":"; Append oratoria.XVII.it after every relative domain"}]}]},{"kind":"block","type":"code-line","key":"a4ee5da740ab4d729e4c43b22a0992e9","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"94ec0ff099964de48bb66892e48be20a","ranges":[{"kind":"range","marks":[],"text":"$TTL 60"}]}]},{"kind":"block","type":"code-line","key":"899b9aba7ae249bc9c52dd3824ed343f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"f401eeb7c7124e998c812c7de426189c","ranges":[{"kind":"range","marks":[],"text":"@    IN    SOA    corelli.sonatas.XVII.it. xavier.geerinck.ugent.be ("}]}]},{"kind":"block","type":"code-line","key":"453b3ee2571c4f969d7977c53b31d91b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c1f3ae4367e7426493d1df5e0ba30f44","ranges":[{"kind":"range","marks":[],"text":"                  1            ; serial"}]}]},{"kind":"block","type":"code-line","key":"1e878630f0364dd183172b11c8a22b1e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"51c0ad9fa3924770a5ead4f61c988f96","ranges":[{"kind":"range","marks":[],"text":"                  1            ; refresh"}]}]},{"kind":"block","type":"code-line","key":"e78b39c9e5554d5182bb892403032fe5","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"5abe9fd13ab743e084308be0ec89a459","ranges":[{"kind":"range","marks":[],"text":"                  1            ; retry"}]}]},{"kind":"block","type":"code-line","key":"c62da203debd44bebddd847de0d2f4d1","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"3f970b17679244cdacd1194f5f38cae4","ranges":[{"kind":"range","marks":[],"text":"                  1            ; expire"}]}]},{"kind":"block","type":"code-line","key":"9c664c6812e145a19ffd79cc1d892468","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"de36d909d04b43188a6f40e4f7ed177a","ranges":[{"kind":"range","marks":[],"text":"                  1 )          ; minimum"}]}]},{"kind":"block","type":"code-line","key":"b54c836c703046399e9fbac70fe631de","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"9bb32583aa804f9d9d2e481d8de2ab24","ranges":[{"kind":"range","marks":[],"text":";"}]}]},{"kind":"block","type":"code-line","key":"48be06233a0641bc916ca6db619d53ae","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ad779b2305b94d30abb7985e5643c762","ranges":[{"kind":"range","marks":[],"text":"     IN    NS    corelli.sonatas.XVII.it.           ; Authoritative Name Server"}]}]},{"kind":"block","type":"code-line","key":"59f9dfbcaa134549b0d9ec27d49e5e51","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a680a0c217fb41838331415b11aae0b4","ranges":[{"kind":"range","marks":[],"text":";"}]}]},{"kind":"block","type":"code-line","key":"362afe9a61b6415a8171cb5bc7163f29","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a54c8d2e2a514361b0a9a086b9232bac","ranges":[{"kind":"range","marks":[],"text":"corelli.sonatas.XVII.it     IN  A   192.168.16.126  ; IP Of name server"}]}]},{"kind":"block","type":"code-line","key":"d37d0aa93b5c4bfcb8173b4d40a6c6c2","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"3fc4f71bb69245fbbf0e77fd0abefa29","ranges":[{"kind":"range","marks":[],"text":"carissimi                   IN  A   192.168.16.60   ; A-record carissimi.oratoria.XVII.it"}]}]}]},{"kind":"block","type":"heading-1","key":"8fbb4c81a34143279fc019e685b5b9bf","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"1283b20e13cc4d14a374d3281c352cc8","ranges":[{"kind":"range","marks":[],"text":"Bespreek in detail het begrip secundaire nameserver, inclusief voordelen, beperkingen en problemen. (§3.1 \u0026 §3.3.3)"}]}]},{"kind":"block","type":"paragraph","key":"a652423f2b6147ffb9700e20458adabd","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"db826aa353e8487e9b3895146b192b99","ranges":[{"kind":"range","marks":[],"text":"Secundaire nameservers houden dezelfde informatie bij als primaire"}]}]},{"kind":"block","type":"list-unordered","key":"0e810add88f54f9c927060f4adc3eba4","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"cb48b1327b5142a4b7f202312f4efca3","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"d42d08b3aa76408b96a2113c23dd026a","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ce71c268609543a3af72913e5e398e53","ranges":[{"kind":"range","marks":[],"text":"Moet als type slave gebruikt worden."}]}]}]},{"kind":"block","type":"list-item","key":"badce6dbfd584987b1bf65ef19fe6ea3","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"1067b0dfa2654f5d97267fbbadfeb861","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"749ecedfaf604c75b6d7db442cd5adba","ranges":[{"kind":"range","marks":[],"text":"allow-transfer { ip-adressen }; moet gebruikt worden bij options."}]}]}]}]},{"kind":"block","type":"paragraph","key":"8ff31bf4caa14df1bcbefa5c2acadf00","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"cb10d1d140fa46218c73915c7f12c6ce","ranges":[{"kind":"range","marks":[],"text":"Voordelen:"}]}]},{"kind":"block","type":"list-unordered","key":"28216054d3324222856116dcc165ffe7","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"ace609c665024acbb34d96fb1c26c49d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"65e711b20be14fd68b02fffd5dbf6192","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a8813815c26f421b9471f3c07f318c8f","ranges":[{"kind":"range","marks":[],"text":"Worden gebruikt om taak primaire nameserver te verlichten"}]}]}]},{"kind":"block","type":"list-item","key":"e9fdbb516f6e4e4d814b984fd4bfde16","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"ba78511dd48c430daab2c91c127d2e22","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"5b3f4487d192457e86a5eace9b62df42","ranges":[{"kind":"range","marks":[],"text":"Ook om te zorgen voor fouttolerantie in geval dat primaire nameserver uitvalt."}]}]}]}]},{"kind":"block","type":"paragraph","key":"e1b2041538944f5082a238cdc455081c","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"81b2263c652043e189d533874f6690a3","ranges":[{"kind":"range","marks":[],"text":"Beperkingen:"}]}]},{"kind":"block","type":"list-unordered","key":"36e29826ecd84fa0b855d20e8612d9da","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"661c1199c4a64ee79586abfe619c120c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"17998fec81cf459bbd1e632118fa27b1","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"8ccc4983ce6545608092a74f52f6e02a","ranges":[{"kind":"range","marks":[],"text":"Niet flexibel in gebruik: Wijzigingen enkel op primaire nameserver, secundaire moet dus checken of primaire gewijzigd."}]}]}]}]}]}}}},"user":{"kind":"user","uid":"-M157pD6j2NwGT59CPBy","baseDomain":"","defaultSpace":null,"displayName":"","photoURL":null,"deletedAt":null,"usageStatuses":null,"email":"","emailVerified":false,"disabled":false,"phoneNumber":null,"providers":{},"isVisitor":true,"customClaims":{},"lastLoggedInAt":1582798419008,"createdAt":1582798419008}},"config":{"environment":"production","firebase":{"databaseURL":"https://gitbook-28427.firebaseio.com","apiKey":"AIzaSyBL3yy07hdwBstwhhFTkRtzJA865UQzQVg","authDomain":"app.gitbook.com","projectId":"gitbook-28427","storageBucket":"gitbook-28427.appspot.com","messagingSenderId":"208404988308"},"amplitude":{"key":"fef1e872c952688acd962d30aa545b9e","endpoint":"www.gitbook.com/__amp/"},"zendesk":{"widget_key":"c2b4abc5-eb81-454f-8d35-ba1650332541","subdomain":"gitbook"},"ga":{"spaces":{"id":"UA-57505611-10","view_id":"152688311"},"website":{"id":"UA-57505611-9"}},"slack":{"client_id":"3085992729.251477828931","redirect_uri":"https://hooks.gitbook.com/hooks/slack/oauth"},"sentry":{"url":"https://df403e1abd7046148b272790ec350ce0@sentry.io/193897"},"stripe":{"public_key":"pk_live_iPkbPsG28bjTrkbfHXUq0cA0","plans":{"business_monthly":"plan_ERCJFVRMVGgjVZ","team_yearly":"plan_GAeDEVtig2ujYe","startup_yearly":"plan_FpdZWR4TLYnKYH","business_yearly":"plan_ERCJgSzm3Ui1ox","startup_monthly":"plan_FpdWuSK3BgOldB","team_monthly":"plan_GAeDpGXRUSctoE"},"products":{"legacy":"prod_FROhqd8l1W4Fwg","team":"prod_GAeD47cc905FaD","business":"prod_DpiRtaS8dvrtrK","startup":"prod_Cd5mCUdVDfZSHY","enterprise":"prod_DpMsO7RlzNd0Ty"}},"algolia":{"appid":"Q9UGR6532T"},"clearbit":{"public_key":"pk_e1e4d94ae5385255f0fc7d76d4897ade"},"urls":{"api":"https://api-beta.gitbook.com","spaces":"https://gitbook-28427.firebaseapp.com","website":"https://app.gitbook.com","saml":"https://www.gitbook.com"},"domains":{"spaces":"gitbook.io","cookie":".gitbook.com"},"cdn":{"blobsurl":"https://blobs.gitbook.com/","hosting_cname":"hosting.gitbook.com"},"statuspage":{"domain":"http://status.gitbook.com"},"logrocket":{"key":"fvjtqz/gitbook"},"version":"6.13.0","buildVersion":"6.13.0-9796653.27978"},"props":{"ownerID":"538c32a77bcb1b0200ff5dcd","spaceID":"-Lc5VIoyjbmo2ReQJFfs","spaceName":"ugent-computernetwerken-2","basename":"/ugent-computernetwerken-2","location":"/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux"}};
+            </script>
+            <script id="__LOADABLE_REQUIRED_CHUNKS__" type="application/json" crossorigin="anonymous" charset="utf-8">[]</script>
+<script async data-chunk="space" src="https://static.gitbook.com/js/111.cb821c98.js" crossorigin="anonymous" charset="utf-8"></script>
+        </body>
+    </html>
+    

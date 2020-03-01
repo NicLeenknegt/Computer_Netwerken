@@ -1,0 +1,1908 @@
+
+    <!doctype html>
+    <html >
+        <head>
+            <title data-react-helmet="true">Reek C - DHCP leaseprocessen en relay-agents - UGent Computernetwerken 2</title>
+            <meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/><meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="google" value="notranslate"/><meta data-react-helmet="true" property="og:image" content="https://app.gitbook.com/share/space/thumbnail/-Lc5VIoyjbmo2ReQJFfs.png"/><meta data-react-helmet="true" property="twitter:card" content="summary"/><meta data-react-helmet="true" property="twitter:site" content="UGent Computernetwerken 2"/><meta data-react-helmet="true" name="description" content=""/><meta data-react-helmet="true" property="og:title" content="Reek C - DHCP leaseprocessen en relay-agents"/><meta data-react-helmet="true" property="og:description" content=""/>
+            <link data-react-helmet="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500"/><link data-react-helmet="true" rel="stylesheet" href="https://unpkg.com/emojione-assets@4.0.0/sprites/emojione-sprite-40.min.css"/><link data-react-helmet="true" rel="preconnect" href="https://www.googleapis.com"/><link data-react-helmet="true" rel="preconnect" href="https://api.amplitude.com"/><link data-react-helmet="true" rel="preconnect" href="https://blobs.gitbook.com/"/><link data-react-helmet="true" rel="canonical" href="https://xavier-geerinck.gitbook.io/ugent-computernetwerken-2/reek_c_-_dhcp_leaseprocessen_en_relay-agents"/>
+            <style data-react-helmet="true" type="text/css">
+        @font-face {
+            font-family: "Roboto";
+            src: local("Roboto"), local("Roboto-Regular"), url(https://static.gitbook.com/fonts/fc3d4b35e4d07d4e0485cc2db0e57c77.woff) format('woff');
+            font-weight: 400;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Roboto";
+            src: local("Roboto Medium"), local("Roboto-Medium"), url(https://static.gitbook.com/fonts/f4fa50c4003f87e7dc10459e500933c3.woff) format('woff');
+            font-weight: 500;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Roboto";
+            src: local("Roboto Bold"), local("Roboto-Bold"), url(https://static.gitbook.com/fonts/72e37e5bf95a8dba938c78b1d7d91253.woff) format('woff');
+            font-weight: 700;
+            font-display: fallback;
+        }
+    </style><style data-react-helmet="true" type="text/css">
+        @font-face {
+            font-family: "Content-font";
+            src: local("Roboto"), local("Roboto-Regular"), url(https://static.gitbook.com/fonts/fc3d4b35e4d07d4e0485cc2db0e57c77.woff) format('woff');
+            font-weight: 400;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Content-font";
+            src: local("Roboto Medium"), local("Roboto-Medium"), url(https://static.gitbook.com/fonts/f4fa50c4003f87e7dc10459e500933c3.woff) format('woff');
+            font-weight: 500;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Content-font";
+            src: local("Roboto Bold"), local("Roboto-Bold"), url(https://static.gitbook.com/fonts/72e37e5bf95a8dba938c78b1d7d91253.woff) format('woff');
+            font-weight: 700;
+            font-display: fallback;
+        }
+    </style>
+            <script data-react-helmet="true" type="text/javascript" defer="true" src="https://polyfill.io/v3/polyfill.min.js?flags=gated&amp;features=Intl"></script>
+            <style>#__GITBOOK__ROOT__SERVER__ { width: 100%; height: 100%; display: flex;}</style>
+            <style>#__GITBOOK__ROOT__CLIENT__ { width: 100%; min-height: 100%; height: initial; display: flex;}</style>
+            <style id="__GITBOOK__STYLE__">html, body {
+  color: #242A31;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  background: #F5F7F9;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  line-height: 1em;
+  font-smoothing: antialiased;
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+@media screen and (min-width: 768px) {
+  html, body {
+    text-rendering: optimizeLegibility;
+  }
+}
+@media print {
+  html, body {
+    background: transparent;
+  }
+}
+*, *:before, *:after {
+  outline: none;
+  box-sizing: inherit;
+}
+@font-face {
+  font-family: "Flow-Rounded";
+  src: url("https://static.gitbook.com/fonts/bfc0a96537ceb0cad9e956b9f980fe88.woff") format('woff');
+  font-display: block;
+}
+input, select, textarea {
+  font-size: 16px;
+}
+input, select, textarea, button {
+  font: inherit;
+}
+input[type="search"] {
+  -webkit-appearance: none;
+}
+.draggingElement, .draggingElement *:hover {
+  cursor: grabbing !important;
+  pointer-events: auto !important;
+}
+.draggingElement .draggingHidden {
+  display: none;
+}
+
+.reset-3c756112--body-68cac36c {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  background: #F5F7F9;
+  min-height: 100vh;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--header-07037613--header-11420428 {
+  display: -webkit-box;
+  height: 80px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  z-index: 20;
+  position: relative;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  border-bottom: 1px solid #d4dadf;
+  background-color: #FFFFFF;
+}
+@media print {
+  .reset-3c756112--header-07037613--header-11420428 {
+    display: none;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--header-07037613--header-11420428 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    top: 0;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--header-07037613--header-11420428 {
+    height: 60px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+.reset-3c756112--headerContainer-bb8cc0bc {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  padding: 0;
+  max-width: 1448px;
+}
+.reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-box-align: center;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26 {
+    max-width: 298px;
+    justify-content: center;
+    -webkit-box-pack: center;
+  }
+  .reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26:after {
+    top: 50%;
+    right: 0;
+    height: 40px;
+    content: " ";
+    position: absolute;
+    transform: translateY(-50%);
+    border-left: 1px solid #E6ECF1;
+  }
+}
+.reset-3c756112--mobileButton-7a76d05f {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 0 0 auto;
+  width: 30px;
+  cursor: pointer;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  outline: none;
+  padding: 0;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--mobileButton-7a76d05f {
+    display: none;
+  }
+}
+.icon-7f6730be--text-3f89f380--icon-1f8349b3 {
+  color: #242A31;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+.reset-3c756112--headerLogo-5c0b38e2 {
+  margin: 0;
+  display: block;
+  padding: 0px 24px;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--headerLogo-5c0b38e2 {
+    width: 250px;
+    padding: 0;
+  }
+}
+.reset-3c756112--mobileLogo-dacfd15c {
+  margin: 0;
+  display: none;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--mobileLogo-dacfd15c {
+    display: block;
+  }
+}
+.link-a079aa82--primary-53a25e66--logoLink-10d08504 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #3884FF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  -webkit-box-align: center;
+}
+.reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90 {
+  flex: 1;
+  color: #242A31;
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-left: 8px;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90 {
+    overflow: hidden;
+    max-width: 50vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+.reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90:hover {
+  color: #3884FF;
+}
+.text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1--spaceNameText-677c2969 {
+  font-size: 16px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+.reset-3c756112--desktopLogo-a594db90 {
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--desktopLogo-a594db90 {
+    display: none;
+  }
+}
+.reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea {
+  flex: 1 1 auto;
+  margin: 0px 88px;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  max-width: 750px;
+}
+.reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea:after {
+  background: -webkit-linear-gradient(to right, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+  background: -moz-linear-gradient(to right, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+  pointer-events: none;
+}
+@media screen and (max-width: 1439px) {
+  .reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea {
+    margin: 0px 24px 0px 88px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea {
+    display: none;
+  }
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48 {
+  display: -webkit-box;
+  overflow-x: auto;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  opacity: 1;
+  padding: 0;
+  overflow-x: overlay;
+  overflow-y: hidden;
+  transition: flex 250ms ease,width 250ms ease,opacity 250ms ease;
+  -moz-transition: flex 250ms ease,width 250ms ease,opacity 250ms ease;
+  -webkit-transition: flex 250ms ease,width 250ms ease,opacity 250ms ease;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  height: 80px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  max-width: 224px;
+  align-items: center;
+  -webkit-box-align: center;
+}
+.reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130:before {
+  top: 50%;
+  left: 0;
+  height: 40px;
+  content: " ";
+  position: absolute;
+  transform: translateY(-50%);
+  border-left: 1px solid #E6ECF1;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130 {
+    display: none;
+  }
+}
+.reset-3c756112--inputContainer-b2cb171c {
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-left: 14px;
+  padding-right: 16px;
+}
+.inputInner-5c86b87d--medium-0bbed4bd--inputInner-4216b016--searchInputPlaceholder-936306be {
+  font: inherit;
+  color: #242A31;
+  width: 100%;
+  border: none;
+  cursor: inherit;
+  height: 38px;
+  margin: 0;
+  resize: none;
+  outline: none;
+  padding: 0px 8px;
+  background: transparent;
+  box-sizing: border-box;
+  text-align: left;
+  line-height: inherit;
+  border-radius: 3px;
+}
+.inputInner-5c86b87d--medium-0bbed4bd--inputInner-4216b016--searchInputPlaceholder-936306be::placeholder {
+  color: #9DAAB6;
+  font-size: 16px;
+  font-weight: 500;
+}
+.reset-3c756112--inputWrapper-63396dac--TextH400-3033861f--medium-4505230f--light-502263b4--input-6d442051--searchInput-3fa812d5 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  border: none;
+  margin: 0;
+  display: flex;
+  outline: none;
+  padding: 0;
+  font-size: 16px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  font-weight: 400;
+  line-height: 1.625;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+}
+.reset-3c756112--inputInnerSizer-756c9114 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.reset-3c756112--inputAddOn-45de9ec1--inputAddOnPrefix-202fa60d--icon-1f8349b3 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 0 0 auto;
+  color: #242A31;
+  order: -1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  line-height: 1.2;
+  white-space: nowrap;
+  padding-left: 8px;
+  -webkit-box-align: center;
+}
+.icon-7f6730be--text-3f89f380 {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+.reset-3c756112--bodyContent-2f98451b {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1;
+  color: #3B454E;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  padding: 0;
+}
+.reset-3c756112--wholeContent-9fc567d4 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  min-height: 100%;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--wholeContentBody-554be184 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  transition: margin-bottom 250ms ease;
+  align-items: stretch;
+  -moz-transition: margin-bottom 250ms ease;
+  -webkit-box-align: stretch;
+  -webkit-transition: margin-bottom 250ms ease;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--wholeContentBody-554be184 {
+    padding-top: 80px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--wholeContentBody-554be184 {
+    padding-top: 60px;
+  }
+}
+@keyframes keyframes-animation-2f81d449-0-1-1 {
+  0% {
+    background-color: rgba(24, 48, 85, 0);
+  }
+  100% {
+    background-color: rgba(24, 48, 85, 0.30000000000000004);
+  }
+}
+.reset-3c756112--backdrop-1322b68a--hidden-247382c3--overlay-29559ab8 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  z-index: 29;
+  position: absolute;
+  transition: background-color 250ms ease-out;
+  align-items: center;
+  animation-name: none;
+  pointer-events: none;
+  -moz-transition: background-color 250ms ease-out;
+  justify-content: center;
+  -webkit-box-pack: center;
+  background-color: rgba(24, 48, 85, 0);
+  -webkit-box-align: center;
+  -webkit-transition: background-color 250ms ease-out;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--backdrop-1322b68a--hidden-247382c3--overlay-29559ab8 {
+    z-index: 14;
+  }
+}
+.reset-3c756112--contentNavigation-dd3370a4 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  z-index: 30;
+}
+@media print {
+  .reset-3c756112--contentNavigation-dd3370a4 {
+    display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--contentNavigation-dd3370a4 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex: 0 0 auto;
+    width: calc((100% - 1448px) / 2 + 298px);
+    display: flex;
+    z-index: 15;
+    min-width: 298px;
+    background: #F5F7F9;
+    align-items: stretch;
+    border-right: 1px solid #E6ECF1;
+    padding-left: calc((100% - 1448px) / 2);
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+  }
+}
+.reset-3c756112--contentNavigationInner-205d49ea--contentNavigationInnerCollapsed-7b4aca00 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--contentNavigationInner-205d49ea--contentNavigationInnerCollapsed-7b4aca00 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 30;
+    position: fixed;
+    max-width: 298px;
+    transform: translateX(-100%) !important;
+    box-shadow: none;
+    overflow-y: auto;
+    transition: transform 250ms ease;
+    border-right: 1px solid #E6ECF1;
+    -moz-transition: transform 250ms ease;
+    background-color: #fff;
+    -webkit-transition: transform 250ms ease;
+  }
+}
+.reset-3c756112--sidebarWrapper-84a13d8e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: stretch;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112 {
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.reset-3c756112--sidebar-84a13d8e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: stretch;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--sidebarMain-32610e62 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  background-color: #F5F7F9;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe {
+  overflow-y: auto;
+  flex: 1 1 auto;
+  width: 100%;
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--mobileHeader-4e2d4892 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #74818D;
+  height: 59px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  box-shadow: 0 1px 1px 0 rgba(116, 129, 141, 0.1);
+  align-items: stretch;
+  border-bottom: 1px solid #d4dadf;
+  background-color: #FFFFFF;
+  -webkit-box-align: stretch;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--mobileHeader-4e2d4892 {
+    display: none;
+  }
+}
+.reset-3c756112--mobileHeaderClose-47b8fa64 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  padding: 8px 16px;
+  font-size: 24px;
+  align-items: center;
+  -webkit-box-align: center;
+}
+.reset-3c756112--pagesTree-4b07cd56 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  font-size: 15px;
+  margin-top: 32px;
+  padding-left: 16px;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--pagesTree-4b07cd56 {
+    padding-left: 24px;
+  }
+}
+.reset-3c756112--pageItem-01e3f344 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+  border-left: 1px solid transparent;
+}
+.reset-3c756112--pageComponent-7cc5301a {
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-left: -1px;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  padding: 7px 24px 7px 16px;
+  position: relative;
+  align-items: center;
+  border-right: 0;
+  text-decoration: none;
+  -webkit-box-align: center;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca:hover {
+  background-color: #E6ECF1;
+}
+.text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f {
+  flex: 1;
+  font-size: 14px;
+  word-break: break-word;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.reset-3c756112--pageItemWithChildren-56f27afc {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca--navButtonOpened-6a88552e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  padding: 7px 24px 7px 16px;
+  position: relative;
+  align-items: center;
+  border-color: #E6ECF1 !important;
+  border-right: 0;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-box-align: center;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca--navButtonOpened-6a88552e:hover {
+  border-color: #E6ECF1;
+  background-color: #FFFFFF;
+}
+.reset-3c756112--pageItemWithChildren-56f27afc--S300Bottom-9b4658d2 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+  margin-bottom: 24px;
+}
+.reset-3c756112--footer-68e6f18c {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--footer-68e6f18c:before {
+  background: -webkit-linear-gradient(to bottom, rgba(255,255,255,0) 0%, #F5F7F9 100%);
+  background: -moz-linear-gradient(to bottom, rgba(255,255,255,0) 0%, #F5F7F9 100%);
+  top: -24px;
+  width: 100%;
+  height: 24px;
+  content: "";
+  display: block;
+  position: absolute;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #F5F7F9 100%);
+}
+.reset-3c756112--trademark-a8da4b94 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #9DAAB6;
+  margin: 16px;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  margin-left: 32px;
+  padding-top: 8px;
+  padding-left: 16px;
+  border-radius: 3px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  text-decoration: none;
+  background-color: #E6ECF1;
+  -webkit-box-align: center;
+}
+.reset-3c756112--trademark-a8da4b94:hover {
+  color: #3884FF;
+}
+.reset-3c756112--trademarkLogo-0d2d53bc {
+  margin: 0;
+  display: block;
+  padding: 0;
+  font-size: 40px;
+}
+.reset-3c756112--trademarkContent-04a01aea {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-left: 16px;
+}
+.text-4505230f--TextH200-a3425406--textUIFamily-5ebd8e40 {
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.625;
+}
+.reset-3c756112--wholeContentPage-6c3f1fc5 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1 1 auto;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  max-width: 100%;
+  min-width: 0;
+  background: #fff;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--wholePageSticky-f53dafd2 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1 1 auto;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  min-width: 0;
+}
+.reset-3c756112--pageContainer-3ec6d8d0 {
+  flex: 1 1 auto;
+  margin: 0px 16px;
+  display: block;
+  padding: 0;
+  max-width: 750px;
+  min-width: 0;
+  padding-bottom: 64px;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--pageContainer-3ec6d8d0 {
+    margin: 0px auto;
+    padding: 0px 24px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--pageContainer-3ec6d8d0 {
+    margin: 0px 88px;
+  }
+}
+.reset-3c756112--pageHeader-15724735 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  border-bottom: 2px solid #E6ECF1;
+  margin-bottom: 32px;
+}
+.reset-3c756112--pageHeaderInner-7c0f0284 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  margin: 0;
+  display: flex;
+  padding: 40px 0px;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--pageHeaderInner-7c0f0284 {
+    flex-wrap: wrap;
+    align-items: baseline;
+    flex-direction: row;
+    -webkit-box-align: baseline;
+    -webkit-box-lines: multiple;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+  }
+}
+.reset-3c756112--pageHeaderWrapperContent-6897c946 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--horizontalFlex-5a0077e0 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: stretch;
+  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-box-align: stretch;
+}
+.reset-3c756112--pageHeaderIntro-0c1463da {
+  flex: 1 1 auto;
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-right: 16px;
+}
+.reset-3c756112--pageTitle-33dc39a3 {
+  color: #242A31;
+  width: 100%;
+  border: none;
+  margin: 0;
+  display: block;
+  outline: none;
+  padding: 0;
+  background: none;
+  border-radius: 3px;
+}
+.text-4505230f--DisplayH900-bfb998fa--textContentFamily-49a318e1 {
+  font-size: 32px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.reset-3c756112--toolbar-a6a9f7d2--medium-8e46b02c--pageHeaderToolbar-6457a802--withControlsClosed-3e96e46c {
+  display: -ms-inline-grid;
+  margin: 0;
+  display: none;
+  padding: 0;
+  margin-top: 9px;
+  -ms-grid-rows: none;
+  grid-column-gap: 16px;
+  grid-template-rows: none;
+}
+@media screen and (max-width: 1279px) {
+  .reset-3c756112--toolbar-a6a9f7d2--medium-8e46b02c--pageHeaderToolbar-6457a802--withControlsClosed-3e96e46c {
+    display: block;
+  }
+}
+.button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94 {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  color: #9DAAB6;
+  width: 30px;
+  border: 1px solid;
+  cursor: pointer;
+  height: 30px;
+  display: inline-flex;
+  outline: none;
+  padding: 0;
+  transition: all 250ms ease-out;
+  align-items: center;
+  line-height: 1em;
+  white-space: nowrap;
+  border-color: transparent;
+  border-radius: 3px;
+  -moz-transition: all 250ms ease-out;
+  justify-content: center;
+  text-decoration: none;
+  -webkit-box-pack: center;
+  background-color: transparent;
+  -webkit-box-align: center;
+  -webkit-transition: all 250ms ease-out;
+}
+.button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94:hover {
+  color: #3884FF;
+}
+.small-3bde6db7--iconOnly-bddce91a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+.text-4505230f--UIH300-2063425d--textUIFamily-5ebd8e40--text-8ee2c8b2 {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  line-height: 1em;
+}
+.reset-3c756112--pageHeaderDescription-22970244 {
+  flex: auto;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.reset-3c756112--toaster-c029690e {
+  top: 16px;
+  left: 50%;
+  margin: 0;
+  display: block;
+  padding: 0;
+  z-index: 160;
+  position: fixed;
+  transform: translateX(-50%);
+}
+.reset-3c756112--pageBody-a91db4ac {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  font-size: 16px;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--container-960c7c26 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+  margin-bottom: -24px;
+}
+.blockHeading-442b4f12 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  margin: 0;
+  display: flex;
+  position: relative;
+  margin-bottom: 24px;
+}
+.blockHeadingContent-756c9114 {
+  flex: 1;
+}
+.text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1 {
+  font-size: 24px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda {
+  color: #242A31;
+  width: 20px;
+  opacity: 0;
+  transition: opacity 150ms ease;
+  line-height: 1em;
+  padding-left: 4px;
+  -moz-transition: opacity 150ms ease;
+  -webkit-transition: opacity 150ms ease;
+}
+.blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda:hover {
+  color: #3884FF;
+}
+@media print {
+  .blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda {
+    display: none;
+  }
+}
+.blockHeadingAnchorIcon-1c2bf3cb {
+  font-size: 16px;
+  vertical-align: middle;
+}
+.reset-3c756112--blockHeadingUp-c32402b2 {
+  width: 1em;
+  cursor: pointer;
+  height: 1em;
+  margin: 0;
+  display: block;
+  outline: none;
+  padding: 0;
+  line-height: 1em;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--blockHeadingUp-c32402b2 {
+    display: none;
+  }
+}
+@media print {
+  .reset-3c756112--blockHeadingUp-c32402b2 {
+    display: none;
+  }
+}
+.blockParagraph-544a408c {
+  color: inherit;
+  margin: 0;
+  position: relative;
+  margin-bottom: 24px;
+}
+.text-4505230f--TextH400-3033861f--textContentFamily-49a318e1 {
+  font-size: 16px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.625;
+}
+.list-20526648 {
+  color: #3B454E;
+  margin: 0;
+  padding: 0;
+  padding-left: 2em;
+  margin-bottom: 24px;
+}
+.reset-3c756112--listItemContent-756c9114 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.blockParagraph-544a408c--noMargin-acdf7afa {
+  color: inherit;
+  margin: 0;
+  position: relative;
+  margin-bottom: 0;
+}
+.list-20526648--inList-acdf7afa {
+  color: #3B454E;
+  margin: 0;
+  padding: 0;
+  padding-left: 2em;
+  margin-bottom: 0;
+}
+.blockHeading-442b4f12--blockHeading1WithMargin-b69d755e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  margin: 0;
+  display: flex;
+  position: relative;
+  margin-top: 73px;
+  margin-bottom: 24px;
+}
+.blockHeading-442b4f12--blockHeading1WithMargin-b69d755e:before {
+  top: -32px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  content: " ";
+  position: absolute;
+  background-color: #E6ECF1;
+}
+.bold-3c254bd9 {
+  font-weight: 700;
+}
+.blockHeading-442b4f12--blockHeading2WithMargin-532d771d {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  margin: 0;
+  display: flex;
+  position: relative;
+  margin-top: 32px;
+  margin-bottom: 24px;
+}
+.text-4505230f--HeadingH600-23f228db--textContentFamily-49a318e1 {
+  font-size: 20px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.code-81e98f88 {
+  margin: 0 1px;
+  display: inline-block;
+  padding: 3px 6px;
+  font-size: 85%;
+  font-family: "Source Code Pro", Menlo, monospace;
+  border-radius: 3px;
+  background-color: #F5F7F9;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.code-81e98f88:after {
+  content: "\00a0";
+  letter-spacing: -1em;
+}
+.reset-3c756112--pageFooter-f1d5e2b0 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-top: 64px;
+}
+@media print {
+  .reset-3c756112--pageFooter-f1d5e2b0 {
+    display: none;
+  }
+}
+.reset-3c756112--navPagesLinks-67bea901 {
+  display: -ms-grid;
+  width: auto;
+  margin: 0;
+  display: grid;
+  padding: 0;
+  -ms-grid-rows: auto;
+  grid-column-gap: 24px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "previous next";
+  grid-template-columns: 1fr 1fr;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--navPagesLinks-67bea901 {
+    grid-row-gap: 24px;
+    -ms-grid-columns: 1fr;
+    grid-template-areas: "next" "previous";
+    grid-template-columns: 1fr;
+  }
+}
+.reset-3c756112--card-6570f064--whiteCard-fff091a4--cardPrevious-56a5e674 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  border: 1px solid #E6ECF1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  grid-area: previous;
+  align-self: stretch;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  transition: border 250ms ease;
+  align-items: center;
+  justify-self: stretch;
+  border-radius: 3px;
+  flex-direction: row;
+  -moz-transition: border 250ms ease;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-box-align: center;
+  page-break-inside: avoid;
+  -ms-grid-row-align: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-transition: border 250ms ease;
+  -ms-grid-column-align: stretch;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--cardIcon-5b647d22 {
+  flex: 0 0 auto;
+  color: #9DAAB6;
+  margin: 0;
+  display: block;
+  padding: 16px;
+  font-size: 24px;
+  transition: color 250ms ease;
+  -moz-transition: color 250ms ease;
+  -webkit-transition: color 250ms ease;
+}
+.reset-3c756112--cardIcon-5b647d22:first-child {
+  padding-right: 0;
+}
+.reset-3c756112--cardIcon-5b647d22:last-child {
+  padding-left: 0;
+}
+.reset-3c756112--cardBody-25dca3b1--cardPreviousBody-79f02c06 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 16px;
+  text-align: right;
+}
+.reset-3c756112--cardHint-2c5d8183 {
+  color: #9DAAB6;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.text-4505230f--TextH200-a3425406--textContentFamily-49a318e1 {
+  font-size: 12px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.625;
+}
+.reset-3c756112--cardTitle-32aa092e {
+  margin: 0;
+  display: block;
+  padding: 0;
+  transition: color 250ms ease;
+  -moz-transition: color 250ms ease;
+  -webkit-transition: color 250ms ease;
+}
+.text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1 {
+  font-size: 16px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.reset-3c756112--card-6570f064--whiteCard-fff091a4--cardNext-19241c42 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  border: 1px solid #E6ECF1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  grid-area: next;
+  align-self: stretch;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  transition: border 250ms ease;
+  align-items: center;
+  justify-self: stretch;
+  border-radius: 3px;
+  flex-direction: row;
+  -moz-transition: border 250ms ease;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-box-align: center;
+  page-break-inside: avoid;
+  -ms-grid-row-align: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-transition: border 250ms ease;
+  -ms-grid-column-align: stretch;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--cardBody-25dca3b1 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 16px;
+}
+.reset-3c756112--pageFooterColumns-ef8f347e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  border-top: 2px solid #E6ECF1;
+  margin-top: 24px;
+  align-items: center;
+  padding-top: 24px;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--pageFooterColumns-ef8f347e {
+    align-items: stretch;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+  }
+}
+.reset-3c756112--pageFooterSummary-12074aff {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--pageFooterSummary-12074aff {
+    margin-bottom: 16px;
+  }
+}
+.reset-3c756112--pageChangesSummary-08821678 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  -webkit-box-align: center;
+}
+.reset-3c756112--pageContributors-5c59582e {
+  flex: 0 0 auto;
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-right: 8px;
+}
+.reset-3c756112--ownerAvatarList-696792ce {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+}
+@keyframes keyframes-animation-bd7e9c6a-0-1-2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  z-index: 0;
+  position: relative;
+  box-shadow: 0 0 0 2px white;
+  border-radius: 128px;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:after {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  top: calc(100% + 16px);
+  left: 50%;
+  color: #FFFFFF;
+  width: max-content;
+  bottom: auto;
+  content: attr(aria-label);
+  display: none;
+  opacity: 0;
+  padding: 5px 8px;
+  z-index: 155;
+  position: absolute;
+  font-size: 12px;
+  max-width: 300px;
+  transform: translateX(-50%);
+  background: #242A31;
+  font-weight: 400;
+  line-height: 1.625;
+  white-space: normal;
+  border-radius: 3px;
+  animation-name: keyframes-animation-bd7e9c6a-0-1-2;
+  pointer-events: none;
+  text-transform: none;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:before {
+  top: calc(100% + 8px);
+  left: 50%;
+  width: 0;
+  bottom: auto;
+  height: 0;
+  content: "";
+  display: none;
+  opacity: 0;
+  z-index: 156;
+  position: absolute;
+  transform: translateX(-50%);
+  border-color: #242A31 transparent;
+  border-style: solid;
+  animation-name: keyframes-animation-bd7e9c6a-0-1-2;
+  border-top-width: 0;
+  border-left-width: 8px;
+  animation-duration: 0.2s;
+  border-right-width: 8px;
+  animation-fill-mode: forwards;
+  border-bottom-width: 8px;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:nth-last-child(n+2) {
+  margin-left: -8px;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:hover:before {
+  display: block;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:hover:after {
+  display: block;
+}
+.reset-3c756112--avatarFrame-2f40cdc9--small-2ec8ae1a--circle-6c5acd10 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  -webkit-mask-image: -moz-radial-gradient(white, black);
+  mask-image: -webkit-radial-gradient(white, black);
+  mask-image: -moz-radial-gradient(white, black);
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  mask-image: radial-gradient(white, black);
+  align-items: center;
+  border-radius: 128px;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  -webkit-mask-image: radial-gradient(white, black);
+}
+.image-67b14f24--avatar-1c1d03ec {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  background-size: cover;
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+}
+.reset-3c756112--innerShadow-7a3a8651 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: absolute;
+  box-shadow: inset 0 0 1px 1px rgba(24, 48, 85, 0.1);
+  border-radius: 128px;
+  pointer-events: none;
+}
+.reset-3c756112--pageEditedDate-b805c39a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  color: #9DAAB6;
+  margin: 0;
+  display: flex;
+  padding: 0;
+}
+.reset-3c756112--pageSide-ad9fed26 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 0 0 auto;
+  width: 224px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  margin-right: auto;
+}
+@media print {
+  .reset-3c756112--pageSide-ad9fed26 {
+    display: none;
+  }
+}
+@media screen and (max-width: 1279px) {
+  .reset-3c756112--pageSide-ad9fed26 {
+    display: none;
+  }
+}
+.reset-3c756112--stickyContainer-2bed3a82 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  max-width: 100%;
+}
+.reset-3c756112--tocWrapper-506ea24c {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  padding-top: 40px;
+  flex-direction: column;
+  padding-bottom: 40px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114 {
+  overflow-y: auto;
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--pageSideSection-542f1fd5 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--pageSideSection-542f1fd5:before {
+  top: 0;
+  left: 0;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  border-left: 1px solid #E6ECF1;
+}
+.reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5 {
+  display: -webkit-box;
+  flex: 1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  min-width: 224px;
+  counter-reset: toc;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+@media print {
+  .reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5 {
+    display: none;
+  }
+}
+.reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5:before {
+  top: 0;
+  left: 0;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  border-left: 1px solid #E6ECF1;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496 {
+  overflow-y: auto;
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--menuHeader-d7753f3a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #9DAAB6;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  padding-left: 24px;
+  margin-bottom: 8px;
+}
+.reset-3c756112--menuHeaderIcon-0c3ed569 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-right: 8px;
+}
+.text-4505230f--InfoH100-1e92e1d1--textContentFamily-49a318e1 {
+  font-size: 10px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024 {
+  display: -webkit-box;
+  color: #74818D;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  padding: 4px 16px;
+  align-items: center;
+  padding-left: 24px;
+  vertical-align: middle;
+  text-decoration: none;
+  -webkit-box-align: center;
+}
+.reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024:hover {
+  background: none;
+  text-decoration: inherit;
+}
+.link-a079aa82--primary-53a25e66 {
+  color: #3884FF;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.reset-3c756112--menuItemContent-c44ec79e {
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.text-4505230f--UIH300-2063425d--textContentFamily-49a318e1 {
+  font-size: 14px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1 {
+  font-size: 12px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1--pageTocLinkH2-2294976c {
+  font-size: 12px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  padding-left: 16px;
+}</style>
+        </head>
+        <body>
+            <div id="__GITBOOK__ROOT__SERVER__"><div class="reset-3c756112--body-68cac36c" data-reactroot=""><div class="reset-3c756112--header-07037613--header-11420428"><div class="reset-3c756112--headerContainer-bb8cc0bc"><div class="reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26"><div role="button" tabindex="-1" class="reset-3c756112--mobileButton-7a76d05f"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380--icon-1f8349b3"><g><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></g></svg></div><div class="reset-3c756112--headerLogo-5c0b38e2"><div class="reset-3c756112--mobileLogo-dacfd15c"><a class="link-a079aa82--primary-53a25e66--logoLink-10d08504" style="color:#3884FF" href="/ugent-computernetwerken-2/"><div class="reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1--spaceNameText-677c2969">UGent Computernetwerken 2</span></div></a></div><div class="reset-3c756112--desktopLogo-a594db90"><a class="link-a079aa82--primary-53a25e66--logoLink-10d08504" style="color:#3884FF" href="/ugent-computernetwerken-2/"><div class="reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1--spaceNameText-677c2969">UGent Computernetwerken 2</span></div></a></div></div><div role="button" tabindex="-1" class="reset-3c756112--mobileButton-7a76d05f"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380--icon-1f8349b3"><g><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></g></svg></div></div><div class="reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48"></div></div><div class="reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130"><div class="reset-3c756112--inputContainer-b2cb171c"><div aria-label="" class="reset-3c756112--inputWrapper-63396dac--TextH400-3033861f--medium-4505230f--light-502263b4--input-6d442051--searchInput-3fa812d5"><div class="reset-3c756112--inputInnerSizer-756c9114"><input type="text" placeholder="Search..." class="inputInner-5c86b87d--medium-0bbed4bd--inputInner-4216b016--searchInputPlaceholder-936306be"/></div><div class="reset-3c756112--inputAddOn-45de9ec1--inputAddOnPrefix-202fa60d--icon-1f8349b3"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></g></svg></div></div></div></div></div></div><div class="reset-3c756112--bodyContent-2f98451b"><div class="reset-3c756112--wholeContent-9fc567d4"><div class="reset-3c756112--wholeContentBody-554be184"><div role="presentation" class="reset-3c756112--backdrop-1322b68a--hidden-247382c3--overlay-29559ab8"></div><div class="reset-3c756112--contentNavigation-dd3370a4"><div class="reset-3c756112--contentNavigationInner-205d49ea--contentNavigationInnerCollapsed-7b4aca00"><div class="reset-3c756112--sidebarWrapper-84a13d8e"><div style="padding-bottom:0" class="reset-3c756112"></div><div class="reset-3c756112--sidebar-84a13d8e"><div class="reset-3c756112--sidebarMain-32610e62"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe"><div class="reset-3c756112--mobileHeader-4e2d4892"><div role="button" tabindex="-1" class="reset-3c756112--mobileHeaderClose-47b8fa64"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></g></svg></div></div><div class="reset-3c756112--pagesTree-4b07cd56"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">introduction</span></a></div></div><div class="reset-3c756112"><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_configuratie_van_de_netwerkinterface_-_bridging_-_multicasting_op_subnetwerkniveau"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - Configuratie van de netwerkinterface - Bridging - Multicasting op subnetwerkniveau</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_routing"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - Routing</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_rip"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - RIP</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_ospf"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - OSPF</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_draadloze_netwerken"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - Draadloze Netwerken</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_multicastrouting"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Multicastrouting</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van DNS servers onder Linux</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van DNS servers onder Linux Deel 2</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_3"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van DNS servers onder Linux Deel 3</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_reverse_dns_onder_linux"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van reverse DNS onder Linux</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca--navButtonOpened-6a88552e" style="color:#3884FF" href="/ugent-computernetwerken-2/reek_c_-_dhcp_leaseprocessen_en_relay-agents"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - DHCP leaseprocessen en relay-agents</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_ipv6_adressering"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - IPv6 Adressering</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_ipv6_berichtstructuur"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - IPv6 berichtstructuur</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_overgang_naar_ipv6_en_autoconfiguratie"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - Overgang naar IPv6 en autoconfiguratie</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_ipv6_tunneling"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - IPv6 Tunneling</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc--S300Bottom-9b4658d2"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/snmp_labo"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">SNMP Labo</span></a></div></div></div></div></div></div></div><div class="reset-3c756112--footer-68e6f18c"><a href="https://www.gitbook.com/?utm_source=content&amp;utm_medium=trademark&amp;utm_campaign=xavier-geerinck" target="_blank" class="reset-3c756112--trademark-a8da4b94" role="presentation"><div class="reset-3c756112--trademarkLogo-0d2d53bc"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="currentColor" viewBox="0 0 1067 769" xmlns="http://www.w3.org/2000/svg" stroke="none" class="icon-7f6730be--text-3f89f380"><g><path d="M480.026 640.677c17.205 0 31.2 13.997 31.2 31.194s-13.995 31.193-31.2 31.193c-17.197 0-31.193-13.996-31.193-31.193 0-17.197 13.996-31.194 31.193-31.194m489.93-193.226c-17.203 0-31.2-13.998-31.2-31.195 0-17.204 13.997-31.2 31.2-31.2 17.198 0 31.194 13.996 31.194 31.2 0 17.197-13.996 31.195-31.193 31.195m0-127.804c-53.269 0-96.609 43.34-96.609 96.609 0 10.373 1.723 20.702 5.123 30.741L559.328 616.879c-18.132-26.128-47.521-41.617-79.302-41.617-36.821 0-70.391 21.065-86.63 54.003L106.68 478.109c-30.288-15.927-52.965-65.817-50.56-111.223 1.248-23.687 9.438-42.071 21.897-49.17 7.916-4.493 17.436-4.099 27.526 1.188l1.916 1.01c75.96 40.022 324.6 170.981 335.063 175.844 16.157 7.47 25.14 10.5 52.659-2.547l513.958-267.3c7.53-2.844 16.315-10.062 16.315-21.023 0-15.205-15.72-21.199-15.765-21.199-29.218-14.018-74.163-35.054-117.987-55.57C798.033 84.26 691.861 34.547 645.23 10.132c-40.253-21.072-72.655-3.311-78.432.282l-11.227 5.555C345.727 119.743 64.898 258.826 48.911 268.553 20.278 285.973 2.547 320.679.252 363.768c-3.586 68.304 31.261 139.506 81.069 165.634l303.172 156.354c6.83 47.306 47.55 82.725 95.532 82.725 52.78 0 95.808-42.546 96.603-95.14L910.541 492.38c16.93 13.233 37.92 20.486 59.416 20.486 53.268 0 96.61-43.341 96.61-96.61s-43.342-96.61-96.61-96.61" fill-rule="evenodd"></path></g></svg></div><div class="reset-3c756112--trademarkContent-04a01aea"><div class="reset-3c756112"><span class="text-4505230f--TextH200-a3425406--textUIFamily-5ebd8e40">Powered by <b>GitBook</b></span></div></div></a></div></div></div></div></div></div><div class="reset-3c756112--wholeContentPage-6c3f1fc5"><div class="reset-3c756112--wholePageSticky-f53dafd2"><div class="reset-3c756112--pageContainer-3ec6d8d0"><div class="reset-3c756112"><div class="reset-3c756112--pageHeader-15724735"><div class="reset-3c756112--pageHeaderInner-7c0f0284"><div class="reset-3c756112--pageHeaderWrapperContent-6897c946"><div class="reset-3c756112--horizontalFlex-5a0077e0"><div class="reset-3c756112--pageHeaderIntro-0c1463da"><h1 class="reset-3c756112--pageTitle-33dc39a3"><span class="text-4505230f--DisplayH900-bfb998fa--textContentFamily-49a318e1">Reek C - DHCP leaseprocessen en relay-agents</span></h1></div><div style="grid-template-columns:repeat(1, auto)" class="reset-3c756112--toolbar-a6a9f7d2--medium-8e46b02c--pageHeaderToolbar-6457a802--withControlsClosed-3e96e46c"><button class="button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94"><span class="small-3bde6db7--iconOnly-bddce91a"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="7" y2="18"></line></g></svg></span><span class="text-4505230f--UIH300-2063425d--textUIFamily-5ebd8e40--text-8ee2c8b2"></span></button></div></div><div class="reset-3c756112--pageHeaderDescription-22970244"></div></div></div></div><div class="reset-3c756112--toaster-c029690e"></div><div class="reset-3c756112--pageBody-a91db4ac"><div data-editioncontainer="true" class="reset-3c756112--container-960c7c26"><div data-slate-editor="true" data-key="42a66afb8f0f43619377a190404a46e2" autoCorrect="on" spellcheck="true" data-gramm="false" style="outline:none;white-space:pre-wrap;word-wrap:break-word"><h1 id="geef-een-overzicht-van-de-verschillende-types-dhcp-berichten-hoe-wordt-in-het-bericht-het-type-aangeduid" class="blockHeading-442b4f12" data-key="2ba80c0c506647a3a698e54d2d6032ea"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1"><span data-key="873a444557c643c1a55521c505f6848e"><span data-offset-key="873a444557c643c1a55521c505f6848e:0">Geef een overzicht van de verschillende types DHCP berichten. Hoe wordt in het bericht het type aangeduid ?</span></span></span><a href="#geef-een-overzicht-van-de-verschillende-types-dhcp-berichten-hoe-wordt-in-het-bericht-het-type-aangeduid" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div><div role="button" tabindex="0" style="color:#3884FF" contenteditable="false" class="reset-3c756112--blockHeadingUp-c32402b2"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></g></svg></div></h1><p class="blockParagraph-544a408c" data-key="bb08c120248543c8b0d2f8ce2cbcef63"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="657efefd8057464bb75faed5807e379d"><span data-offset-key="657efefd8057464bb75faed5807e379d:0">We duiden het type aan met de optie 53</span></span></span></p><ul class="list-20526648" data-key="8afe7667f8934a4886b29e60f8476e0a"><li class=""><div data-key="060e705bcf7d429bbd36ce24487ab76e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="b52f2e0ad9a043b6b15ab6beb7b4e9c0"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="accbdd3265c4404588b44226d2268cb2"><span data-offset-key="accbdd3265c4404588b44226d2268cb2:0">DHCP-Discovery bericht</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="356b0dcbb7f2492094e98028a0777f68"><li class=""><div data-key="328ad5bb6c4f4d93ad1253e1a8c05955" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="656e75ce28d947f6a403b6ed60ffea46"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="3410184006c342edab3575df48a0da5b"><span data-offset-key="3410184006c342edab3575df48a0da5b:0">Broacast om servers te ontdekken</span></span></span></p></div></li><li class=""><div data-key="7050a33773f14d6abe95af19500626c5" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="af50ca6ab89b421fa10445248d66e05b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="15f8698a8476440d838f4db1d03fb044"><span data-offset-key="15f8698a8476440d838f4db1d03fb044:0">Optie 51 voor specifieke lease-tijd aan te vragen</span></span></span></p></div></li><li class=""><div data-key="1f2aa9c6bdb64b14843728f5b2ab5359" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="608b89e1349b4782bb9ed9166dbb279c"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="882d1b8f448f4695aba00a351a23723f"><span data-offset-key="882d1b8f448f4695aba00a351a23723f:0">Optie 55 bevat een geordende lijst van gewenste opties</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="57956dcb04a443568b1fa0e1741ee449" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="b181188f243341b484455dd2e8ccb4ce"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="af14dde01860410ea472059bbe9d8934"><span data-offset-key="af14dde01860410ea472059bbe9d8934:0">DHCP-Offer bericht</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="4b3549816023412e8fbe70f4c2e58b39"><li class=""><div data-key="5072646ddb4c411e802586081d35537d" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="47375352e7794ec1b4d59228015d3f38"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="e86dacb9b1114427a8cd2c024d33da96"><span data-offset-key="e86dacb9b1114427a8cd2c024d33da96:0">Reactie op DHCP discovery bericht</span></span></span></p></div></li><li class=""><div data-key="86ec3f03797e41219484091e2cd17bc9" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="0199897017474380959caac34564b128"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="77310340b4ae4c368bdfa21ae9e5725e"><span data-offset-key="77310340b4ae4c368bdfa21ae9e5725e:0">Biedt een client een IP-adreslease aan</span></span></span></p></div></li><li class=""><div data-key="07f71fe9f555414395b1696414ef8d4a" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="5e1937ee5d194e1ea925470e61dc411d"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="10882721fbfb4088b9c117ce47c00fa5"><span data-offset-key="10882721fbfb4088b9c117ce47c00fa5:0">Biedt ook de aangevraagde opties aan</span></span></span></p></div></li><li class=""><div data-key="5f4b51853c6c47b4b51c5952b9163cc8" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="7ff09c89efe14d8a8a227b114ac43eb1"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="777c386df64f4aa6b664fb8ccac8052b"><span data-offset-key="777c386df64f4aa6b664fb8ccac8052b:0">Optie 54 wordt ingesteld met de serveridentificatie (IP-adres)</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="d9004d4bcdf44100b65f426800f4343a" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="d008997ab67e4f21b12dc21b47d67764"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="90466f70acb042df9fc66aa2337c8a8a"><span data-offset-key="90466f70acb042df9fc66aa2337c8a8a:0">DHCP-Request bericht</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="bbe16129de474bb48a7fc30d5b343f64"><li class=""><div data-key="bc790229d6c24b5ab974935f180de5e7" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="a429730447a0483c95e46213813a8816"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b88d0f75677240eca1cbfb782e8e3efc"><span data-offset-key="b88d0f75677240eca1cbfb782e8e3efc:0">Bericht om de DHCP Offer te finaliseren</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="80172ea01cd547d8a02c8a3482fc2268"><li class=""><div data-key="98fce5cca9174e058bd100da54c31e35" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="3b38c2b8adc74165867f6c71a660bf40"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="7ffeef9997ec40128299c4793e207a80"><span data-offset-key="7ffeef9997ec40128299c4793e207a80:0">Dient dus om adreslease te vernieuwe/verlengen</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="951d7e8de145421c983d21ad76b04a19" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="fba00e7d30f5471e9f6f93ba43f1a10f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="28f44e6b3b924f958bae560f7c2eb636"><span data-offset-key="28f44e6b3b924f958bae560f7c2eb636:0">Optie 54 wordt ingesteld met de serveridentificatie (IP-adres)</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="3a51da6abc664794b3461d71eea712f1" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="4d0f77e69f6e499ba3db533a5cd70b79"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="dd39190bc7fe4a3cbffc49e65080f934"><span data-offset-key="dd39190bc7fe4a3cbffc49e65080f934:0">DHCP-Decline bericht</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="ce83f5f43e1d4f9fac7d44d0d14b171c"><li class=""><div data-key="26b8db527ba3404e89a38284611b877a" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="81de5c0549fe498fac425057ce8514da"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="a39fd8e530ca4373bcb2d5b6d246e031"><span data-offset-key="a39fd8e530ca4373bcb2d5b6d246e031:0">Bericht van client naar server die initialisatieproces herstart indient foutieve configuratieinformatie ontvangen is.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="54564eb4698b4f6789177d01fbee7b6e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="83b796cd018143ec9dea3dcfe4aff3bc"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ee52d38fad3a4692ba6a7c88306f048a"><span data-offset-key="ee52d38fad3a4692ba6a7c88306f048a:0">Positief DHCP-Acknowledgment bericht</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="367102d39e474e5298c93c2189e9c065"><li class=""><div data-key="7e4751074c314fd8a3306e2c74c63d4c" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="40887fb7f3b44ad699ddf5f1e68359cf"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c8ae081af02a475dbefe94d90ee6a6b3"><span data-offset-key="c8ae081af02a475dbefe94d90ee6a6b3:0">Bevestigd de lease</span></span></span></p></div></li><li class=""><div data-key="53c0430085564002b36ed91b6c75217b" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="ec0354dbd0324ef6a61e9170abfd28a2"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="d324949eaff24a39a3fad3aaf51d7f6b"><span data-offset-key="d324949eaff24a39a3fad3aaf51d7f6b:0">Stuurt de vereiste DHCP-opties mee</span></span></span></p></div></li><li class=""><div data-key="3ca11e26757848f5968d2cc4ea4544c4" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="9ef1352b17a04fa5a52b5c3bdc0ca973"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="1858cf2fed1440d7a0367facce0cedf2"><span data-offset-key="1858cf2fed1440d7a0367facce0cedf2:0">DHCP servers wiens voorstel niet geaccepteerd werd stoppen de reservering van het aangeboden IP.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="63fc13df2a444bc2ab5d7f3f8090e11d" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="5fff48c858f8418392af3cd645f313d8"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="68c1dcd6d8d546b29343c5d8ed827536"><span data-offset-key="68c1dcd6d8d546b29343c5d8ed827536:0">Negatief DHCP-Acknowledgment bericht</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="d8996d58a7f0452785d6b01c7dba8d0b"><li class=""><div data-key="6c38231db17d40809352409df80ab854" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="a1cb152fde8c44fb8aedfee364d9cdc6"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="2f4bc4469da9416d9c52d2c34b190514"><span data-offset-key="2f4bc4469da9416d9c52d2c34b190514:0">Kan bij ongeldig of reeds toegekend IP-adres, of bij aanvraag subnet waarvoor hij geen DHCP scope ter bschikking heeft</span></span></span></p></div></li><li class=""><div data-key="c6bd1618a1fd49d5953d3b4a1a73c802" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="12ea28662d054045ba850e870691a7c4"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="7e3f7e7ad8c84794933042510d20b2cb"><span data-offset-key="7e3f7e7ad8c84794933042510d20b2cb:0">Herbegin de volledige DHCP initialisatie procedure</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="b20ee630f6e747aa8b1bbf9a3c66997e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="e079241c57954e718b1bdbc7e3a429d4"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="3e566da678ab4c49b0856f7725c85d1d"><span data-offset-key="3e566da678ab4c49b0856f7725c85d1d:0">DHCP-Release bericht</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="5f19b33950144fe280bbb6cb63aa2350"><li class=""><div data-key="92564506b83745229b17419d1ace4628" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="f242012bb4c144ee821c4bfcad41319c"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="17e27a5744774ea5859973373ec1c8b5"><span data-offset-key="17e27a5744774ea5859973373ec1c8b5:0">Bericht van client om huidige lease vrij te geven</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="d555f36614f545c1a7aaf8b0c447228a" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="a04b14bcd22a43e882c9b1defa35ba8e"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="6de05457bd894505a25f68eed85db617"><span data-offset-key="6de05457bd894505a25f68eed85db617:0">DHCP-Inform bericht</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="4167a6b17f2d453c93b07f67823ba1df"><li class=""><div data-key="e383faeda3254be29a0a360ed2692135" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="db40e3f79bd94864a138d0d1e48f0ac7"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="51c229df7d2e4a0794a5cf4d9492a1dd"><span data-offset-key="51c229df7d2e4a0794a5cf4d9492a1dd:0">Vraagt aanvullende opties aan de server</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="edf7403c9bf148f3a957e678b52efdf2"><li class=""><div data-key="7431914007a1462e88a251e12fa4af6e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="b8f8fae80828416abbf509b42c6ee568"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="2b949d2dd5874cdf8fc2d2dec09bbf22"><span data-offset-key="2b949d2dd5874cdf8fc2d2dec09bbf22:0">Zoals DHCP Discovery optie 55 </span></span></span></p></div></li></ul></div></li></ul></div></li></ul><h1 id="bespreek-in-detail-de-opeenvolgende-stappen-van-beide-dhcp-leaseprocessen" class="blockHeading-442b4f12--blockHeading1WithMargin-b69d755e" data-key="98b620aff5884271b9f2bd5efb72b671"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1"><span data-key="a8cc7f67bba84642bef583f979af61bc"><span data-offset-key="a8cc7f67bba84642bef583f979af61bc:0">Bespreek in detail de opeenvolgende stappen van beide DHCP leaseprocessen.</span></span></span><a href="#bespreek-in-detail-de-opeenvolgende-stappen-van-beide-dhcp-leaseprocessen" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div><div role="button" tabindex="0" style="color:#3884FF" contenteditable="false" class="reset-3c756112--blockHeadingUp-c32402b2"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></g></svg></div></h1><ul class="list-20526648" data-key="1e16ac9ac0214ac5afb96d081405ca2e"><li class=""><div data-key="87cb0ecf64cd4a0181d4ad78c8dfa7e2" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="cd461003c2814e9281eae0d19c876b5f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b052f7cd13c846369737c4f339ae3ec7"><span data-offset-key="b052f7cd13c846369737c4f339ae3ec7:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Initialisatie</strong></span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="e0fe941e82e4489491778878d47a1114"><li class=""><div data-key="84ef72358aa94feda4d0516126e9afae" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="94dd0cf333574574a6ccb1fe7cc086eb"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b2c16cac671d4e518746e9862d623246"><span data-offset-key="b2c16cac671d4e518746e9862d623246:0">Client broadcast een DHCP discovery bericht</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="bc9c11c0773043939429f78f9f3e8630"><li class=""><div data-key="c3ed859783734c97aa8166d4a704721c" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="61bdba7bbd244fe88fa896fed6af0618"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c0d3c36d0a544557864f866667f9f4c8"><span data-offset-key="c0d3c36d0a544557864f866667f9f4c8:0">Bronadres: 0.0.0.0</span></span></span></p></div></li><li class=""><div data-key="ebe562533b5345c3aef418a86bf461e3" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="817e6c0c13f547f79d3838beba23d85f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="8f709ef36dff47418543845a04460cd7"><span data-offset-key="8f709ef36dff47418543845a04460cd7:0">Dieladres: 255.255.255.255</span></span></span></p></div></li><li class=""><div data-key="27213be5765c4131a96786a6855e3674" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="f23fe179093e4e1384620570294596a3"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="33b535a217f14cd98dc960109e502b62"><span data-offset-key="33b535a217f14cd98dc960109e502b62:0">Opties 51 en 55 ingesteld</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="01a7bcdccc914ebc91846c0d22f361ac" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="6f6b04f9c9fd48b2a7e5750b7761bd8c"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="f6ace421bbdd4fb3bb439ec817e7dfe8"><span data-offset-key="f6ace421bbdd4fb3bb439ec817e7dfe8:0">Servers antwoorden met DHCP Offer</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="b9c01b4f7a6a4806b542158cbbeb7fdd"><li class=""><div data-key="46ac737afa4c4fb1b58a429fabd412d2" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="79fe9f6e005f43c4a1047922bdae111a"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="1abb579a752642188fe27f1a5c867be3"><span data-offset-key="1abb579a752642188fe27f1a5c867be3:0">Server ID in optie 54</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="4987782bb9eb4fd1b11267b6dd5245b6" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="4ddbc4f3ae3d4f008a07c3e23525f962"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="49a49db27707415c84c310c2a45a4747"><span data-offset-key="49a49db27707415c84c310c2a45a4747:0">Client selecteert lease en vraagt deze formeel aan met een DHCP request</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="f6ea6372fb0641b4a11bcc952a059d64"><li class=""><div data-key="a4d847b575574f9d8c1b1d93355b522e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="83f77fa6075b4a30983b4a9a4f99253e"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="31fcc03aede147f586e0ff253dae1614"><span data-offset-key="31fcc03aede147f586e0ff253dae1614:0">Gekozen server ID in optie 54</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="15c77111595a41b984abfe17b29fed9e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="e020fdf6f68248e2904ff8162060575f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b7368c2848d6406686efdc53a90e5364"><span data-offset-key="b7368c2848d6406686efdc53a90e5364:0">Server bevestigt lease met Positief DHCP Acknowledgment bericht</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="ee5e1a7bb6624a5cb3cbf900ebc808bf"><li class=""><div data-key="6c9f5ffb5f864010b99890c17d163e17" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="598e6abd62f54a15af45b9d4c5b75cb8"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="2211f882cc444a46a624593777d3cc72"><span data-offset-key="2211f882cc444a46a624593777d3cc72:0">Broadcast bericht zodat andere servers tijdelijk gereserveerde leases kunnen vrijgeven.</span></span></span></p></div></li><li class=""><div data-key="c1266ef920d54c268a25bc58c4b99d51" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="cd41f62da59841f3b9c21e239d60b4eb"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ee8266002241411f99157526317a1d05"><span data-offset-key="ee8266002241411f99157526317a1d05:0">Weigeren van lease met een negatieve DHCP Acknowledgment</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="8825c3f1d87f4ba8962faa73915a00b0" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="ad8cb0f7801d45fdbb7c5d2b0c670190"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="af8a6a1204ef4204ad171d20f18a12a3"><span data-offset-key="af8a6a1204ef4204ad171d20f18a12a3:0">Client vraagt eventuele extra informatie op via DHCP Inform bericht</span></span></span></p></div></li><li class=""><div data-key="db1e516531ef43d599666bcb907af508" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="49e9e5d4b60447448fb7f9b0631a8046"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="784f5fa58adf451a88a20a51fcdc06cf"><span data-offset-key="784f5fa58adf451a88a20a51fcdc06cf:0">Client neemt de lease in gebruik</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="b70db89ab8c445859bcd3474dc65f1c7"><li class=""><div data-key="5b33049ca70241488bf0983b372f4679" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="b524d202cf77456c8ed884fedace4172"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="7d1913b0313e4d9bbb6ae4dd4a70ba0c"><span data-offset-key="7d1913b0313e4d9bbb6ae4dd4a70ba0c:0">kan deze ook weigeren met DHCP Decline</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="3cc36d526a9141e1a7143b6097a6f698" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="8ead984d0e8243acb063a76900004391"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="8cf7dd970c6949a981b9ee619d7a8e45"><span data-offset-key="8cf7dd970c6949a981b9ee619d7a8e45:0">Client geeft lease opnieuw vrij met behulp van een DHCP Release bericht.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="efe5baf114424b7191cc791b8b17fbb6" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="aae3779ce0024d458ee0be5b13b23c34"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="04f11382d9af462b9577a9cad4066854"><span data-offset-key="04f11382d9af462b9577a9cad4066854:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Vernieuwing</strong></span><span data-offset-key="04f11382d9af462b9577a9cad4066854:1"> (Gebeurt wanneer lease een tijdlang gebruikt is geweest (ongeveer na helf lease tijd expire time))</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="e442e03ad1ae41d494e9e46683cd0cfb"><li class=""><div data-key="c62a9eea7c4540f593919fbc56def3ad" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="e7288823f0ba475f8018653583babec8"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="14b6744a65ec4dfd9cbd0b883d85e914"><span data-offset-key="14b6744a65ec4dfd9cbd0b883d85e914:0">Client stuurt een DHCP request naar de server die de lease gestuurd heeft</span></span></span></p></div></li><li class=""><div data-key="f235ecee2f014226b2af698cca232278" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="bfe89e80395a49ea84147433e7215eac"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b12993a9fbbe4b83864cd6ccd68013f3"><span data-offset-key="b12993a9fbbe4b83864cd6ccd68013f3:0">Server antwoordt met een DHCP Acknowledgment bericht</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="392b8f8d3c494903ae00a91ed18b9bd1"><li class=""><div data-key="0f9a4c3042c74ebf845b59740b053bd7" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="f32ff1d4dd524a728ae2c3f548f7c92d"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="0595eb5119664f1e98030e0f0a80c863"><span data-offset-key="0595eb5119664f1e98030e0f0a80c863:0">Met opnieuw de opties ingesteld zodat de client zijn configuratie kan bijwerken</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="d5b8955a942945cca029ed2a0ff29ab8" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="cb3410dd22744a679c465b4d4438348e"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="698ab625b3ca4a99b23852f600be9327"><span data-offset-key="698ab625b3ca4a99b23852f600be9327:0">Indien geen DHCP Acknowledgment:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="3e8a63db77ba41d4a3a193504503db01"><li class=""><div data-key="16a8889e7ad3459583356977bccf0247" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="f0efdd24429e408cb279edad295809dd"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ce2ff5c0a6f4458a98d016bfbe43abe6"><span data-offset-key="ce2ff5c0a6f4458a98d016bfbe43abe6:0">Client herhaald de stappen met wachttijd die oploopt in machten van 2: 2, 4, 8, 16, ...</span></span></span></p></div></li><li class=""><div data-key="820a9a404e8441fc865940ab05039a92" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="fe107e53bfbc42faa8cdd13a0ae1742c"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c681dfa22e0449b682859bd7723b8e93"><span data-offset-key="c681dfa22e0449b682859bd7723b8e93:0">Indien nog steeds geen Acknowledgment na ongeveer 7/8e van releasetijd, dan wordt de rebinding status geactiveer (tenzij anders gespecifieerd in optie 59).</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="62a006d99ea24eeb9075897c97940f99"><li class=""><div data-key="0db3808925754c2e977d802b5275d475" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="a5cac495d3ca44a3a9410e2715c0ab12"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="68f41815669c455e8e5142014753ec25"><span data-offset-key="68f41815669c455e8e5142014753ec25:0">Client probeert lease te vernieuwen bij willekeurige DHCP Server door DHCP Request berichten te broadcasten.</span></span></span></p></div></li><li class=""><div data-key="abc584b65e95441eb217dc85c8d583fd" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="1e077cd8179847479fed8e3879722604"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b88cdec0bdfb4e71b07554af8adbceaa"><span data-offset-key="b88cdec0bdfb4e71b07554af8adbceaa:0">Server antwoordt met een DHCP Acknowledgment.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="2913039da685475e83c9c2fc16d275e7" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="ba1fa01d1b0d44beb2e0be4c7189b3ec"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="5e05796d91d744d8bd4d8162290d780c"><span data-offset-key="5e05796d91d744d8bd4d8162290d780c:0">Indien na 3 keer nog steeds geen Acknowledgment:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="f3dae4b0e7de4c52bc65338f3a4c0c6d"><li class=""><div data-key="6321584074e44a98a74f21beb877b1e1" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="7709953cea8640eebfa383fa6fe6ce12"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c819660a5dba44e3b13841cfdee1e879"><span data-offset-key="c819660a5dba44e3b13841cfdee1e879:0">Client stopt met lease te gebruiken.</span></span></span></p></div></li><li class=""><div data-key="6415e290acc94d2dac14994a6e4c8404" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="10e57801616747b59c7b81a701ad361b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="d7c03a3c0e524fc485de2ea80bb567cd"><span data-offset-key="d7c03a3c0e524fc485de2ea80bb567cd:0">Herstart initialisatieproces.</span></span></span></p></div></li></ul></div></li></ul></div></li></ul></div></li></ul><h1 id="bespreek-het-doel-en-in-detail-de-werking-van-dhcp-relay-agents-welke-velden-in-dhcp-berichten-helpen-deze-functie-realiseren" class="blockHeading-442b4f12--blockHeading1WithMargin-b69d755e" data-key="a64c243216e04a5b949eff21a6a9a65e"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1"><span data-key="d9d60b61961942d48a5925124ce64581"><span data-offset-key="d9d60b61961942d48a5925124ce64581:0">Bespreek het doel en (in detail) de werking van DHCP relay-agents. Welke velden in DHCP berichten helpen deze functie realiseren ?</span></span></span><a href="#bespreek-het-doel-en-in-detail-de-werking-van-dhcp-relay-agents-welke-velden-in-dhcp-berichten-helpen-deze-functie-realiseren" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div><div role="button" tabindex="0" style="color:#3884FF" contenteditable="false" class="reset-3c756112--blockHeadingUp-c32402b2"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></g></svg></div></h1><h2 id="doel" class="blockHeading-442b4f12--blockHeading2WithMargin-532d771d" data-key="04fe8ba658844dd1be68cdaa1d5d7479"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH600-23f228db--textContentFamily-49a318e1"><span data-key="36c6008992464480bc15e7c7ab10b9f4"><span data-offset-key="36c6008992464480bc15e7c7ab10b9f4:0">Doel</span></span></span><a href="#doel" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div></h2><ul class="list-20526648" data-key="fc6003d0b8874f8ea59c401dad527220"><li class=""><div data-key="22941d711f9b412293f7533032a3e889" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="26571240e3c64ef9a7666d6aef1ea9cc"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="267f0de6ef5944b6a18f3625bd55a1fe"><span data-offset-key="267f0de6ef5944b6a18f3625bd55a1fe:0">DHCP maakt gebruik van broadcast en zal dus enkel werken op een enkel subnet</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="de863c59303c4087baebff5e09b49edc"><li class=""><div data-key="1c0541782926456a9bc4d98c4e774a1a" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="dd7e989424b949ad95c5868bb4240c56"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="03aae22b23cb4ac480123ca33993cfaa"><span data-offset-key="03aae22b23cb4ac480123ca33993cfaa:0">Routers laten broadcastberichten niet door</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="d3abc7f0eceb4c269c711eff94568f4a" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="ba36bca2e14e47099fd0352b508a389b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="5d2d22c09689476691a90fa94b251d75"><span data-offset-key="5d2d22c09689476691a90fa94b251d75:0">Een relay agent maakt het mogelijk om DHCP broadcastberichten door te sturen naar andere subnetten.</span></span></span></p></div></li></ul><h2 id="werking" class="blockHeading-442b4f12--blockHeading2WithMargin-532d771d" data-key="6960a22d335c4f0db029112d98f6355f"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH600-23f228db--textContentFamily-49a318e1"><span data-key="bd2e0b41cadc4b6d9ec31031814633f6"><span data-offset-key="bd2e0b41cadc4b6d9ec31031814633f6:0">Werking</span></span></span><a href="#werking" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div></h2><ul class="list-20526648" data-key="a62044df7cc847a28632c63738b1a695"><li class=""><div data-key="aa4c8021c8674d61a2b5c01efefc6ca0" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="05b1852f763240e88bb22587f7aaeb30"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="a2da1e86d82a48ca97a472027c28fb69"><span data-offset-key="a2da1e86d82a48ca97a472027c28fb69:0">Ander leaseproces</span></span></span></p></div></li><li class=""><div data-key="7fe8f92f569145629e6fc6e92a6f2271" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="05337125ecc444e085b4fbd8bd6eb37b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ef111ae570ef4abfb89598ec23b1bd20"><span data-offset-key="ef111ae570ef4abfb89598ec23b1bd20:0">Client stuurt DHCP Discovery bericht met het gateway veld op 0.0.0.0</span></span></span></p></div></li><li class=""><div data-key="80ea2d65aa6844f38e37bfbf57f25ffc" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="27a98f4d5f3a48aea4b134254615fb2b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="03d8f8fdf16241d8ad05963122189206"><span data-offset-key="03d8f8fdf16241d8ad05963122189206:0">Relay agent stuurt het bericht door en vult het gateway veld op met het IP adres van de router</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="846f7a7714b04f7eb1cfda4d33690d4e"><li class=""><div data-key="36ad929cf9c94e9899fe1a5753c2f4b7" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="8e950aae3bf042f8a153ea903d2d18d1"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="d01a7fec775f4a60a7a4fbed6956bc68"><span data-offset-key="d01a7fec775f4a60a7a4fbed6956bc68:0">Doorgeven op 2 manieren:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="b717b611a7a54387a29fd96b0403407c"><li class=""><div data-key="30202a831e3f4fe983dd686d09c3d8a4" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="7a6479512ca941aa952485c76934686a"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="dee5e6a1fdf84dc6b0846ff8881272a7"><span data-offset-key="dee5e6a1fdf84dc6b0846ff8881272a7:0">Ofwel berichten sturen gericht naar de actieve server</span></span></span></p></div></li><li class=""><div data-key="0d6107cfdcfe4be8a45d471ce1024502" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="233ddaab459a4110afb14d69d95f7ef2"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="87bf81aebc7b4d49b8300c51eb0c7f8d"><span data-offset-key="87bf81aebc7b4d49b8300c51eb0c7f8d:0">Ofwel bericht broadcasten op alle externe subnetten waarop ze aangesloten is</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="22de38c0f31145c1afcd5fb69877d810" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="66a20d288399440fb9b53edfbe94dbae"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="7eb5b1373b2a48deab14abe6153fa80a"><span data-offset-key="7eb5b1373b2a48deab14abe6153fa80a:0">Server antwoordt met een DHCP Offer</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="d0c7dd49802d4b10b94162462b222014"><li class=""><div data-key="59aadc2e8f8d4642945872760b85da92" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="fb80ab52a5a1417b9f1fa715e553ffd9"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="20afe3cb94664b30a516502482b7be71"><span data-offset-key="20afe3cb94664b30a516502482b7be71:0">Adres is eventueel uit een andere scope gehaald, afhankelijk van het gateway veld.</span></span></span></p></div></li><li class=""><div data-key="643c5cc9a98048fba8bbe1c3cfb70859" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="a9be946e18e54e4eac9774ff08ceb031"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="259c9e7b1bb44901b8f1e05388efbe68"><span data-offset-key="259c9e7b1bb44901b8f1e05388efbe68:0">Dit bericht wordt rechtstreeks naar de relayagent gestuurd.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="5808e3bf79594ac9bf9e59b5bc04328b" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="82313ac385b548f389332e7e0c44df3f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c8fc16bcb7b14f3db4373655ed7bbd6f"><span data-offset-key="c8fc16bcb7b14f3db4373655ed7bbd6f:0">Relay agent geeft het bericht de adreslease door te broadcasten op het relevante netwerk</span></span></span></p></div></li></ul></div></li></ul><h2 id="vereiste-velden" class="blockHeading-442b4f12--blockHeading2WithMargin-532d771d" data-key="40b72daa700a4ce09b2114e1bf1932e3"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH600-23f228db--textContentFamily-49a318e1"><span data-key="96de45f264b2462aaef45ac8e27e1415"><span data-offset-key="96de45f264b2462aaef45ac8e27e1415:0">Vereiste velden</span></span></span><a href="#vereiste-velden" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div></h2><ul class="list-20526648" data-key="f704b811b51a4194921c1bcd4b2a5e28"><li class=""><div data-key="111879a00c1d48e29f1cede604e98ee4" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="8243c08ca2194400b9cae59705842bb7"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="eafb3765db194d0498d1eb80a75361d8"><span data-offset-key="eafb3765db194d0498d1eb80a75361d8:0">Hop veld</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="91150d65fc1d4a6ea02a6a7f4d979e80"><li class=""><div data-key="a2d5fae413764a83b8b259f02007959e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="95a6c849623f45a0bcd3ffba651d00d8"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c83c3924b1f64e58a5f65d8529f8af16"><span data-offset-key="c83c3924b1f64e58a5f65d8529f8af16:0">Wordt met 1 verhoogd telken een relay agent het bericht opnieuw broadcast. </span></span></span></p></div></li></ul></div></li><li class=""><div data-key="18fd4daa852344ffa305aac0672b2bd5" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="42f3d2b838fb4c19b7ef5b114f1b88f1"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="7895b752b8394e4c9795faca33c69251"><span data-offset-key="7895b752b8394e4c9795faca33c69251:0">Gateway veld</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="a12f5aa856f446c99ca4c6b1a52f0a62"><li class=""><div data-key="8b0a8f5222b94f929bfa80312082da8d" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="b97b890462df43bfa55f3a1cdcf9b9ff"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="a029d596bbf64dd39b32f93262523bea"><span data-offset-key="a029d596bbf64dd39b32f93262523bea:0">hierin wordt de IP van de doorsturende router opgeslagen</span></span></span></p></div></li><li class=""><div data-key="3fa1b8ae45a2456a8b9484f60e7ae0a9" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="ce25d2af61fe415e9db3d51e9175fb10"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b7fe87af521f44d582c6fdb54b610cf7"><span data-offset-key="b7fe87af521f44d582c6fdb54b610cf7:0">Dit wordt ook gebruikt om de scope te bepalen van adressen bij keuze van een lease.</span></span></span></p></div></li></ul></div></li></ul><h1 id="beschrijf-wat-er-gebeurt-op-dhcp-niveau-bij-het-heropstarten-van-een-windows-server-of-een-linux-toestel-nadat-men-een-shutdown-heeft-uitgevoerd" class="blockHeading-442b4f12--blockHeading1WithMargin-b69d755e" data-key="d3c3351966554b4a8b9150c3fabba178"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1"><span data-key="2ec4f3f796c942b093c589de3adfa19b"><span data-offset-key="2ec4f3f796c942b093c589de3adfa19b:0">Beschrijf wat er gebeurt op DHCP niveau bij het heropstarten van een Windows Server of een Linux toestel, nadat men een shutdown heeft uitgevoerd.</span></span></span><a href="#beschrijf-wat-er-gebeurt-op-dhcp-niveau-bij-het-heropstarten-van-een-windows-server-of-een-linux-toestel-nadat-men-een-shutdown-heeft-uitgevoerd" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div><div role="button" tabindex="0" style="color:#3884FF" contenteditable="false" class="reset-3c756112--blockHeadingUp-c32402b2"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></g></svg></div></h1><ul class="list-20526648" data-key="1b196aa92272446ca13741e91fbbf2b9"><li class=""><div data-key="bdc9a5fc785946c9b976281438432905" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="d0d7f6e17d104e7491f94531d209ef75"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="34f4b42023414da880454ba727605010"><span data-offset-key="34f4b42023414da880454ba727605010:0">Zowel Windows als Linux loggen hun DHCP leases</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="721e003d71f44557b70ddc609dceb3d8"><li class=""><div data-key="50933d100a7749449698250fc2cfbbb2" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="79678785cfdc42e2bfb5b4cc64775f70"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="764754168300472984f3a8fafbb34fca"><span data-offset-key="764754168300472984f3a8fafbb34fca:0">Linux: file </span><span data-offset-key="764754168300472984f3a8fafbb34fca:1"><code spellcheck="false" class="code-81e98f88" data-slate-leaf="true">/var/lib/dhcp/dhclient.leases</code></span></span></span></p></div></li><li class=""><div data-key="b45d2734f23745edabb74dcdbf95e1bb" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="deba1743188a44ea9b7412e98e01cdef"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c2163b181c4c41ff939a783c23ce3e3d"><span data-offset-key="c2163b181c4c41ff939a783c23ce3e3d:0">Windows: </span><span data-offset-key="c2163b181c4c41ff939a783c23ce3e3d:1"><code spellcheck="false" class="code-81e98f88" data-slate-leaf="true">hive register</code></span></span></span></p></div></li></ul></div></li></ul><h1 id="beschrijf-wat-er-gebeurt-indien-een-windows-server-of-linux-dhcp-client-in-eerste-instantie-geen-dhcp-server-kan-bereiken" class="blockHeading-442b4f12--blockHeading1WithMargin-b69d755e" data-key="09e9ae39b36a42749dabb8909627d0b5"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1"><span data-key="5203e14810c3465e986292dd0d635beb"><span data-offset-key="5203e14810c3465e986292dd0d635beb:0">Beschrijf wat er gebeurt indien een Windows Server of Linux DHCP-cliënt in eerste instantie geen DHCP-server kan bereiken.</span></span></span><a href="#beschrijf-wat-er-gebeurt-indien-een-windows-server-of-linux-dhcp-client-in-eerste-instantie-geen-dhcp-server-kan-bereiken" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div><div role="button" tabindex="0" style="color:#3884FF" contenteditable="false" class="reset-3c756112--blockHeadingUp-c32402b2"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></g></svg></div></h1><ul class="list-20526648" data-key="7d3b9413373548278362b44356f24b1a"><li class=""><div data-key="1a7b3ed8f4574ee39b452a3866afd7cc" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="dc1a546de6eb49e5884da21c273ea4dc"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="5e0f09f10a704197b31ed805c72186a0"><span data-offset-key="5e0f09f10a704197b31ed805c72186a0:0">Linux en Windows DHCP clients kunnen zichzelf configureren om met een tijdelijke IP-configuratie te werken</span></span></span></p></div></li><li class=""><div data-key="88185bae87e248fd89ebac14fbf1f452" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="70ded6e5c5a645a3b36ea502108ce1ae"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b9d6e1984f0b4f6987aa3eb8faa6bb72"><span data-offset-key="b9d6e1984f0b4f6987aa3eb8faa6bb72:0">= Automatic Private IP Addressing (APIPA) (of automatische IP Configuratie)</span></span></span></p></div></li><li class=""><div data-key="4435ebe77ee54ef3a285cfdc37ddd148" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="68644eea2b2d4d1ea87980dca644f104"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="218f064312fa4f0d8b9c27e502fb0237"><span data-offset-key="218f064312fa4f0d8b9c27e502fb0237:0">Toegewezen uit gereserveerde klasse B bereik 169.254/16</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="dc7ce140f1ac49e8b9ae5ed156d8a3dc"><li class=""><div data-key="48f4584e1da24b00bf2ea3d9946212a3" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="f79d591c3b044860a8ac6843dc4504be"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="23e4546ef5164f7db2cf55b3121ec760"><span data-offset-key="23e4546ef5164f7db2cf55b3121ec760:0">Dit bereik wordt niet op het internet gebruikt</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="35eadec8952242b0a3c8a05bd16df87d" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="6844e854d7f844e99f51bab88f6383da"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ffb0a14fdf5246abbd1e8a2811e12bb7"><span data-offset-key="ffb0a14fdf5246abbd1e8a2811e12bb7:0">De DHCP client voert een conflictdetectie uit met een Gratuitous ARP aanvraag</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="e400383953294098827467aedea63394"><li class=""><div data-key="21cfdf7f688347d3a9578f72613951a0" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="ab9e145362ac4fa28a4adf8d8c8d3dea"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="707d2be0212f44a49da2ce831d44332f"><span data-offset-key="707d2be0212f44a49da2ce831d44332f:0">Indien duplicaat IP adres wordt een nieuw random IP adres gekozen in dit bereik</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="390f0ffe699148a7847c7c478068cc96" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="ae52089f22a24238bdfb689b96264f41"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="f9b42f59634f49d8922f59b3e33aa23e"><span data-offset-key="f9b42f59634f49d8922f59b3e33aa23e:0">Na toewijzing van het tijdelijke adres blijven de clients in de achtergrond op periodieke intervallen contact zoeken met een DHCP Server</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="920d21949a3e48499b302ec4042d7157"><li class=""><div data-key="8ae4b0c3a7dc4f5285d347acde4c3aa7" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="347386bf76df4173b0e6b0737b60ef03"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="78c25a958cb74ab18ba1206022465e76"><span data-offset-key="78c25a958cb74ab18ba1206022465e76:0">Indien toch DHCP Server gevonden, wordt een lease aangevraagd en vervalt het tijdelijke adres. </span></span></span></p></div></li></ul></div></li></ul></div></div></div></div><div class="reset-3c756112--pageFooter-f1d5e2b0"><div class="reset-3c756112"><div class="reset-3c756112--navPagesLinks-67bea901"><a class="reset-3c756112--card-6570f064--whiteCard-fff091a4--cardPrevious-56a5e674" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_reverse_dns_onder_linux"><div class="reset-3c756112--cardIcon-5b647d22"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></g></svg></div><div class="reset-3c756112--cardBody-25dca3b1--cardPreviousBody-79f02c06"><div class="reset-3c756112--cardHint-2c5d8183"><span class="text-4505230f--TextH200-a3425406--textContentFamily-49a318e1">Previous</span></div><div class="reset-3c756112--cardTitle-32aa092e"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1">Reeks B - Configuratie van reverse DNS onder Linux</span></div></div></a><a class="reset-3c756112--card-6570f064--whiteCard-fff091a4--cardNext-19241c42" href="/ugent-computernetwerken-2/reek_c_-_ipv6_adressering"><div class="reset-3c756112--cardBody-25dca3b1"><div class="reset-3c756112--cardHint-2c5d8183"><span class="text-4505230f--TextH200-a3425406--textContentFamily-49a318e1">Next</span></div><div class="reset-3c756112--cardTitle-32aa092e"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1">Reek C - IPv6 Adressering</span></div></div><div class="reset-3c756112--cardIcon-5b647d22"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg></div></a></div></div><div class="reset-3c756112--pageFooterColumns-ef8f347e"><div class="reset-3c756112--pageFooterSummary-12074aff"><div class="reset-3c756112--pageChangesSummary-08821678"><div class="reset-3c756112--pageContributors-5c59582e"><div class="reset-3c756112--ownerAvatarList-696792ce"><div aria-label="Xavier Geerinck" class="reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802"><div class="reset-3c756112--avatarFrame-2f40cdc9--small-2ec8ae1a--circle-6c5acd10" role="presentation"><img class="image-67b14f24--avatar-1c1d03ec" src="https://avatars.io/twitter/thebillkidy?size=large"/><div class="reset-3c756112--innerShadow-7a3a8651"></div></div></div></div></div><div class="reset-3c756112--pageEditedDate-b805c39a"><span class="text-4505230f--TextH200-a3425406--textContentFamily-49a318e1">Last updated <span>10 months ago</span></span></div></div></div></div></div></div><div class="reset-3c756112--pageSide-ad9fed26"><div class="reset-3c756112--stickyContainer-2bed3a82"><div style="padding-bottom:0" class="reset-3c756112"></div><div class="reset-3c756112--tocWrapper-506ea24c"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114"><div class="reset-3c756112--pageSideSection-542f1fd5"><div class="reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496"><div class="reset-3c756112--menuHeader-d7753f3a"><div class="reset-3c756112--menuHeaderIcon-0c3ed569"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="7" y2="18"></line></g></svg></div><div class="reset-3c756112"><span class="text-4505230f--InfoH100-1e92e1d1--textContentFamily-49a318e1">Contents</span></div></div><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#geef-een-overzicht-van-de-verschillende-types-dhcp-berichten-hoe-wordt-in-het-bericht-het-type-aangeduid"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1">Geef een overzicht van de verschillende types DHCP berichten. Hoe wordt in het bericht het type aangeduid ?</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#bespreek-in-detail-de-opeenvolgende-stappen-van-beide-dhcp-leaseprocessen"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1">Bespreek in detail de opeenvolgende stappen van beide DHCP leaseprocessen.</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#bespreek-het-doel-en-in-detail-de-werking-van-dhcp-relay-agents-welke-velden-in-dhcp-berichten-helpen-deze-functie-realiseren"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1">Bespreek het doel en (in detail) de werking van DHCP relay-agents. Welke velden in DHCP berichten helpen deze functie realiseren ?</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#doel"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1--pageTocLinkH2-2294976c">Doel</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#werking"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1--pageTocLinkH2-2294976c">Werking</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#vereiste-velden"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1--pageTocLinkH2-2294976c">Vereiste velden</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#beschrijf-wat-er-gebeurt-op-dhcp-niveau-bij-het-heropstarten-van-een-windows-server-of-een-linux-toestel-nadat-men-een-shutdown-heeft-uitgevoerd"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1">Beschrijf wat er gebeurt op DHCP niveau bij het heropstarten van een Windows Server of een Linux toestel, nadat men een shutdown heeft uitgevoerd.</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#beschrijf-wat-er-gebeurt-indien-een-windows-server-of-linux-dhcp-client-in-eerste-instantie-geen-dhcp-server-kan-bereiken"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1">Beschrijf wat er gebeurt indien een Windows Server of Linux DHCP-cliënt in eerste instantie geen DHCP-server kan bereiken.</span></span></div></a></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
+            <div id="__GITBOOK__ROOT__CLIENT__" style="display: none;"></div>
+            <script>
+            window.GITBOOK_STATE = {"state":{"database":{"orgs/538c32a77bcb1b0200ff5dcd/infos":{"kind":"user","data":{"kind":"user","uid":"538c32a77bcb1b0200ff5dcd","baseDomain":"xavier-geerinck","defaultSpace":null,"displayName":"Xavier Geerinck","photoURL":"https://avatars.io/twitter/thebillkidy?size=large","deletedAt":null,"usageStatuses":{"members":"below","privateSpaces":"below","publicSpaces":"below"}}},"spaces/-Lc5VIoyjbmo2ReQJFfs/infos":{"kind":"space","data":{"uid":"-Lc5VIoyjbmo2ReQJFfs","name":"UGent Computernetwerken 2","createdAt":1554887294260,"ownerID":"538c32a77bcb1b0200ff5dcd","isPrivate":false,"isUnlisted":false,"secretToken":null,"baseName":"ugent-computernetwerken-2","createdBy":"538c32a77bcb1b0200ff5dcd","logoURL":null,"fullLogoURL":null,"emoji":null,"colorPrimary":"#3884FF","headerTheme":"light","font":null,"locale":null,"primaryRevision":"-Lc5VZPLk3W-9sPG5Thw","edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887294260,"updatedAt":1554887372833,"count":3}},"algoliaAPIKey":"ZmUxZmNmMzY1NGIzYjg1YWU5N2U5MmVhN2UyODBkOWIyNTczNjQyMWY1OTY4N2NlMGNlNTgwYTcxM2Q4ZjA4OGZpbHRlcnM9LUxjNVZJb3lqYm1vMlJlUUpGZnM=","customDomain":null,"links":[],"hasGitHubSync":true,"editOnGitHub":null,"googleAnalyticsID":null,"intercomID":null,"hasPageRating":true,"hasPDFExport":false,"indexedRevision":null}},"spaces/-Lc5VIoyjbmo2ReQJFfs/revisions/-Lc5VZPLk3W-9sPG5Thw":{"kind":"revision","data":{"uid":"-Lc5VZPLk3W-9sPG5Thw","message":"Update reek_c_-_ipv6_tunneling.md","createdAt":1554887372679,"createdBy":"538c32a77bcb1b0200ff5dcd","parents":["-Lc5VJkqSrfLN3LDoehs"],"content":{"primaryVersion":"master","versions":{"master":{"index":0,"ref":"master","title":"1.0.0","github":{"repoID":"thebillkidy/ugent-computernetwerken-2","sha":"73d0862069e75c52073148b9d59e181082823075","ref":"refs/heads/master","message":"Update reek_c_-_ipv6_tunneling.md","isGitBookBot":false},"locale":null,"entryPage":"-Lc5VIowhm0XJ5PTfAeU","pages":{"-Lc5VIowhm0XJ5PTfAeU":{"uid":"-Lc5VIowhm0XJ5PTfAeU","kind":"document","title":"introduction","path":"master","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VIowhm0XJ5PTfAeU%2Fdocument.json?generation=1554887312603215\u0026alt=media","createdAt":1554887294259,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887312744,"updatedAt":1554887312744,"count":1}},"github":{"sha":"c67038f36e3757a48ec6a380b87a49d25e926e8d","filePath":"README.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":["-Lc5VL3g62Mn-_fBPc0S","-Lc5VL3hXV0GDw3P69gW","-Lc5VL3iHBkI5GHg-5Rv","-Lc5VL3j1MMVUy60RsAE","-Lc5VL3kmCjsQ7kGFaW-","-Lc5VL3luEhJ6etanCB7","-Lc5VL3m9qijLU1rBgRO","-Lc5VL3nvGgE1GlKHYtg","-Lc5VL3oQhscGe0vZC9Z","-Lc5VL3pEY9qQ_IhOW0V","-Lc5VL3qeGq74G_PbwFk","-Lc5VL3r-h2ZAGXgWoB3","-Lc5VL3stwiOjinPjIhF","-Lc5VL3tx67ine59TV2h","-Lc5VL3uvDVtrrtlElJC","-Lc5VL3vwLMsWfSw72i_"]},"-Lc5VL3g62Mn-_fBPc0S":{"uid":"-Lc5VL3g62Mn-_fBPc0S","kind":"document","title":"Reeks A - Configuratie van de netwerkinterface - Bridging - Multicasting op subnetwerkniveau","path":"reeks_a_-_configuratie_van_de_netwerkinterface_-_bridging_-_multicasting_op_subnetwerkniveau","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3g62Mn-_fBPc0S%2Fdocument.json?generation=1554887313912271\u0026alt=media","createdAt":1554887303467,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887314042,"updatedAt":1554887314042,"count":1}},"github":{"sha":"7f9d6ad6e3a6804ffc0b20e7fb7ab9a41eb51f64","filePath":"reeks_a_-_configuratie_van_de_netwerkinterface_-_bridging_-_multicasting_op_subnetwerkniveau.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3hXV0GDw3P69gW":{"uid":"-Lc5VL3hXV0GDw3P69gW","kind":"document","title":"Reeks A - Routing","path":"reeks_a_-_routing","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3hXV0GDw3P69gW%2Fdocument.json?generation=1554887316257033\u0026alt=media","createdAt":1554887303468,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316414,"updatedAt":1554887316414,"count":1}},"github":{"sha":"1dd869a40b4132e4bb5cf240e54297ac4f6053f9","filePath":"reeks_a_-_routing.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3iHBkI5GHg-5Rv":{"uid":"-Lc5VL3iHBkI5GHg-5Rv","kind":"document","title":"Reeks A - RIP","path":"reeks_a_-_rip","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3iHBkI5GHg-5Rv%2Fdocument.json?generation=1554887316591697\u0026alt=media","createdAt":1554887303468,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316792,"updatedAt":1554887316792,"count":1}},"github":{"sha":"224acf41272f2bf46df81ec05bcb8427f0eaa6e9","filePath":"reeks_a_-_rip.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3j1MMVUy60RsAE":{"uid":"-Lc5VL3j1MMVUy60RsAE","kind":"document","title":"Reeks A - OSPF","path":"reeks_a_-_ospf","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3j1MMVUy60RsAE%2Fdocument.json?generation=1554887317531578\u0026alt=media","createdAt":1554887303469,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887317670,"updatedAt":1554887317670,"count":1}},"github":{"sha":"2b251bcdc29591f7b097ce589ba824e88ee10a38","filePath":"reeks_a_-_ospf.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3kmCjsQ7kGFaW-":{"uid":"-Lc5VL3kmCjsQ7kGFaW-","kind":"document","title":"Reeks A - Draadloze Netwerken","path":"reeks_a_-_draadloze_netwerken","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3kmCjsQ7kGFaW-%2Fdocument.json?generation=1554887315962360\u0026alt=media","createdAt":1554887303469,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316202,"updatedAt":1554887316202,"count":1}},"github":{"sha":"5054aaf8ed575d137fc190b62f5d746e1655dd3c","filePath":"reeks_a_-_draadloze_netwerken.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3luEhJ6etanCB7":{"uid":"-Lc5VL3luEhJ6etanCB7","kind":"document","title":"Reeks B - Multicastrouting","path":"reeks_b_-_multicastrouting","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3luEhJ6etanCB7%2Fdocument.json?generation=1554887318021767\u0026alt=media","createdAt":1554887303470,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318172,"updatedAt":1554887318172,"count":1}},"github":{"sha":"e2f970c88b275d5be8fa3194ae11fe9306840ce7","filePath":"reeks_b_-_multicastrouting.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3m9qijLU1rBgRO":{"uid":"-Lc5VL3m9qijLU1rBgRO","kind":"document","title":"Reeks B - Configuratie van DNS servers onder Linux","path":"reeks_b_-_configuratie_van_dns_servers_onder_linux","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3m9qijLU1rBgRO%2Fdocument.json?generation=1554887314389570\u0026alt=media","createdAt":1554887303470,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887314652,"updatedAt":1554887314652,"count":1}},"github":{"sha":"15fe88b907f256806b9e527d6ae0e70560e96fe0","filePath":"reeks_b_-_configuratie_van_dns_servers_onder_linux.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3nvGgE1GlKHYtg":{"uid":"-Lc5VL3nvGgE1GlKHYtg","kind":"document","title":"Reeks B - Configuratie van DNS servers onder Linux Deel 2","path":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3nvGgE1GlKHYtg%2Fdocument.json?generation=1554887318680732\u0026alt=media","createdAt":1554887303472,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318813,"updatedAt":1554887318813,"count":1}},"github":{"sha":"8a382d21d89b57a847012092391e17d28d1f06e7","filePath":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3oQhscGe0vZC9Z":{"uid":"-Lc5VL3oQhscGe0vZC9Z","kind":"document","title":"Reeks B - Configuratie van DNS servers onder Linux Deel 3","path":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_3","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3oQhscGe0vZC9Z%2Fdocument.json?generation=1554887315352389\u0026alt=media","createdAt":1554887303472,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887315492,"updatedAt":1554887315492,"count":1}},"github":{"sha":"74fef1d7dcaac5ce90eb0cf2c69b119013811e96","filePath":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_3.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3pEY9qQ_IhOW0V":{"uid":"-Lc5VL3pEY9qQ_IhOW0V","kind":"document","title":"Reeks B - Configuratie van reverse DNS onder Linux","path":"reeks_b_-_configuratie_van_reverse_dns_onder_linux","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3pEY9qQ_IhOW0V%2Fdocument.json?generation=1554887315967642\u0026alt=media","createdAt":1554887303473,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316094,"updatedAt":1554887316094,"count":1}},"github":{"sha":"376fc5c67ca7b334b5b09062cae5a16c0ae8b054","filePath":"reeks_b_-_configuratie_van_reverse_dns_onder_linux.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3qeGq74G_PbwFk":{"uid":"-Lc5VL3qeGq74G_PbwFk","kind":"document","title":"Reek C - DHCP leaseprocessen en relay-agents","path":"reek_c_-_dhcp_leaseprocessen_en_relay-agents","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3qeGq74G_PbwFk%2Fdocument.json?generation=1554887318695655\u0026alt=media","createdAt":1554887303474,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318964,"updatedAt":1554887318964,"count":1}},"github":{"sha":"54d8916e927292e3ea627e449db9583d30f742c8","filePath":"reek_c_-_dhcp_leaseprocessen_en_relay-agents.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3r-h2ZAGXgWoB3":{"uid":"-Lc5VL3r-h2ZAGXgWoB3","kind":"document","title":"Reek C - IPv6 Adressering","path":"reek_c_-_ipv6_adressering","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3r-h2ZAGXgWoB3%2Fdocument.json?generation=1554887318437304\u0026alt=media","createdAt":1554887303474,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318567,"updatedAt":1554887318567,"count":1}},"github":{"sha":"e7c65d2a8034693e918d811b35cd16cf254cddd3","filePath":"reek_c_-_ipv6_adressering.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3stwiOjinPjIhF":{"uid":"-Lc5VL3stwiOjinPjIhF","kind":"document","title":"Reek C - IPv6 berichtstructuur","path":"reek_c_-_ipv6_berichtstructuur","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3stwiOjinPjIhF%2Fdocument.json?generation=1554887316650523\u0026alt=media","createdAt":1554887303475,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316787,"updatedAt":1554887316787,"count":1}},"github":{"sha":"bc51b24fed0465a5f192b8b0740ae7b142166b51","filePath":"reek_c_-_ipv6_berichtstructuur.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3tx67ine59TV2h":{"uid":"-Lc5VL3tx67ine59TV2h","kind":"document","title":"Reek C - Overgang naar IPv6 en autoconfiguratie","path":"reek_c_-_overgang_naar_ipv6_en_autoconfiguratie","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3tx67ine59TV2h%2Fdocument.json?generation=1554887318269353\u0026alt=media","createdAt":1554887303475,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318427,"updatedAt":1554887318427,"count":1}},"github":{"sha":"5539bb143891b958294f917dfdda81b3323a02cc","filePath":"reek_c_-_overgang_naar_ipv6_en_autoconfiguratie.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3uvDVtrrtlElJC":{"uid":"-Lc5VL3uvDVtrrtlElJC","kind":"document","title":"Reek C - IPv6 Tunneling","path":"reek_c_-_ipv6_tunneling","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3uvDVtrrtlElJC%2Fdocument.json?generation=1554887319067475\u0026alt=media","createdAt":1554887303476,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887319245,"updatedAt":1554887319245,"count":1}},"github":{"sha":"3277841cca9e0ad8b873203099b0a5009bdf1240","filePath":"reek_c_-_ipv6_tunneling.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3vwLMsWfSw72i_":{"uid":"-Lc5VL3vwLMsWfSw72i_","kind":"document","title":"SNMP Labo","path":"snmp_labo","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3vwLMsWfSw72i_%2Fdocument.json?generation=1554887317810954\u0026alt=media","createdAt":1554887303476,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887317998,"updatedAt":1554887317998,"count":1}},"github":{"sha":"3bdd3f04bb9aeb4b672a93438b93b21d4f8252c7","filePath":"snmp_labo.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null}}}},"assets":{"-Lc5VOQ8fn5NDIQHigqK":{"uid":"-Lc5VOQ8fn5NDIQHigqK","name":"IC212787.gif","downloadURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2F-Lc5VOQ8fn5NDIQHigqK%2FIC212787.gif?generation=1554887326422136\u0026alt=media","size":6488,"contentType":"image/gif","createdAt":1554887326421,"github":{"sha":"c8dda9d5675ae6e2bd59d791a0f69c53b17e6dcb","filePath":"IC212787.gif"},"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887326297,"updatedAt":1554887326297,"count":1}}},"-Lc5VOQAYfKyPmOPbfmL":{"uid":"-Lc5VOQAYfKyPmOPbfmL","name":"IC195509.gif","downloadURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2F-Lc5VOQAYfKyPmOPbfmL%2FIC195509.gif?generation=1554887325962228\u0026alt=media","size":11513,"contentType":"image/gif","createdAt":1554887325961,"github":{"sha":"b15b676613752043c3b7a7921239d660f19742e7","filePath":"IC195509.gif"},"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887325842,"updatedAt":1554887325842,"count":1}}}}},"github":[{"repoID":"thebillkidy/ugent-computernetwerken-2","sha":"73d0862069e75c52073148b9d59e181082823075","ref":"refs/heads/master","message":"Update reek_c_-_ipv6_tunneling.md","isGitBookBot":false}],"rollbackOf":null}}},"documents":{"documents":{"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3qeGq74G_PbwFk%2Fdocument.json?generation=1554887318695655\u0026alt=media":{"format_version":1,"document":{"kind":"document","key":"42a66afb8f0f43619377a190404a46e2","data":{"schema_version":6},"nodes":[{"kind":"block","type":"heading-1","key":"2ba80c0c506647a3a698e54d2d6032ea","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"873a444557c643c1a55521c505f6848e","ranges":[{"kind":"range","marks":[],"text":"Geef een overzicht van de verschillende types DHCP berichten. Hoe wordt in het bericht het type aangeduid ?"}]}]},{"kind":"block","type":"paragraph","key":"bb08c120248543c8b0d2f8ce2cbcef63","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"657efefd8057464bb75faed5807e379d","ranges":[{"kind":"range","marks":[],"text":"We duiden het type aan met de optie 53"}]}]},{"kind":"block","type":"list-unordered","key":"8afe7667f8934a4886b29e60f8476e0a","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"060e705bcf7d429bbd36ce24487ab76e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"b52f2e0ad9a043b6b15ab6beb7b4e9c0","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"accbdd3265c4404588b44226d2268cb2","ranges":[{"kind":"range","marks":[],"text":"DHCP-Discovery bericht"}]}]},{"kind":"block","type":"list-unordered","key":"356b0dcbb7f2492094e98028a0777f68","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"328ad5bb6c4f4d93ad1253e1a8c05955","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"656e75ce28d947f6a403b6ed60ffea46","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"3410184006c342edab3575df48a0da5b","ranges":[{"kind":"range","marks":[],"text":"Broacast om servers te ontdekken"}]}]}]},{"kind":"block","type":"list-item","key":"7050a33773f14d6abe95af19500626c5","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"af50ca6ab89b421fa10445248d66e05b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"15f8698a8476440d838f4db1d03fb044","ranges":[{"kind":"range","marks":[],"text":"Optie 51 voor specifieke lease-tijd aan te vragen"}]}]}]},{"kind":"block","type":"list-item","key":"1f2aa9c6bdb64b14843728f5b2ab5359","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"608b89e1349b4782bb9ed9166dbb279c","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"882d1b8f448f4695aba00a351a23723f","ranges":[{"kind":"range","marks":[],"text":"Optie 55 bevat een geordende lijst van gewenste opties"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"57956dcb04a443568b1fa0e1741ee449","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"b181188f243341b484455dd2e8ccb4ce","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"af14dde01860410ea472059bbe9d8934","ranges":[{"kind":"range","marks":[],"text":"DHCP-Offer bericht"}]}]},{"kind":"block","type":"list-unordered","key":"4b3549816023412e8fbe70f4c2e58b39","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"5072646ddb4c411e802586081d35537d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"47375352e7794ec1b4d59228015d3f38","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"e86dacb9b1114427a8cd2c024d33da96","ranges":[{"kind":"range","marks":[],"text":"Reactie op DHCP discovery bericht"}]}]}]},{"kind":"block","type":"list-item","key":"86ec3f03797e41219484091e2cd17bc9","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"0199897017474380959caac34564b128","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"77310340b4ae4c368bdfa21ae9e5725e","ranges":[{"kind":"range","marks":[],"text":"Biedt een client een IP-adreslease aan"}]}]}]},{"kind":"block","type":"list-item","key":"07f71fe9f555414395b1696414ef8d4a","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"5e1937ee5d194e1ea925470e61dc411d","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"10882721fbfb4088b9c117ce47c00fa5","ranges":[{"kind":"range","marks":[],"text":"Biedt ook de aangevraagde opties aan"}]}]}]},{"kind":"block","type":"list-item","key":"5f4b51853c6c47b4b51c5952b9163cc8","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"7ff09c89efe14d8a8a227b114ac43eb1","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"777c386df64f4aa6b664fb8ccac8052b","ranges":[{"kind":"range","marks":[],"text":"Optie 54 wordt ingesteld met de serveridentificatie (IP-adres)"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"d9004d4bcdf44100b65f426800f4343a","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"d008997ab67e4f21b12dc21b47d67764","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"90466f70acb042df9fc66aa2337c8a8a","ranges":[{"kind":"range","marks":[],"text":"DHCP-Request bericht"}]}]},{"kind":"block","type":"list-unordered","key":"bbe16129de474bb48a7fc30d5b343f64","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"bc790229d6c24b5ab974935f180de5e7","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"a429730447a0483c95e46213813a8816","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b88d0f75677240eca1cbfb782e8e3efc","ranges":[{"kind":"range","marks":[],"text":"Bericht om de DHCP Offer te finaliseren"}]}]},{"kind":"block","type":"list-unordered","key":"80172ea01cd547d8a02c8a3482fc2268","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"98fce5cca9174e058bd100da54c31e35","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"3b38c2b8adc74165867f6c71a660bf40","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"7ffeef9997ec40128299c4793e207a80","ranges":[{"kind":"range","marks":[],"text":"Dient dus om adreslease te vernieuwe/verlengen"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"951d7e8de145421c983d21ad76b04a19","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"fba00e7d30f5471e9f6f93ba43f1a10f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"28f44e6b3b924f958bae560f7c2eb636","ranges":[{"kind":"range","marks":[],"text":"Optie 54 wordt ingesteld met de serveridentificatie (IP-adres)"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"3a51da6abc664794b3461d71eea712f1","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"4d0f77e69f6e499ba3db533a5cd70b79","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"dd39190bc7fe4a3cbffc49e65080f934","ranges":[{"kind":"range","marks":[],"text":"DHCP-Decline bericht"}]}]},{"kind":"block","type":"list-unordered","key":"ce83f5f43e1d4f9fac7d44d0d14b171c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"26b8db527ba3404e89a38284611b877a","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"81de5c0549fe498fac425057ce8514da","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a39fd8e530ca4373bcb2d5b6d246e031","ranges":[{"kind":"range","marks":[],"text":"Bericht van client naar server die initialisatieproces herstart indient foutieve configuratieinformatie ontvangen is."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"54564eb4698b4f6789177d01fbee7b6e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"83b796cd018143ec9dea3dcfe4aff3bc","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ee52d38fad3a4692ba6a7c88306f048a","ranges":[{"kind":"range","marks":[],"text":"Positief DHCP-Acknowledgment bericht"}]}]},{"kind":"block","type":"list-unordered","key":"367102d39e474e5298c93c2189e9c065","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"7e4751074c314fd8a3306e2c74c63d4c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"40887fb7f3b44ad699ddf5f1e68359cf","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c8ae081af02a475dbefe94d90ee6a6b3","ranges":[{"kind":"range","marks":[],"text":"Bevestigd de lease"}]}]}]},{"kind":"block","type":"list-item","key":"53c0430085564002b36ed91b6c75217b","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"ec0354dbd0324ef6a61e9170abfd28a2","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d324949eaff24a39a3fad3aaf51d7f6b","ranges":[{"kind":"range","marks":[],"text":"Stuurt de vereiste DHCP-opties mee"}]}]}]},{"kind":"block","type":"list-item","key":"3ca11e26757848f5968d2cc4ea4544c4","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"9ef1352b17a04fa5a52b5c3bdc0ca973","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"1858cf2fed1440d7a0367facce0cedf2","ranges":[{"kind":"range","marks":[],"text":"DHCP servers wiens voorstel niet geaccepteerd werd stoppen de reservering van het aangeboden IP."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"63fc13df2a444bc2ab5d7f3f8090e11d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"5fff48c858f8418392af3cd645f313d8","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"68c1dcd6d8d546b29343c5d8ed827536","ranges":[{"kind":"range","marks":[],"text":"Negatief DHCP-Acknowledgment bericht"}]}]},{"kind":"block","type":"list-unordered","key":"d8996d58a7f0452785d6b01c7dba8d0b","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"6c38231db17d40809352409df80ab854","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"a1cb152fde8c44fb8aedfee364d9cdc6","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"2f4bc4469da9416d9c52d2c34b190514","ranges":[{"kind":"range","marks":[],"text":"Kan bij ongeldig of reeds toegekend IP-adres, of bij aanvraag subnet waarvoor hij geen DHCP scope ter bschikking heeft"}]}]}]},{"kind":"block","type":"list-item","key":"c6bd1618a1fd49d5953d3b4a1a73c802","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"12ea28662d054045ba850e870691a7c4","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"7e3f7e7ad8c84794933042510d20b2cb","ranges":[{"kind":"range","marks":[],"text":"Herbegin de volledige DHCP initialisatie procedure"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"b20ee630f6e747aa8b1bbf9a3c66997e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"e079241c57954e718b1bdbc7e3a429d4","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"3e566da678ab4c49b0856f7725c85d1d","ranges":[{"kind":"range","marks":[],"text":"DHCP-Release bericht"}]}]},{"kind":"block","type":"list-unordered","key":"5f19b33950144fe280bbb6cb63aa2350","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"92564506b83745229b17419d1ace4628","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"f242012bb4c144ee821c4bfcad41319c","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"17e27a5744774ea5859973373ec1c8b5","ranges":[{"kind":"range","marks":[],"text":"Bericht van client om huidige lease vrij te geven"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"d555f36614f545c1a7aaf8b0c447228a","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"a04b14bcd22a43e882c9b1defa35ba8e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"6de05457bd894505a25f68eed85db617","ranges":[{"kind":"range","marks":[],"text":"DHCP-Inform bericht"}]}]},{"kind":"block","type":"list-unordered","key":"4167a6b17f2d453c93b07f67823ba1df","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"e383faeda3254be29a0a360ed2692135","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"db40e3f79bd94864a138d0d1e48f0ac7","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"51c229df7d2e4a0794a5cf4d9492a1dd","ranges":[{"kind":"range","marks":[],"text":"Vraagt aanvullende opties aan de server"}]}]},{"kind":"block","type":"list-unordered","key":"edf7403c9bf148f3a957e678b52efdf2","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"7431914007a1462e88a251e12fa4af6e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"b8f8fae80828416abbf509b42c6ee568","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"2b949d2dd5874cdf8fc2d2dec09bbf22","ranges":[{"kind":"range","marks":[],"text":"Zoals DHCP Discovery optie 55 "}]}]}]}]}]}]}]}]},{"kind":"block","type":"heading-1","key":"98b620aff5884271b9f2bd5efb72b671","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a8cc7f67bba84642bef583f979af61bc","ranges":[{"kind":"range","marks":[],"text":"Bespreek in detail de opeenvolgende stappen van beide DHCP leaseprocessen."}]}]},{"kind":"block","type":"list-unordered","key":"1e16ac9ac0214ac5afb96d081405ca2e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"87cb0ecf64cd4a0181d4ad78c8dfa7e2","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"cd461003c2814e9281eae0d19c876b5f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b052f7cd13c846369737c4f339ae3ec7","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Initialisatie"}]}]},{"kind":"block","type":"list-unordered","key":"e0fe941e82e4489491778878d47a1114","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"84ef72358aa94feda4d0516126e9afae","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"94dd0cf333574574a6ccb1fe7cc086eb","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b2c16cac671d4e518746e9862d623246","ranges":[{"kind":"range","marks":[],"text":"Client broadcast een DHCP discovery bericht"}]}]},{"kind":"block","type":"list-unordered","key":"bc9c11c0773043939429f78f9f3e8630","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"c3ed859783734c97aa8166d4a704721c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"61bdba7bbd244fe88fa896fed6af0618","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c0d3c36d0a544557864f866667f9f4c8","ranges":[{"kind":"range","marks":[],"text":"Bronadres: 0.0.0.0"}]}]}]},{"kind":"block","type":"list-item","key":"ebe562533b5345c3aef418a86bf461e3","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"817e6c0c13f547f79d3838beba23d85f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"8f709ef36dff47418543845a04460cd7","ranges":[{"kind":"range","marks":[],"text":"Dieladres: 255.255.255.255"}]}]}]},{"kind":"block","type":"list-item","key":"27213be5765c4131a96786a6855e3674","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"f23fe179093e4e1384620570294596a3","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"33b535a217f14cd98dc960109e502b62","ranges":[{"kind":"range","marks":[],"text":"Opties 51 en 55 ingesteld"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"01a7bcdccc914ebc91846c0d22f361ac","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"6f6b04f9c9fd48b2a7e5750b7761bd8c","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"f6ace421bbdd4fb3bb439ec817e7dfe8","ranges":[{"kind":"range","marks":[],"text":"Servers antwoorden met DHCP Offer"}]}]},{"kind":"block","type":"list-unordered","key":"b9c01b4f7a6a4806b542158cbbeb7fdd","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"46ac737afa4c4fb1b58a429fabd412d2","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"79fe9f6e005f43c4a1047922bdae111a","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"1abb579a752642188fe27f1a5c867be3","ranges":[{"kind":"range","marks":[],"text":"Server ID in optie 54"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"4987782bb9eb4fd1b11267b6dd5245b6","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"4ddbc4f3ae3d4f008a07c3e23525f962","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"49a49db27707415c84c310c2a45a4747","ranges":[{"kind":"range","marks":[],"text":"Client selecteert lease en vraagt deze formeel aan met een DHCP request"}]}]},{"kind":"block","type":"list-unordered","key":"f6ea6372fb0641b4a11bcc952a059d64","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"a4d847b575574f9d8c1b1d93355b522e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"83f77fa6075b4a30983b4a9a4f99253e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"31fcc03aede147f586e0ff253dae1614","ranges":[{"kind":"range","marks":[],"text":"Gekozen server ID in optie 54"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"15c77111595a41b984abfe17b29fed9e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"e020fdf6f68248e2904ff8162060575f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b7368c2848d6406686efdc53a90e5364","ranges":[{"kind":"range","marks":[],"text":"Server bevestigt lease met Positief DHCP Acknowledgment bericht"}]}]},{"kind":"block","type":"list-unordered","key":"ee5e1a7bb6624a5cb3cbf900ebc808bf","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"6c9f5ffb5f864010b99890c17d163e17","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"598e6abd62f54a15af45b9d4c5b75cb8","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"2211f882cc444a46a624593777d3cc72","ranges":[{"kind":"range","marks":[],"text":"Broadcast bericht zodat andere servers tijdelijk gereserveerde leases kunnen vrijgeven."}]}]}]},{"kind":"block","type":"list-item","key":"c1266ef920d54c268a25bc58c4b99d51","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"cd41f62da59841f3b9c21e239d60b4eb","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ee8266002241411f99157526317a1d05","ranges":[{"kind":"range","marks":[],"text":"Weigeren van lease met een negatieve DHCP Acknowledgment"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"8825c3f1d87f4ba8962faa73915a00b0","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"ad8cb0f7801d45fdbb7c5d2b0c670190","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"af8a6a1204ef4204ad171d20f18a12a3","ranges":[{"kind":"range","marks":[],"text":"Client vraagt eventuele extra informatie op via DHCP Inform bericht"}]}]}]},{"kind":"block","type":"list-item","key":"db1e516531ef43d599666bcb907af508","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"49e9e5d4b60447448fb7f9b0631a8046","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"784f5fa58adf451a88a20a51fcdc06cf","ranges":[{"kind":"range","marks":[],"text":"Client neemt de lease in gebruik"}]}]},{"kind":"block","type":"list-unordered","key":"b70db89ab8c445859bcd3474dc65f1c7","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"5b33049ca70241488bf0983b372f4679","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"b524d202cf77456c8ed884fedace4172","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"7d1913b0313e4d9bbb6ae4dd4a70ba0c","ranges":[{"kind":"range","marks":[],"text":"kan deze ook weigeren met DHCP Decline"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"3cc36d526a9141e1a7143b6097a6f698","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"8ead984d0e8243acb063a76900004391","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"8cf7dd970c6949a981b9ee619d7a8e45","ranges":[{"kind":"range","marks":[],"text":"Client geeft lease opnieuw vrij met behulp van een DHCP Release bericht."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"efe5baf114424b7191cc791b8b17fbb6","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"aae3779ce0024d458ee0be5b13b23c34","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"04f11382d9af462b9577a9cad4066854","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Vernieuwing"},{"kind":"range","marks":[],"text":" (Gebeurt wanneer lease een tijdlang gebruikt is geweest (ongeveer na helf lease tijd expire time))"}]}]},{"kind":"block","type":"list-unordered","key":"e442e03ad1ae41d494e9e46683cd0cfb","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"c62a9eea7c4540f593919fbc56def3ad","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"e7288823f0ba475f8018653583babec8","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"14b6744a65ec4dfd9cbd0b883d85e914","ranges":[{"kind":"range","marks":[],"text":"Client stuurt een DHCP request naar de server die de lease gestuurd heeft"}]}]}]},{"kind":"block","type":"list-item","key":"f235ecee2f014226b2af698cca232278","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"bfe89e80395a49ea84147433e7215eac","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b12993a9fbbe4b83864cd6ccd68013f3","ranges":[{"kind":"range","marks":[],"text":"Server antwoordt met een DHCP Acknowledgment bericht"}]}]},{"kind":"block","type":"list-unordered","key":"392b8f8d3c494903ae00a91ed18b9bd1","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"0f9a4c3042c74ebf845b59740b053bd7","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"f32ff1d4dd524a728ae2c3f548f7c92d","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"0595eb5119664f1e98030e0f0a80c863","ranges":[{"kind":"range","marks":[],"text":"Met opnieuw de opties ingesteld zodat de client zijn configuratie kan bijwerken"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"d5b8955a942945cca029ed2a0ff29ab8","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"cb3410dd22744a679c465b4d4438348e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"698ab625b3ca4a99b23852f600be9327","ranges":[{"kind":"range","marks":[],"text":"Indien geen DHCP Acknowledgment:"}]}]},{"kind":"block","type":"list-unordered","key":"3e8a63db77ba41d4a3a193504503db01","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"16a8889e7ad3459583356977bccf0247","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"f0efdd24429e408cb279edad295809dd","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ce2ff5c0a6f4458a98d016bfbe43abe6","ranges":[{"kind":"range","marks":[],"text":"Client herhaald de stappen met wachttijd die oploopt in machten van 2: 2, 4, 8, 16, ..."}]}]}]},{"kind":"block","type":"list-item","key":"820a9a404e8441fc865940ab05039a92","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"fe107e53bfbc42faa8cdd13a0ae1742c","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c681dfa22e0449b682859bd7723b8e93","ranges":[{"kind":"range","marks":[],"text":"Indien nog steeds geen Acknowledgment na ongeveer 7/8e van releasetijd, dan wordt de rebinding status geactiveer (tenzij anders gespecifieerd in optie 59)."}]}]},{"kind":"block","type":"list-unordered","key":"62a006d99ea24eeb9075897c97940f99","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"0db3808925754c2e977d802b5275d475","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"a5cac495d3ca44a3a9410e2715c0ab12","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"68f41815669c455e8e5142014753ec25","ranges":[{"kind":"range","marks":[],"text":"Client probeert lease te vernieuwen bij willekeurige DHCP Server door DHCP Request berichten te broadcasten."}]}]}]},{"kind":"block","type":"list-item","key":"abc584b65e95441eb217dc85c8d583fd","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"1e077cd8179847479fed8e3879722604","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b88cdec0bdfb4e71b07554af8adbceaa","ranges":[{"kind":"range","marks":[],"text":"Server antwoordt met een DHCP Acknowledgment."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"2913039da685475e83c9c2fc16d275e7","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"ba1fa01d1b0d44beb2e0be4c7189b3ec","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"5e05796d91d744d8bd4d8162290d780c","ranges":[{"kind":"range","marks":[],"text":"Indien na 3 keer nog steeds geen Acknowledgment:"}]}]},{"kind":"block","type":"list-unordered","key":"f3dae4b0e7de4c52bc65338f3a4c0c6d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"6321584074e44a98a74f21beb877b1e1","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"7709953cea8640eebfa383fa6fe6ce12","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c819660a5dba44e3b13841cfdee1e879","ranges":[{"kind":"range","marks":[],"text":"Client stopt met lease te gebruiken."}]}]}]},{"kind":"block","type":"list-item","key":"6415e290acc94d2dac14994a6e4c8404","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"10e57801616747b59c7b81a701ad361b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d7c03a3c0e524fc485de2ea80bb567cd","ranges":[{"kind":"range","marks":[],"text":"Herstart initialisatieproces."}]}]}]}]}]}]}]}]}]}]},{"kind":"block","type":"heading-1","key":"a64c243216e04a5b949eff21a6a9a65e","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d9d60b61961942d48a5925124ce64581","ranges":[{"kind":"range","marks":[],"text":"Bespreek het doel en (in detail) de werking van DHCP relay-agents. Welke velden in DHCP berichten helpen deze functie realiseren ?"}]}]},{"kind":"block","type":"heading-2","key":"04fe8ba658844dd1be68cdaa1d5d7479","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"36c6008992464480bc15e7c7ab10b9f4","ranges":[{"kind":"range","marks":[],"text":"Doel"}]}]},{"kind":"block","type":"list-unordered","key":"fc6003d0b8874f8ea59c401dad527220","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"22941d711f9b412293f7533032a3e889","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"26571240e3c64ef9a7666d6aef1ea9cc","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"267f0de6ef5944b6a18f3625bd55a1fe","ranges":[{"kind":"range","marks":[],"text":"DHCP maakt gebruik van broadcast en zal dus enkel werken op een enkel subnet"}]}]},{"kind":"block","type":"list-unordered","key":"de863c59303c4087baebff5e09b49edc","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"1c0541782926456a9bc4d98c4e774a1a","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"dd7e989424b949ad95c5868bb4240c56","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"03aae22b23cb4ac480123ca33993cfaa","ranges":[{"kind":"range","marks":[],"text":"Routers laten broadcastberichten niet door"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"d3abc7f0eceb4c269c711eff94568f4a","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"ba36bca2e14e47099fd0352b508a389b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"5d2d22c09689476691a90fa94b251d75","ranges":[{"kind":"range","marks":[],"text":"Een relay agent maakt het mogelijk om DHCP broadcastberichten door te sturen naar andere subnetten."}]}]}]}]},{"kind":"block","type":"heading-2","key":"6960a22d335c4f0db029112d98f6355f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"bd2e0b41cadc4b6d9ec31031814633f6","ranges":[{"kind":"range","marks":[],"text":"Werking"}]}]},{"kind":"block","type":"list-unordered","key":"a62044df7cc847a28632c63738b1a695","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"aa4c8021c8674d61a2b5c01efefc6ca0","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"05b1852f763240e88bb22587f7aaeb30","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a2da1e86d82a48ca97a472027c28fb69","ranges":[{"kind":"range","marks":[],"text":"Ander leaseproces"}]}]}]},{"kind":"block","type":"list-item","key":"7fe8f92f569145629e6fc6e92a6f2271","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"05337125ecc444e085b4fbd8bd6eb37b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ef111ae570ef4abfb89598ec23b1bd20","ranges":[{"kind":"range","marks":[],"text":"Client stuurt DHCP Discovery bericht met het gateway veld op 0.0.0.0"}]}]}]},{"kind":"block","type":"list-item","key":"80ea2d65aa6844f38e37bfbf57f25ffc","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"27a98f4d5f3a48aea4b134254615fb2b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"03d8f8fdf16241d8ad05963122189206","ranges":[{"kind":"range","marks":[],"text":"Relay agent stuurt het bericht door en vult het gateway veld op met het IP adres van de router"}]}]},{"kind":"block","type":"list-unordered","key":"846f7a7714b04f7eb1cfda4d33690d4e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"36ad929cf9c94e9899fe1a5753c2f4b7","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"8e950aae3bf042f8a153ea903d2d18d1","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d01a7fec775f4a60a7a4fbed6956bc68","ranges":[{"kind":"range","marks":[],"text":"Doorgeven op 2 manieren:"}]}]},{"kind":"block","type":"list-unordered","key":"b717b611a7a54387a29fd96b0403407c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"30202a831e3f4fe983dd686d09c3d8a4","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"7a6479512ca941aa952485c76934686a","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"dee5e6a1fdf84dc6b0846ff8881272a7","ranges":[{"kind":"range","marks":[],"text":"Ofwel berichten sturen gericht naar de actieve server"}]}]}]},{"kind":"block","type":"list-item","key":"0d6107cfdcfe4be8a45d471ce1024502","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"233ddaab459a4110afb14d69d95f7ef2","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"87bf81aebc7b4d49b8300c51eb0c7f8d","ranges":[{"kind":"range","marks":[],"text":"Ofwel bericht broadcasten op alle externe subnetten waarop ze aangesloten is"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"22de38c0f31145c1afcd5fb69877d810","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"66a20d288399440fb9b53edfbe94dbae","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"7eb5b1373b2a48deab14abe6153fa80a","ranges":[{"kind":"range","marks":[],"text":"Server antwoordt met een DHCP Offer"}]}]},{"kind":"block","type":"list-unordered","key":"d0c7dd49802d4b10b94162462b222014","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"59aadc2e8f8d4642945872760b85da92","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"fb80ab52a5a1417b9f1fa715e553ffd9","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"20afe3cb94664b30a516502482b7be71","ranges":[{"kind":"range","marks":[],"text":"Adres is eventueel uit een andere scope gehaald, afhankelijk van het gateway veld."}]}]}]},{"kind":"block","type":"list-item","key":"643c5cc9a98048fba8bbe1c3cfb70859","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"a9be946e18e54e4eac9774ff08ceb031","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"259c9e7b1bb44901b8f1e05388efbe68","ranges":[{"kind":"range","marks":[],"text":"Dit bericht wordt rechtstreeks naar de relayagent gestuurd."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"5808e3bf79594ac9bf9e59b5bc04328b","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"82313ac385b548f389332e7e0c44df3f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c8fc16bcb7b14f3db4373655ed7bbd6f","ranges":[{"kind":"range","marks":[],"text":"Relay agent geeft het bericht de adreslease door te broadcasten op het relevante netwerk"}]}]}]}]}]}]},{"kind":"block","type":"heading-2","key":"40b72daa700a4ce09b2114e1bf1932e3","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"96de45f264b2462aaef45ac8e27e1415","ranges":[{"kind":"range","marks":[],"text":"Vereiste velden"}]}]},{"kind":"block","type":"list-unordered","key":"f704b811b51a4194921c1bcd4b2a5e28","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"111879a00c1d48e29f1cede604e98ee4","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"8243c08ca2194400b9cae59705842bb7","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"eafb3765db194d0498d1eb80a75361d8","ranges":[{"kind":"range","marks":[],"text":"Hop veld"}]}]},{"kind":"block","type":"list-unordered","key":"91150d65fc1d4a6ea02a6a7f4d979e80","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"a2d5fae413764a83b8b259f02007959e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"95a6c849623f45a0bcd3ffba651d00d8","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c83c3924b1f64e58a5f65d8529f8af16","ranges":[{"kind":"range","marks":[],"text":"Wordt met 1 verhoogd telken een relay agent het bericht opnieuw broadcast. "}]}]}]}]}]},{"kind":"block","type":"list-item","key":"18fd4daa852344ffa305aac0672b2bd5","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"42f3d2b838fb4c19b7ef5b114f1b88f1","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"7895b752b8394e4c9795faca33c69251","ranges":[{"kind":"range","marks":[],"text":"Gateway veld"}]}]},{"kind":"block","type":"list-unordered","key":"a12f5aa856f446c99ca4c6b1a52f0a62","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"8b0a8f5222b94f929bfa80312082da8d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"b97b890462df43bfa55f3a1cdcf9b9ff","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a029d596bbf64dd39b32f93262523bea","ranges":[{"kind":"range","marks":[],"text":"hierin wordt de IP van de doorsturende router opgeslagen"}]}]}]},{"kind":"block","type":"list-item","key":"3fa1b8ae45a2456a8b9484f60e7ae0a9","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"ce25d2af61fe415e9db3d51e9175fb10","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b7fe87af521f44d582c6fdb54b610cf7","ranges":[{"kind":"range","marks":[],"text":"Dit wordt ook gebruikt om de scope te bepalen van adressen bij keuze van een lease."}]}]}]}]}]}]},{"kind":"block","type":"heading-1","key":"d3c3351966554b4a8b9150c3fabba178","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"2ec4f3f796c942b093c589de3adfa19b","ranges":[{"kind":"range","marks":[],"text":"Beschrijf wat er gebeurt op DHCP niveau bij het heropstarten van een Windows Server of een Linux toestel, nadat men een shutdown heeft uitgevoerd."}]}]},{"kind":"block","type":"list-unordered","key":"1b196aa92272446ca13741e91fbbf2b9","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"bdc9a5fc785946c9b976281438432905","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"d0d7f6e17d104e7491f94531d209ef75","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"34f4b42023414da880454ba727605010","ranges":[{"kind":"range","marks":[],"text":"Zowel Windows als Linux loggen hun DHCP leases"}]}]},{"kind":"block","type":"list-unordered","key":"721e003d71f44557b70ddc609dceb3d8","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"50933d100a7749449698250fc2cfbbb2","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"79678785cfdc42e2bfb5b4cc64775f70","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"764754168300472984f3a8fafbb34fca","ranges":[{"kind":"range","marks":[],"text":"Linux: file "},{"kind":"range","marks":[{"kind":"mark","data":{},"type":"code"}],"text":"/var/lib/dhcp/dhclient.leases"}]}]}]},{"kind":"block","type":"list-item","key":"b45d2734f23745edabb74dcdbf95e1bb","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"deba1743188a44ea9b7412e98e01cdef","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c2163b181c4c41ff939a783c23ce3e3d","ranges":[{"kind":"range","marks":[],"text":"Windows: "},{"kind":"range","marks":[{"kind":"mark","data":{},"type":"code"}],"text":"hive register"}]}]}]}]}]}]},{"kind":"block","type":"heading-1","key":"09e9ae39b36a42749dabb8909627d0b5","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"5203e14810c3465e986292dd0d635beb","ranges":[{"kind":"range","marks":[],"text":"Beschrijf wat er gebeurt indien een Windows Server of Linux DHCP-cliënt in eerste instantie geen DHCP-server kan bereiken."}]}]},{"kind":"block","type":"list-unordered","key":"7d3b9413373548278362b44356f24b1a","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"1a7b3ed8f4574ee39b452a3866afd7cc","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"dc1a546de6eb49e5884da21c273ea4dc","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"5e0f09f10a704197b31ed805c72186a0","ranges":[{"kind":"range","marks":[],"text":"Linux en Windows DHCP clients kunnen zichzelf configureren om met een tijdelijke IP-configuratie te werken"}]}]}]},{"kind":"block","type":"list-item","key":"88185bae87e248fd89ebac14fbf1f452","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"70ded6e5c5a645a3b36ea502108ce1ae","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b9d6e1984f0b4f6987aa3eb8faa6bb72","ranges":[{"kind":"range","marks":[],"text":"= Automatic Private IP Addressing (APIPA) (of automatische IP Configuratie)"}]}]}]},{"kind":"block","type":"list-item","key":"4435ebe77ee54ef3a285cfdc37ddd148","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"68644eea2b2d4d1ea87980dca644f104","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"218f064312fa4f0d8b9c27e502fb0237","ranges":[{"kind":"range","marks":[],"text":"Toegewezen uit gereserveerde klasse B bereik 169.254/16"}]}]},{"kind":"block","type":"list-unordered","key":"dc7ce140f1ac49e8b9ae5ed156d8a3dc","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"48f4584e1da24b00bf2ea3d9946212a3","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"f79d591c3b044860a8ac6843dc4504be","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"23e4546ef5164f7db2cf55b3121ec760","ranges":[{"kind":"range","marks":[],"text":"Dit bereik wordt niet op het internet gebruikt"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"35eadec8952242b0a3c8a05bd16df87d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"6844e854d7f844e99f51bab88f6383da","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ffb0a14fdf5246abbd1e8a2811e12bb7","ranges":[{"kind":"range","marks":[],"text":"De DHCP client voert een conflictdetectie uit met een Gratuitous ARP aanvraag"}]}]},{"kind":"block","type":"list-unordered","key":"e400383953294098827467aedea63394","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"21cfdf7f688347d3a9578f72613951a0","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"ab9e145362ac4fa28a4adf8d8c8d3dea","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"707d2be0212f44a49da2ce831d44332f","ranges":[{"kind":"range","marks":[],"text":"Indien duplicaat IP adres wordt een nieuw random IP adres gekozen in dit bereik"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"390f0ffe699148a7847c7c478068cc96","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"ae52089f22a24238bdfb689b96264f41","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"f9b42f59634f49d8922f59b3e33aa23e","ranges":[{"kind":"range","marks":[],"text":"Na toewijzing van het tijdelijke adres blijven de clients in de achtergrond op periodieke intervallen contact zoeken met een DHCP Server"}]}]},{"kind":"block","type":"list-unordered","key":"920d21949a3e48499b302ec4042d7157","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"8ae4b0c3a7dc4f5285d347acde4c3aa7","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"347386bf76df4173b0e6b0737b60ef03","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"78c25a958cb74ab18ba1206022465e76","ranges":[{"kind":"range","marks":[],"text":"Indien toch DHCP Server gevonden, wordt een lease aangevraagd en vervalt het tijdelijke adres. "}]}]}]}]}]}]}]}}}},"user":{"kind":"user","uid":"-M157rV5qxBy7RXBYSDK","baseDomain":"","defaultSpace":null,"displayName":"","photoURL":null,"deletedAt":null,"usageStatuses":null,"email":"","emailVerified":false,"disabled":false,"phoneNumber":null,"providers":{},"isVisitor":true,"customClaims":{},"lastLoggedInAt":1582798431760,"createdAt":1582798431760}},"config":{"environment":"production","firebase":{"databaseURL":"https://gitbook-28427.firebaseio.com","apiKey":"AIzaSyBL3yy07hdwBstwhhFTkRtzJA865UQzQVg","authDomain":"app.gitbook.com","projectId":"gitbook-28427","storageBucket":"gitbook-28427.appspot.com","messagingSenderId":"208404988308"},"amplitude":{"key":"fef1e872c952688acd962d30aa545b9e","endpoint":"www.gitbook.com/__amp/"},"zendesk":{"widget_key":"c2b4abc5-eb81-454f-8d35-ba1650332541","subdomain":"gitbook"},"ga":{"spaces":{"id":"UA-57505611-10","view_id":"152688311"},"website":{"id":"UA-57505611-9"}},"slack":{"client_id":"3085992729.251477828931","redirect_uri":"https://hooks.gitbook.com/hooks/slack/oauth"},"sentry":{"url":"https://df403e1abd7046148b272790ec350ce0@sentry.io/193897"},"stripe":{"public_key":"pk_live_iPkbPsG28bjTrkbfHXUq0cA0","plans":{"business_monthly":"plan_ERCJFVRMVGgjVZ","team_yearly":"plan_GAeDEVtig2ujYe","startup_yearly":"plan_FpdZWR4TLYnKYH","business_yearly":"plan_ERCJgSzm3Ui1ox","startup_monthly":"plan_FpdWuSK3BgOldB","team_monthly":"plan_GAeDpGXRUSctoE"},"products":{"legacy":"prod_FROhqd8l1W4Fwg","team":"prod_GAeD47cc905FaD","business":"prod_DpiRtaS8dvrtrK","startup":"prod_Cd5mCUdVDfZSHY","enterprise":"prod_DpMsO7RlzNd0Ty"}},"algolia":{"appid":"Q9UGR6532T"},"clearbit":{"public_key":"pk_e1e4d94ae5385255f0fc7d76d4897ade"},"urls":{"api":"https://api-beta.gitbook.com","spaces":"https://gitbook-28427.firebaseapp.com","website":"https://app.gitbook.com","saml":"https://www.gitbook.com"},"domains":{"spaces":"gitbook.io","cookie":".gitbook.com"},"cdn":{"blobsurl":"https://blobs.gitbook.com/","hosting_cname":"hosting.gitbook.com"},"statuspage":{"domain":"http://status.gitbook.com"},"logrocket":{"key":"fvjtqz/gitbook"},"version":"6.13.0","buildVersion":"6.13.0-9796653.27978"},"props":{"ownerID":"538c32a77bcb1b0200ff5dcd","spaceID":"-Lc5VIoyjbmo2ReQJFfs","spaceName":"ugent-computernetwerken-2","basename":"/ugent-computernetwerken-2","location":"/ugent-computernetwerken-2/reek_c_-_dhcp_leaseprocessen_en_relay-agents"}};
+            </script>
+            <script id="__LOADABLE_REQUIRED_CHUNKS__" type="application/json" crossorigin="anonymous" charset="utf-8">[]</script>
+<script async data-chunk="space" src="https://static.gitbook.com/js/111.cb821c98.js" crossorigin="anonymous" charset="utf-8"></script>
+        </body>
+    </html>
+    

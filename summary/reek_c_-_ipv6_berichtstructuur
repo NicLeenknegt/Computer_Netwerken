@@ -1,0 +1,1893 @@
+
+    <!doctype html>
+    <html >
+        <head>
+            <title data-react-helmet="true">Reek C - IPv6 berichtstructuur - UGent Computernetwerken 2</title>
+            <meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/><meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="google" value="notranslate"/><meta data-react-helmet="true" property="og:image" content="https://app.gitbook.com/share/space/thumbnail/-Lc5VIoyjbmo2ReQJFfs.png"/><meta data-react-helmet="true" property="twitter:card" content="summary"/><meta data-react-helmet="true" property="twitter:site" content="UGent Computernetwerken 2"/><meta data-react-helmet="true" name="description" content=""/><meta data-react-helmet="true" property="og:title" content="Reek C - IPv6 berichtstructuur"/><meta data-react-helmet="true" property="og:description" content=""/>
+            <link data-react-helmet="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500"/><link data-react-helmet="true" rel="stylesheet" href="https://unpkg.com/emojione-assets@4.0.0/sprites/emojione-sprite-40.min.css"/><link data-react-helmet="true" rel="preconnect" href="https://www.googleapis.com"/><link data-react-helmet="true" rel="preconnect" href="https://api.amplitude.com"/><link data-react-helmet="true" rel="preconnect" href="https://blobs.gitbook.com/"/><link data-react-helmet="true" rel="canonical" href="https://xavier-geerinck.gitbook.io/ugent-computernetwerken-2/reek_c_-_ipv6_berichtstructuur"/>
+            <style data-react-helmet="true" type="text/css">
+        @font-face {
+            font-family: "Roboto";
+            src: local("Roboto"), local("Roboto-Regular"), url(https://static.gitbook.com/fonts/fc3d4b35e4d07d4e0485cc2db0e57c77.woff) format('woff');
+            font-weight: 400;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Roboto";
+            src: local("Roboto Medium"), local("Roboto-Medium"), url(https://static.gitbook.com/fonts/f4fa50c4003f87e7dc10459e500933c3.woff) format('woff');
+            font-weight: 500;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Roboto";
+            src: local("Roboto Bold"), local("Roboto-Bold"), url(https://static.gitbook.com/fonts/72e37e5bf95a8dba938c78b1d7d91253.woff) format('woff');
+            font-weight: 700;
+            font-display: fallback;
+        }
+    </style><style data-react-helmet="true" type="text/css">
+        @font-face {
+            font-family: "Content-font";
+            src: local("Roboto"), local("Roboto-Regular"), url(https://static.gitbook.com/fonts/fc3d4b35e4d07d4e0485cc2db0e57c77.woff) format('woff');
+            font-weight: 400;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Content-font";
+            src: local("Roboto Medium"), local("Roboto-Medium"), url(https://static.gitbook.com/fonts/f4fa50c4003f87e7dc10459e500933c3.woff) format('woff');
+            font-weight: 500;
+            font-display: fallback;
+        }
+        @font-face {
+            font-family: "Content-font";
+            src: local("Roboto Bold"), local("Roboto-Bold"), url(https://static.gitbook.com/fonts/72e37e5bf95a8dba938c78b1d7d91253.woff) format('woff');
+            font-weight: 700;
+            font-display: fallback;
+        }
+    </style>
+            <script data-react-helmet="true" type="text/javascript" defer="true" src="https://polyfill.io/v3/polyfill.min.js?flags=gated&amp;features=Intl"></script>
+            <style>#__GITBOOK__ROOT__SERVER__ { width: 100%; height: 100%; display: flex;}</style>
+            <style>#__GITBOOK__ROOT__CLIENT__ { width: 100%; min-height: 100%; height: initial; display: flex;}</style>
+            <style id="__GITBOOK__STYLE__">html, body {
+  color: #242A31;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  background: #F5F7F9;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  line-height: 1em;
+  font-smoothing: antialiased;
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+@media screen and (min-width: 768px) {
+  html, body {
+    text-rendering: optimizeLegibility;
+  }
+}
+@media print {
+  html, body {
+    background: transparent;
+  }
+}
+*, *:before, *:after {
+  outline: none;
+  box-sizing: inherit;
+}
+@font-face {
+  font-family: "Flow-Rounded";
+  src: url("https://static.gitbook.com/fonts/bfc0a96537ceb0cad9e956b9f980fe88.woff") format('woff');
+  font-display: block;
+}
+input, select, textarea {
+  font-size: 16px;
+}
+input, select, textarea, button {
+  font: inherit;
+}
+input[type="search"] {
+  -webkit-appearance: none;
+}
+.draggingElement, .draggingElement *:hover {
+  cursor: grabbing !important;
+  pointer-events: auto !important;
+}
+.draggingElement .draggingHidden {
+  display: none;
+}
+
+.reset-3c756112--body-68cac36c {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  background: #F5F7F9;
+  min-height: 100vh;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--header-07037613--header-11420428 {
+  display: -webkit-box;
+  height: 80px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  z-index: 20;
+  position: relative;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  border-bottom: 1px solid #d4dadf;
+  background-color: #FFFFFF;
+}
+@media print {
+  .reset-3c756112--header-07037613--header-11420428 {
+    display: none;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--header-07037613--header-11420428 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    top: 0;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--header-07037613--header-11420428 {
+    height: 60px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+.reset-3c756112--headerContainer-bb8cc0bc {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  padding: 0;
+  max-width: 1448px;
+}
+.reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-box-align: center;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26 {
+    max-width: 298px;
+    justify-content: center;
+    -webkit-box-pack: center;
+  }
+  .reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26:after {
+    top: 50%;
+    right: 0;
+    height: 40px;
+    content: " ";
+    position: absolute;
+    transform: translateY(-50%);
+    border-left: 1px solid #E6ECF1;
+  }
+}
+.reset-3c756112--mobileButton-7a76d05f {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 0 0 auto;
+  width: 30px;
+  cursor: pointer;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  outline: none;
+  padding: 0;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--mobileButton-7a76d05f {
+    display: none;
+  }
+}
+.icon-7f6730be--text-3f89f380--icon-1f8349b3 {
+  color: #242A31;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+.reset-3c756112--headerLogo-5c0b38e2 {
+  margin: 0;
+  display: block;
+  padding: 0px 24px;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--headerLogo-5c0b38e2 {
+    width: 250px;
+    padding: 0;
+  }
+}
+.reset-3c756112--mobileLogo-dacfd15c {
+  margin: 0;
+  display: none;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--mobileLogo-dacfd15c {
+    display: block;
+  }
+}
+.link-a079aa82--primary-53a25e66--logoLink-10d08504 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #3884FF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  -webkit-box-align: center;
+}
+.reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90 {
+  flex: 1;
+  color: #242A31;
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-left: 8px;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90 {
+    overflow: hidden;
+    max-width: 50vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+.reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90:hover {
+  color: #3884FF;
+}
+.text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1--spaceNameText-677c2969 {
+  font-size: 16px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+.reset-3c756112--desktopLogo-a594db90 {
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--desktopLogo-a594db90 {
+    display: none;
+  }
+}
+.reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea {
+  flex: 1 1 auto;
+  margin: 0px 88px;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  max-width: 750px;
+}
+.reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea:after {
+  background: -webkit-linear-gradient(to right, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+  background: -moz-linear-gradient(to right, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, #FFFFFF 100%);
+  pointer-events: none;
+}
+@media screen and (max-width: 1439px) {
+  .reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea {
+    margin: 0px 24px 0px 88px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea {
+    display: none;
+  }
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48 {
+  display: -webkit-box;
+  overflow-x: auto;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  opacity: 1;
+  padding: 0;
+  overflow-x: overlay;
+  overflow-y: hidden;
+  transition: flex 250ms ease,width 250ms ease,opacity 250ms ease;
+  -moz-transition: flex 250ms ease,width 250ms ease,opacity 250ms ease;
+  -webkit-transition: flex 250ms ease,width 250ms ease,opacity 250ms ease;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  height: 80px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  max-width: 224px;
+  align-items: center;
+  -webkit-box-align: center;
+}
+.reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130:before {
+  top: 50%;
+  left: 0;
+  height: 40px;
+  content: " ";
+  position: absolute;
+  transform: translateY(-50%);
+  border-left: 1px solid #E6ECF1;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130 {
+    display: none;
+  }
+}
+.reset-3c756112--inputContainer-b2cb171c {
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-left: 14px;
+  padding-right: 16px;
+}
+.inputInner-5c86b87d--medium-0bbed4bd--inputInner-4216b016--searchInputPlaceholder-936306be {
+  font: inherit;
+  color: #242A31;
+  width: 100%;
+  border: none;
+  cursor: inherit;
+  height: 38px;
+  margin: 0;
+  resize: none;
+  outline: none;
+  padding: 0px 8px;
+  background: transparent;
+  box-sizing: border-box;
+  text-align: left;
+  line-height: inherit;
+  border-radius: 3px;
+}
+.inputInner-5c86b87d--medium-0bbed4bd--inputInner-4216b016--searchInputPlaceholder-936306be::placeholder {
+  color: #9DAAB6;
+  font-size: 16px;
+  font-weight: 500;
+}
+.reset-3c756112--inputWrapper-63396dac--TextH400-3033861f--medium-4505230f--light-502263b4--input-6d442051--searchInput-3fa812d5 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  border: none;
+  margin: 0;
+  display: flex;
+  outline: none;
+  padding: 0;
+  font-size: 16px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  font-weight: 400;
+  line-height: 1.625;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+}
+.reset-3c756112--inputInnerSizer-756c9114 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.reset-3c756112--inputAddOn-45de9ec1--inputAddOnPrefix-202fa60d--icon-1f8349b3 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 0 0 auto;
+  color: #242A31;
+  order: -1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  line-height: 1.2;
+  white-space: nowrap;
+  padding-left: 8px;
+  -webkit-box-align: center;
+}
+.icon-7f6730be--text-3f89f380 {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+.reset-3c756112--bodyContent-2f98451b {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1;
+  color: #3B454E;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  padding: 0;
+}
+.reset-3c756112--wholeContent-9fc567d4 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  min-height: 100%;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--wholeContentBody-554be184 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  transition: margin-bottom 250ms ease;
+  align-items: stretch;
+  -moz-transition: margin-bottom 250ms ease;
+  -webkit-box-align: stretch;
+  -webkit-transition: margin-bottom 250ms ease;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--wholeContentBody-554be184 {
+    padding-top: 80px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--wholeContentBody-554be184 {
+    padding-top: 60px;
+  }
+}
+@keyframes keyframes-animation-2f81d449-0-1-306 {
+  0% {
+    background-color: rgba(24, 48, 85, 0);
+  }
+  100% {
+    background-color: rgba(24, 48, 85, 0.30000000000000004);
+  }
+}
+.reset-3c756112--backdrop-1322b68a--hidden-247382c3--overlay-29559ab8 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  z-index: 29;
+  position: absolute;
+  transition: background-color 250ms ease-out;
+  align-items: center;
+  animation-name: none;
+  pointer-events: none;
+  -moz-transition: background-color 250ms ease-out;
+  justify-content: center;
+  -webkit-box-pack: center;
+  background-color: rgba(24, 48, 85, 0);
+  -webkit-box-align: center;
+  -webkit-transition: background-color 250ms ease-out;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--backdrop-1322b68a--hidden-247382c3--overlay-29559ab8 {
+    z-index: 14;
+  }
+}
+.reset-3c756112--contentNavigation-dd3370a4 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  z-index: 30;
+}
+@media print {
+  .reset-3c756112--contentNavigation-dd3370a4 {
+    display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--contentNavigation-dd3370a4 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex: 0 0 auto;
+    width: calc((100% - 1448px) / 2 + 298px);
+    display: flex;
+    z-index: 15;
+    min-width: 298px;
+    background: #F5F7F9;
+    align-items: stretch;
+    border-right: 1px solid #E6ECF1;
+    padding-left: calc((100% - 1448px) / 2);
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+  }
+}
+.reset-3c756112--contentNavigationInner-205d49ea--contentNavigationInnerCollapsed-7b4aca00 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--contentNavigationInner-205d49ea--contentNavigationInnerCollapsed-7b4aca00 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 30;
+    position: fixed;
+    max-width: 298px;
+    transform: translateX(-100%) !important;
+    box-shadow: none;
+    overflow-y: auto;
+    transition: transform 250ms ease;
+    border-right: 1px solid #E6ECF1;
+    -moz-transition: transform 250ms ease;
+    background-color: #fff;
+    -webkit-transition: transform 250ms ease;
+  }
+}
+.reset-3c756112--sidebarWrapper-84a13d8e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: stretch;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112 {
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.reset-3c756112--sidebar-84a13d8e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: stretch;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--sidebarMain-32610e62 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  background-color: #F5F7F9;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe {
+  overflow-y: auto;
+  flex: 1 1 auto;
+  width: 100%;
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--mobileHeader-4e2d4892 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #74818D;
+  height: 59px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  box-shadow: 0 1px 1px 0 rgba(116, 129, 141, 0.1);
+  align-items: stretch;
+  border-bottom: 1px solid #d4dadf;
+  background-color: #FFFFFF;
+  -webkit-box-align: stretch;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--mobileHeader-4e2d4892 {
+    display: none;
+  }
+}
+.reset-3c756112--mobileHeaderClose-47b8fa64 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  padding: 8px 16px;
+  font-size: 24px;
+  align-items: center;
+  -webkit-box-align: center;
+}
+.reset-3c756112--pagesTree-4b07cd56 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  font-size: 15px;
+  margin-top: 32px;
+  padding-left: 16px;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--pagesTree-4b07cd56 {
+    padding-left: 24px;
+  }
+}
+.reset-3c756112--pageItem-01e3f344 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+  border-left: 1px solid transparent;
+}
+.reset-3c756112--pageComponent-7cc5301a {
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-left: -1px;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  padding: 7px 24px 7px 16px;
+  position: relative;
+  align-items: center;
+  border-right: 0;
+  text-decoration: none;
+  -webkit-box-align: center;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca:hover {
+  background-color: #E6ECF1;
+}
+.text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f {
+  flex: 1;
+  font-size: 14px;
+  word-break: break-word;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.reset-3c756112--pageItemWithChildren-56f27afc {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca--navButtonOpened-6a88552e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  padding: 7px 24px 7px 16px;
+  position: relative;
+  align-items: center;
+  border-color: #E6ECF1 !important;
+  border-right: 0;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-box-align: center;
+}
+.navButton-94f2579c--navButtonClickable-161b88ca--navButtonOpened-6a88552e:hover {
+  border-color: #E6ECF1;
+  background-color: #FFFFFF;
+}
+.reset-3c756112--pageItemWithChildren-56f27afc--S300Bottom-9b4658d2 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+  margin-bottom: 24px;
+}
+.reset-3c756112--footer-68e6f18c {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--footer-68e6f18c:before {
+  background: -webkit-linear-gradient(to bottom, rgba(255,255,255,0) 0%, #F5F7F9 100%);
+  background: -moz-linear-gradient(to bottom, rgba(255,255,255,0) 0%, #F5F7F9 100%);
+  top: -24px;
+  width: 100%;
+  height: 24px;
+  content: "";
+  display: block;
+  position: absolute;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #F5F7F9 100%);
+}
+.reset-3c756112--trademark-a8da4b94 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #9DAAB6;
+  margin: 16px;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  margin-left: 32px;
+  padding-top: 8px;
+  padding-left: 16px;
+  border-radius: 3px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  text-decoration: none;
+  background-color: #E6ECF1;
+  -webkit-box-align: center;
+}
+.reset-3c756112--trademark-a8da4b94:hover {
+  color: #3884FF;
+}
+.reset-3c756112--trademarkLogo-0d2d53bc {
+  margin: 0;
+  display: block;
+  padding: 0;
+  font-size: 40px;
+}
+.reset-3c756112--trademarkContent-04a01aea {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-left: 16px;
+}
+.text-4505230f--TextH200-a3425406--textUIFamily-5ebd8e40 {
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.625;
+}
+.reset-3c756112--wholeContentPage-6c3f1fc5 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1 1 auto;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  max-width: 100%;
+  min-width: 0;
+  background: #fff;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--wholePageSticky-f53dafd2 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 1 1 auto;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  min-width: 0;
+}
+.reset-3c756112--pageContainer-3ec6d8d0 {
+  flex: 1 1 auto;
+  margin: 0px 16px;
+  display: block;
+  padding: 0;
+  max-width: 750px;
+  min-width: 0;
+  padding-bottom: 64px;
+}
+@media screen and (max-width: 1023px) {
+  .reset-3c756112--pageContainer-3ec6d8d0 {
+    margin: 0px auto;
+    padding: 0px 24px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .reset-3c756112--pageContainer-3ec6d8d0 {
+    margin: 0px 88px;
+  }
+}
+.reset-3c756112--pageHeader-15724735 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  border-bottom: 2px solid #E6ECF1;
+  margin-bottom: 32px;
+}
+.reset-3c756112--pageHeaderInner-7c0f0284 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  margin: 0;
+  display: flex;
+  padding: 40px 0px;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--pageHeaderInner-7c0f0284 {
+    flex-wrap: wrap;
+    align-items: baseline;
+    flex-direction: row;
+    -webkit-box-align: baseline;
+    -webkit-box-lines: multiple;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+  }
+}
+.reset-3c756112--pageHeaderWrapperContent-6897c946 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--horizontalFlex-5a0077e0 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: stretch;
+  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-box-align: stretch;
+}
+.reset-3c756112--pageHeaderIntro-0c1463da {
+  flex: 1 1 auto;
+  margin: 0;
+  display: block;
+  padding: 0;
+  padding-right: 16px;
+}
+.reset-3c756112--pageTitle-33dc39a3 {
+  color: #242A31;
+  width: 100%;
+  border: none;
+  margin: 0;
+  display: block;
+  outline: none;
+  padding: 0;
+  background: none;
+  border-radius: 3px;
+}
+.text-4505230f--DisplayH900-bfb998fa--textContentFamily-49a318e1 {
+  font-size: 32px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.reset-3c756112--toolbar-a6a9f7d2--medium-8e46b02c--pageHeaderToolbar-6457a802--withControlsClosed-3e96e46c {
+  display: -ms-inline-grid;
+  margin: 0;
+  display: none;
+  padding: 0;
+  margin-top: 9px;
+  -ms-grid-rows: none;
+  grid-column-gap: 16px;
+  grid-template-rows: none;
+}
+@media screen and (max-width: 1279px) {
+  .reset-3c756112--toolbar-a6a9f7d2--medium-8e46b02c--pageHeaderToolbar-6457a802--withControlsClosed-3e96e46c {
+    display: block;
+  }
+}
+.button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94 {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  color: #9DAAB6;
+  width: 30px;
+  border: 1px solid;
+  cursor: pointer;
+  height: 30px;
+  display: inline-flex;
+  outline: none;
+  padding: 0;
+  transition: all 250ms ease-out;
+  align-items: center;
+  line-height: 1em;
+  white-space: nowrap;
+  border-color: transparent;
+  border-radius: 3px;
+  -moz-transition: all 250ms ease-out;
+  justify-content: center;
+  text-decoration: none;
+  -webkit-box-pack: center;
+  background-color: transparent;
+  -webkit-box-align: center;
+  -webkit-transition: all 250ms ease-out;
+}
+.button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94:hover {
+  color: #3884FF;
+}
+.small-3bde6db7--iconOnly-bddce91a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+.text-4505230f--UIH300-2063425d--textUIFamily-5ebd8e40--text-8ee2c8b2 {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  line-height: 1em;
+}
+.reset-3c756112--pageHeaderDescription-22970244 {
+  flex: auto;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.reset-3c756112--toaster-c029690e {
+  top: 16px;
+  left: 50%;
+  margin: 0;
+  display: block;
+  padding: 0;
+  z-index: 160;
+  position: fixed;
+  transform: translateX(-50%);
+}
+.reset-3c756112--pageBody-a91db4ac {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  font-size: 16px;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--container-960c7c26 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+  margin-bottom: -24px;
+}
+.blockHeading-442b4f12 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  margin: 0;
+  display: flex;
+  position: relative;
+  margin-bottom: 24px;
+}
+.blockHeadingContent-756c9114 {
+  flex: 1;
+}
+.text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1 {
+  font-size: 24px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda {
+  color: #242A31;
+  width: 20px;
+  opacity: 0;
+  transition: opacity 150ms ease;
+  line-height: 1em;
+  padding-left: 4px;
+  -moz-transition: opacity 150ms ease;
+  -webkit-transition: opacity 150ms ease;
+}
+.blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda:hover {
+  color: #3884FF;
+}
+@media print {
+  .blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda {
+    display: none;
+  }
+}
+.blockHeadingAnchorIcon-1c2bf3cb {
+  font-size: 16px;
+  vertical-align: middle;
+}
+.reset-3c756112--blockHeadingUp-c32402b2 {
+  width: 1em;
+  cursor: pointer;
+  height: 1em;
+  margin: 0;
+  display: block;
+  outline: none;
+  padding: 0;
+  line-height: 1em;
+}
+@media screen and (min-width: 768px) {
+  .reset-3c756112--blockHeadingUp-c32402b2 {
+    display: none;
+  }
+}
+@media print {
+  .reset-3c756112--blockHeadingUp-c32402b2 {
+    display: none;
+  }
+}
+.list-20526648 {
+  color: #3B454E;
+  margin: 0;
+  padding: 0;
+  padding-left: 2em;
+  margin-bottom: 24px;
+}
+.reset-3c756112--listItemContent-756c9114 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.blockParagraph-544a408c--noMargin-acdf7afa {
+  color: inherit;
+  margin: 0;
+  position: relative;
+  margin-bottom: 0;
+}
+.text-4505230f--TextH400-3033861f--textContentFamily-49a318e1 {
+  font-size: 16px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.625;
+}
+.list-20526648--inList-acdf7afa {
+  color: #3B454E;
+  margin: 0;
+  padding: 0;
+  padding-left: 2em;
+  margin-bottom: 0;
+}
+.bold-3c254bd9 {
+  font-weight: 700;
+}
+.blockHeading-442b4f12--blockHeading1WithMargin-b69d755e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  margin: 0;
+  display: flex;
+  position: relative;
+  margin-top: 73px;
+  margin-bottom: 24px;
+}
+.blockHeading-442b4f12--blockHeading1WithMargin-b69d755e:before {
+  top: -32px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  content: " ";
+  position: absolute;
+  background-color: #E6ECF1;
+}
+.blockHeading-442b4f12--blockHeading2WithMargin-532d771d {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  margin: 0;
+  display: flex;
+  position: relative;
+  margin-top: 32px;
+  margin-bottom: 24px;
+}
+.text-4505230f--HeadingH600-23f228db--textContentFamily-49a318e1 {
+  font-size: 20px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.blockParagraph-544a408c {
+  color: inherit;
+  margin: 0;
+  position: relative;
+  margin-bottom: 24px;
+}
+.reset-3c756112--pageFooter-f1d5e2b0 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-top: 64px;
+}
+@media print {
+  .reset-3c756112--pageFooter-f1d5e2b0 {
+    display: none;
+  }
+}
+.reset-3c756112--navPagesLinks-67bea901 {
+  display: -ms-grid;
+  width: auto;
+  margin: 0;
+  display: grid;
+  padding: 0;
+  -ms-grid-rows: auto;
+  grid-column-gap: 24px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "previous next";
+  grid-template-columns: 1fr 1fr;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--navPagesLinks-67bea901 {
+    grid-row-gap: 24px;
+    -ms-grid-columns: 1fr;
+    grid-template-areas: "next" "previous";
+    grid-template-columns: 1fr;
+  }
+}
+.reset-3c756112--card-6570f064--whiteCard-fff091a4--cardPrevious-56a5e674 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  border: 1px solid #E6ECF1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  grid-area: previous;
+  align-self: stretch;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  transition: border 250ms ease;
+  align-items: center;
+  justify-self: stretch;
+  border-radius: 3px;
+  flex-direction: row;
+  -moz-transition: border 250ms ease;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-box-align: center;
+  page-break-inside: avoid;
+  -ms-grid-row-align: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-transition: border 250ms ease;
+  -ms-grid-column-align: stretch;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--cardIcon-5b647d22 {
+  flex: 0 0 auto;
+  color: #9DAAB6;
+  margin: 0;
+  display: block;
+  padding: 16px;
+  font-size: 24px;
+  transition: color 250ms ease;
+  -moz-transition: color 250ms ease;
+  -webkit-transition: color 250ms ease;
+}
+.reset-3c756112--cardIcon-5b647d22:first-child {
+  padding-right: 0;
+}
+.reset-3c756112--cardIcon-5b647d22:last-child {
+  padding-left: 0;
+}
+.reset-3c756112--cardBody-25dca3b1--cardPreviousBody-79f02c06 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 16px;
+  text-align: right;
+}
+.reset-3c756112--cardHint-2c5d8183 {
+  color: #9DAAB6;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+.text-4505230f--TextH200-a3425406--textContentFamily-49a318e1 {
+  font-size: 12px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.625;
+}
+.reset-3c756112--cardTitle-32aa092e {
+  margin: 0;
+  display: block;
+  padding: 0;
+  transition: color 250ms ease;
+  -moz-transition: color 250ms ease;
+  -webkit-transition: color 250ms ease;
+}
+.text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1 {
+  font-size: 16px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.reset-3c756112--card-6570f064--whiteCard-fff091a4--cardNext-19241c42 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #242A31;
+  border: 1px solid #E6ECF1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  grid-area: next;
+  align-self: stretch;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  transition: border 250ms ease;
+  align-items: center;
+  justify-self: stretch;
+  border-radius: 3px;
+  flex-direction: row;
+  -moz-transition: border 250ms ease;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-box-align: center;
+  page-break-inside: avoid;
+  -ms-grid-row-align: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-transition: border 250ms ease;
+  -ms-grid-column-align: stretch;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--cardBody-25dca3b1 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 16px;
+}
+.reset-3c756112--pageFooterColumns-ef8f347e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  border-top: 2px solid #E6ECF1;
+  margin-top: 24px;
+  align-items: center;
+  padding-top: 24px;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--pageFooterColumns-ef8f347e {
+    align-items: stretch;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+  }
+}
+.reset-3c756112--pageFooterSummary-12074aff {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  .reset-3c756112--pageFooterSummary-12074aff {
+    margin-bottom: 16px;
+  }
+}
+.reset-3c756112--pageChangesSummary-08821678 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  -webkit-box-align: center;
+}
+.reset-3c756112--pageContributors-5c59582e {
+  flex: 0 0 auto;
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-right: 8px;
+}
+.reset-3c756112--ownerAvatarList-696792ce {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+}
+@keyframes keyframes-animation-bd7e9c6a-0-1-307 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  z-index: 0;
+  position: relative;
+  box-shadow: 0 0 0 2px white;
+  border-radius: 128px;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:after {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  top: calc(100% + 16px);
+  left: 50%;
+  color: #FFFFFF;
+  width: max-content;
+  bottom: auto;
+  content: attr(aria-label);
+  display: none;
+  opacity: 0;
+  padding: 5px 8px;
+  z-index: 155;
+  position: absolute;
+  font-size: 12px;
+  max-width: 300px;
+  transform: translateX(-50%);
+  background: #242A31;
+  font-weight: 400;
+  line-height: 1.625;
+  white-space: normal;
+  border-radius: 3px;
+  animation-name: keyframes-animation-bd7e9c6a-0-1-307;
+  pointer-events: none;
+  text-transform: none;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:before {
+  top: calc(100% + 8px);
+  left: 50%;
+  width: 0;
+  bottom: auto;
+  height: 0;
+  content: "";
+  display: none;
+  opacity: 0;
+  z-index: 156;
+  position: absolute;
+  transform: translateX(-50%);
+  border-color: #242A31 transparent;
+  border-style: solid;
+  animation-name: keyframes-animation-bd7e9c6a-0-1-307;
+  border-top-width: 0;
+  border-left-width: 8px;
+  animation-duration: 0.2s;
+  border-right-width: 8px;
+  animation-fill-mode: forwards;
+  border-bottom-width: 8px;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:nth-last-child(n+2) {
+  margin-left: -8px;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:hover:before {
+  display: block;
+}
+.reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802:hover:after {
+  display: block;
+}
+.reset-3c756112--avatarFrame-2f40cdc9--small-2ec8ae1a--circle-6c5acd10 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  -webkit-mask-image: -moz-radial-gradient(white, black);
+  mask-image: -webkit-radial-gradient(white, black);
+  mask-image: -moz-radial-gradient(white, black);
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  mask-image: radial-gradient(white, black);
+  align-items: center;
+  border-radius: 128px;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  -webkit-mask-image: radial-gradient(white, black);
+}
+.image-67b14f24--avatar-1c1d03ec {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  background-size: cover;
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+}
+.reset-3c756112--innerShadow-7a3a8651 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: absolute;
+  box-shadow: inset 0 0 1px 1px rgba(24, 48, 85, 0.1);
+  border-radius: 128px;
+  pointer-events: none;
+}
+.reset-3c756112--pageEditedDate-b805c39a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: auto;
+  color: #9DAAB6;
+  margin: 0;
+  display: flex;
+  padding: 0;
+}
+.reset-3c756112--pageSide-ad9fed26 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex: 0 0 auto;
+  width: 224px;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  position: relative;
+  margin-right: auto;
+}
+@media print {
+  .reset-3c756112--pageSide-ad9fed26 {
+    display: none;
+  }
+}
+@media screen and (max-width: 1279px) {
+  .reset-3c756112--pageSide-ad9fed26 {
+    display: none;
+  }
+}
+.reset-3c756112--stickyContainer-2bed3a82 {
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  max-width: 100%;
+}
+.reset-3c756112--tocWrapper-506ea24c {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  padding-top: 40px;
+  flex-direction: column;
+  padding-bottom: 40px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114 {
+  overflow-y: auto;
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--pageSideSection-542f1fd5 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  position: relative;
+}
+.reset-3c756112--pageSideSection-542f1fd5:before {
+  top: 0;
+  left: 0;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  border-left: 1px solid #E6ECF1;
+}
+.reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5 {
+  display: -webkit-box;
+  flex: 1;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  min-width: 224px;
+  counter-reset: toc;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+@media print {
+  .reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5 {
+    display: none;
+  }
+}
+.reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5:before {
+  top: 0;
+  left: 0;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  border-left: 1px solid #E6ECF1;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496 {
+  overflow-y: auto;
+  flex: 1;
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-track {
+  background: none;
+  border-width: 0;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+  transition: background 250ms ease;
+  border-radius: 2px;
+  -moz-transition: background 250ms ease;
+  -webkit-transition: background 250ms ease;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-button {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-scrollbar-corner {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496::-webkit-resizer {
+  display: none;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496:hover::-webkit-scrollbar {
+  display: initial;
+}
+.reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496:hover::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.16);
+}
+.reset-3c756112--menuHeader-d7753f3a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  color: #9DAAB6;
+  margin: 0;
+  display: flex;
+  padding: 0;
+  padding-left: 24px;
+  margin-bottom: 8px;
+}
+.reset-3c756112--menuHeaderIcon-0c3ed569 {
+  margin: 0;
+  display: block;
+  padding: 0;
+  margin-right: 8px;
+}
+.text-4505230f--InfoH100-1e92e1d1--textContentFamily-49a318e1 {
+  font-size: 10px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024 {
+  display: -webkit-box;
+  color: #74818D;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  padding: 4px 16px;
+  align-items: center;
+  padding-left: 24px;
+  vertical-align: middle;
+  text-decoration: none;
+  -webkit-box-align: center;
+}
+.reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024:hover {
+  background: none;
+  text-decoration: inherit;
+}
+.link-a079aa82--primary-53a25e66 {
+  color: #3884FF;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.reset-3c756112--menuItemContent-c44ec79e {
+  margin: 0;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.text-4505230f--UIH300-2063425d--textContentFamily-49a318e1 {
+  font-size: 14px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1 {
+  font-size: 12px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1--pageTocLinkH2-2294976c {
+  font-size: 12px;
+  font-family: Content-font, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  padding-left: 16px;
+}</style>
+        </head>
+        <body>
+            <div id="__GITBOOK__ROOT__SERVER__"><div class="reset-3c756112--body-68cac36c" data-reactroot=""><div class="reset-3c756112--header-07037613--header-11420428"><div class="reset-3c756112--headerContainer-bb8cc0bc"><div class="reset-3c756112--headerLeftColumn-4eae0bae--headerLeftColumn-7efc9f26"><div role="button" tabindex="-1" class="reset-3c756112--mobileButton-7a76d05f"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380--icon-1f8349b3"><g><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></g></svg></div><div class="reset-3c756112--headerLogo-5c0b38e2"><div class="reset-3c756112--mobileLogo-dacfd15c"><a class="link-a079aa82--primary-53a25e66--logoLink-10d08504" style="color:#3884FF" href="/ugent-computernetwerken-2/"><div class="reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1--spaceNameText-677c2969">UGent Computernetwerken 2</span></div></a></div><div class="reset-3c756112--desktopLogo-a594db90"><a class="link-a079aa82--primary-53a25e66--logoLink-10d08504" style="color:#3884FF" href="/ugent-computernetwerken-2/"><div class="reset-3c756112--S100Left-7c8af13a--logoDisplayNameContainer-583bfe61--logoText-2f40da90"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1--spaceNameText-677c2969">UGent Computernetwerken 2</span></div></a></div></div><div role="button" tabindex="-1" class="reset-3c756112--mobileButton-7a76d05f"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380--icon-1f8349b3"><g><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></g></svg></div></div><div class="reset-3c756112--headerInnerWrapper-629f79d1--headerInnerWrapper-4f99acea"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisX-bf86cd6c--headerInner-c872fc48"></div></div><div class="reset-3c756112--searchInputWrapper-ea7f3052--searchInputWrapper-0442d130"><div class="reset-3c756112--inputContainer-b2cb171c"><div aria-label="" class="reset-3c756112--inputWrapper-63396dac--TextH400-3033861f--medium-4505230f--light-502263b4--input-6d442051--searchInput-3fa812d5"><div class="reset-3c756112--inputInnerSizer-756c9114"><input type="text" placeholder="Search..." class="inputInner-5c86b87d--medium-0bbed4bd--inputInner-4216b016--searchInputPlaceholder-936306be"/></div><div class="reset-3c756112--inputAddOn-45de9ec1--inputAddOnPrefix-202fa60d--icon-1f8349b3"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></g></svg></div></div></div></div></div></div><div class="reset-3c756112--bodyContent-2f98451b"><div class="reset-3c756112--wholeContent-9fc567d4"><div class="reset-3c756112--wholeContentBody-554be184"><div role="presentation" class="reset-3c756112--backdrop-1322b68a--hidden-247382c3--overlay-29559ab8"></div><div class="reset-3c756112--contentNavigation-dd3370a4"><div class="reset-3c756112--contentNavigationInner-205d49ea--contentNavigationInnerCollapsed-7b4aca00"><div class="reset-3c756112--sidebarWrapper-84a13d8e"><div style="padding-bottom:0" class="reset-3c756112"></div><div class="reset-3c756112--sidebar-84a13d8e"><div class="reset-3c756112--sidebarMain-32610e62"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--sidebarInner-18a1e7fe"><div class="reset-3c756112--mobileHeader-4e2d4892"><div role="button" tabindex="-1" class="reset-3c756112--mobileHeaderClose-47b8fa64"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></g></svg></div></div><div class="reset-3c756112--pagesTree-4b07cd56"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">introduction</span></a></div></div><div class="reset-3c756112"><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_configuratie_van_de_netwerkinterface_-_bridging_-_multicasting_op_subnetwerkniveau"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - Configuratie van de netwerkinterface - Bridging - Multicasting op subnetwerkniveau</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_routing"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - Routing</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_rip"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - RIP</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_ospf"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - OSPF</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_a_-_draadloze_netwerken"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks A - Draadloze Netwerken</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_multicastrouting"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Multicastrouting</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van DNS servers onder Linux</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van DNS servers onder Linux Deel 2</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_3"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van DNS servers onder Linux Deel 3</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reeks_b_-_configuratie_van_reverse_dns_onder_linux"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reeks B - Configuratie van reverse DNS onder Linux</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_dhcp_leaseprocessen_en_relay-agents"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - DHCP leaseprocessen en relay-agents</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_ipv6_adressering"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - IPv6 Adressering</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca--navButtonOpened-6a88552e" style="color:#3884FF" href="/ugent-computernetwerken-2/reek_c_-_ipv6_berichtstructuur"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - IPv6 berichtstructuur</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_overgang_naar_ipv6_en_autoconfiguratie"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - Overgang naar IPv6 en autoconfiguratie</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/reek_c_-_ipv6_tunneling"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">Reek C - IPv6 Tunneling</span></a></div></div></div></div><div class="reset-3c756112--pageItemWithChildren-56f27afc--S300Bottom-9b4658d2"><div class="reset-3c756112"><div class="reset-3c756112--pageItem-01e3f344"><div class="reset-3c756112--pageComponent-7cc5301a"><a class="navButton-94f2579c--navButtonClickable-161b88ca" href="/ugent-computernetwerken-2/snmp_labo"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1--navButtonLabel-14a4968f">SNMP Labo</span></a></div></div></div></div></div></div></div><div class="reset-3c756112--footer-68e6f18c"><a href="https://www.gitbook.com/?utm_source=content&amp;utm_medium=trademark&amp;utm_campaign=xavier-geerinck" target="_blank" class="reset-3c756112--trademark-a8da4b94" role="presentation"><div class="reset-3c756112--trademarkLogo-0d2d53bc"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="currentColor" viewBox="0 0 1067 769" xmlns="http://www.w3.org/2000/svg" stroke="none" class="icon-7f6730be--text-3f89f380"><g><path d="M480.026 640.677c17.205 0 31.2 13.997 31.2 31.194s-13.995 31.193-31.2 31.193c-17.197 0-31.193-13.996-31.193-31.193 0-17.197 13.996-31.194 31.193-31.194m489.93-193.226c-17.203 0-31.2-13.998-31.2-31.195 0-17.204 13.997-31.2 31.2-31.2 17.198 0 31.194 13.996 31.194 31.2 0 17.197-13.996 31.195-31.193 31.195m0-127.804c-53.269 0-96.609 43.34-96.609 96.609 0 10.373 1.723 20.702 5.123 30.741L559.328 616.879c-18.132-26.128-47.521-41.617-79.302-41.617-36.821 0-70.391 21.065-86.63 54.003L106.68 478.109c-30.288-15.927-52.965-65.817-50.56-111.223 1.248-23.687 9.438-42.071 21.897-49.17 7.916-4.493 17.436-4.099 27.526 1.188l1.916 1.01c75.96 40.022 324.6 170.981 335.063 175.844 16.157 7.47 25.14 10.5 52.659-2.547l513.958-267.3c7.53-2.844 16.315-10.062 16.315-21.023 0-15.205-15.72-21.199-15.765-21.199-29.218-14.018-74.163-35.054-117.987-55.57C798.033 84.26 691.861 34.547 645.23 10.132c-40.253-21.072-72.655-3.311-78.432.282l-11.227 5.555C345.727 119.743 64.898 258.826 48.911 268.553 20.278 285.973 2.547 320.679.252 363.768c-3.586 68.304 31.261 139.506 81.069 165.634l303.172 156.354c6.83 47.306 47.55 82.725 95.532 82.725 52.78 0 95.808-42.546 96.603-95.14L910.541 492.38c16.93 13.233 37.92 20.486 59.416 20.486 53.268 0 96.61-43.341 96.61-96.61s-43.342-96.61-96.61-96.61" fill-rule="evenodd"></path></g></svg></div><div class="reset-3c756112--trademarkContent-04a01aea"><div class="reset-3c756112"><span class="text-4505230f--TextH200-a3425406--textUIFamily-5ebd8e40">Powered by <b>GitBook</b></span></div></div></a></div></div></div></div></div></div><div class="reset-3c756112--wholeContentPage-6c3f1fc5"><div class="reset-3c756112--wholePageSticky-f53dafd2"><div class="reset-3c756112--pageContainer-3ec6d8d0"><div class="reset-3c756112"><div class="reset-3c756112--pageHeader-15724735"><div class="reset-3c756112--pageHeaderInner-7c0f0284"><div class="reset-3c756112--pageHeaderWrapperContent-6897c946"><div class="reset-3c756112--horizontalFlex-5a0077e0"><div class="reset-3c756112--pageHeaderIntro-0c1463da"><h1 class="reset-3c756112--pageTitle-33dc39a3"><span class="text-4505230f--DisplayH900-bfb998fa--textContentFamily-49a318e1">Reek C - IPv6 berichtstructuur</span></h1></div><div style="grid-template-columns:repeat(1, auto)" class="reset-3c756112--toolbar-a6a9f7d2--medium-8e46b02c--pageHeaderToolbar-6457a802--withControlsClosed-3e96e46c"><button class="button-36063075--small-30ceeddb--button-4b4c5088--small-54db2a94"><span class="small-3bde6db7--iconOnly-bddce91a"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="7" y2="18"></line></g></svg></span><span class="text-4505230f--UIH300-2063425d--textUIFamily-5ebd8e40--text-8ee2c8b2"></span></button></div></div><div class="reset-3c756112--pageHeaderDescription-22970244"></div></div></div></div><div class="reset-3c756112--toaster-c029690e"></div><div class="reset-3c756112--pageBody-a91db4ac"><div data-editioncontainer="true" class="reset-3c756112--container-960c7c26"><div data-slate-editor="true" data-key="ce88e0b525f34033a9c39f831ecad3c1" autoCorrect="on" spellcheck="true" data-gramm="false" style="outline:none;white-space:pre-wrap;word-wrap:break-word"><h1 id="bespreek-in-detail-de-structuur-van-ipv6-berichten" class="blockHeading-442b4f12" data-key="26ef8a7a13374a529fecddd48353a8c8"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1"><span data-key="cd011535adf34b7d9163b0858559cc99"><span data-offset-key="cd011535adf34b7d9163b0858559cc99:0">Bespreek in detail de structuur van IPv6 berichten.</span></span></span><a href="#bespreek-in-detail-de-structuur-van-ipv6-berichten" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div><div role="button" tabindex="0" style="color:#3884FF" contenteditable="false" class="reset-3c756112--blockHeadingUp-c32402b2"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></g></svg></div></h1><ul class="list-20526648" data-key="5c41530986fc4249bbb9307edffbd38c"><li class=""><div data-key="bf5dc506fb4442818538fa0781c06e9e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="8fa219ee143f4a0e9e91f5ed6a4dc8ce"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="752d743af3c8481ca0efb48574d36957"><span data-offset-key="752d743af3c8481ca0efb48574d36957:0">IPv6 heeft een vaste headergrootte (IPv4 niet)</span></span></span></p></div></li><li class=""><div data-key="36878c2dae314dafb3fcc54badab497e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="ff6de13abff34b8ab82b307607dfa57f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="92870fb69646483b8779ca5a7efeeaa5"><span data-offset-key="92870fb69646483b8779ca5a7efeeaa5:0">Opties worden geencodeerd als een gelinkte lijst van aparte extensieheaders.</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="f0c565f8de154e46b2bd7661da281649"><li class=""><div data-key="db4acf3439c74f998925799168cd53a0" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="638a6758574d4634a8d7d4669a9e8981"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ee0dae663a7d4432b639cde5eb69655e"><span data-offset-key="ee0dae663a7d4432b639cde5eb69655e:0">Routing wordt efficienter, omdat de opties niet steeds onderzocht dienen te worden</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="03a01d7942e8416d97035ad3c29db109" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="6620c055e6d04e78bccd804c3fd54eef"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="5a184f19d17545f8b646549f120efa9f"><span data-offset-key="5a184f19d17545f8b646549f120efa9f:0">Zowel header als extensieheaders bevatten een &#x27;Next header&#x27; veld</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="dabd9d6b92844f19aa72cc7ef0397ce4"><li class=""><div data-key="3694ec6c49d049049f002bfaf9849c2c" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="628604100ed3475a8977dc3449006e5f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b5e5c74e93024cd2af8f5c98e48137e7"><span data-offset-key="b5e5c74e93024cd2af8f5c98e48137e7:0">Geeft aan welk type data er volgt</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="82f5692a01804b9db72cbc0b068cfd75"><li class=""><div data-key="3ac1e9a3301a448baa76aeb5ee2858ba" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="88b70cf436fd4c519b7282b6d12d529f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="60242458b5d948499ddd2b010910e72c"><span data-offset-key="60242458b5d948499ddd2b010910e72c:0">Een nieuwe header (type gespecifieerd) </span></span></span></p></div></li><li class=""><div data-key="e1293bafc1824a4593c716c15c4cb3cc" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="2c4a0f3fdd684e7992ac352f0f898be1"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="61b3c8b1e755433ab5225ab3abc31034"><span data-offset-key="61b3c8b1e755433ab5225ab3abc31034:0">Data van een ander protocol</span></span></span></p></div></li></ul></div></li></ul></div></li><li class=""><div data-key="906b853ef8ed4172bdfc297d825d6aaa" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="7b2fa12d87d54ca3aeadd006abcb5058"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ffd0c9b159e14217a0c2dcb70bed370f"><span data-offset-key="ffd0c9b159e14217a0c2dcb70bed370f:0">Het geheel van extensieheaders + ingekapselde gegevens wordt de payload genoemd</span></span></span></p></div></li><li class=""><div data-key="81f7caaaae024b5995695f15ece4571e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="829f784470ea48cf87b03cfd3909fd6b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="5d26f550bb9f4cbe919f6e6627f63639"><span data-offset-key="5d26f550bb9f4cbe919f6e6627f63639:0">IPv6 Header:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="419c03cace6547aab43d8d300eb61ab5"><li class=""><div data-key="d658623845dc4a959b6809b4544b9863" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="554f1dbd5be9401dbc265137bdfaaf10"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="1745d97dceb74cb4920780345ae44282"><span data-offset-key="1745d97dceb74cb4920780345ae44282:0">Wel in IPv4, niet in IPv6</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="552f0075837144b0b690f1f4fa487581"><li class=""><div data-key="0259c68dc8bb488580891937e4fe355b" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="8301c3ed04ee4726ba1bd6f3e25c8958"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="fd46cbf357744419a6b7f19b40f98164"><span data-offset-key="fd46cbf357744419a6b7f19b40f98164:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Header Length:</strong></span><span data-offset-key="fd46cbf357744419a6b7f19b40f98164:1"> IPv6 heeft vaste grootte (40 bytes)</span></span></span></p></div></li><li class=""><div data-key="e77d2c5371744ab59ab368e3bbac06f3" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="a8d330c692e949b89f75b732d62be8f9"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ab73e0b675f846d2ae8698a01294d848"><span data-offset-key="ab73e0b675f846d2ae8698a01294d848:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Checksum:</strong></span><span data-offset-key="ab73e0b675f846d2ae8698a01294d848:1"> Dit wordt verzorgd door de transportlaag</span></span></span></p></div></li><li class=""><div data-key="d78a43161c7a42ffb30e1a8b5bf36671" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="4209d8f9407643718f307d302872ae42"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="f5bddad527c6416397cb6a7fe5e035e5"><span data-offset-key="f5bddad527c6416397cb6a7fe5e035e5:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Fragmentatievelden:</strong></span><span data-offset-key="f5bddad527c6416397cb6a7fe5e035e5:1"> niet meer mogelijk</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="92af41d043f44881a847dcfd7e3ba283" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="a05378c6e2724888b5fd1f6ce2f4438b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="3bb226912372417da884d78bb05f41d6"><span data-offset-key="3bb226912372417da884d78bb05f41d6:0">Wel in IPv4, ook in IPv6</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="4f707c12dddf4bd3a8d1c5dc0dd73125"><li class=""><div data-key="1afaab9e79e1413ea2be6deb0e8d3039" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="d1d2f4e333954803b0d372cdd5422ded"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="dcdf1b78a0f241d6b3fa8eee77d911f3"><span data-offset-key="dcdf1b78a0f241d6b3fa8eee77d911f3:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Version:</strong></span><span data-offset-key="dcdf1b78a0f241d6b3fa8eee77d911f3:1"> Ingevuld met waarde 6</span></span></span></p></div></li><li class=""><div data-key="ddfad1165ff844b98cbbac563c7f1446" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="0941444d575243aab9d0e9ecd972487b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="88e93de5b814487ea7228294ec42b5f9"><span data-offset-key="88e93de5b814487ea7228294ec42b5f9:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Traffic Class:</strong></span><span data-offset-key="88e93de5b814487ea7228294ec42b5f9:1"> Analoog aan het TOS veld, geeft mogelijkheid tot gedifferentieerde dienst is default 0</span></span></span></p></div></li><li class=""><div data-key="f12e5cf68e854ac399ef3683b132a12d" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="264d2efda2b84041acdd9797b0dea645"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="1664b647a75442e58aed250679b06def"><span data-offset-key="1664b647a75442e58aed250679b06def:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Payload length:</strong></span><span data-offset-key="1664b647a75442e58aed250679b06def:1"> Aantal bytes in datagram</span></span></span></p></div></li><li class=""><div data-key="819e88fbae2f49c5a4ce61da9c5b5f62" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="fdb73173cbc54806a00ecfc78ad43e06"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="eccea07c62b74dd2bd3fe391c0104cd6"><span data-offset-key="eccea07c62b74dd2bd3fe391c0104cd6:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Hop Limit:</strong></span><span data-offset-key="eccea07c62b74dd2bd3fe391c0104cd6:1"> Bovengrens voor de levensduur van een datagram.</span></span></span></p></div></li><li class=""><div data-key="6281cdfbfae54d309044914355fbe805" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="2725fbc29c2f483eaf900f4b28652235"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="0eacc9e892394ccdbf055d11d604b430"><span data-offset-key="0eacc9e892394ccdbf055d11d604b430:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Bron- en doeladres:</strong></span><span data-offset-key="0eacc9e892394ccdbf055d11d604b430:1"> 16 bytes lang</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="cf335bb57bf54ea9a865175c164573d7" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="8e6a9f84a5dd4b718f4258851aa8a25d"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ac75ea01438647ec9c0523736fdf9a66"><span data-offset-key="ac75ea01438647ec9c0523736fdf9a66:0">Niet in IPv4, Wel in IPv6</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="5bcb904c08bb4ca2bd2fa27fadd1aa42"><li class=""><div data-key="4da79ba3438c4644bd2fcaccfb1c9e59" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="0c588654331d42bdb457ec0b673e289b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="7dfc614fe52c460b832adffeb078b1a9"><span data-offset-key="7dfc614fe52c460b832adffeb078b1a9:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Flow label:</strong></span><span data-offset-key="7dfc614fe52c460b832adffeb078b1a9:1"> Detecteerd samenhangende pakketten en routers die dit in cache hebben kunnen het pakket direct forwarden zonder header te interpreteren.</span></span></span></p></div></li><li class=""><div data-key="9f278012c292412b98b1f80cd43f945c" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="1d6dd5b7e60e4cffb99e6b908d8ac984"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="cb5815caab2741108782b5e35cac2766"><span data-offset-key="cb5815caab2741108782b5e35cac2766:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Next Header:</strong></span><span data-offset-key="cb5815caab2741108782b5e35cac2766:1"> Welk type data volgt er</span></span></span></p></div></li></ul></div></li></ul></div></li></ul><h1 id="geef-en-bespreek-de-verschillende-soorten-extensieheaders-die-momenteel-voor-ipv6-gedefinieerd-zijn" class="blockHeading-442b4f12--blockHeading1WithMargin-b69d755e" data-key="77159911c3b648f5830c35209e73faff"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1"><span data-key="6b082ee13d1848448b95be559d550225"><span data-offset-key="6b082ee13d1848448b95be559d550225:0">Geef en bespreek de verschillende soorten extensieheaders die momenteel voor IPv6 gedefinieerd zijn.</span></span></span><a href="#geef-en-bespreek-de-verschillende-soorten-extensieheaders-die-momenteel-voor-ipv6-gedefinieerd-zijn" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div><div role="button" tabindex="0" style="color:#3884FF" contenteditable="false" class="reset-3c756112--blockHeadingUp-c32402b2"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></g></svg></div></h1><h2 id="algemeen" class="blockHeading-442b4f12--blockHeading2WithMargin-532d771d" data-key="4b8d386f9cb54eb98e0f2bf6980f0fad"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH600-23f228db--textContentFamily-49a318e1"><span data-key="65d2a6090a0240adbcbe3d95099be188"><span data-offset-key="65d2a6090a0240adbcbe3d95099be188:0">Algemeen</span></span></span><a href="#algemeen" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div></h2><p class="blockParagraph-544a408c" data-key="9aec041634574dfd8b0d5768b386e778"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="3a5b80d2c766412d82bfc5dbac96de64"><span data-offset-key="3a5b80d2c766412d82bfc5dbac96de64:0">Alle extensieheaders (behalve encapsulating security payload) volgen dezelfde structuur.</span></span></span></p><ul class="list-20526648" data-key="2ddfe239d8884aafb05c288d02efb533"><li class=""><div data-key="215cc527f0814b869a0bd57654e178b8" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="5e81b03a0da94d95aa763954c4b876a2"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="e4b2c53f8d0e45d79091a9866a7d50f5"><span data-offset-key="e4b2c53f8d0e45d79091a9866a7d50f5:0">Next Header</span></span></span></p></div></li><li class=""><div data-key="26155fd29a314002881964df086ba985" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="07110e3306de4f2ba5644ad8522f7b25"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="a01a8b0fd76347eb881c3442f27e315b"><span data-offset-key="a01a8b0fd76347eb881c3442f27e315b:0">Extension Header Length</span></span></span></p></div></li><li class=""><div data-key="18af9c7e4cb34403a65dbcefb62857eb" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="b5572327a73c4d9fbdbb3183801bd294"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ef27ac51114c4bafadc889c826c2a9d1"><span data-offset-key="ef27ac51114c4bafadc889c826c2a9d1:0">Extension Header Data</span></span></span></p></div></li></ul><p class="blockParagraph-544a408c" data-key="f7c2868b7d8d4df0a69673a3416f6e19"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="d5ad5cd8dc0d4ea1a6f9963c1d2762f4"><span data-offset-key="d5ad5cd8dc0d4ea1a6f9963c1d2762f4:0">Deze headers komen voor in een vastgelegde volgorde.</span></span></span></p><h2 id="soorten" class="blockHeading-442b4f12--blockHeading2WithMargin-532d771d" data-key="f941996494304b59b1124acaa03429e1"><div class="blockHeadingContent-756c9114"><span class="text-4505230f--HeadingH600-23f228db--textContentFamily-49a318e1"><span data-key="61c0ba88a3414879873a30019baa0840"><span data-offset-key="61c0ba88a3414879873a30019baa0840:0">Soorten</span></span></span><a href="#soorten" contenteditable="false" class="blockHeadingAnchor-34f75d78--blockHeadingAnchorHidden-d69b5eda"><span class="blockHeadingAnchorIcon-1c2bf3cb"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></g></svg></span></a></div></h2><ul class="list-20526648" data-key="322ae23811f140708a0b8ce524f4b834"><li class=""><div data-key="493028b644c2464b8cd6700ae7d5b86e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="35144cfd8b5f4d0db5f2929af6ac1a4d"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="a27c692133e741ecab12ba642ee84383"><span data-offset-key="a27c692133e741ecab12ba642ee84383:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Hop-by-Hop options</strong></span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="16f726ffa1b245d9a66ba6cc89b1d818"><li class=""><div data-key="224a585e9b5940898e218466b0f695cc" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="d017e673bb664a779ff74d388db1bd5a"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b75cc35f14624597b284e1beb4fd219e"><span data-offset-key="b75cc35f14624597b284e1beb4fd219e:0">Verzamelt alle opties die ook door tussenliggende routers verwerkt dienen te worden</span></span></span></p></div></li><li class=""><div data-key="acb7f703a644427cba9af644836fa75b" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="5347ae09f7ff4836a068cc92407e2429"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b0e27418dbec4c15b00d1376e1b18d86"><span data-offset-key="b0e27418dbec4c15b00d1376e1b18d86:0">Komt onmiddelijk na de IPv6 header en is TLV geencodeerd.</span></span></span></p></div></li><li class=""><div data-key="b569761474ce46a4975999f505aa02dc" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="b05a44f225c142a08980f9d85d0d61f4"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="a15de1a2f0ae42dfa982fd12e7dda60a"><span data-offset-key="a15de1a2f0ae42dfa982fd12e7dda60a:0">Jumbo payload optie (type 194), maakt afhandelen datagrammen &gt; 65535 bytes mogelijk</span></span></span></p></div></li><li class=""><div data-key="97f4ab5ee5b04c9cb068aa680a8032b7" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="f5987b573bab4088b8ec80bc7b93cf0b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b485dfd358f848e8885beeb1624df1e3"><span data-offset-key="b485dfd358f848e8885beeb1624df1e3:0">Router Alert optie (type 5), maakt een router duidelijk dat de informatie in het datagebied dient te worden verwerkt door de router.</span></span></span></p></div></li><li class=""><div data-key="83c64104757b45829259fdcd59b85e64" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="fc335914f8c948e1a58c874392ecb7d3"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c2e6864caa7e423bbdaf466b8a9d66aa"><span data-offset-key="c2e6864caa7e423bbdaf466b8a9d66aa:0">Opvuloptie (type 1), gebruikt om extensieheader af te lijnen op veelvoud van 8 bytes.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="dac9b2f91d474d43ae8b5ffc6874e7f3" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="d91205a657bf42478f5ffb6dc799ac16"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ab7092875f7a476aa26fde081dde349c"><span data-offset-key="ab7092875f7a476aa26fde081dde349c:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Routing Header (RH)</strong></span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="baf1bf1f83864ce8b4ded0350e843f9a"><li class=""><div data-key="9fd526038e044b8198d166d379bd3bb5" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="8d1f4c09523d4fa89adc315f81b2e235"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="7c1c930368584f47a555bce622388536"><span data-offset-key="7c1c930368584f47a555bce622388536:0">Specifieer de route die het pakket moet afleggen</span></span></span></p></div></li><li class=""><div data-key="8fbc273501174b9998516f1ab9b635f5" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="db8dc7fe922d4781a314d470ec5a4409"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="e401eba8b9dc49b7b0f5579418d9a2bb"><span data-offset-key="e401eba8b9dc49b7b0f5579418d9a2bb:0">Bevat een lijst van IP adressen die het datagram moet bezoeken</span></span></span></p></div></li><li class=""><div data-key="6f1c004be62c447aab5ed2e50dea1a84" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="5e996ec8f8334be4ae11e05ba570d744"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="6dc98287a0954b65afbc4b83becf48d4"><span data-offset-key="6dc98287a0954b65afbc4b83becf48d4:0">Het doeladres moet niet perse het laatste adres in de lijst zijn.</span></span></span></p></div></li><li class=""><div data-key="0e844ec62b824360a7892722ae631fab" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="d8a23715700f49c8b30c39f20ca99df8"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="897dbc11c4524cbda41939ea1b4456ae"><span data-offset-key="897dbc11c4524cbda41939ea1b4456ae:0">Het routing Type ved beschrijft hoe de route moet lopen:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="13f23346fa694ed9955e46214d48b6a8"><li class=""><div data-key="cefcd8dd0cec48c3836bdc6fc40c8bf7" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="97b3937057544aa897e40dffbbe2c902"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="62bd809f9aa54e0e822e75285e56f3b2"><span data-offset-key="62bd809f9aa54e0e822e75285e56f3b2:0">Type 0:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="f8e511410f9c4943863da687639dcb03"><li class=""><div data-key="82157bf293af486ca7ae8cf0b381ddef" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="4ea507849c4d4586a1b98c21710481e2"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="e167b48a30404f4eb7a3e8b95f46ce5b"><span data-offset-key="e167b48a30404f4eb7a3e8b95f46ce5b:0">Adres begint bij eerste adres in de lijst, waarna het doorgestuurd wordt naar de volgende adressen om zo zijn doel te bereiken.</span></span></span></p></div></li><li class=""><div data-key="0d9d990706164a22ba27bcc2f3d570c0" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="96f902eb7a794dcd81492855db187744"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="4d80824f5dcb4604915a456c6687ddd4"><span data-offset-key="4d80824f5dcb4604915a456c6687ddd4:0">Gebruikt loose source routing waarbij tussenliggende routes zijn toegestaan.</span></span></span></p></div></li></ul></div></li></ul></div></li><li class=""><div data-key="7d1363da604c46068b8054847cf2e2e2" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="ce4b2ca5fad5420d84c1fb992d5a2ac8"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="92c6270d3bcd452fa630eb571c8b5387"><span data-offset-key="92c6270d3bcd452fa630eb571c8b5387:0">Het segments Left veld geeft aan hoeveel adressen er nog bezocht moeten worden vooraleer de eindbestemming bereikt wordt.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="7aa802ea830e4e01acc7a411f9dc361b" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="d955cea1cb664e95992c67af0f5c3bea"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b86a46001c524816bd09f41ece41ae22"><span data-offset-key="b86a46001c524816bd09f41ece41ae22:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Fragment Header (FH)</strong></span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="cef824064d4f44eeb82f7564046a2afd"><li class=""><div data-key="9465495ce2dd401687d84733f789e53e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="70242199a3d441f89cdbe4e904c86950"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="75bc10d36f364145903949b4ca526623"><span data-offset-key="75bc10d36f364145903949b4ca526623:0">Fragmentatie kan enkel toegepast worden door de afzender</span></span></span></p></div></li><li class=""><div data-key="e31a466f9ebb4b7c95e6b1c9aceed7b9" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="6858708b8ed748598c4568c5114c40d5"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="4b7c9ffdd73047f28f3f13335974a564"><span data-offset-key="4b7c9ffdd73047f28f3f13335974a564:0">Dezelfde informatie als IPv4 fragmentatie wordt in de FH gestoken</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="9da201389be742f884048786b0b4ab0d"><li class=""><div data-key="806d42e516e648d3adcc2ca8bb53d03d" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="818570898f4e468fac83d0e4c4cadfdf"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="e18863533c2e41cfa433957d468a4159"><span data-offset-key="e18863533c2e41cfa433957d468a4159:0">Fragment Identification veld is 2x zo groot als bij IPv4</span></span></span></p></div></li><li class=""><div data-key="862372f0871747e5a01b30b89cf55b5f" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="9965a1d8a1b04da888b78e5bec867851"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="a811fffe12ec4b198a06a52eb68ee7ec"><span data-offset-key="a811fffe12ec4b198a06a52eb68ee7ec:0">Fragment Offset veld is te klein om jumnogrammen te fragmenteren.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="7ff344c5f1234ae4a24e013946d7d8bd" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="392d4c163fc5499eabc11bbd27a77a86"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="b58a4e93785a4979a5042946d3048a01"><span data-offset-key="b58a4e93785a4979a5042946d3048a01:0">Path MTY Discovery proces is nodig om de maximale pakketgrootte te bepalen.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="1b16942b9c014e66a7a20bc518d59dbf" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="da4d8e30ad5a48abb5b0291ac830d897"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="beac7f25be6f4d66981fda3df3f7e1f9"><span data-offset-key="beac7f25be6f4d66981fda3df3f7e1f9:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Authentication Header (AH)</strong></span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="323ff59b71324e63ab54915c5b66ef81"><li class=""><div data-key="3c233b1f7e274beb8e0d1e060f97dcb2" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="0d07765a19c3412096411b0ab1d66973"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="2632d08a9bd1468bb08c7bf81e04ac7d"><span data-offset-key="2632d08a9bd1468bb08c7bf81e04ac7d:0">Implementeert het IPsec mechanisme</span></span></span></p></div></li><li class=""><div data-key="c39bf25706de43a1b985ba8ac73ba2b7" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="e625793926f84f94b3364464e737fa7f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="dc35a2c4e1a8424abd36ca5da52e4e8a"><span data-offset-key="dc35a2c4e1a8424abd36ca5da52e4e8a:0">Laat authenticatie van de inhoud toe</span></span></span></p></div></li><li class=""><div data-key="6d23625f2db84055a0ca3423060e4f7d" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="369b1ffd61cb4233b78b057599d37e56"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="df06c7de4bc240a1ab16022f3b4948c0"><span data-offset-key="df06c7de4bc240a1ab16022f3b4948c0:0">De AH bevat een MD5 checksum van het datagram, ontvanger kan controleren of pakket gewijzigd is.</span></span></span></p></div></li><li class=""><div data-key="b30f821032af4d6998590d204e1de980" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="324406fea604476dbcbd401f6a4eb98c"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="9b7f7bbd485943178c2734281fa6e1f7"><span data-offset-key="9b7f7bbd485943178c2734281fa6e1f7:0">AH Bevat volgnummer dat zorgt voor anti-replay bescherming (onderschepte atagrammen kunnen niet opnieuw het netwerk ingestuurd worden.)</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="f6f4900f009d4edbb45649c6ddfedd52" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="710d71887e684f27a61d3a700ca1c81b"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="25f003d2b0524ef69e5b855b34f2a07a"><span data-offset-key="25f003d2b0524ef69e5b855b34f2a07a:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Encapsulating Security Payload (ESP)</strong></span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="eeaee8454f7b4585a47776baa5d4c6ac"><li class=""><div data-key="e12683d92da347a7a82a1ac9f9ecfbfb" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="64117594414141a3a55cf5305ae9bee5"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="bfeddd13555c457f9f11169d60a79e7a"><span data-offset-key="bfeddd13555c457f9f11169d60a79e7a:0">laat toe om geencrypteerde datagrammen te verzenden.</span></span></span></p></div></li><li class=""><div data-key="8929464b27264c659db85cfd34955789" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="d691ab471a80492cb0a3ddfb9cd2d0df"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="890833c84af14612bd1507968b6a2d84"><span data-offset-key="890833c84af14612bd1507968b6a2d84:0">Geeft aan dat alle data vanaf dit punt geencrypteerd is.</span></span></span></p></div></li><li class=""><div data-key="94b8eeed02434b608b03d207bf9401a1" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="9a7a5a7f101248eb9522c0a93719b8b4"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="8b1761fbcab34590a44f2f4a096f19ca"><span data-offset-key="8b1761fbcab34590a44f2f4a096f19ca:0">Bevat ook genoeg gegevens om het datagram opnieuw te decrypteren.</span></span></span></p></div></li><li class=""><div data-key="ad0d6d9f9c51495283c44dcb31499f2b" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="7834164a0ff04ee9b7787e83b1df9273"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="7d16c027925f4eab86d2b2adaa23e570"><span data-offset-key="7d16c027925f4eab86d2b2adaa23e570:0">Op 2 manieren te gebruiken:</span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="a6361366a8604cdf89c0afcb579edc67"><li class=""><div data-key="3b06867a7e544f7c968ec3b98e870ef1" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="6820129ff9c3408885c7aa5a5c68f68f"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="4e9e5a3cf9d64b7692e01b4fe513bfa1"><span data-offset-key="4e9e5a3cf9d64b7692e01b4fe513bfa1:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Transparante of Transport mode:</strong></span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="3925f19266e24b27aae3b5b65134e671"><li class=""><div data-key="7b6e8ddc7a3241b4bd5a796dad7c1dcc" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="383266d0c1494d9982fdf280fd994cd9"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="921e81abdf854fcda1c55d129ef13b6a"><span data-offset-key="921e81abdf854fcda1c55d129ef13b6a:0">Enkel de data wordt geencodeerd, de header en extensieheaders niet.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="501a5df157db4d00b9150087567b3259" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="2165b8a5fbc64a4ca25135dcf30de99a"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="8e7562dc28204a379993c61e5de9b79c"><span data-offset-key="8e7562dc28204a379993c61e5de9b79c:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Tunnel mode:</strong></span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="5335e967a785434b9e54017d59e7242d"><li class=""><div data-key="73153f8afae347919ebdcba7d9bdb565" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="a657ccb82172443b8dc5e13e677078f9"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="f82e5b3e7a6d429eb10d8ed184fa9ffc"><span data-offset-key="f82e5b3e7a6d429eb10d8ed184fa9ffc:0">Volledige datagram wordt versleuteld en in een andere datagram verpakt door een security gateway.</span></span></span></p></div></li><li class=""><div data-key="8190882a79ef46b9ad70902d5ccc917f" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="d07157a5195c4067b92323a44257ec60"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="c0c6f35494b241dfaa33df63f3bb2dd6"><span data-offset-key="c0c6f35494b241dfaa33df63f3bb2dd6:0">De security gateway aan de kant van de ontvanger zorgt voor het uitpakken van het datagram.</span></span></span></p></div></li></ul></div></li></ul></div></li><li class=""><div data-key="a2489848c68740dfaf8d7f70334ae7f8" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="1d94b657eab243ada6983feb83f571d6"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="9d7cdd60ce464e3faaca3909755663c8"><span data-offset-key="9d7cdd60ce464e3faaca3909755663c8:0">Aangeraden om steeds de ESP in combinatie met de AH e gebruiken.</span></span></span></p></div></li></ul></div></li><li class=""><div data-key="2ebe8e98608c4243a3a59145e52f932e" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="f4f0ccc2b1514b76aa64c62e748ba642"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="f66a6b51ab9341f78ebd8e182873b4a0"><span data-offset-key="f66a6b51ab9341f78ebd8e182873b4a0:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Desintation Options Header</strong></span></span></span></p><ul class="list-20526648--inList-acdf7afa" data-key="3cf0cfbc24474fb59655a8fae654e812"><li class=""><div data-key="199e4f79b3a04d1e9d88f45626eca393" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="eac150eafaf4497eaf234d21b91abce3"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="3387948545f0406ba0e89aae7e04d48c"><span data-offset-key="3387948545f0406ba0e89aae7e04d48c:0">Bevat alle opties, die enkel door eindbestemming verwerkt dienen te worden</span></span></span></p></div></li><li class=""><div data-key="9d2e024bf75f40ec8748fd510ad6281b" class="reset-3c756112--listItemContent-756c9114"><p class="blockParagraph-544a408c--noMargin-acdf7afa" data-key="3c95800deeff461790fcd50541f23dd7"><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="5ce42abbe00843e6a692da64b79f87e2"><span data-offset-key="5ce42abbe00843e6a692da64b79f87e2:0">Kan verschillende keren voorkomen in het pakket (andere headers niet)</span></span></span></p></div></li></ul></div></li></ul></div></div></div></div><div class="reset-3c756112--pageFooter-f1d5e2b0"><div class="reset-3c756112"><div class="reset-3c756112--navPagesLinks-67bea901"><a class="reset-3c756112--card-6570f064--whiteCard-fff091a4--cardPrevious-56a5e674" href="/ugent-computernetwerken-2/reek_c_-_ipv6_adressering"><div class="reset-3c756112--cardIcon-5b647d22"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></g></svg></div><div class="reset-3c756112--cardBody-25dca3b1--cardPreviousBody-79f02c06"><div class="reset-3c756112--cardHint-2c5d8183"><span class="text-4505230f--TextH200-a3425406--textContentFamily-49a318e1">Previous</span></div><div class="reset-3c756112--cardTitle-32aa092e"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1">Reek C - IPv6 Adressering</span></div></div></a><a class="reset-3c756112--card-6570f064--whiteCard-fff091a4--cardNext-19241c42" href="/ugent-computernetwerken-2/reek_c_-_overgang_naar_ipv6_en_autoconfiguratie"><div class="reset-3c756112--cardBody-25dca3b1"><div class="reset-3c756112--cardHint-2c5d8183"><span class="text-4505230f--TextH200-a3425406--textContentFamily-49a318e1">Next</span></div><div class="reset-3c756112--cardTitle-32aa092e"><span class="text-4505230f--UIH400-4e41e82a--textContentFamily-49a318e1">Reek C - Overgang naar IPv6 en autoconfiguratie</span></div></div><div class="reset-3c756112--cardIcon-5b647d22"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg></div></a></div></div><div class="reset-3c756112--pageFooterColumns-ef8f347e"><div class="reset-3c756112--pageFooterSummary-12074aff"><div class="reset-3c756112--pageChangesSummary-08821678"><div class="reset-3c756112--pageContributors-5c59582e"><div class="reset-3c756112--ownerAvatarList-696792ce"><div aria-label="Xavier Geerinck" class="reset-3c756112--tooltipContainer-7fdb9b70--tooltipped-57ae51fe--bottom-f9ec01b8--small-2ec8ae1a--circle-6c5acd10--ownerAvatarListItem-1b188f0f--whiteOutline-6045f802"><div class="reset-3c756112--avatarFrame-2f40cdc9--small-2ec8ae1a--circle-6c5acd10" role="presentation"><img class="image-67b14f24--avatar-1c1d03ec" src="https://avatars.io/twitter/thebillkidy?size=large"/><div class="reset-3c756112--innerShadow-7a3a8651"></div></div></div></div></div><div class="reset-3c756112--pageEditedDate-b805c39a"><span class="text-4505230f--TextH200-a3425406--textContentFamily-49a318e1">Last updated <span>10 months ago</span></span></div></div></div></div></div></div><div class="reset-3c756112--pageSide-ad9fed26"><div class="reset-3c756112--stickyContainer-2bed3a82"><div style="padding-bottom:0" class="reset-3c756112"></div><div class="reset-3c756112--tocWrapper-506ea24c"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--scrollableContainer-756c9114"><div class="reset-3c756112--pageSideSection-542f1fd5"><div class="reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5"><div class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496"><div class="reset-3c756112--menuHeader-d7753f3a"><div class="reset-3c756112--menuHeaderIcon-0c3ed569"><svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="7" y2="18"></line></g></svg></div><div class="reset-3c756112"><span class="text-4505230f--InfoH100-1e92e1d1--textContentFamily-49a318e1">Contents</span></div></div><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#bespreek-in-detail-de-structuur-van-ipv6-berichten"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1">Bespreek in detail de structuur van IPv6 berichten.</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#geef-en-bespreek-de-verschillende-soorten-extensieheaders-die-momenteel-voor-ipv6-gedefinieerd-zijn"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1">Geef en bespreek de verschillende soorten extensieheaders die momenteel voor IPv6 gedefinieerd zijn.</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#algemeen"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1--pageTocLinkH2-2294976c">Algemeen</span></span></div></a><a class="reset-3c756112--menuItem-138b8c2a--menuItemInline-173bdf97--pageTocItem-f4427024" href="#soorten"><div class="reset-3c756112--menuItemContent-c44ec79e"><span class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"><span class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1--pageTocLinkH2-2294976c">Soorten</span></span></div></a></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
+            <div id="__GITBOOK__ROOT__CLIENT__" style="display: none;"></div>
+            <script>
+            window.GITBOOK_STATE = {"state":{"database":{"orgs/538c32a77bcb1b0200ff5dcd/infos":{"kind":"user","data":{"kind":"user","uid":"538c32a77bcb1b0200ff5dcd","baseDomain":"xavier-geerinck","defaultSpace":null,"displayName":"Xavier Geerinck","photoURL":"https://avatars.io/twitter/thebillkidy?size=large","deletedAt":null,"usageStatuses":{"members":"below","privateSpaces":"below","publicSpaces":"below"}}},"spaces/-Lc5VIoyjbmo2ReQJFfs/infos":{"kind":"space","data":{"uid":"-Lc5VIoyjbmo2ReQJFfs","name":"UGent Computernetwerken 2","createdAt":1554887294260,"ownerID":"538c32a77bcb1b0200ff5dcd","isPrivate":false,"isUnlisted":false,"secretToken":null,"baseName":"ugent-computernetwerken-2","createdBy":"538c32a77bcb1b0200ff5dcd","logoURL":null,"fullLogoURL":null,"emoji":null,"colorPrimary":"#3884FF","headerTheme":"light","font":null,"locale":null,"primaryRevision":"-Lc5VZPLk3W-9sPG5Thw","edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887294260,"updatedAt":1554887372833,"count":3}},"algoliaAPIKey":"ZmUxZmNmMzY1NGIzYjg1YWU5N2U5MmVhN2UyODBkOWIyNTczNjQyMWY1OTY4N2NlMGNlNTgwYTcxM2Q4ZjA4OGZpbHRlcnM9LUxjNVZJb3lqYm1vMlJlUUpGZnM=","customDomain":null,"links":[],"hasGitHubSync":true,"editOnGitHub":null,"googleAnalyticsID":null,"intercomID":null,"hasPageRating":true,"hasPDFExport":false,"indexedRevision":null}},"spaces/-Lc5VIoyjbmo2ReQJFfs/revisions/-Lc5VZPLk3W-9sPG5Thw":{"kind":"revision","data":{"uid":"-Lc5VZPLk3W-9sPG5Thw","message":"Update reek_c_-_ipv6_tunneling.md","createdAt":1554887372679,"createdBy":"538c32a77bcb1b0200ff5dcd","parents":["-Lc5VJkqSrfLN3LDoehs"],"content":{"primaryVersion":"master","versions":{"master":{"index":0,"ref":"master","title":"1.0.0","github":{"repoID":"thebillkidy/ugent-computernetwerken-2","sha":"73d0862069e75c52073148b9d59e181082823075","ref":"refs/heads/master","message":"Update reek_c_-_ipv6_tunneling.md","isGitBookBot":false},"locale":null,"entryPage":"-Lc5VIowhm0XJ5PTfAeU","pages":{"-Lc5VIowhm0XJ5PTfAeU":{"uid":"-Lc5VIowhm0XJ5PTfAeU","kind":"document","title":"introduction","path":"master","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VIowhm0XJ5PTfAeU%2Fdocument.json?generation=1554887312603215\u0026alt=media","createdAt":1554887294259,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887312744,"updatedAt":1554887312744,"count":1}},"github":{"sha":"c67038f36e3757a48ec6a380b87a49d25e926e8d","filePath":"README.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":["-Lc5VL3g62Mn-_fBPc0S","-Lc5VL3hXV0GDw3P69gW","-Lc5VL3iHBkI5GHg-5Rv","-Lc5VL3j1MMVUy60RsAE","-Lc5VL3kmCjsQ7kGFaW-","-Lc5VL3luEhJ6etanCB7","-Lc5VL3m9qijLU1rBgRO","-Lc5VL3nvGgE1GlKHYtg","-Lc5VL3oQhscGe0vZC9Z","-Lc5VL3pEY9qQ_IhOW0V","-Lc5VL3qeGq74G_PbwFk","-Lc5VL3r-h2ZAGXgWoB3","-Lc5VL3stwiOjinPjIhF","-Lc5VL3tx67ine59TV2h","-Lc5VL3uvDVtrrtlElJC","-Lc5VL3vwLMsWfSw72i_"]},"-Lc5VL3g62Mn-_fBPc0S":{"uid":"-Lc5VL3g62Mn-_fBPc0S","kind":"document","title":"Reeks A - Configuratie van de netwerkinterface - Bridging - Multicasting op subnetwerkniveau","path":"reeks_a_-_configuratie_van_de_netwerkinterface_-_bridging_-_multicasting_op_subnetwerkniveau","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3g62Mn-_fBPc0S%2Fdocument.json?generation=1554887313912271\u0026alt=media","createdAt":1554887303467,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887314042,"updatedAt":1554887314042,"count":1}},"github":{"sha":"7f9d6ad6e3a6804ffc0b20e7fb7ab9a41eb51f64","filePath":"reeks_a_-_configuratie_van_de_netwerkinterface_-_bridging_-_multicasting_op_subnetwerkniveau.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3hXV0GDw3P69gW":{"uid":"-Lc5VL3hXV0GDw3P69gW","kind":"document","title":"Reeks A - Routing","path":"reeks_a_-_routing","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3hXV0GDw3P69gW%2Fdocument.json?generation=1554887316257033\u0026alt=media","createdAt":1554887303468,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316414,"updatedAt":1554887316414,"count":1}},"github":{"sha":"1dd869a40b4132e4bb5cf240e54297ac4f6053f9","filePath":"reeks_a_-_routing.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3iHBkI5GHg-5Rv":{"uid":"-Lc5VL3iHBkI5GHg-5Rv","kind":"document","title":"Reeks A - RIP","path":"reeks_a_-_rip","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3iHBkI5GHg-5Rv%2Fdocument.json?generation=1554887316591697\u0026alt=media","createdAt":1554887303468,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316792,"updatedAt":1554887316792,"count":1}},"github":{"sha":"224acf41272f2bf46df81ec05bcb8427f0eaa6e9","filePath":"reeks_a_-_rip.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3j1MMVUy60RsAE":{"uid":"-Lc5VL3j1MMVUy60RsAE","kind":"document","title":"Reeks A - OSPF","path":"reeks_a_-_ospf","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3j1MMVUy60RsAE%2Fdocument.json?generation=1554887317531578\u0026alt=media","createdAt":1554887303469,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887317670,"updatedAt":1554887317670,"count":1}},"github":{"sha":"2b251bcdc29591f7b097ce589ba824e88ee10a38","filePath":"reeks_a_-_ospf.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3kmCjsQ7kGFaW-":{"uid":"-Lc5VL3kmCjsQ7kGFaW-","kind":"document","title":"Reeks A - Draadloze Netwerken","path":"reeks_a_-_draadloze_netwerken","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3kmCjsQ7kGFaW-%2Fdocument.json?generation=1554887315962360\u0026alt=media","createdAt":1554887303469,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316202,"updatedAt":1554887316202,"count":1}},"github":{"sha":"5054aaf8ed575d137fc190b62f5d746e1655dd3c","filePath":"reeks_a_-_draadloze_netwerken.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3luEhJ6etanCB7":{"uid":"-Lc5VL3luEhJ6etanCB7","kind":"document","title":"Reeks B - Multicastrouting","path":"reeks_b_-_multicastrouting","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3luEhJ6etanCB7%2Fdocument.json?generation=1554887318021767\u0026alt=media","createdAt":1554887303470,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318172,"updatedAt":1554887318172,"count":1}},"github":{"sha":"e2f970c88b275d5be8fa3194ae11fe9306840ce7","filePath":"reeks_b_-_multicastrouting.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3m9qijLU1rBgRO":{"uid":"-Lc5VL3m9qijLU1rBgRO","kind":"document","title":"Reeks B - Configuratie van DNS servers onder Linux","path":"reeks_b_-_configuratie_van_dns_servers_onder_linux","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3m9qijLU1rBgRO%2Fdocument.json?generation=1554887314389570\u0026alt=media","createdAt":1554887303470,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887314652,"updatedAt":1554887314652,"count":1}},"github":{"sha":"15fe88b907f256806b9e527d6ae0e70560e96fe0","filePath":"reeks_b_-_configuratie_van_dns_servers_onder_linux.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3nvGgE1GlKHYtg":{"uid":"-Lc5VL3nvGgE1GlKHYtg","kind":"document","title":"Reeks B - Configuratie van DNS servers onder Linux Deel 2","path":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3nvGgE1GlKHYtg%2Fdocument.json?generation=1554887318680732\u0026alt=media","createdAt":1554887303472,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318813,"updatedAt":1554887318813,"count":1}},"github":{"sha":"8a382d21d89b57a847012092391e17d28d1f06e7","filePath":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_2.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3oQhscGe0vZC9Z":{"uid":"-Lc5VL3oQhscGe0vZC9Z","kind":"document","title":"Reeks B - Configuratie van DNS servers onder Linux Deel 3","path":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_3","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3oQhscGe0vZC9Z%2Fdocument.json?generation=1554887315352389\u0026alt=media","createdAt":1554887303472,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887315492,"updatedAt":1554887315492,"count":1}},"github":{"sha":"74fef1d7dcaac5ce90eb0cf2c69b119013811e96","filePath":"reeks_b_-_configuratie_van_dns_servers_onder_linux_deel_3.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3pEY9qQ_IhOW0V":{"uid":"-Lc5VL3pEY9qQ_IhOW0V","kind":"document","title":"Reeks B - Configuratie van reverse DNS onder Linux","path":"reeks_b_-_configuratie_van_reverse_dns_onder_linux","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3pEY9qQ_IhOW0V%2Fdocument.json?generation=1554887315967642\u0026alt=media","createdAt":1554887303473,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316094,"updatedAt":1554887316094,"count":1}},"github":{"sha":"376fc5c67ca7b334b5b09062cae5a16c0ae8b054","filePath":"reeks_b_-_configuratie_van_reverse_dns_onder_linux.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3qeGq74G_PbwFk":{"uid":"-Lc5VL3qeGq74G_PbwFk","kind":"document","title":"Reek C - DHCP leaseprocessen en relay-agents","path":"reek_c_-_dhcp_leaseprocessen_en_relay-agents","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3qeGq74G_PbwFk%2Fdocument.json?generation=1554887318695655\u0026alt=media","createdAt":1554887303474,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318964,"updatedAt":1554887318964,"count":1}},"github":{"sha":"54d8916e927292e3ea627e449db9583d30f742c8","filePath":"reek_c_-_dhcp_leaseprocessen_en_relay-agents.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3r-h2ZAGXgWoB3":{"uid":"-Lc5VL3r-h2ZAGXgWoB3","kind":"document","title":"Reek C - IPv6 Adressering","path":"reek_c_-_ipv6_adressering","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3r-h2ZAGXgWoB3%2Fdocument.json?generation=1554887318437304\u0026alt=media","createdAt":1554887303474,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318567,"updatedAt":1554887318567,"count":1}},"github":{"sha":"e7c65d2a8034693e918d811b35cd16cf254cddd3","filePath":"reek_c_-_ipv6_adressering.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3stwiOjinPjIhF":{"uid":"-Lc5VL3stwiOjinPjIhF","kind":"document","title":"Reek C - IPv6 berichtstructuur","path":"reek_c_-_ipv6_berichtstructuur","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3stwiOjinPjIhF%2Fdocument.json?generation=1554887316650523\u0026alt=media","createdAt":1554887303475,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887316787,"updatedAt":1554887316787,"count":1}},"github":{"sha":"bc51b24fed0465a5f192b8b0740ae7b142166b51","filePath":"reek_c_-_ipv6_berichtstructuur.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3tx67ine59TV2h":{"uid":"-Lc5VL3tx67ine59TV2h","kind":"document","title":"Reek C - Overgang naar IPv6 en autoconfiguratie","path":"reek_c_-_overgang_naar_ipv6_en_autoconfiguratie","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3tx67ine59TV2h%2Fdocument.json?generation=1554887318269353\u0026alt=media","createdAt":1554887303475,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887318427,"updatedAt":1554887318427,"count":1}},"github":{"sha":"5539bb143891b958294f917dfdda81b3323a02cc","filePath":"reek_c_-_overgang_naar_ipv6_en_autoconfiguratie.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3uvDVtrrtlElJC":{"uid":"-Lc5VL3uvDVtrrtlElJC","kind":"document","title":"Reek C - IPv6 Tunneling","path":"reek_c_-_ipv6_tunneling","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3uvDVtrrtlElJC%2Fdocument.json?generation=1554887319067475\u0026alt=media","createdAt":1554887303476,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887319245,"updatedAt":1554887319245,"count":1}},"github":{"sha":"3277841cca9e0ad8b873203099b0a5009bdf1240","filePath":"reek_c_-_ipv6_tunneling.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null},"-Lc5VL3vwLMsWfSw72i_":{"uid":"-Lc5VL3vwLMsWfSw72i_","kind":"document","title":"SNMP Labo","path":"snmp_labo","href":null,"description":"","documentURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3vwLMsWfSw72i_%2Fdocument.json?generation=1554887317810954\u0026alt=media","createdAt":1554887303476,"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887317998,"updatedAt":1554887317998,"count":1}},"github":{"sha":"3bdd3f04bb9aeb4b672a93438b93b21d4f8252c7","filePath":"snmp_labo.md"},"stats":{"words":0,"images":0,"codeLines":0,"revisions":1},"pages":null}}}},"assets":{"-Lc5VOQ8fn5NDIQHigqK":{"uid":"-Lc5VOQ8fn5NDIQHigqK","name":"IC212787.gif","downloadURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2F-Lc5VOQ8fn5NDIQHigqK%2FIC212787.gif?generation=1554887326422136\u0026alt=media","size":6488,"contentType":"image/gif","createdAt":1554887326421,"github":{"sha":"c8dda9d5675ae6e2bd59d791a0f69c53b17e6dcb","filePath":"IC212787.gif"},"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887326297,"updatedAt":1554887326297,"count":1}}},"-Lc5VOQAYfKyPmOPbfmL":{"uid":"-Lc5VOQAYfKyPmOPbfmL","name":"IC195509.gif","downloadURL":"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2F-Lc5VOQAYfKyPmOPbfmL%2FIC195509.gif?generation=1554887325962228\u0026alt=media","size":11513,"contentType":"image/gif","createdAt":1554887325961,"github":{"sha":"b15b676613752043c3b7a7921239d660f19742e7","filePath":"IC195509.gif"},"edits":{"538c32a77bcb1b0200ff5dcd":{"createdAt":1554887325842,"updatedAt":1554887325842,"count":1}}}}},"github":[{"repoID":"thebillkidy/ugent-computernetwerken-2","sha":"73d0862069e75c52073148b9d59e181082823075","ref":"refs/heads/master","message":"Update reek_c_-_ipv6_tunneling.md","isGitBookBot":false}],"rollbackOf":null}}},"documents":{"documents":{"https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/documents%2F-Lc5VIoyjbmo2ReQJFfs%2F-Lc5VJkqSrfLN3LDoehs%2Fmaster%2F-Lc5VL3stwiOjinPjIhF%2Fdocument.json?generation=1554887316650523\u0026alt=media":{"format_version":1,"document":{"kind":"document","key":"ce88e0b525f34033a9c39f831ecad3c1","data":{"schema_version":6},"nodes":[{"kind":"block","type":"heading-1","key":"26ef8a7a13374a529fecddd48353a8c8","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"cd011535adf34b7d9163b0858559cc99","ranges":[{"kind":"range","marks":[],"text":"Bespreek in detail de structuur van IPv6 berichten."}]}]},{"kind":"block","type":"list-unordered","key":"5c41530986fc4249bbb9307edffbd38c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"bf5dc506fb4442818538fa0781c06e9e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"8fa219ee143f4a0e9e91f5ed6a4dc8ce","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"752d743af3c8481ca0efb48574d36957","ranges":[{"kind":"range","marks":[],"text":"IPv6 heeft een vaste headergrootte (IPv4 niet)"}]}]}]},{"kind":"block","type":"list-item","key":"36878c2dae314dafb3fcc54badab497e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"ff6de13abff34b8ab82b307607dfa57f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"92870fb69646483b8779ca5a7efeeaa5","ranges":[{"kind":"range","marks":[],"text":"Opties worden geencodeerd als een gelinkte lijst van aparte extensieheaders."}]}]},{"kind":"block","type":"list-unordered","key":"f0c565f8de154e46b2bd7661da281649","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"db4acf3439c74f998925799168cd53a0","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"638a6758574d4634a8d7d4669a9e8981","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ee0dae663a7d4432b639cde5eb69655e","ranges":[{"kind":"range","marks":[],"text":"Routing wordt efficienter, omdat de opties niet steeds onderzocht dienen te worden"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"03a01d7942e8416d97035ad3c29db109","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"6620c055e6d04e78bccd804c3fd54eef","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"5a184f19d17545f8b646549f120efa9f","ranges":[{"kind":"range","marks":[],"text":"Zowel header als extensieheaders bevatten een 'Next header' veld"}]}]},{"kind":"block","type":"list-unordered","key":"dabd9d6b92844f19aa72cc7ef0397ce4","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"3694ec6c49d049049f002bfaf9849c2c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"628604100ed3475a8977dc3449006e5f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b5e5c74e93024cd2af8f5c98e48137e7","ranges":[{"kind":"range","marks":[],"text":"Geeft aan welk type data er volgt"}]}]},{"kind":"block","type":"list-unordered","key":"82f5692a01804b9db72cbc0b068cfd75","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"3ac1e9a3301a448baa76aeb5ee2858ba","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"88b70cf436fd4c519b7282b6d12d529f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"60242458b5d948499ddd2b010910e72c","ranges":[{"kind":"range","marks":[],"text":"Een nieuwe header (type gespecifieerd) "}]}]}]},{"kind":"block","type":"list-item","key":"e1293bafc1824a4593c716c15c4cb3cc","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"2c4a0f3fdd684e7992ac352f0f898be1","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"61b3c8b1e755433ab5225ab3abc31034","ranges":[{"kind":"range","marks":[],"text":"Data van een ander protocol"}]}]}]}]}]}]}]},{"kind":"block","type":"list-item","key":"906b853ef8ed4172bdfc297d825d6aaa","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"7b2fa12d87d54ca3aeadd006abcb5058","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ffd0c9b159e14217a0c2dcb70bed370f","ranges":[{"kind":"range","marks":[],"text":"Het geheel van extensieheaders + ingekapselde gegevens wordt de payload genoemd"}]}]}]},{"kind":"block","type":"list-item","key":"81f7caaaae024b5995695f15ece4571e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"829f784470ea48cf87b03cfd3909fd6b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"5d26f550bb9f4cbe919f6e6627f63639","ranges":[{"kind":"range","marks":[],"text":"IPv6 Header:"}]}]},{"kind":"block","type":"list-unordered","key":"419c03cace6547aab43d8d300eb61ab5","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"d658623845dc4a959b6809b4544b9863","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"554f1dbd5be9401dbc265137bdfaaf10","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"1745d97dceb74cb4920780345ae44282","ranges":[{"kind":"range","marks":[],"text":"Wel in IPv4, niet in IPv6"}]}]},{"kind":"block","type":"list-unordered","key":"552f0075837144b0b690f1f4fa487581","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"0259c68dc8bb488580891937e4fe355b","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"8301c3ed04ee4726ba1bd6f3e25c8958","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"fd46cbf357744419a6b7f19b40f98164","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Header Length:"},{"kind":"range","marks":[],"text":" IPv6 heeft vaste grootte (40 bytes)"}]}]}]},{"kind":"block","type":"list-item","key":"e77d2c5371744ab59ab368e3bbac06f3","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"a8d330c692e949b89f75b732d62be8f9","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ab73e0b675f846d2ae8698a01294d848","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Checksum:"},{"kind":"range","marks":[],"text":" Dit wordt verzorgd door de transportlaag"}]}]}]},{"kind":"block","type":"list-item","key":"d78a43161c7a42ffb30e1a8b5bf36671","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"4209d8f9407643718f307d302872ae42","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"f5bddad527c6416397cb6a7fe5e035e5","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Fragmentatievelden:"},{"kind":"range","marks":[],"text":" niet meer mogelijk"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"92af41d043f44881a847dcfd7e3ba283","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"a05378c6e2724888b5fd1f6ce2f4438b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"3bb226912372417da884d78bb05f41d6","ranges":[{"kind":"range","marks":[],"text":"Wel in IPv4, ook in IPv6"}]}]},{"kind":"block","type":"list-unordered","key":"4f707c12dddf4bd3a8d1c5dc0dd73125","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"1afaab9e79e1413ea2be6deb0e8d3039","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"d1d2f4e333954803b0d372cdd5422ded","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"dcdf1b78a0f241d6b3fa8eee77d911f3","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Version:"},{"kind":"range","marks":[],"text":" Ingevuld met waarde 6"}]}]}]},{"kind":"block","type":"list-item","key":"ddfad1165ff844b98cbbac563c7f1446","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"0941444d575243aab9d0e9ecd972487b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"88e93de5b814487ea7228294ec42b5f9","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Traffic Class:"},{"kind":"range","marks":[],"text":" Analoog aan het TOS veld, geeft mogelijkheid tot gedifferentieerde dienst is default 0"}]}]}]},{"kind":"block","type":"list-item","key":"f12e5cf68e854ac399ef3683b132a12d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"264d2efda2b84041acdd9797b0dea645","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"1664b647a75442e58aed250679b06def","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Payload length:"},{"kind":"range","marks":[],"text":" Aantal bytes in datagram"}]}]}]},{"kind":"block","type":"list-item","key":"819e88fbae2f49c5a4ce61da9c5b5f62","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"fdb73173cbc54806a00ecfc78ad43e06","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"eccea07c62b74dd2bd3fe391c0104cd6","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Hop Limit:"},{"kind":"range","marks":[],"text":" Bovengrens voor de levensduur van een datagram."}]}]}]},{"kind":"block","type":"list-item","key":"6281cdfbfae54d309044914355fbe805","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"2725fbc29c2f483eaf900f4b28652235","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"0eacc9e892394ccdbf055d11d604b430","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Bron- en doeladres:"},{"kind":"range","marks":[],"text":" 16 bytes lang"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"cf335bb57bf54ea9a865175c164573d7","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"8e6a9f84a5dd4b718f4258851aa8a25d","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ac75ea01438647ec9c0523736fdf9a66","ranges":[{"kind":"range","marks":[],"text":"Niet in IPv4, Wel in IPv6"}]}]},{"kind":"block","type":"list-unordered","key":"5bcb904c08bb4ca2bd2fa27fadd1aa42","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"4da79ba3438c4644bd2fcaccfb1c9e59","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"0c588654331d42bdb457ec0b673e289b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"7dfc614fe52c460b832adffeb078b1a9","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Flow label:"},{"kind":"range","marks":[],"text":" Detecteerd samenhangende pakketten en routers die dit in cache hebben kunnen het pakket direct forwarden zonder header te interpreteren."}]}]}]},{"kind":"block","type":"list-item","key":"9f278012c292412b98b1f80cd43f945c","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"1d6dd5b7e60e4cffb99e6b908d8ac984","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"cb5815caab2741108782b5e35cac2766","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Next Header:"},{"kind":"range","marks":[],"text":" Welk type data volgt er"}]}]}]}]}]}]}]}]},{"kind":"block","type":"heading-1","key":"77159911c3b648f5830c35209e73faff","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"6b082ee13d1848448b95be559d550225","ranges":[{"kind":"range","marks":[],"text":"Geef en bespreek de verschillende soorten extensieheaders die momenteel voor IPv6 gedefinieerd zijn."}]}]},{"kind":"block","type":"heading-2","key":"4b8d386f9cb54eb98e0f2bf6980f0fad","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"65d2a6090a0240adbcbe3d95099be188","ranges":[{"kind":"range","marks":[],"text":"Algemeen"}]}]},{"kind":"block","type":"paragraph","key":"9aec041634574dfd8b0d5768b386e778","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"3a5b80d2c766412d82bfc5dbac96de64","ranges":[{"kind":"range","marks":[],"text":"Alle extensieheaders (behalve encapsulating security payload) volgen dezelfde structuur."}]}]},{"kind":"block","type":"list-unordered","key":"2ddfe239d8884aafb05c288d02efb533","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"215cc527f0814b869a0bd57654e178b8","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"5e81b03a0da94d95aa763954c4b876a2","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"e4b2c53f8d0e45d79091a9866a7d50f5","ranges":[{"kind":"range","marks":[],"text":"Next Header"}]}]}]},{"kind":"block","type":"list-item","key":"26155fd29a314002881964df086ba985","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"07110e3306de4f2ba5644ad8522f7b25","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a01a8b0fd76347eb881c3442f27e315b","ranges":[{"kind":"range","marks":[],"text":"Extension Header Length"}]}]}]},{"kind":"block","type":"list-item","key":"18af9c7e4cb34403a65dbcefb62857eb","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"b5572327a73c4d9fbdbb3183801bd294","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ef27ac51114c4bafadc889c826c2a9d1","ranges":[{"kind":"range","marks":[],"text":"Extension Header Data"}]}]}]}]},{"kind":"block","type":"paragraph","key":"f7c2868b7d8d4df0a69673a3416f6e19","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"d5ad5cd8dc0d4ea1a6f9963c1d2762f4","ranges":[{"kind":"range","marks":[],"text":"Deze headers komen voor in een vastgelegde volgorde."}]}]},{"kind":"block","type":"heading-2","key":"f941996494304b59b1124acaa03429e1","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"61c0ba88a3414879873a30019baa0840","ranges":[{"kind":"range","marks":[],"text":"Soorten"}]}]},{"kind":"block","type":"list-unordered","key":"322ae23811f140708a0b8ce524f4b834","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"493028b644c2464b8cd6700ae7d5b86e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"35144cfd8b5f4d0db5f2929af6ac1a4d","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a27c692133e741ecab12ba642ee84383","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Hop-by-Hop options"}]}]},{"kind":"block","type":"list-unordered","key":"16f726ffa1b245d9a66ba6cc89b1d818","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"224a585e9b5940898e218466b0f695cc","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"d017e673bb664a779ff74d388db1bd5a","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b75cc35f14624597b284e1beb4fd219e","ranges":[{"kind":"range","marks":[],"text":"Verzamelt alle opties die ook door tussenliggende routers verwerkt dienen te worden"}]}]}]},{"kind":"block","type":"list-item","key":"acb7f703a644427cba9af644836fa75b","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"5347ae09f7ff4836a068cc92407e2429","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b0e27418dbec4c15b00d1376e1b18d86","ranges":[{"kind":"range","marks":[],"text":"Komt onmiddelijk na de IPv6 header en is TLV geencodeerd."}]}]}]},{"kind":"block","type":"list-item","key":"b569761474ce46a4975999f505aa02dc","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"b05a44f225c142a08980f9d85d0d61f4","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a15de1a2f0ae42dfa982fd12e7dda60a","ranges":[{"kind":"range","marks":[],"text":"Jumbo payload optie (type 194), maakt afhandelen datagrammen \u003e 65535 bytes mogelijk"}]}]}]},{"kind":"block","type":"list-item","key":"97f4ab5ee5b04c9cb068aa680a8032b7","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"f5987b573bab4088b8ec80bc7b93cf0b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b485dfd358f848e8885beeb1624df1e3","ranges":[{"kind":"range","marks":[],"text":"Router Alert optie (type 5), maakt een router duidelijk dat de informatie in het datagebied dient te worden verwerkt door de router."}]}]}]},{"kind":"block","type":"list-item","key":"83c64104757b45829259fdcd59b85e64","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"fc335914f8c948e1a58c874392ecb7d3","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c2e6864caa7e423bbdaf466b8a9d66aa","ranges":[{"kind":"range","marks":[],"text":"Opvuloptie (type 1), gebruikt om extensieheader af te lijnen op veelvoud van 8 bytes."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"dac9b2f91d474d43ae8b5ffc6874e7f3","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"d91205a657bf42478f5ffb6dc799ac16","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"ab7092875f7a476aa26fde081dde349c","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Routing Header (RH)"}]}]},{"kind":"block","type":"list-unordered","key":"baf1bf1f83864ce8b4ded0350e843f9a","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"9fd526038e044b8198d166d379bd3bb5","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"8d1f4c09523d4fa89adc315f81b2e235","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"7c1c930368584f47a555bce622388536","ranges":[{"kind":"range","marks":[],"text":"Specifieer de route die het pakket moet afleggen"}]}]}]},{"kind":"block","type":"list-item","key":"8fbc273501174b9998516f1ab9b635f5","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"db8dc7fe922d4781a314d470ec5a4409","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"e401eba8b9dc49b7b0f5579418d9a2bb","ranges":[{"kind":"range","marks":[],"text":"Bevat een lijst van IP adressen die het datagram moet bezoeken"}]}]}]},{"kind":"block","type":"list-item","key":"6f1c004be62c447aab5ed2e50dea1a84","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"5e996ec8f8334be4ae11e05ba570d744","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"6dc98287a0954b65afbc4b83becf48d4","ranges":[{"kind":"range","marks":[],"text":"Het doeladres moet niet perse het laatste adres in de lijst zijn."}]}]}]},{"kind":"block","type":"list-item","key":"0e844ec62b824360a7892722ae631fab","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"d8a23715700f49c8b30c39f20ca99df8","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"897dbc11c4524cbda41939ea1b4456ae","ranges":[{"kind":"range","marks":[],"text":"Het routing Type ved beschrijft hoe de route moet lopen:"}]}]},{"kind":"block","type":"list-unordered","key":"13f23346fa694ed9955e46214d48b6a8","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"cefcd8dd0cec48c3836bdc6fc40c8bf7","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"97b3937057544aa897e40dffbbe2c902","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"62bd809f9aa54e0e822e75285e56f3b2","ranges":[{"kind":"range","marks":[],"text":"Type 0:"}]}]},{"kind":"block","type":"list-unordered","key":"f8e511410f9c4943863da687639dcb03","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"82157bf293af486ca7ae8cf0b381ddef","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"4ea507849c4d4586a1b98c21710481e2","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"e167b48a30404f4eb7a3e8b95f46ce5b","ranges":[{"kind":"range","marks":[],"text":"Adres begint bij eerste adres in de lijst, waarna het doorgestuurd wordt naar de volgende adressen om zo zijn doel te bereiken."}]}]}]},{"kind":"block","type":"list-item","key":"0d9d990706164a22ba27bcc2f3d570c0","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"96f902eb7a794dcd81492855db187744","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4d80824f5dcb4604915a456c6687ddd4","ranges":[{"kind":"range","marks":[],"text":"Gebruikt loose source routing waarbij tussenliggende routes zijn toegestaan."}]}]}]}]}]}]}]},{"kind":"block","type":"list-item","key":"7d1363da604c46068b8054847cf2e2e2","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"ce4b2ca5fad5420d84c1fb992d5a2ac8","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"92c6270d3bcd452fa630eb571c8b5387","ranges":[{"kind":"range","marks":[],"text":"Het segments Left veld geeft aan hoeveel adressen er nog bezocht moeten worden vooraleer de eindbestemming bereikt wordt."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"7aa802ea830e4e01acc7a411f9dc361b","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"d955cea1cb664e95992c67af0f5c3bea","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b86a46001c524816bd09f41ece41ae22","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Fragment Header (FH)"}]}]},{"kind":"block","type":"list-unordered","key":"cef824064d4f44eeb82f7564046a2afd","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"9465495ce2dd401687d84733f789e53e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"70242199a3d441f89cdbe4e904c86950","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"75bc10d36f364145903949b4ca526623","ranges":[{"kind":"range","marks":[],"text":"Fragmentatie kan enkel toegepast worden door de afzender"}]}]}]},{"kind":"block","type":"list-item","key":"e31a466f9ebb4b7c95e6b1c9aceed7b9","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"6858708b8ed748598c4568c5114c40d5","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4b7c9ffdd73047f28f3f13335974a564","ranges":[{"kind":"range","marks":[],"text":"Dezelfde informatie als IPv4 fragmentatie wordt in de FH gestoken"}]}]},{"kind":"block","type":"list-unordered","key":"9da201389be742f884048786b0b4ab0d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"806d42e516e648d3adcc2ca8bb53d03d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"818570898f4e468fac83d0e4c4cadfdf","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"e18863533c2e41cfa433957d468a4159","ranges":[{"kind":"range","marks":[],"text":"Fragment Identification veld is 2x zo groot als bij IPv4"}]}]}]},{"kind":"block","type":"list-item","key":"862372f0871747e5a01b30b89cf55b5f","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"9965a1d8a1b04da888b78e5bec867851","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"a811fffe12ec4b198a06a52eb68ee7ec","ranges":[{"kind":"range","marks":[],"text":"Fragment Offset veld is te klein om jumnogrammen te fragmenteren."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"7ff344c5f1234ae4a24e013946d7d8bd","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"392d4c163fc5499eabc11bbd27a77a86","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"b58a4e93785a4979a5042946d3048a01","ranges":[{"kind":"range","marks":[],"text":"Path MTY Discovery proces is nodig om de maximale pakketgrootte te bepalen."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"1b16942b9c014e66a7a20bc518d59dbf","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"da4d8e30ad5a48abb5b0291ac830d897","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"beac7f25be6f4d66981fda3df3f7e1f9","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Authentication Header (AH)"}]}]},{"kind":"block","type":"list-unordered","key":"323ff59b71324e63ab54915c5b66ef81","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"3c233b1f7e274beb8e0d1e060f97dcb2","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"0d07765a19c3412096411b0ab1d66973","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"2632d08a9bd1468bb08c7bf81e04ac7d","ranges":[{"kind":"range","marks":[],"text":"Implementeert het IPsec mechanisme"}]}]}]},{"kind":"block","type":"list-item","key":"c39bf25706de43a1b985ba8ac73ba2b7","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"e625793926f84f94b3364464e737fa7f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"dc35a2c4e1a8424abd36ca5da52e4e8a","ranges":[{"kind":"range","marks":[],"text":"Laat authenticatie van de inhoud toe"}]}]}]},{"kind":"block","type":"list-item","key":"6d23625f2db84055a0ca3423060e4f7d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"369b1ffd61cb4233b78b057599d37e56","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"df06c7de4bc240a1ab16022f3b4948c0","ranges":[{"kind":"range","marks":[],"text":"De AH bevat een MD5 checksum van het datagram, ontvanger kan controleren of pakket gewijzigd is."}]}]}]},{"kind":"block","type":"list-item","key":"b30f821032af4d6998590d204e1de980","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"324406fea604476dbcbd401f6a4eb98c","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"9b7f7bbd485943178c2734281fa6e1f7","ranges":[{"kind":"range","marks":[],"text":"AH Bevat volgnummer dat zorgt voor anti-replay bescherming (onderschepte atagrammen kunnen niet opnieuw het netwerk ingestuurd worden.)"}]}]}]}]}]},{"kind":"block","type":"list-item","key":"f6f4900f009d4edbb45649c6ddfedd52","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"710d71887e684f27a61d3a700ca1c81b","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"25f003d2b0524ef69e5b855b34f2a07a","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Encapsulating Security Payload (ESP)"}]}]},{"kind":"block","type":"list-unordered","key":"eeaee8454f7b4585a47776baa5d4c6ac","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"e12683d92da347a7a82a1ac9f9ecfbfb","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"64117594414141a3a55cf5305ae9bee5","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"bfeddd13555c457f9f11169d60a79e7a","ranges":[{"kind":"range","marks":[],"text":"laat toe om geencrypteerde datagrammen te verzenden."}]}]}]},{"kind":"block","type":"list-item","key":"8929464b27264c659db85cfd34955789","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"d691ab471a80492cb0a3ddfb9cd2d0df","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"890833c84af14612bd1507968b6a2d84","ranges":[{"kind":"range","marks":[],"text":"Geeft aan dat alle data vanaf dit punt geencrypteerd is."}]}]}]},{"kind":"block","type":"list-item","key":"94b8eeed02434b608b03d207bf9401a1","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"9a7a5a7f101248eb9522c0a93719b8b4","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"8b1761fbcab34590a44f2f4a096f19ca","ranges":[{"kind":"range","marks":[],"text":"Bevat ook genoeg gegevens om het datagram opnieuw te decrypteren."}]}]}]},{"kind":"block","type":"list-item","key":"ad0d6d9f9c51495283c44dcb31499f2b","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"7834164a0ff04ee9b7787e83b1df9273","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"7d16c027925f4eab86d2b2adaa23e570","ranges":[{"kind":"range","marks":[],"text":"Op 2 manieren te gebruiken:"}]}]},{"kind":"block","type":"list-unordered","key":"a6361366a8604cdf89c0afcb579edc67","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"3b06867a7e544f7c968ec3b98e870ef1","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"6820129ff9c3408885c7aa5a5c68f68f","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"4e9e5a3cf9d64b7692e01b4fe513bfa1","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Transparante of Transport mode:"}]}]},{"kind":"block","type":"list-unordered","key":"3925f19266e24b27aae3b5b65134e671","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"7b6e8ddc7a3241b4bd5a796dad7c1dcc","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"383266d0c1494d9982fdf280fd994cd9","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"921e81abdf854fcda1c55d129ef13b6a","ranges":[{"kind":"range","marks":[],"text":"Enkel de data wordt geencodeerd, de header en extensieheaders niet."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"501a5df157db4d00b9150087567b3259","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"2165b8a5fbc64a4ca25135dcf30de99a","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"8e7562dc28204a379993c61e5de9b79c","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Tunnel mode:"}]}]},{"kind":"block","type":"list-unordered","key":"5335e967a785434b9e54017d59e7242d","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"73153f8afae347919ebdcba7d9bdb565","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"a657ccb82172443b8dc5e13e677078f9","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"f82e5b3e7a6d429eb10d8ed184fa9ffc","ranges":[{"kind":"range","marks":[],"text":"Volledige datagram wordt versleuteld en in een andere datagram verpakt door een security gateway."}]}]}]},{"kind":"block","type":"list-item","key":"8190882a79ef46b9ad70902d5ccc917f","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"d07157a5195c4067b92323a44257ec60","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"c0c6f35494b241dfaa33df63f3bb2dd6","ranges":[{"kind":"range","marks":[],"text":"De security gateway aan de kant van de ontvanger zorgt voor het uitpakken van het datagram."}]}]}]}]}]}]}]},{"kind":"block","type":"list-item","key":"a2489848c68740dfaf8d7f70334ae7f8","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"1d94b657eab243ada6983feb83f571d6","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"9d7cdd60ce464e3faaca3909755663c8","ranges":[{"kind":"range","marks":[],"text":"Aangeraden om steeds de ESP in combinatie met de AH e gebruiken."}]}]}]}]}]},{"kind":"block","type":"list-item","key":"2ebe8e98608c4243a3a59145e52f932e","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"f4f0ccc2b1514b76aa64c62e748ba642","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"f66a6b51ab9341f78ebd8e182873b4a0","ranges":[{"kind":"range","marks":[{"kind":"mark","data":{},"type":"bold"}],"text":"Desintation Options Header"}]}]},{"kind":"block","type":"list-unordered","key":"3cf0cfbc24474fb59655a8fae654e812","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"list-item","key":"199e4f79b3a04d1e9d88f45626eca393","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"eac150eafaf4497eaf234d21b91abce3","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"3387948545f0406ba0e89aae7e04d48c","ranges":[{"kind":"range","marks":[],"text":"Bevat alle opties, die enkel door eindbestemming verwerkt dienen te worden"}]}]}]},{"kind":"block","type":"list-item","key":"9d2e024bf75f40ec8748fd510ad6281b","isVoid":false,"data":{},"nodes":[{"kind":"block","type":"paragraph","key":"3c95800deeff461790fcd50541f23dd7","isVoid":false,"data":{},"nodes":[{"kind":"text","key":"5ce42abbe00843e6a692da64b79f87e2","ranges":[{"kind":"range","marks":[],"text":"Kan verschillende keren voorkomen in het pakket (andere headers niet)"}]}]}]}]}]}]}]}}}},"user":{"kind":"user","uid":"-M157qfKs9zYi9OzZeVN","baseDomain":"","defaultSpace":null,"displayName":"","photoURL":null,"deletedAt":null,"usageStatuses":null,"email":"","emailVerified":false,"disabled":false,"phoneNumber":null,"providers":{},"isVisitor":true,"customClaims":{},"lastLoggedInAt":1582798052999,"createdAt":1582798052999}},"config":{"environment":"production","firebase":{"databaseURL":"https://gitbook-28427.firebaseio.com","apiKey":"AIzaSyBL3yy07hdwBstwhhFTkRtzJA865UQzQVg","authDomain":"app.gitbook.com","projectId":"gitbook-28427","storageBucket":"gitbook-28427.appspot.com","messagingSenderId":"208404988308"},"amplitude":{"key":"fef1e872c952688acd962d30aa545b9e","endpoint":"www.gitbook.com/__amp/"},"zendesk":{"widget_key":"c2b4abc5-eb81-454f-8d35-ba1650332541","subdomain":"gitbook"},"ga":{"spaces":{"id":"UA-57505611-10","view_id":"152688311"},"website":{"id":"UA-57505611-9"}},"slack":{"client_id":"3085992729.251477828931","redirect_uri":"https://hooks.gitbook.com/hooks/slack/oauth"},"sentry":{"url":"https://df403e1abd7046148b272790ec350ce0@sentry.io/193897"},"stripe":{"public_key":"pk_live_iPkbPsG28bjTrkbfHXUq0cA0","plans":{"business_monthly":"plan_ERCJFVRMVGgjVZ","team_yearly":"plan_GAeDEVtig2ujYe","startup_yearly":"plan_FpdZWR4TLYnKYH","business_yearly":"plan_ERCJgSzm3Ui1ox","startup_monthly":"plan_FpdWuSK3BgOldB","team_monthly":"plan_GAeDpGXRUSctoE"},"products":{"legacy":"prod_FROhqd8l1W4Fwg","team":"prod_GAeD47cc905FaD","business":"prod_DpiRtaS8dvrtrK","startup":"prod_Cd5mCUdVDfZSHY","enterprise":"prod_DpMsO7RlzNd0Ty"}},"algolia":{"appid":"Q9UGR6532T"},"clearbit":{"public_key":"pk_e1e4d94ae5385255f0fc7d76d4897ade"},"urls":{"api":"https://api-beta.gitbook.com","spaces":"https://gitbook-28427.firebaseapp.com","website":"https://app.gitbook.com","saml":"https://www.gitbook.com"},"domains":{"spaces":"gitbook.io","cookie":".gitbook.com"},"cdn":{"blobsurl":"https://blobs.gitbook.com/","hosting_cname":"hosting.gitbook.com"},"statuspage":{"domain":"http://status.gitbook.com"},"logrocket":{"key":"fvjtqz/gitbook"},"version":"6.13.0","buildVersion":"6.13.0-9796653.27978"},"props":{"ownerID":"538c32a77bcb1b0200ff5dcd","spaceID":"-Lc5VIoyjbmo2ReQJFfs","spaceName":"ugent-computernetwerken-2","basename":"/ugent-computernetwerken-2","location":"/ugent-computernetwerken-2/reek_c_-_ipv6_berichtstructuur"}};
+            </script>
+            <script id="__LOADABLE_REQUIRED_CHUNKS__" type="application/json" crossorigin="anonymous" charset="utf-8">[]</script>
+<script async data-chunk="space" src="https://static.gitbook.com/js/111.cb821c98.js" crossorigin="anonymous" charset="utf-8"></script>
+        </body>
+    </html>
+    
