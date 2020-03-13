@@ -289,7 +289,7 @@ Routers sturen geen broadcasts, dus ook geen **DHCP** Discovery berichten ( of a
 | 3| |  |  | <=  | DHCP-offer |
 | 4| |  <*= | DHCP-offer |  | |
 
-**Weken met meerdere DHCP-servers**:
+### Werken met meerdere DHCP-servers
 
 DHCP servers kunnnen niet onderling met elkander communiceren.
 
@@ -303,7 +303,7 @@ DHCP servers kunnnen niet onderling met elkander communiceren.
 * **probleem**: servers ontvangen ongezeste hoeveelheden dhcp berichten veroorzaakt door willekeurig geselecteerde paden
     * **oplossing**: vertragingsintervallen in relay agents.
 
-**Configuratie van relay agents**:
+### Configuratie van relay agents
 
 Zeer eenvoudig.
 
@@ -321,3 +321,49 @@ Windows:
 4. 1 of meerdere interfaces toevoegen
 5. hop-count threshold en boot threshold (vertragingsinterval) instellen
 6. DHCP-server IP-adressen toevoegen.
+
+## 2.1.4 Integratie met DNS
+
+DHCP en DNS werken niet goed te samen. Telkens een adres uit de DHCP-scope word geleased moet de DNS van de zone worden aangepast.
+
+Tot 1998: Manueel aanpassen van de DNS server.
+
+Nu: **dynamische updates**
+
+### dynamische updates
+
+Een DNS server kan zijn tabellen wijzigen zonder te moeten heropstarten.
+
+**Windows NT4 client**:
+
+| | client | | DHCP server |  | DNS server |
+|---| --- | --- | --- | --- |--- |
+| 1| lease-aanvraag | => |   | | |
+| 2| | <=  |  lease-antwoord  |   | |
+| 3|  | | A-records | =>  |  |
+| 4| |  | PTR-records | => | |
+
+1. cient stuurt lease-aanvraag
+    * Client gebruikt optie 81 om zijn Fully Qualified Domain Name door te sturen naar de server.
+2. server stuurt lease-antwoord.
+3. DHCP stuurt A-records naar DNS
+4. DHCP stuurt PTR-recors naar DNS
+
+**Windows NT5+ client**:
+
+| | client | | DHCP server |  | DNS server |
+|---| --- | --- | --- | --- |--- |
+| 1| lease-aanvraag | => |   | | |
+| 2| | <=  |  lease-antwoord  |   | |
+| 3| A-records | == | ============ | =>  |  |
+| 4| |  | PTR-records | => | |
+
+1. cient stuurt lease-aanvraag
+2. server stuurt lease-antwoord.
+3. Client stuurt A-records naar DNS
+4. DHCP stuurt PTR-recors naar DNS
+    * Na het versturen van een DHCP-ACK naar de client.
+
+**Client zonder kennis van dynamische DNS**:
+
+Alles word afgehandeld door de DHCP server.
